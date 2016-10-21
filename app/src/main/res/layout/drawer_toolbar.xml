@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/title_height"
+              android:background="@color/colorPinkMain"
+              android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/drawer_toolbar_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/drawer_size"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_drawer_home"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_ten"
+        android:src="@mipmap/bili_default_avatar"
+        />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_ten"
+        android:text="未登录"
+        android:textColor="@color/colorWhite"
+        />
+
+
+</LinearLayout>
