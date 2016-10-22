@@ -33,8 +33,7 @@ public class BangumiFragment extends BaseFragment {
     private Handler mHandler;
     private BangumiPageAdapter mBangumiAdapter;
     private ImageView[] point;
-//    private int pointSize = 4;
-//    private ArrayList<Integer> images;
+    private int pointSize = 4;
 
     private LinearLayout mLinearLayout;
     private ListView mListView;
@@ -49,7 +48,7 @@ public class BangumiFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-//        mLinearLayout = bindView(R.id.bang_umi_fragment_ll);
+
         mListView = bindView(R.id.bang_umi_fragment_lv);
 
     }
@@ -59,6 +58,8 @@ public class BangumiFragment extends BaseFragment {
         lunView = LayoutInflater.from(mContext).inflate(R.layout.head_item,null);
         mListView.addHeaderView(lunView);
         mViewPager = (ViewPager) lunView.findViewById(R.id.bang_umi_fragment_viewpager);
+        mLinearLayout = (LinearLayout)lunView.findViewById(R.id.bang_umi_fragment_ll);
+
 
 
         mBangumiAdapter = new BangumiPageAdapter(mContext);
@@ -86,7 +87,6 @@ public class BangumiFragment extends BaseFragment {
                 return false;
             }
         });
-
         if (mm) {
             new Thread(new Runnable() {
                 @Override
@@ -103,47 +103,47 @@ public class BangumiFragment extends BaseFragment {
                 }
             }).start();
             mm = false;
-//            point = new ImageView[pointSize];
-//
-//            for (int i = 0; i < pointSize; i++) {
-//                ImageView imageView = new ImageView(mContext);
-//
-//                point[i] = imageView;
-//
-//                if (i == 0) {
-//                    imageView.setImageResource(R.mipmap.ic_launcher);
-//
-//                } else {
-//                    imageView.setImageResource(R.mipmap.ic_yuan);
-//                }
-//                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(50, 50);
-//
-//                layoutParams.leftMargin = 20;
-//                layoutParams.rightMargin = 20;
-//
-//                mLinearLayout.addView(imageView, layoutParams);
-//            }
-//            mBangumiAdapter.setViewPager(mViewPager);
-//            mBangumiAdapter.setPoint(point);
-//
-            adapter = new BangumRecommendAdapter(getContext());
-
-
-            SendGetRequest.sendGetRequest(UrlClass.URL_SOME_RECOMMEND, BangUmiRecommendEntity.class, new SendGetRequest.OnResponseListener<BangUmiRecommendEntity>() {
-                @Override
-                public void onResponse(BangUmiRecommendEntity response) {
-                    adapter.setEntity(response);
-                    mListView.setAdapter(adapter);
-                }
-
-                @Override
-                public void onError() {
-
-
-                }
-            });
-
-
         }
+
+        point = new ImageView[pointSize];
+
+        for (int i = 0; i < pointSize; i++) {
+            ImageView imageView = new ImageView(mContext);
+
+            point[i] = imageView;
+
+            if (i == 0) {
+                imageView.setImageResource(R.mipmap.ic_launcher);
+
+            } else {
+                imageView.setImageResource(R.mipmap.ic_yuan);
+            }
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(50, 50);
+
+            layoutParams.leftMargin = 20;
+            layoutParams.rightMargin = 20;
+
+            mLinearLayout.addView(imageView, layoutParams);
+        }
+        mBangumiAdapter.setViewPager(mViewPager);
+        mBangumiAdapter.setPoint(point);
+
+
+        adapter = new BangumRecommendAdapter(getContext());
+
+
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_RECOMMEND, BangUmiRecommendEntity.class, new SendGetRequest.OnResponseListener<BangUmiRecommendEntity>() {
+            @Override
+            public void onResponse(BangUmiRecommendEntity response) {
+                adapter.setEntity(response);
+                mListView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onError() {
+
+
+            }
+        });
     }
 }

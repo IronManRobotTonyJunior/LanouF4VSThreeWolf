@@ -59,11 +59,15 @@ import java.util.ArrayList;
  * Created by dllo on 16/10/22.
  */
 
-public class BangumiPageAdapter extends PagerAdapter  {
+public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
     private Context context;
     private ImageView[] point;
     private BangUmiEntity entity;
+    private ViewPager viewPager;
 
+    public void setViewPager(ViewPager viewPager) {
+        this.viewPager = viewPager;
+    }
 
     public void setPoint(ImageView[] point) {
         this.point = point;
@@ -94,36 +98,36 @@ public class BangumiPageAdapter extends PagerAdapter  {
         ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
         Glide.with(context).load(entity.getResult().getAd().getHead().get(position % entity.getResult().getAd().getHead().size()).getImg()).into(imageView);
         container.addView(view);
-//        viewPager.addOnPageChangeListener(this);
+        viewPager.addOnPageChangeListener(this);
         return view;
     }
 
 
-//
-//    @Override
-//    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//    }
-//
-//    @Override
-//    public void onPageSelected(int position) {
-//        if (point!=null&&point.length!=0){
-//            for (int i = 0; i < point.length; i++) {
-//                if (i == position % 4) {
-//                    point[i].setImageResource(R.mipmap.ic_launcher);
-//                } else {
-//                    point[i].setImageResource(R.mipmap.ic_yuan);
-//                }
-//            }
-//        }
-//
-//
-//    }
-//
-//    @Override
-//    public void onPageScrollStateChanged(int state) {
-//
-//    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        if (point!=null&&point.length!=0){
+            for (int i = 0; i < point.length; i++) {
+                if (i == position % 4) {
+                    point[i].setImageResource(R.mipmap.ic_launcher);
+                } else {
+                    point[i].setImageResource(R.mipmap.ic_yuan);
+                }
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
 

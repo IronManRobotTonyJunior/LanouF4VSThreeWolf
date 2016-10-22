@@ -14,13 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="100dp" />
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/bang_umi_fragment_ll"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="190dp"-->
-            <!--android:layout_marginTop="-65dp"-->
-            <!--android:gravity="center"-->
-            <!--android:orientation="horizontal" />-->
+        <LinearLayout
+            android:id="@+id/bang_umi_fragment_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-25dp"
+            android:gravity="center"
+            android:orientation="horizontal" />
     </LinearLayout>
 </LinearLayout>
