@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity;
+package com.example.dllo.bibilala.bangumi;
  /*
         quu..__
          $$$b  `---.__
@@ -40,39 +40,9 @@ package com.example.dllo.bibilala.entity;
          
         */
 
-import java.util.List;
-
 /**
  * Created by dllo on 16/10/22.
  */
 
-public class BangUmiEntity {
-
-    private int code;
-    private String message;
-    private ResultEntity result;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public ResultEntity getResult() {
-        return result;
-    }
-
-    public void setResult(ResultEntity result) {
-        this.result = result;
-    }
+public class BangumRecommendAdapter {
 }

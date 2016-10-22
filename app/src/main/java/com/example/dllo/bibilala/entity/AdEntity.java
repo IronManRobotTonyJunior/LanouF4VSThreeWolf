@@ -1,5 +1,4 @@
-package com.example.dllo.bibilala.entity;
- /*
+package com.example.dllo.bibilala.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -45,34 +44,23 @@ import java.util.List;
 /**
  * Created by dllo on 16/10/22.
  */
+public class AdEntity {
+    private List<Object> body;
+    private List<HeadEntity> head;
 
-public class BangUmiEntity {
-
-    private int code;
-    private String message;
-    private ResultEntity result;
-
-    public int getCode() {
-        return code;
+    public List<Object> getBody() {
+        return body;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setBody(List<Object> body) {
+        this.body = body;
     }
 
-    public String getMessage() {
-        return message;
+    public List<HeadEntity> getHead() {
+        return head;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public ResultEntity getResult() {
-        return result;
-    }
-
-    public void setResult(ResultEntity result) {
-        this.result = result;
+    public void setHead(List<HeadEntity> head) {
+        this.head = head;
     }
 }
