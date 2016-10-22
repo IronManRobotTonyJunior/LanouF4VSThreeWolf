@@ -32,6 +32,8 @@ import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.android.volley.Request.Method.HEAD;
+
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private CoordinatorLayout mCoordinatorLayout;
@@ -58,7 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         View view = LayoutInflater.from(this).inflate(R.layout.drawer_toolbar, mToolbar, false);
         mToolbar.addView(view);
         ImageView drawerImage = (ImageView) view.findViewById(R.id.drawer_toolbar_drawer);
-        CircleImageView userIcon = (CircleImageView) view.findViewById(R.id.user_icon);
+        CircleImageView nuserIco = (CircleImageView) view.findViewById(R.id.user_icon);
         TextView userName = (TextView) view.findViewById(R.id.user_name);
         drawerImage.setOnClickListener(this);
         mToolbar.inflateMenu(R.menu.menu_three_points);
@@ -87,6 +89,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorWhite));
         mTabLayout.setTabTextColors(Color.parseColor("#FDC7D6"), R.color.colorWhite);
+        mViewPager.setCurrentItem(1);
 
 
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
