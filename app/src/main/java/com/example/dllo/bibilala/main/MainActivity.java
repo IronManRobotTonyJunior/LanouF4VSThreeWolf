@@ -85,8 +85,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mAdapter = new MainAdapter(getSupportFragmentManager(), mTitles, mFragments);
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-        mTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
-        mTabLayout.setTabTextColors(Color.parseColor("#FDC7D6"), Color.parseColor("#FFFFFF"));
+        mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorWhite));
+        mTabLayout.setTabTextColors(Color.parseColor("#FDC7D6"), R.color.colorWhite);
 
 
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

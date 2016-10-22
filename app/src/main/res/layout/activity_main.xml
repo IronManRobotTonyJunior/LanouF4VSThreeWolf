@@ -11,4 +11,6 @@
     <include
         android:id="@+id/main_coordinator"
         layout="@layout/include_title_base_activity"/>
+
+
 </LinearLayout>
