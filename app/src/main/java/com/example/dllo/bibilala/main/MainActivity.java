@@ -36,7 +36,6 @@ import static com.android.volley.Request.Method.HEAD;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    private CoordinatorLayout mCoordinatorLayout;
     private Toolbar mToolbar;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
@@ -53,10 +52,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        mCoordinatorLayout = bindView(R.id.main_coordinator);
-        mToolbar = (Toolbar) mCoordinatorLayout.findViewById(R.id.include_toolbar);
-        mTabLayout = (TabLayout) mCoordinatorLayout.findViewById(R.id.include_tab);
-        mViewPager = (ViewPager) mCoordinatorLayout.findViewById(R.id.include_vp);
+        mToolbar = bindView(R.id.include_toolbar);
+        mTabLayout = bindView(R.id.include_tab);
+        mViewPager = bindView(R.id.include_vp);
         View view = LayoutInflater.from(this).inflate(R.layout.drawer_toolbar, mToolbar, false);
         mToolbar.addView(view);
         ImageView drawerImage = (ImageView) view.findViewById(R.id.drawer_toolbar_drawer);
