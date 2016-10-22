@@ -39,39 +39,25 @@ package com.example.dllo.bibilala.bangumi; /*
          
         */
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
-
-import com.example.dllo.bibilala.entity.BangUmiEntity;
-import com.zhy.adapter.abslistview.CommonAdapter;
+import com.example.dllo.bibilala.R;
 import com.zhy.adapter.abslistview.ViewHolder;
-
-import java.util.List;
 
 /**
  * Created by dllo on 16/10/22.
  */
-public class BangumAdapter extends BaseAdapter {
+public class CrayonShinChanFragment implements com.zhy.adapter.abslistview.base.ItemViewDelegate {
     @Override
-    public int getCount() {
-        return 0;
+    public int getItemViewLayoutId() {
+        return R.layout.item_bangum_fragment_lv;
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public boolean isForViewType(Object item, int position) {
+        return  false;
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+    public void convert(ViewHolder holder, Object o, int position) {
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
     }
 }

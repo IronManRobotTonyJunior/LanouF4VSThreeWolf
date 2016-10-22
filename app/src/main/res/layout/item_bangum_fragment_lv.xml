@@ -2,5 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <FrameLayout
+        android:layout_margin="10dp"
+        android:layout_width="100dp"
+        android:layout_height="180dp">
+        <ImageView
+            android:background="@mipmap/ic_launcher"
+            android:id="@+id/item_bangum_fragment_ima"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/item_bangu_fragment_tv"
+            android:textSize="13sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="150dp"
+            android:text="6757人在看"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
 
 </LinearLayout>

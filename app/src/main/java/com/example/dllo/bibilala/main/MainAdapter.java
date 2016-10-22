@@ -4,10 +4,11 @@ package com.example.dllo.bibilala.main;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
-public class MainAdapter extends FragmentPagerAdapter {
+public class MainAdapter extends FragmentStatePagerAdapter {
     private List<String> mTitles;
     private List<Fragment> mFragments;
 

@@ -42,7 +42,7 @@ package com.example.dllo.bibilala.entity; /*
 /**
  * Created by dllo on 16/10/22.
  */
-public class cartoonEntity {
+public class CartoonEntity {
 
     private String cover;
     private String favourites;
