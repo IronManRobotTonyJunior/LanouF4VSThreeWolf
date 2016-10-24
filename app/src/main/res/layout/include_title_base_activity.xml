@@ -5,6 +5,7 @@
                                                  android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -14,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/title_height"
             android:background="@color/colorPinkMain"
-            app:contentInsetStart="0dp"
+            app:contentInsetStart="@dimen/zero"
             app:layout_scrollFlags="scroll|enterAlways">
 
 

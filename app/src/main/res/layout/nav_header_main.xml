@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="120dp"
+              android:background="@color/colorPinkMain"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_margin="@dimen/margin_ten"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/drawer_user_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/bili_default_avatar_big"/>
+
+        <CheckBox
+            android:id="@+id/drawer_check_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:button="@drawable/selector_drawer_day_or_night"
+            />
+
+        <ImageView
+            android:id="@+id/drawer_img_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/drawer_check_night"
+            android:layout_marginRight="40dp"
+            android:src="@mipmap/ic_group_send_msg"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_margin="@dimen/margin_ten"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/drawer_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击头像登录"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/drawer_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="硬币:"
+            android:textColor="@color/colorWhite"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>
