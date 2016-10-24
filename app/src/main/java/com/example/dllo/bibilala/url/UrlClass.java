@@ -52,6 +52,8 @@ public final class UrlClass {
     public static final String URL_ME = "http://app.bilibili.com/x/v2/space?";
     //头像
     public static final String URL_HEADPHOTO = "http://api.bilibili.com/x/v2/reply/emojis";
+    //主题
+    public static final String URL_THEME = "http://club.bilibili.com/api/query.skin.list.do?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&actionKey=appkey&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1476949442000&sign=fbec4640dd2bc75892e7d00f8d3d8629\n";
 
     /**
      * 推荐
@@ -65,8 +67,6 @@ public final class UrlClass {
     public static final String URL_FAN_DRAM_RECOMMENDATION = "http://bangumi.bilibili.com/api/get_season_by_tag?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&page=1&pagesize=4&platform=android&tag_id=109&ts=1476949442000&sign=c10377a9764dc78802f0896261b952d5";
     //热门推荐
     public static final String URL_HOT_RECOMMEND = "http://app.bilibili.com/x/show/old?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&platform=android&screen=hdpi&ts=1476949442000&sign=8f371fe30585a0c85985afa426832536";
-    //主题
-    public static final String URL_THEME = "http://club.bilibili.com/api/query.skin.list.do?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&actionKey=appkey&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1476949442000&sign=fbec4640dd2bc75892e7d00f8d3d8629\n";
 
 
     /**
