@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.bangumi; /*
+package com.example.dllo.bibilala.bangumi.adapter;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,25 +40,47 @@ package com.example.dllo.bibilala.bangumi; /*
          
         */
 
-import com.example.dllo.bibilala.R;
-import com.zhy.adapter.abslistview.ViewHolder;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+import com.example.dllo.bibilala.entity.BangUmiEntity;
 
 /**
  * Created by dllo on 16/10/22.
  */
-public class CrayonShinChanFragment implements com.zhy.adapter.abslistview.base.ItemViewDelegate {
-    @Override
-    public int getItemViewLayoutId() {
-        return R.layout.item_bangum_fragment_lv;
+
+public class CrayonAdapter extends BaseAdapter {
+    private Context context;
+    private BangUmiEntity entity;
+
+    public void setEntity(BangUmiEntity entity) {
+        this.entity = entity;
+    }
+
+    public CrayonAdapter(Context context) {
+
+        this.context = context;
     }
 
     @Override
-    public boolean isForViewType(Object item, int position) {
-        return  false;
+    public int getCount() {
+        return 0;
     }
 
     @Override
-    public void convert(ViewHolder holder, Object o, int position) {
+    public Object getItem(int position) {
+        return null;
+    }
 
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        return null;
     }
 }

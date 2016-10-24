@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.bangumi; /*
+package com.example.dllo.bibilala.bangumi.adapter; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP

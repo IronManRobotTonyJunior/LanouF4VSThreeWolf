@@ -3,28 +3,26 @@ package com.example.dllo.bibilala.bangumi;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.Response;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.app.BiBiLaiLaiApp;
+
+import com.example.dllo.bibilala.bangumi.adapter.BangumRecommendAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
 import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.url.UrlClass;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import static android.R.id.list;
-import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 public class BangumiFragment extends BaseFragment {
     private ViewPager mViewPager;
@@ -38,7 +36,9 @@ public class BangumiFragment extends BaseFragment {
     private LinearLayout mLinearLayout;
     private ListView mListView;
     private BangumRecommendAdapter adapter;
-    private View lunView;
+    private View lunView,mCrayonView;
+
+    private GridView mGridViewCrayon;
 
 
     @Override
@@ -59,6 +59,11 @@ public class BangumiFragment extends BaseFragment {
         mListView.addHeaderView(lunView);
         mViewPager = (ViewPager) lunView.findViewById(R.id.bang_umi_fragment_viewpager);
         mLinearLayout = (LinearLayout)lunView.findViewById(R.id.bang_umi_fragment_ll);
+
+        mCrayonView = LayoutInflater.from(mContext).inflate(R.layout.head_crayon,null);
+        mListView.addHeaderView(mCrayonView);
+        mGridViewCrayon = (GridView) mCrayonView.findViewById(R.id.item_head_crayon_gv);
+
 
 
 
