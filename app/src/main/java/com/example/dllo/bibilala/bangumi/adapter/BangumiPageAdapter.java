@@ -114,9 +114,9 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
         if (point!=null&&point.length!=0){
             for (int i = 0; i < point.length; i++) {
                 if (i == position % 4) {
-                    point[i].setImageResource(R.mipmap.ic_launcher);
+                    point[i].setImageResource(R.mipmap.fennima);
                 } else {
-                    point[i].setImageResource(R.mipmap.ic_yuan);
+                    point[i].setImageResource(R.mipmap.bai);
                 }
             }
         }

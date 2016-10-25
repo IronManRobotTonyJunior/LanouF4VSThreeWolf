@@ -19,12 +19,10 @@ import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
 import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
-import com.example.dllo.bibilala.entity.PreviousEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +54,7 @@ public class BangumiFragment extends BaseFragment {
     @Override
     protected void initView() {
 
-        mRecyclerView = bindView(R.id.bang_umi_fragment_lv);
+        mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
 
     }
 
@@ -123,7 +121,6 @@ public class BangumiFragment extends BaseFragment {
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_rv_lun_fragment, null);
         mHeaderAndFooterWrapper.addHeaderView(view);
-
         mHeaderAndFooterWrapper.notifyDataSetChanged();
         mViewPager = (ViewPager) view.findViewById(R.id.bang_umi_fragment_viewpager);
         mLinearLayout = (LinearLayout) view.findViewById(R.id.bang_umi_fragment_ll);
@@ -174,15 +171,17 @@ public class BangumiFragment extends BaseFragment {
             point[i] = imageView;
 
             if (i == 0) {
-                imageView.setImageResource(R.mipmap.ic_launcher);
+                imageView.setImageResource(R.mipmap.fennima);
 
             } else {
-                imageView.setImageResource(R.mipmap.ic_yuan);
+                imageView.setImageResource(R.mipmap.bai);
             }
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(50, 50);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(40, 40);
 
-            layoutParams.leftMargin = 20;
-            layoutParams.rightMargin = 20;
+            layoutParams.leftMargin = 2;
+            layoutParams.rightMargin = 2;
+
+
 
             mLinearLayout.addView(imageView, layoutParams);
         }
