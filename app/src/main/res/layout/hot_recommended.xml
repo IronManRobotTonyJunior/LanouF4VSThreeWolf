@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="@dimen/ten"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <ImageView
+        android:id="@+id/hot_recommend_img"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/hot_recommend"/>
+
+    <TextView
+        android:id="@+id/hot_recommend_text"
+        android:layout_toRightOf="@+id/hot_recommend_img"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/ten_three"
+        android:textStyle="bold"
+        android:text="热门推荐"/>
+
+    <TextView
+        android:id="@+id/hot_recommend_list_text"
+        android:drawableLeft="@mipmap/hot_recommend_list"
+        android:background="@color/colorUnselectYellow"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/ten_three"
+        android:text="排行榜"/>
+
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/hot_recommend_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="2" />
+
+
+</LinearLayout>

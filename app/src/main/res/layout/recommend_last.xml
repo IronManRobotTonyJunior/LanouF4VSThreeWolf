@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="@dimen/ten"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/last_topic_img"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_header_topic"/>
+
+        <TextView
+            android:id="@+id/last_topic_text"
+            android:textStyle="bold"
+            android:textSize="@dimen/ten_three"
+            android:layout_toRightOf="@+id/last_topic_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="话题"/>
+
+        <TextView
+            android:id="@+id/last_topic_look"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#dd9b9696"
+            android:textSize="@dimen/ten_three"
+            android:text="去看看"/>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/last_topic_big_img"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:layout_height="wrap_content" />
+
+
+
+
+</LinearLayout>

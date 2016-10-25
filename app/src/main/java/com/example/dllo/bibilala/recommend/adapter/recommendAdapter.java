@@ -8,15 +8,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 import com.example.dllo.bibilala.recommendentity.LBBean;
+import com.example.dllo.bibilala.url.UrlClass;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import static android.R.attr.y;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.R.attr.id;
+
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -43,115 +51,21 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<Integer>types;
-    private Context context;
-    private AllBean allBean;
-    private LBBean lbBean;
-
-    public void setLbBean(LBBean lbBean) {
-        this.lbBean = lbBean;
-    }
-
-    public void setTypes(ArrayList<Integer> types) {
-        this.types = types;
-    }
-
-    public void setAllBean(AllBean allBean) {
-        this.allBean = allBean;
-    }
-
-    public RecommendAdapter(Context context) {
-        this.context = context;
-    }
-
-
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //加载Item iew 的时候根据不同Type 加载不同的布局
-        RecyclerView.ViewHolder holder =null;
-
-        switch (viewType) {
-            case   0:
-                View view = LayoutInflater.from(context).inflate(R.layout.recommend_lunbo,parent,false);
-                holder = new LBHolder(view);
-
-
-                break;
-
-        }
+public class RecommendAdapter extends CommonAdapter<AllBean.ResultBean.BodyBean>{
 
 
 
-
-
-
-        return holder;
-    }
-
-
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-        int viewType =getItemViewType(position);
-        switch (viewType) {
-            case 0:
-                LBHolder lbHolder = (LBHolder) holder;
-                lbHolder.lBdAdapter.setLbBean(lbBean);
-                lbHolder.viewPager.setAdapter(lbHolder.lBdAdapter);
-                speed(lbHolder);
-
-
-        }
-
-
-
-
-
-    }
-
-    private void speed(final LBHolder lbHolder) {
-
-        lbHolder.handler =new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message message) {
-                lbHolder.viewPager.setCurrentItem(lbHolder.viewPager.getCurrentItem() + 1);
-                return false;
-            }
-        });
-        
-
-
-
+    public RecommendAdapter(Context context, int layoutId, List<AllBean.ResultBean.BodyBean> datas) {
+        super(context, layoutId, datas);
     }
 
     @Override
-    public int getItemCount() {
-        return types.size();
+    protected void convert(ViewHolder holder, AllBean.ResultBean.BodyBean resultBean, int position) {
+
+
+        ImageView imageView = holder.getView(R.id.last_topic_big_img);
+        Glide.with(mContext).load("http://i0.hdslb.com/bfs/archive/c6acc61977d1d8ae1405d601ec20d75001d704b3.jpg").into(imageView);
+
+
     }
-
-
-    @Override
-    public int getItemViewType(int position) {
-        return types.get(position);
-    }
-
-
-
-    private class LBHolder extends RecyclerView.ViewHolder {
-        private ViewPager viewPager;
-        private RecommenLBdAdapter lBdAdapter;
-        private boolean mFalg = true;
-        private boolean flag = true;
-        private Handler handler;
-
-        public LBHolder(View view) {
-            super(view);
-
-        }
-    }
-
-
-
 }

@@ -6,4 +6,6 @@
     <color name="colorPinkMain">#FB7299</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorUnselectWhite">#FDC7D6</color>
+    <color name="colorUnselectYellow">#e7bb09</color>
+
 </resources>
