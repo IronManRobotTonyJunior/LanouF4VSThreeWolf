@@ -51,7 +51,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.BangUmiEntity;
 import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
 
 /**
@@ -71,8 +70,10 @@ public class BangumRecommendAdapter extends BaseAdapter {
         this.context = context;
     }
 
-    @Override
+
+        @Override
     public int getCount() {
+            Log.d("BangumRecommendAdapter", "entity.getResult().size():" + entity.getResult().size());
         return entity == null ? 0 : entity.getResult().size();
     }
 
@@ -134,4 +135,6 @@ public class BangumRecommendAdapter extends BaseAdapter {
             ima = (ImageView) view.findViewById(R.id.item_bangum_recommend_ima);
         }
     }
+
 }
+

@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.bangumi.adapter; /*
+package com.example.dllo.bibilala.bangumi.adapter;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -40,32 +41,76 @@ package com.example.dllo.bibilala.bangumi.adapter; /*
         */
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
-
-import java.util.List;
+import com.example.dllo.bibilala.entity.BangUmiEntity;
 
 /**
- * Created by dllo on 16/10/22.
+ * Created by dllo on 16/10/24.
  */
-public class BangumAdapter extends CommonAdapter<BangUmiRecommendEntity.ResultBean> {
 
+public class JulyToLoveAdapter extends BaseAdapter {
+    private BangUmiEntity entity;
+    private Context context;
 
-    public BangumAdapter(Context context, int layoutId, List<BangUmiRecommendEntity.ResultBean> datas) {
-        super(context, layoutId, datas);
+    public void setEntity(BangUmiEntity entity) {
+        this.entity = entity;
+    }
+
+    public JulyToLoveAdapter(Context context) {
+
+        this.context = context;
     }
 
     @Override
-    protected void convert(ViewHolder holder, BangUmiRecommendEntity.ResultBean entity, int position) {
-        holder.setText(R.id.item_bang_recommend_tv_title,entity.getTitle());
-        holder.setText(R.id.text_test,entity.getDesc());
-        ImageView ima = holder.getView(R.id.item_bangum_recommend_ima);
-        Glide.with(mContext).load(entity.getCover()).into(ima);
+    public int getCount() {
+//        Log.d("JulyToLoveAdapter", "entity.getList().size():" + entity.getList().size());
+        return entity == null ? 0 : entity.getResult().getPrevious().getList().size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return entity.getResult().getPrevious().getList().get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_july_fragment, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.tvFavourites.setText(entity.getResult().getPrevious().getList().get(position).getFavourites());
+        holder.tvTitle.setText(entity.getResult().getPrevious().getList().get(position).getTitle());
+        Glide.with(context).load(entity.getResult().getPrevious().getList().get(position).getCover()).into(holder.ima);
+
+        return convertView;
+    }
+
+    class ViewHolder {
+        private TextView tvFavourites, tvTitle;
+        private ImageView ima;
+
+        public ViewHolder(View view) {
+            tvFavourites = (TextView) view.findViewById(R.id.item_july_tv_favourites);
+            tvTitle = (TextView) view.findViewById(R.id.item_july_tv_title);
+            ima = (ImageView) view.findViewById(R.id.item_july_ima);
+        }
     }
 }
-

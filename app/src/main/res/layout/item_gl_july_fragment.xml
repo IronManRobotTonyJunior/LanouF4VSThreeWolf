@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <GridView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/item_july_gl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <ImageView
+            android:paddingTop="10dp"
+
+            android:src="@mipmap/fanjutuijian"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:layout_width="23dp"
+            android:layout_height="23dp" />
+        <TextView
+
+            android:paddingTop="10dp"
+
+            android:layout_marginLeft="60dp"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:text="番剧推荐"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>
