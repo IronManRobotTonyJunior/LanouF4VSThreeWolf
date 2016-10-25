@@ -82,8 +82,7 @@ public final class UrlClass {
      */
     //直播标签
     public static final String URL_LIVE_TAAG = "http://live.bilibili.com/AppIndex/areas?_device=android&_hwid=844cebfd4683c8d8&_ulv=5000&access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&scale=hdpi&sign=69e138520fa533d03bd4a6de9839d8af";
-    //直播
-    public static final String URL_LIVE = "http://live.bilibili.com/AppNewIndex/common?_device=android&platform=android&scale=hdpi";
+
 
     /**
      * 发现
@@ -95,6 +94,8 @@ public final class UrlClass {
     /**
      * 直播
      */
+    //直播
+    public static final String URL_LIVE = "http://live.bilibili.com/AppNewIndex/common?_device=android&platform=android&scale=hdpi";
     //推荐主播
     public static final String URL_RECOMMEND_ANCHOR = "http://live.bilibili.com/AppNewIndex/recommend?_device=android&_hwid=7b0828c551fedbab&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&scale=xxhdpi&sign=1b4296df47d20aaae498eb0f7f733671";
     //红叶祭

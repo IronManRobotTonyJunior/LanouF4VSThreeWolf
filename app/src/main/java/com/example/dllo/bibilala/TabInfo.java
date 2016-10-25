@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import com.example.dllo.bibilala.bangumi.BangumiFragment;
 import com.example.dllo.bibilala.concern.ConcernFragment;
 import com.example.dllo.bibilala.find.FindFragment;
-import com.example.dllo.bibilala.live.LiveFragment;
+import com.example.dllo.bibilala.live.view.LiveFragment;
 import com.example.dllo.bibilala.recommend.RecommendFragment;
 import com.example.dllo.bibilala.zone.ZoneFragment;
 
