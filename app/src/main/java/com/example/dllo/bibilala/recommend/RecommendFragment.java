@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.http.SendGetRequest;
-import com.example.dllo.bibilala.recommend.adapter.RecommendAdapter;
+//import com.example.dllo.bibilala.recommend.adapter.RecommendAdapter;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 import com.example.dllo.bibilala.recommendentity.LBBean;
 import com.example.dllo.bibilala.url.UrlClass;
@@ -21,10 +21,10 @@ import java.util.ArrayList;
 public class RecommendFragment extends BaseFragment {
     private LinearLayout linearLayout;
     private ViewPager viewPager;
-    private RecommendAdapter recommendAdapter;
+//    private RecommendAdapter recommendAdapter;i
     private LBBean lbBean;
     private RecyclerView recyclerView;
-    private ArrayList<Integer>types;
+//    private ArrayList<Integer>.types;
 
 
 
@@ -43,7 +43,7 @@ public class RecommendFragment extends BaseFragment {
         recyclerView =bindView(R.id.recommend_recycle_view);
 
         viewPager = bindView(R.id.view_pager);
-        linearLayout = bindView(R.id.ll);
+//        linearLayout = bindView(R.id.ll);
 
     }
 
@@ -52,13 +52,13 @@ public class RecommendFragment extends BaseFragment {
         LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        recommendAdapter = new RecommendAdapter(getContext());
-        types =new ArrayList<>();
+//        recommendAdapter = new RecommendAdapter(getContext());
+//        types =new ArrayList<>();
 
 
         initParsing();
 //        initLB();
-        initSpeed();
+//        initSpeed();
     }
 
     private void initParsing() {
@@ -66,12 +66,12 @@ public class RecommendFragment extends BaseFragment {
             @Override
             public void onResponse(AllBean response) {
                 for (int i = 0; i < 20; i++) {
-                    types.add(i);
+//                    types.add(i);
 
                 }
-                recommendAdapter.setAllBean(response);
-                recommendAdapter.setTypes(types);
-                recyclerView.setAdapter(recommendAdapter);
+//                recommendAdapter.setAllBean(response);
+//                recommendAdapter.setTypes(types);
+//                recyclerView.setAdapter(recommendAdapter);
 
 
             }
@@ -122,5 +122,4 @@ public class RecommendFragment extends BaseFragment {
 //            }
 //        });
 //
-//    }
-}
+//    }}

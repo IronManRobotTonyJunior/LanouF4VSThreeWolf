@@ -3,43 +3,53 @@ package com.example.dllo.bibilala.bangumi;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
-
-import com.example.dllo.bibilala.bangumi.adapter.BangumRecommendAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.BangumAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.BangumChinaAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
 import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.url.UrlClass;
+import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class BangumiFragment extends BaseFragment {
+    private List<BangUmiRecommendEntity.ResultBean> mEntity;
+    private RecyclerView mRecyclerView;
+    private BangumAdapter adapter;
+    private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
+
+
     private ViewPager mViewPager;
+    private LinearLayout mLinearLayout;
     private boolean flag = true;
     private boolean mm = true;
     private Handler mHandler;
+    private JulyToLoveAdapter mJulyToLoveAdapter;
     private BangumiPageAdapter mBangumiAdapter;
     private ImageView[] point;
     private int pointSize = 4;
 
-    private LinearLayout mLinearLayout;
-    private ListView mListView;
-    private BangumRecommendAdapter adapter;
-    private View lunView,mCrayonView;
-
-    private GridView mGridViewCrayon;
-
+    private GridView mGridView,mChinaGridView,mCrayonGridView;
+    private BangumChinaAdapter mBangumChinaAdapter;
+    private CrayonAdapter mCrayonAdapter;
 
     @Override
     protected int setLayout() {
@@ -49,33 +59,130 @@ public class BangumiFragment extends BaseFragment {
     @Override
     protected void initView() {
 
-        mListView = bindView(R.id.bang_umi_fragment_lv);
+        mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
 
     }
 
     @Override
     protected void initData() {
-        lunView = LayoutInflater.from(mContext).inflate(R.layout.head_item,null);
-        mListView.addHeaderView(lunView);
-        mViewPager = (ViewPager) lunView.findViewById(R.id.bang_umi_fragment_viewpager);
-        mLinearLayout = (LinearLayout)lunView.findViewById(R.id.bang_umi_fragment_ll);
 
-        mCrayonView = LayoutInflater.from(mContext).inflate(R.layout.head_crayon,null);
-        mListView.addHeaderView(mCrayonView);
-        mGridViewCrayon = (GridView) mCrayonView.findViewById(R.id.item_head_crayon_gv);
+        mEntity = new ArrayList<>();
+        adapter = new BangumAdapter(mContext, R.layout.item_bangum_recommend, mEntity);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.setAdapter(adapter);
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_RECOMMEND, BangUmiRecommendEntity.class, new SendGetRequest.OnResponseListener<BangUmiRecommendEntity>() {
+            @Override
+            public void onResponse(BangUmiRecommendEntity response) {
+                List<BangUmiRecommendEntity.ResultBean> results = response.getResult();
+                mEntity.addAll(results);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
 
 
+        onLunResponse();
+        onCrayon();
+        onChinaKutton();
+        onJulyToLove();
 
+
+
+//
+    }
+
+    private void onCrayon() {
+        View view  = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_crayon,null);
+        mHeaderAndFooterWrapper.addHeaderView(view);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        mCrayonGridView = (GridView) view.findViewById(R.id.item_crayon_gl);
+        mCrayonAdapter = new CrayonAdapter(mContext);
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
+            @Override
+            public void onResponse(BangUmiEntity response) {
+                mCrayonAdapter.setEntity(response);
+                mCrayonGridView.setAdapter(mCrayonAdapter);
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
+    }
+
+    private void onChinaKutton() {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_china,null);
+        mHeaderAndFooterWrapper.addHeaderView(view);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        mChinaGridView = (GridView) view.findViewById(R.id.item_bang_china_gv);
+        mBangumChinaAdapter = new BangumChinaAdapter(mContext);
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
+            @Override
+            public void onResponse(BangUmiEntity response) {
+                Log.d("国产动画传输的数据", "response:" + response);
+                mBangumChinaAdapter.setEntity(response);
+                mChinaGridView.setAdapter(mBangumChinaAdapter);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
+    }
+
+    private void onJulyToLove() {
+
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_gl_july_fragment, null);
+        mGridView = (GridView) view.findViewById(R.id.item_july_gl);
+        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
+            @Override
+            public void onResponse(BangUmiEntity response) {
+                mJulyToLoveAdapter.setEntity(response);
+                mGridView.setAdapter(mJulyToLoveAdapter);
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+        mHeaderAndFooterWrapper.addHeaderView(view);
+//        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        mJulyToLoveAdapter = new JulyToLoveAdapter(mContext);
+
+
+
+    }
+
+    private void onLunResponse() {
+        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_rv_lun_fragment, null);
+        mHeaderAndFooterWrapper.addHeaderView(view);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        mViewPager = (ViewPager) view.findViewById(R.id.bang_umi_fragment_viewpager);
+        mLinearLayout = (LinearLayout) view.findViewById(R.id.bang_umi_fragment_ll);
         mBangumiAdapter = new BangumiPageAdapter(mContext);
-
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
                 mBangumiAdapter.setEntity(response);
                 mViewPager.setAdapter(mBangumiAdapter);
-
-
             }
 
             @Override
@@ -84,7 +191,6 @@ public class BangumiFragment extends BaseFragment {
 
             }
         });
-
         mHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -98,7 +204,7 @@ public class BangumiFragment extends BaseFragment {
                 public void run() {
                     while (flag) {
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(6000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -118,37 +224,21 @@ public class BangumiFragment extends BaseFragment {
             point[i] = imageView;
 
             if (i == 0) {
-                imageView.setImageResource(R.mipmap.ic_launcher);
+                imageView.setImageResource(R.mipmap.fennima);
 
             } else {
-                imageView.setImageResource(R.mipmap.ic_yuan);
+                imageView.setImageResource(R.mipmap.bai);
             }
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(50, 50);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(40, 40);
 
-            layoutParams.leftMargin = 20;
-            layoutParams.rightMargin = 20;
+            layoutParams.leftMargin = 2;
+            layoutParams.rightMargin = 2;
+
+
 
             mLinearLayout.addView(imageView, layoutParams);
         }
         mBangumiAdapter.setViewPager(mViewPager);
         mBangumiAdapter.setPoint(point);
-
-
-        adapter = new BangumRecommendAdapter(getContext());
-
-
-        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_RECOMMEND, BangUmiRecommendEntity.class, new SendGetRequest.OnResponseListener<BangUmiRecommendEntity>() {
-            @Override
-            public void onResponse(BangUmiRecommendEntity response) {
-                adapter.setEntity(response);
-                mListView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onError() {
-
-
-            }
-        });
     }
 }

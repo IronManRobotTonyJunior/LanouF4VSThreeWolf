@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <GridView
+        android:id="@+id/item_bang_china_gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp"
+            android:paddingTop="10dp"
+            android:src="@mipmap/qiyuexinfan" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:paddingTop="10dp"
+            android:text="7月新番"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingTop="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:gravity="right"
+                android:text="分季列表"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="13dp"
+                android:background="@mipmap/more"
+                android:paddingTop="10dp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -40,38 +40,32 @@ package com.example.dllo.bibilala.bangumi.adapter; /*
         */
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 
-import com.example.dllo.bibilala.entity.BangUmiEntity;
-import com.zhy.adapter.abslistview.CommonAdapter;
-import com.zhy.adapter.abslistview.ViewHolder;
+import com.bumptech.glide.Glide;
+import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
 /**
  * Created by dllo on 16/10/22.
  */
-public class BangumAdapter extends BaseAdapter {
-    @Override
-    public int getCount() {
-        return 0;
+public class BangumAdapter extends CommonAdapter<BangUmiRecommendEntity.ResultBean> {
+
+
+    public BangumAdapter(Context context, int layoutId, List<BangUmiRecommendEntity.ResultBean> datas) {
+        super(context, layoutId, datas);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+    protected void convert(ViewHolder holder, BangUmiRecommendEntity.ResultBean entity, int position) {
+        holder.setText(R.id.item_bang_recommend_tv_title,entity.getTitle());
+        holder.setText(R.id.text_test,entity.getDesc());
+        ImageView ima = holder.getView(R.id.item_bangum_recommend_ima);
+        Glide.with(mContext).load(entity.getCover()).into(ima);
     }
 }
+

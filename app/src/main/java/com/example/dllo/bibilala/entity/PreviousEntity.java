@@ -45,17 +45,27 @@ import java.util.List;
  * Created by dllo on 16/10/22.
  */
 public class PreviousEntity {
-    private List<CartoonEntity> list;
+    private List<CartoonEntity> china;
     private int season;
     private int year;
+    private List<ListsEntity> list;
 
-    public List<CartoonEntity> getList() {
+    public List<ListsEntity> getList() {
         return list;
     }
 
-    public void setList(List<CartoonEntity> list) {
+    public void setList(List<ListsEntity> list) {
         this.list = list;
     }
+
+    public List<CartoonEntity> getChina() {
+        return china;
+    }
+
+    public void setChina(List<CartoonEntity> china) {
+        this.china = china;
+    }
+
 
     public int getSeason() {
         return season;

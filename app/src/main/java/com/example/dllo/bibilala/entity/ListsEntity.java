@@ -1,5 +1,4 @@
-package com.example.dllo.bibilala.bangumi.adapter;
- /*
+package com.example.dllo.bibilala.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -40,75 +39,98 @@ package com.example.dllo.bibilala.bangumi.adapter;
          
         */
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.BangUmiEntity;
-
 /**
- * Created by dllo on 16/10/26.
+ * Created by dllo on 16/10/24.
  */
+public class ListsEntity {
+    private String cover;
+    private String favourites;
+    private int is_finish;
+    private int last_time;
+    private String newest_ep_index;
+    private int pub_time;
+    private int season_id;
+    private int season_status;
+    private String title;
+    private int watching_count;
 
-public class CrayonAdapter extends BaseAdapter {
-    private BangUmiEntity entity;
-    private Context context;
-
-    public void setEntity(BangUmiEntity entity) {
-        this.entity = entity;
+    public String getCover() {
+        return cover;
     }
 
-    public CrayonAdapter(Context context) {
-
-        this.context = context;
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
-    @Override
-    public int getCount() {
-        return entity.getResult().getSerializing().size();
+    public String getFavourites() {
+        return favourites;
     }
 
-    @Override
-    public Object getItem(int position) {
-        return entity.getResult().getSerializing().get(position);
+    public void setFavourites(String favourites) {
+        this.favourites = favourites;
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public int getIs_finish() {
+        return is_finish;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        CrayonViewHolder holder = null;
-        if (convertView==null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_bangum_fragment_crayon_,parent,false);
-            holder = new CrayonViewHolder(convertView);
-            convertView.setTag(holder);
-        }else {
-            holder = (CrayonViewHolder) convertView.getTag();
-        }
-        holder.tvTitle.setText(entity.getResult().getSerializing().get(position).getTitle());
-        holder.tvNew.setText("更新至第"+entity.getResult().getSerializing().get(position).getNewest_ep_index()+"话");
-        holder.tvRead.setText(entity.getResult().getSerializing().get(position).getWatching_count()+"人在看");
-        Glide.with(context).load(entity.getResult().getSerializing().get(position).getCover()).into(holder.ima);
-        return convertView;
+    public void setIs_finish(int is_finish) {
+        this.is_finish = is_finish;
     }
 
-    class CrayonViewHolder {
-        private TextView tvTitle,tvRead,tvNew;
-        private ImageView ima;
-        public CrayonViewHolder(View view) {
-            tvTitle = (TextView) view.findViewById(R.id.item_crayon_tv_title);
-            tvRead = (TextView) view.findViewById(R.id.item_crayon_tv_favourites);
-            tvNew = (TextView) view.findViewById(R.id.item_crayon_tv_new);
-            ima = (ImageView) view.findViewById(R.id.item_crayon_ima);
-        }
+    public int getLast_time() {
+        return last_time;
+    }
+
+    public void setLast_time(int last_time) {
+        this.last_time = last_time;
+    }
+
+    public String getNewest_ep_index() {
+        return newest_ep_index;
+    }
+
+    public void setNewest_ep_index(String newest_ep_index) {
+        this.newest_ep_index = newest_ep_index;
+    }
+
+    public int getPub_time() {
+        return pub_time;
+    }
+
+    public void setPub_time(int pub_time) {
+        this.pub_time = pub_time;
+    }
+
+    public int getSeason_id() {
+        return season_id;
+    }
+
+    public void setSeason_id(int season_id) {
+        this.season_id = season_id;
+    }
+
+    public int getSeason_status() {
+        return season_status;
+    }
+
+    public void setSeason_status(int season_status) {
+        this.season_status = season_status;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getWatching_count() {
+        return watching_count;
+    }
+
+    public void setWatching_count(int watching_count) {
+        this.watching_count = watching_count;
     }
 }
