@@ -98,6 +98,10 @@ public class JulyToLoveAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Log.d("七月推荐观战人数", entity.getResult().getPrevious().getList().get(position).getFavourites());
+        if (Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())>10000){
+//            Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())%10000
+
+        }
         holder.tvFavourites.setText(entity.getResult().getPrevious().getList().get(position).getFavourites()+"人追番"+"");
         holder.tvTitle.setText(entity.getResult().getPrevious().getList().get(position).getTitle());
         Glide.with(context).load(entity.getResult().getPrevious().getList().get(position).getCover()).into(holder.ima);

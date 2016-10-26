@@ -96,7 +96,7 @@ public class CrayonAdapter extends BaseAdapter {
         }
         holder.tvTitle.setText(entity.getResult().getSerializing().get(position).getTitle());
         holder.tvNew.setText("更新至第"+entity.getResult().getSerializing().get(position).getNewest_ep_index()+"话");
-        holder.tvRead.setText(entity.getResult().getSerializing().get(position).getWatching_count()+"在看");
+        holder.tvRead.setText(entity.getResult().getSerializing().get(position).getWatching_count()+"人在看");
         Glide.with(context).load(entity.getResult().getSerializing().get(position).getCover()).into(holder.ima);
         return convertView;
     }
