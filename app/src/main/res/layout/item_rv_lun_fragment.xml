@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="9dp"
             android:paddingTop="10dp"
-            android:src="@mipmap/qiyuexinfan" />
+            android:src="@mipmap/xinfanlianzai" />
 
         <TextView
 
@@ -40,7 +40,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="35dp"
             android:paddingTop="10dp"
-            android:text="七月新番"
+            android:text="新番连载"
             android:textColor="@android:color/black" />
 
     </RelativeLayout>

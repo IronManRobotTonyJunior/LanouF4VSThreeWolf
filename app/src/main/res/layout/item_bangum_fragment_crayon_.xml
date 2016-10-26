@@ -17,26 +17,26 @@
 
 
         <ImageView
-
-            android:id="@+id/item_china_ima"
+            android:id="@+id/item_crayon_ima"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@mipmap/ic_launcher"
             android:scaleType="fitXY" />
-
         <TextView
-            android:id="@+id/item_china_tv_favourites"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="10sp"
+            android:id="@+id/item_crayon_tv_favourites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="10dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp" />
+            android:textColor="@android:color/white" />
+
 
     </FrameLayout>
 
     <TextView
-        android:id="@+id/item_china_tv_title"
+        android:id="@+id/item_crayon_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="3dp"
@@ -44,5 +44,13 @@
         android:text="热成传说X"
         android:textColor="@android:color/black"
         android:textSize="13sp" />
+    <TextView
+        android:id="@+id/item_crayon_tv_new"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

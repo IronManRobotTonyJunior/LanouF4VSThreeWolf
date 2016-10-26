@@ -41,7 +41,6 @@ package com.example.dllo.bibilala.bangumi.adapter;
         */
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,10 +53,10 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
 
 /**
- * Created by dllo on 16/10/24.
+ * Created by dllo on 16/10/26.
  */
 
-public class JulyToLoveAdapter extends BaseAdapter {
+public class CrayonAdapter extends BaseAdapter {
     private BangUmiEntity entity;
     private Context context;
 
@@ -65,20 +64,19 @@ public class JulyToLoveAdapter extends BaseAdapter {
         this.entity = entity;
     }
 
-    public JulyToLoveAdapter(Context context) {
+    public CrayonAdapter(Context context) {
 
         this.context = context;
     }
 
     @Override
     public int getCount() {
-//        Log.d("JulyToLoveAdapter", "entity.getList().size():" + entity.getList().size());
-        return entity == null ? 0 : entity.getResult().getPrevious().getList().size();
+        return entity.getResult().getSerializing().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return entity.getResult().getPrevious().getList().get(position);
+        return entity.getResult().getSerializing().get(position);
     }
 
     @Override
@@ -88,31 +86,29 @@ public class JulyToLoveAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_july_fragment, parent, false);
-            holder = new ViewHolder(convertView);
+        CrayonViewHolder holder = null;
+        if (convertView==null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_bangum_fragment_crayon_,parent,false);
+            holder = new CrayonViewHolder(convertView);
             convertView.setTag(holder);
-
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+        }else {
+            holder = (CrayonViewHolder) convertView.getTag();
         }
-        Log.d("七月推荐观战人数", entity.getResult().getPrevious().getList().get(position).getFavourites());
-        holder.tvFavourites.setText(entity.getResult().getPrevious().getList().get(position).getFavourites()+"人追番"+"");
-        holder.tvTitle.setText(entity.getResult().getPrevious().getList().get(position).getTitle());
-        Glide.with(context).load(entity.getResult().getPrevious().getList().get(position).getCover()).into(holder.ima);
-
+        holder.tvTitle.setText(entity.getResult().getSerializing().get(position).getTitle());
+        holder.tvNew.setText("更新至第"+entity.getResult().getSerializing().get(position).getNewest_ep_index()+"话");
+        holder.tvRead.setText(entity.getResult().getSerializing().get(position).getWatching_count()+"在看");
+        Glide.with(context).load(entity.getResult().getSerializing().get(position).getCover()).into(holder.ima);
         return convertView;
     }
 
-    class ViewHolder {
-        private TextView tvFavourites, tvTitle;
+    class CrayonViewHolder {
+        private TextView tvTitle,tvRead,tvNew;
         private ImageView ima;
-
-        public ViewHolder(View view) {
-            tvFavourites = (TextView) view.findViewById(R.id.item_july_tv_favourites);
-            tvTitle = (TextView) view.findViewById(R.id.item_july_tv_title);
-            ima = (ImageView) view.findViewById(R.id.item_july_ima);
+        public CrayonViewHolder(View view) {
+            tvTitle = (TextView) view.findViewById(R.id.item_crayon_tv_title);
+            tvRead = (TextView) view.findViewById(R.id.item_crayon_tv_favourites);
+            tvNew = (TextView) view.findViewById(R.id.item_crayon_tv_new);
+            ima = (ImageView) view.findViewById(R.id.item_crayon_ima);
         }
     }
 }

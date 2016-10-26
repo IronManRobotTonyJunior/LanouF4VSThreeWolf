@@ -17,6 +17,7 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.bangumi.adapter.BangumAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumChinaAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
@@ -46,8 +47,9 @@ public class BangumiFragment extends BaseFragment {
     private ImageView[] point;
     private int pointSize = 4;
 
-    private GridView mGridView,mChinaGridView;
+    private GridView mGridView,mChinaGridView,mCrayonGridView;
     private BangumChinaAdapter mBangumChinaAdapter;
+    private CrayonAdapter mCrayonAdapter;
 
     @Override
     protected int setLayout() {
@@ -86,12 +88,36 @@ public class BangumiFragment extends BaseFragment {
 
 
         onLunResponse();
+        onCrayon();
         onChinaKutton();
         onJulyToLove();
 
 
 
 //
+    }
+
+    private void onCrayon() {
+        View view  = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_crayon,null);
+        mHeaderAndFooterWrapper.addHeaderView(view);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        mCrayonGridView = (GridView) view.findViewById(R.id.item_crayon_gl);
+        mCrayonAdapter = new CrayonAdapter(mContext);
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
+            @Override
+            public void onResponse(BangUmiEntity response) {
+                mCrayonAdapter.setEntity(response);
+                mCrayonGridView.setAdapter(mCrayonAdapter);
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
     }
 
     private void onChinaKutton() {
@@ -178,7 +204,7 @@ public class BangumiFragment extends BaseFragment {
                 public void run() {
                     while (flag) {
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(6000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

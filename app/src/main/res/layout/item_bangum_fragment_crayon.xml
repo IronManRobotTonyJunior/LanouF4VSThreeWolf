@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:paddingTop="5dp"
+    android:paddingTop="5dp"
     android:paddingLeft="6dp"
     android:paddingRight="6dp"
     android:paddingBottom="10dp"
@@ -9,13 +9,14 @@
     android:orientation="vertical">
 
 
-    <GridView
+    <com.example.dllo.bibilala.bangumi.grid.GridViews
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:id="@+id/item_july_gl"
+        android:id="@+id/item_crayon_gl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:numColumns="3"
+        android:verticalSpacing="8dp"
         android:horizontalSpacing="5dp" />
 
     <RelativeLayout
@@ -26,18 +27,18 @@
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="7dp"
+            android:layout_marginLeft="4dp"
             android:paddingTop="10dp"
-            android:src="@mipmap/fanjutuijian" />
+            android:src="@mipmap/china" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="26dp"
             android:paddingTop="10dp"
-            android:text="番剧推荐"
+            android:text="国产动画"
             android:textColor="@android:color/black" />
 
     </RelativeLayout>
