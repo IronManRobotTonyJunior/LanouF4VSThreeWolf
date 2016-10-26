@@ -5,6 +5,7 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.bangumi.adapter.BangumAdapter;
+import com.example.dllo.bibilala.bangumi.adapter.BangumChinaAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
@@ -44,7 +46,8 @@ public class BangumiFragment extends BaseFragment {
     private ImageView[] point;
     private int pointSize = 4;
 
-    private GridView mGridView;
+    private GridView mGridView,mChinaGridView;
+    private BangumChinaAdapter mBangumChinaAdapter;
 
     @Override
     protected int setLayout() {
@@ -83,11 +86,35 @@ public class BangumiFragment extends BaseFragment {
 
 
         onLunResponse();
+        onChinaKutton();
         onJulyToLove();
 
 
 
 //
+    }
+
+    private void onChinaKutton() {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_china,null);
+        mHeaderAndFooterWrapper.addHeaderView(view);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        mChinaGridView = (GridView) view.findViewById(R.id.item_bang_china_gv);
+        mBangumChinaAdapter = new BangumChinaAdapter(mContext);
+        SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
+            @Override
+            public void onResponse(BangUmiEntity response) {
+                Log.d("国产动画传输的数据", "response:" + response);
+                mBangumChinaAdapter.setEntity(response);
+                mChinaGridView.setAdapter(mBangumChinaAdapter);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
     }
 
     private void onJulyToLove() {

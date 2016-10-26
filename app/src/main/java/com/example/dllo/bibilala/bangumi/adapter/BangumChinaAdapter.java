@@ -54,31 +54,31 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
 
 /**
- * Created by dllo on 16/10/24.
+ * Created by dllo on 16/10/26.
  */
 
-public class JulyToLoveAdapter extends BaseAdapter {
+public class BangumChinaAdapter extends BaseAdapter {
     private BangUmiEntity entity;
     private Context context;
 
     public void setEntity(BangUmiEntity entity) {
         this.entity = entity;
+        notifyDataSetChanged();
     }
 
-    public JulyToLoveAdapter(Context context) {
+    public BangumChinaAdapter(Context context) {
 
         this.context = context;
     }
 
     @Override
     public int getCount() {
-//        Log.d("JulyToLoveAdapter", "entity.getList().size():" + entity.getList().size());
-        return entity == null ? 0 : entity.getResult().getPrevious().getList().size();
+        return entity == null ? 0 : entity.getResult().getChina().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return entity.getResult().getPrevious().getList().get(position);
+        return entity.getResult().getChina().get(position);
     }
 
     @Override
@@ -88,31 +88,30 @@ public class JulyToLoveAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_july_fragment, parent, false);
-            holder = new ViewHolder(convertView);
+        BangumChinaViewHolder holder = null;
+        if (convertView==null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_bangun_china,parent,false);
+            holder = new BangumChinaViewHolder(convertView);
             convertView.setTag(holder);
 
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+        }else {
+            holder = (BangumChinaViewHolder) convertView.getTag();
         }
-        Log.d("七月推荐观战人数", entity.getResult().getPrevious().getList().get(position).getFavourites());
-        holder.tvFavourites.setText(entity.getResult().getPrevious().getList().get(position).getFavourites());
-        holder.tvTitle.setText(entity.getResult().getPrevious().getList().get(position).getTitle());
-        Glide.with(context).load(entity.getResult().getPrevious().getList().get(position).getCover()).into(holder.ima);
+        Log.d("国产动画标题", entity.getResult().getChina().get(position).getTitle());
+        holder.tvTitle.setText(entity.getResult().getChina().get(position).getTitle());
+//        holder.tvTimer.setText(entity.getResult().getChina().get(position));
+        Glide.with(context).load(entity.getResult().getChina().get(position).getCover()).into(holder.ima);
 
         return convertView;
     }
 
-    class ViewHolder {
-        private TextView tvFavourites, tvTitle;
+    class BangumChinaViewHolder {
+        private TextView tvTimer,tvTitle;
         private ImageView ima;
-
-        public ViewHolder(View view) {
-            tvFavourites = (TextView) view.findViewById(R.id.item_july_tv_favourites);
-            tvTitle = (TextView) view.findViewById(R.id.item_july_tv_title);
-            ima = (ImageView) view.findViewById(R.id.item_july_ima);
+        public BangumChinaViewHolder(View view) {
+            tvTimer = (TextView) view.findViewById(R.id.item_china_tv_favourites);
+            tvTitle = (TextView) view.findViewById(R.id.item_china_tv_title);
+            ima = (ImageView) view.findViewById(R.id.item_china_ima);
         }
     }
 }
