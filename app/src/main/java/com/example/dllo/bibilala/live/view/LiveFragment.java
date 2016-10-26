@@ -1,22 +1,28 @@
 package com.example.dllo.bibilala.live.view;
 
 import android.app.ProgressDialog;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.live.liveentity.LiveTypeEntity;
 import com.example.dllo.bibilala.live.liveentity.liverecommendentity.LiveAllEntity;
+import com.example.dllo.bibilala.live.liveentity.liverecommendentity.RecommendDataEntity;
+import com.example.dllo.bibilala.live.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.live.presenter.LivePresenter;
 import com.example.dllo.bibilala.url.UrlClass;
-
-import java.util.List;
 
 public class LiveFragment extends BaseFragment implements ILiveView {
     private ProgressDialog mProgressDialog;
     private LivePresenter mLivePresenter;
     private RecyclerView mRecyclerView;
-    private List<LiveAllEntity> mLiveAllEntities;
+    private LiveAllEntity mLiveAllEntities;
+    private LiveTypeEntity mLiveTypeEntities;
+    private LiveAdapter mAllAdapter;
+    private static final int TYPE_BODY = 4;
+    private GridLayoutManager mManager;
+    private RecommendDataEntity mEntity;
 
     @Override
     protected int setLayout() {
@@ -35,9 +41,25 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     @Override
     protected void initData() {
         mLivePresenter = new LivePresenter(this);
-        mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveAllEntity.class);
-        mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveTypeEntity.class);
-        LiveAdapter adapter = new LiveAdapter(mContext,R.layout.item_live_recommand,mLiveAllEntities);
+        mAllAdapter = new LiveAdapter(mContext);
+        mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
+        mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
+        mManager = new GridLayoutManager(mContext, 2);
+        mManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position != 9) {
+                    switch (mAllAdapter.getItemViewType(position)) {
+                        case TYPE_BODY:
+                            return 1;
+                        default:
+                            return 2;
+                    }
+                } else {
+                    return 2;
+                }
+            }
+        });
 
     }
 
@@ -53,12 +75,32 @@ public class LiveFragment extends BaseFragment implements ILiveView {
 
     @Override
     public void onTypeResponse(LiveTypeEntity result) {
+        mLiveTypeEntities = result;
+        if (mLiveAllEntities != null) {
+            mLiveTypeEntities.getData().getPartitions().add(0, mEntity);
+            mAllAdapter.refreshTypeData(mLiveTypeEntities.getData());
+            mRecyclerView.setAdapter(mAllAdapter);
+            mRecyclerView.setLayoutManager(mManager);
+            Log.d("LiveFragment", "type");
+        }
+
 
     }
 
+
     @Override
     public void onAllResponse(LiveAllEntity result) {
-
+        mLiveAllEntities = result;
+        mEntity = result.getData().getRecommend_data();
+        mEntity.getLives().add(6, mEntity.getBanner_data().get(0));
+        if (mLiveTypeEntities != null) {
+            mLiveTypeEntities.getData().getPartitions().add(0, mEntity);
+            mAllAdapter.refreshTypeData(mLiveTypeEntities.getData());
+            mRecyclerView.setAdapter(mAllAdapter);
+            mRecyclerView.setLayoutManager(mManager);
+            Log.d("LiveFragment", "all");
+            Log.d("LiveFragment", mEntity.getLives().get(6).getTitle());
+        }
     }
 
 
@@ -70,7 +112,6 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     private ProgressDialog createDialog() {
         ProgressDialog dialog = new ProgressDialog(mContext);
         dialog.setCanceledOnTouchOutside(false);
-        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         dialog.setTitle("数据加载中");
         dialog.setMessage("请稍后...");
         return dialog;

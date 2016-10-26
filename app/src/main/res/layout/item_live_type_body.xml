@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="180dp"
+              android:layout_margin="10dp"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/colorWhiteLight"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/item_live_body_img"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:src="@mipmap/ic_launcher"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/item_live_body_title_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="啦啦啦啦"
+                    android:textColor="@color/colorPinkMain"/>
+
+                <TextView
+                    android:id="@+id/item_live_body_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/item_live_body_title_type"
+                    android:layout_toRightOf="@+id/item_live_body_title_type"
+                    android:padding="5dp"
+                    android:text="黎明杀机"/>
+
+                <TextView
+                    android:id="@+id/item_live_body_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="10dp"
+                    android:text="顾问"
+                    android:textSize="10dp"/>
+
+                <TextView
+                    android:id="@+id/item_live_body_audience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:drawableLeft="@mipmap/ic_live_player_audience_gray"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
+                    android:text="3647"
+                    android:textColor="@color/colorAudience"
+                    android:textSize="10dp"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

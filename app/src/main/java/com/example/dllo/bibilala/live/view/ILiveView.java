@@ -1,7 +1,7 @@
 package com.example.dllo.bibilala.live.view;
 
 
-import com.example.dllo.bibilala.live.liveentity.LiveTypeEntity;
+import com.example.dllo.bibilala.live.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.live.liveentity.liverecommendentity.LiveAllEntity;
 
 public interface ILiveView {
