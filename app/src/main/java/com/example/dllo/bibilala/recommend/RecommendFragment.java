@@ -1,5 +1,6 @@
 package com.example.dllo.bibilala.recommend;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -8,24 +9,34 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.dllo.bibilala.GridView.GridViewForScrollView;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.http.SendGetRequest;
+import com.example.dllo.bibilala.recommend.adapter.RecommedHitAdapter;
+import com.example.dllo.bibilala.recommend.adapter.RecommedVideoAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommenLBdAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommendAdapter;
+import com.example.dllo.bibilala.recommend.adapter.RecommendLiveAdapter;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 import com.example.dllo.bibilala.recommendentity.LBBean;
+import com.example.dllo.bibilala.recommendentity.LiveBean;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+import static com.example.dllo.bibilala.R.id.live_title;
 
-public class RecommendFragment extends BaseFragment {
+
+public class RecommendFragment extends BaseFragment implements View.OnClickListener {
 
     private List<AllBean.ResultBean.BodyBean> been;
     private RecommendAdapter recommendAdapter;
@@ -37,6 +48,18 @@ public class RecommendFragment extends BaseFragment {
     private boolean mFalg = true;
     private boolean flag = true;
     private Handler handler;
+    private GridViewForScrollView gridViewHotRecommended;
+    private RecommedVideoAdapter recommedVideoAdapter;
+    private TextView hot_recommend_refresh;
+    private ImageView hot_recommend_refresh_img;
+    private AnimationDrawable drawable;
+    private GridViewForScrollView gridViewLive;
+    private RecommendLiveAdapter recommendLiveAdapter;
+    private TextView live_title;
+    private TextView live_is_live;
+    private GridViewForScrollView gridViewHit;
+    private RecommedHitAdapter recommedHitAdapter;
+    private TextView hit_title;
 
 
     @Override
@@ -64,32 +87,132 @@ public class RecommendFragment extends BaseFragment {
 
 
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(recommendAdapter);
-        //添加头布局
-        View viewLB =LayoutInflater.from(mContext).inflate(R.layout.recommend_lunbo,null);
+        //添加头布局 轮播图
+        View viewLB = LayoutInflater.from(mContext).inflate(R.layout.recommend_lunbo, null);
         viewPager = (ViewPager) viewLB.findViewById(R.id.view_pager);
-        viewPager.setPageMargin(20);
+        viewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.page_margin));
         recommenLBdAdapter = new RecommenLBdAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewLB);
 
 
+        //添加热门推荐的头布局
+        View viewHotRecommended = LayoutInflater.from(mContext).inflate(R.layout.hot_recommended, null);
+        gridViewHotRecommended = (GridViewForScrollView) viewHotRecommended.findViewById(R.id.hot_recommend_grid);
+        hot_recommend_refresh = (TextView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh);
+//        hot_recommend_refresh_img = (ImageView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh_img);
+//        hot_recommend_refresh_img.setBackgroundResource(R.anim.img_refresh);
+//        drawable = (AnimationDrawable) hot_recommend_refresh_img.getBackground();
+        recommedVideoAdapter = new RecommedVideoAdapter(mContext);
+        mHeaderAndFooterWrapper.addHeaderView(viewHotRecommended);
+        hot_recommend_refresh.setOnClickListener(this);
 
 
-        //添加头布局
+        //正在直播
+        View viewLive = LayoutInflater.from(mContext).inflate(R.layout.recommend_live, null);
+        gridViewLive = (GridViewForScrollView) viewLive.findViewById(R.id.live_grid);
+        live_title = (TextView) viewLive.findViewById(R.id.live_title);
+        live_is_live = (TextView) viewLive.findViewById(R.id.live_is_live);
+        recommendLiveAdapter = new RecommendLiveAdapter(mContext);
+        mHeaderAndFooterWrapper.addHeaderView(viewLive);
+
+
+        //番剧推荐
+//        View viewHisPlay = LayoutInflater.from(mContext).inflate(R.layout.recommend_his_play, null);
+//        gridViewHit = (GridViewForScrollView) viewHisPlay.findViewById(R.id.hit_grid);
+//        hit_title = (TextView) viewHisPlay.findViewById(R.id.hit_title);
+//        recommedHitAdapter = new RecommedHitAdapter(mContext);
+//        mHeaderAndFooterWrapper.addHeaderView(viewHisPlay);
+
+
+        //动画
+
+        //音乐区
+
+        //舞蹈区
+
+        //话题
+
+        //游戏区
+
+        //鬼畜区
+
+        //科技区
+
+
+        //添加头布局 倒数第二行
         View view = LayoutInflater.from(mContext).inflate(R.layout.recommend_last, null);
         imageView = (ImageView) view.findViewById(R.id.last_topic_big_img);
         mHeaderAndFooterWrapper.addHeaderView(view);
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
         mHeaderAndFooterWrapper.notifyDataSetChanged();
-
-
-
-
-
+        //
         initLB();
         initSleep();
+        //
+        initHotRecommended();
+        //
+        initLiveRecommend();
+        //
+//        initHitRecommend();
+
+        //
         initPenultimate();
+        //
         initParsing();
 
+
+    }
+
+    private void initHitRecommend() {
+        SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
+            @Override
+            public void onResponse(AllBean response) {
+                recommedHitAdapter.setAllBean(response);
+                gridViewHit.setAdapter(recommedHitAdapter);
+                hit_title.setText(response.getResult().get(2).getHead().getTitle());
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+    private void initLiveRecommend() {
+        SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
+            @Override
+            public void onResponse(AllBean response) {
+
+                recommendLiveAdapter.setAllBean(response);
+                gridViewLive.setAdapter(recommendLiveAdapter);
+
+                live_title.setText(response.getResult().get(1).getHead().getTitle());
+                live_is_live.setText("当前" + response.getResult().get(1).getHead().getCount() + "个直播");
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
+    }
+
+    private void initHotRecommended() {
+        SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
+            @Override
+            public void onResponse(AllBean response) {
+                recommedVideoAdapter.setAllBean(response);
+                gridViewHotRecommended.setAdapter(recommedVideoAdapter);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
     }
 
@@ -97,36 +220,31 @@ public class RecommendFragment extends BaseFragment {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
-                viewPager.setCurrentItem(viewPager.getCurrentItem() +1);
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                 return false;
             }
         });
-        if (flag){
+        if (flag) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
 
-                    if (mFalg){
-                        handler.sendEmptyMessage(0);
+                    while (mFalg) {
+
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (mFalg) {
+                            handler.sendEmptyMessage(0);
+                        }
                     }
                 }
             }).start();
-            flag =false;
+            flag = false;
         }
-
-
-
-
-
-
-
-
-
 
 
     }
@@ -147,14 +265,13 @@ public class RecommendFragment extends BaseFragment {
         });
 
 
-
     }
 
     private void initPenultimate() {
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                String url = response.getResult().get(20).getBody().get(0).getCover();
+                String url = response.getResult().get(19).getBody().get(0).getCover();
                 Log.d("111", url);
 
                 Glide.with(mContext).load(url).into(imageView);
@@ -174,7 +291,7 @@ public class RecommendFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(21).getBody();
+                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(20).getBody();
                 been.addAll(resultBeen);
                 recommendAdapter.notifyDataSetChanged();
 
@@ -186,7 +303,17 @@ public class RecommendFragment extends BaseFragment {
             }
         });
 
-
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.hot_recommend_refresh:
+                hot_recommend_refresh.setText("嘿咻嘿咻~");
+//                drawable.start();
+
+                break;
+        }
+
+    }
 }

@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:padding="@dimen/ten"
-    android:layout_height="wrap_content"
-    android:weightSum="1">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,6 +33,7 @@
         android:drawableLeft="@mipmap/hot_recommend_list"
         android:background="@color/colorUnselectYellow"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,11 +43,40 @@
 
     </RelativeLayout>
 
-    <GridView
+    <com.example.dllo.bibilala.GridView.GridViewForScrollView
         android:id="@+id/hot_recommend_grid"
+        android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:numColumns="2" />
 
+    <RelativeLayout
+        android:layout_margin="@dimen/ten"
+        android:id="@+id/hot_recommend_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/hot_recommend_refresh"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/eleven"
+            android:textStyle="bold"
+            android:text="换一拨推荐"/>
+        <ImageView
+            android:id="@+id/hot_recommend_refresh_img"
+            android:layout_toRightOf="@+id/hot_recommend_refresh"
+            android:src="@mipmap/category_more_refresh"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </RelativeLayout>
 
 </LinearLayout>

@@ -111,11 +111,20 @@ public class AllBean {
         }
 
         public static class HeadBean {
+            private int count;
             private String param;
             @SerializedName("goto")
             private String gotoX;
             private String style;
             private String title;
+
+            public int getCount() {
+                return count;
+            }
+
+            public void setCount(int count) {
+                this.count = count;
+            }
 
             public String getParam() {
                 return param;
@@ -151,6 +160,13 @@ public class AllBean {
         }
 
         public static class BodyBean {
+
+            private String desc1;
+            private String up;
+            private String area;
+            private int online;
+
+
             private String title;
             private String style;
             private String cover;
@@ -161,6 +177,38 @@ public class AllBean {
             private int height;
             private String play;
             private String danmaku;
+
+            public String getDesc1() {
+                return desc1;
+            }
+
+            public void setDesc1(String desc1) {
+                this.desc1 = desc1;
+            }
+
+            public String getUp() {
+                return up;
+            }
+
+            public void setUp(String up) {
+                this.up = up;
+            }
+
+            public String getArea() {
+                return area;
+            }
+
+            public void setArea(String area) {
+                this.area = area;
+            }
+
+            public int getOnline() {
+                return online;
+            }
+
+            public void setOnline(int online) {
+                this.online = online;
+            }
 
             public String getTitle() {
                 return title;

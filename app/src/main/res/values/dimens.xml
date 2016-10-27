@@ -13,4 +13,9 @@
     <dimen name="view_pager_height">100dp</dimen>
     <dimen name="img_width">160dp</dimen>
     <dimen name="img_height">100dp</dimen>
+    <dimen name="page_margin">15dp</dimen>
+    <dimen name="eleven">11sp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="three_ten">30dp</dimen>
+
 </resources>

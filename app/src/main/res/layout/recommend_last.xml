@@ -27,9 +27,10 @@
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#dd9b9696"
-            android:textSize="@dimen/ten_three"
-            android:text="去看看"/>
+            android:background="@color/colorgray"
+            android:textSize="@dimen/eleven"
+            android:textColor="@android:color/white"
+            android:text="进去看看"/>
 
 
     </RelativeLayout>
@@ -39,7 +40,7 @@
         android:id="@+id/last_topic_big_img"
         android:layout_width="match_parent"
         android:scaleType="fitXY"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/img_height" />
 
 
 

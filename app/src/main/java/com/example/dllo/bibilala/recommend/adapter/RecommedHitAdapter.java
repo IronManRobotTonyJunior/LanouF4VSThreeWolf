@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 
-import static android.media.CamcorderProfile.get;
-
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
  * 　　　　　　　┏┛┻━━━┛┻┓ + +
@@ -39,11 +37,11 @@ import static android.media.CamcorderProfile.get;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommedVideoAdapter  extends BaseAdapter{
+public class RecommedHitAdapter extends BaseAdapter {
     private Context context;
     private AllBean allBean;
 
-    public RecommedVideoAdapter(Context context) {
+    public RecommedHitAdapter(Context context) {
         this.context = context;
     }
 
@@ -53,7 +51,7 @@ public class RecommedVideoAdapter  extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return  4;
+        return allBean.getResult().size();
     }
 
     @Override
@@ -68,40 +66,32 @@ public class RecommedVideoAdapter  extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        VideoHolder holder =null;
-        if (view==null) {
-            view = LayoutInflater.from(context).inflate(R.layout.hot_recommended_video,viewGroup,false);
-            holder =new VideoHolder(view);
+        HitHolder holder = null;
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_recommend_hit, viewGroup, false);
+            holder = new HitHolder(view);
             view.setTag(holder);
-
-        }else {
-            holder = (VideoHolder) view.getTag();
+        } else {
+            holder = (HitHolder) view.getTag();
         }
-        holder.video_litle.setText(allBean.getResult().get(0).getBody().get(i).getTitle());
-        holder.hot_look_person.setText(allBean.getResult().get(0).getBody().get(i).getPlay());
-        holder.hot_comments_person.setText(allBean.getResult().get(0).getBody().get(i).getDanmaku());
-        Glide.with(context).load(allBean.getResult().get(0).getBody().get(i).getCover()).into(holder.video_img);
-
-
-
-
+        Glide.with(context).load(allBean.getResult().get(2).getBody().get(i).getCover()).into(holder.hit_big_img);
+        holder.hit_title_one.setText(allBean.getResult().get(2).getBody().get(i).getTitle());
+        holder.hit_slogan.setText(allBean.getResult().get(2).getBody().get(i).getDesc1());
 
 
         return view;
     }
-    public class VideoHolder{
-        private ImageView video_img;
-        private TextView video_litle;
-        private TextView hot_look_person;
-        private TextView hot_comments_person;
 
+    class HitHolder {
 
-        private VideoHolder(View view){
-            video_img = (ImageView) view.findViewById(R.id.video_img);
-            video_litle = (TextView) view.findViewById(R.id.video_title);
-            hot_look_person = (TextView) view.findViewById(R.id.hot_look_person);
-            hot_comments_person = (TextView) view.findViewById(R.id.hot_comments_person);
+        private ImageView hit_big_img;
+        private TextView hit_title_one;
+        private TextView hit_slogan;
 
+        private HitHolder(View view) {
+            hit_big_img = (ImageView) view.findViewById(R.id.hit_big_img);
+            hit_title_one = (TextView) view.findViewById(R.id.hit_title_one);
+            hit_slogan = (TextView) view.findViewById(R.id.hit_slogan);
 
         }
     }

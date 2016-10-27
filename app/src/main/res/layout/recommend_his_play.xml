@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="@dimen/ten"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <ImageView
+            android:id="@+id/hit_title_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/search_result_ic_bangumi"/>
+
+        <TextView
+            android:id="@+id/hit_title"
+            android:layout_toRightOf="@+id/hit_title_img"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/ten_three"
+            android:textStyle="bold"
+            android:text="番剧推荐"/>
+
+
+
+        <TextView
+            android:id="@+id/hit_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/eleven"
+            android:background="@color/colorgray"
+            android:layout_marginRight="@dimen/five"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:text="更多"/>
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <com.example.dllo.bibilala.GridView.GridViewForScrollView
+        android:id="@+id/hit_grid"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="2"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/ten"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/three_ten"
+            android:layout_weight="1"
+            android:src="@mipmap/bangumi_timeline_text"
+            android:background="@mipmap/bangumi_timeline_background"/>
+
+
+        <LinearLayout
+            android:layout_width="@dimen/ten"
+            android:layout_height="@dimen/ten"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/three_ten"
+            android:layout_weight="1"
+            android:src="@mipmap/bangumi_index_text"
+            android:background="@mipmap/bangumi_index_background"/>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
