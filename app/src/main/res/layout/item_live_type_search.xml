@@ -7,37 +7,41 @@
 
     <TextView
         android:id="@+id/item_live_search_follow"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawableTop="@mipmap/live_home_follow_anchor"
         android:gravity="center"
+        android:padding="@dimen/margin_five"
         android:text="关注直播"/>
 
     <TextView
         android:id="@+id/item_live_search_center"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawableTop="@mipmap/live_home_live_center"
         android:gravity="center"
+        android:padding="@dimen/margin_five"
         android:text="直播中心"/>
 
     <TextView
         android:id="@+id/item_live_search_room"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawableTop="@mipmap/live_home_search_room"
         android:gravity="center"
+        android:padding="@dimen/margin_five"
         android:text="搜索直播"/>
 
     <TextView
         android:id="@+id/item_live_search_all"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawableTop="@mipmap/live_home_all_category"
         android:gravity="center"
+        android:padding="@dimen/margin_five"
         android:text="全部直播"/>
 </LinearLayout>

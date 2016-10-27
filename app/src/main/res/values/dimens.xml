@@ -7,4 +7,6 @@
     <dimen name="margin_ten">10dp</dimen>
     <dimen name="zero">0dp</dimen>
     <dimen name="drawer_width">200dp</dimen>
+    <dimen name="head_icon">25dp</dimen>
+    <dimen name="margin_five">5dp</dimen>
 </resources>

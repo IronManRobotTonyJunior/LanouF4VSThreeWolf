@@ -4,21 +4,16 @@
                 android:layout_height="50dp"
                 android:orientation="vertical">
     
-    <ImageView
-        android:id="@+id/item_live_head_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        />
-    
     <TextView
         android:id="@+id/item_live_head_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_five"
         android:layout_toEndOf="@+id/item_live_head_icon"
         android:layout_toRightOf="@+id/item_live_head_icon"
-        android:text="推荐主播"/>
+        android:text="推荐主播"
+        android:textColor="@color/colorTextColor"/>
     
     <TextView
         android:id="@+id/item_live_head_population"
@@ -26,7 +21,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/margin_ten"
         android:text="当前2664个直播"
         />
+
+    <ImageView
+        android:id="@+id/item_live_head_icon"
+        android:layout_width="@dimen/head_icon"
+        android:layout_height="@dimen/head_icon"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_ten"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 </RelativeLayout>

@@ -116,8 +116,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                mAppbarHeight += verticalOffset;
-
+                mAppbarHeight = verticalOffset;
             }
         });
 //

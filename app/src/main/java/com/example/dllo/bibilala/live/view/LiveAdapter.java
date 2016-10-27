@@ -3,7 +3,9 @@ package com.example.dllo.bibilala.live.view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,21 +20,24 @@ import com.example.dllo.bibilala.live.liveentity.liverecommendentity.PartitionEn
 import com.example.dllo.bibilala.live.liveentity.liverecommendentity.RecommendDataEntity;
 import com.example.dllo.bibilala.live.liveentity.livetypeentity.BannerEntity;
 import com.example.dllo.bibilala.live.liveentity.livetypeentity.DataTypeEntity;
-import com.example.dllo.bibilala.live.liveentity.livetypeentity.EntranceIconsEntity;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickListener {
-    // 推荐主播
+public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickListener {// 推荐主播
 //    private List<LiveEntity> mLiveEntities;
 //    private PartitionEntity mPartitionEntities;
 //    private List<LiveEntity> mLongEntity;
     // 分类主播带轮播图
     private List<BannerEntity> mBannerEntities;
-    private List<EntranceIconsEntity> mEntranceIconsEntities;
     private List<RecommendDataEntity> mAllPartitionEntities;
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
 
     private Context mContext;
@@ -41,12 +46,13 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     private static final int TYPE_HEAD = 3;
     private static final int TYPE_BODY = 4;
     private static final int TYPE_FOOT = 5;
-    private static final int TYPE_LONG = 6;
     private LayoutInflater mInflater;
-    private int count = 18 + 6 * 9;
+    private int count = 17 + 6 * 9;
     private List<String> mBannerUrl;
     private LiveEntity mLiveEntity;
     private PartitionEntity mEntity;
+    private final SpannableStringBuilder mBuilder;
+    private final ForegroundColorSpan mPinkSpan;
 
     public LiveAdapter(Context context) {
 //        mLiveEntities = new ArrayList<>();
@@ -54,10 +60,11 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 //        mLongEntity = new ArrayList<>();
         mInflater = LayoutInflater.from(context);
         mBannerEntities = new ArrayList<>();
-        mEntranceIconsEntities = new ArrayList<>();
         mAllPartitionEntities = new ArrayList<>();
-
+        mBannerUrl = new ArrayList<>();
         mContext = context;
+        mBuilder = new SpannableStringBuilder();
+        mPinkSpan = new ForegroundColorSpan(mContext.getResources().getColor(R.color.colorPinkMain));
     }
 
     @Override
@@ -78,9 +85,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
             case TYPE_FOOT:
                 View footView = mInflater.inflate(R.layout.item_live_type_foot, parent, false);
                 return new FootViewHolder(footView);
-            case TYPE_LONG:
-                View longView = mInflater.inflate(R.layout.item_live_type_body, parent, false);
-                return new LongViewHolder(longView);
             default:
                 return null;
         }
@@ -89,27 +93,28 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        int groupPosition = (position - 17) / 6 + 1;
+        holder.itemView.setTag(holder);
+        holder.itemView.setOnClickListener(this);
         switch (getItemViewType(position)) {
             case TYPE_BANNER:
                 BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
                 for (BannerEntity bannerEntity : mBannerEntities) {
-                    String url = bannerEntity.getImg();
-                    mBannerUrl = new ArrayList<>();
-                    mBannerUrl.add(url);
+                    mBannerUrl.add(bannerEntity.getImg());
                 }
                 bannerViewHolder.mBanner.setImages(mBannerUrl);
                 break;
             case TYPE_SEARCH:
                 SearchViewHolder searchViewHolder = (SearchViewHolder) holder;
-                searchViewHolder.mTvSearchAll.setOnClickListener(this);
-                searchViewHolder.mTvSearchCenter.setOnClickListener(this);
-                searchViewHolder.mTvSearchFollow.setOnClickListener(this);
-                searchViewHolder.mTvSearchRoom.setOnClickListener(this);
+                searchViewHolder.mTvSearchAll.setOnClickListener(mOnClickListener);
+                searchViewHolder.mTvSearchCenter.setOnClickListener(mOnClickListener);
+                searchViewHolder.mTvSearchFollow.setOnClickListener(mOnClickListener);
+                searchViewHolder.mTvSearchRoom.setOnClickListener(mOnClickListener);
                 break;
             case TYPE_HEAD:
                 HeadViewHolder headViewHolder = (HeadViewHolder) holder;
-                if (position > 17) {
-                    mEntity = mAllPartitionEntities.get((position - 19) / 6 + 1).getPartition();
+                if (position >= 17) {
+                    mEntity = mAllPartitionEntities.get(groupPosition).getPartition();
                 } else {
                     mEntity = mAllPartitionEntities.get(0).getPartition();
                 }
@@ -124,24 +129,26 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 //                }
                 Glide.with(mContext).load(mEntity.getSub_icon().getSrc()).into(headViewHolder.mImgHeadIcon);
                 headViewHolder.mTvHeadText.setText(mEntity.getName());
-                if (mEntity.getCount() != 0) {
-                    headViewHolder.mTvHeadPopulate.setText(mEntity.getCount() + "");
-                }
+                headViewHolder.mTvHeadPopulate.setText("当前" + mEntity.getCount() + "个主播");
+                mBuilder.append(mEntity.getCount() + "");
                 break;
             case TYPE_BODY:
                 BodyViewHolder bodyViewHolder = (BodyViewHolder) holder;
-                Log.d("LiveAdapter", "position:" + position);
+
                 if (position < 16) {
                     mLiveEntity = mAllPartitionEntities.get(0).getLives().get(position - 3);
+                    bodyViewHolder.mTvTitleType.setText("#" + mLiveEntity.getArea() + "# " + mLiveEntity.getTitle());
+                    mBuilder.append(bodyViewHolder.mTvTitleType.getText());
+                    mBuilder.setSpan(mPinkSpan, 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    bodyViewHolder.mTvTitleType.setText(mBuilder);
 //                if (9 == position) {
 //                    Glide.with(mContext).load(mLongEntity.get(0).getCover().getSrc()).into(bodyViewHolder.mImgBodyImg);
 //                }
                 } else {
-                    mLiveEntity = mAllPartitionEntities.get((position - 19) / 6 + 1).getLives().get((position - 1) % 6);
+                    mLiveEntity = mAllPartitionEntities.get(groupPosition).getLives().get((position - 1) % 6);
+                    bodyViewHolder.mTvTitleType.setText(mLiveEntity.getTitle());
                 }
                 Glide.with(mContext).load(mLiveEntity.getCover().getSrc()).into(bodyViewHolder.mImgBodyImg);
-                bodyViewHolder.mTvTitleType.setText(mLiveEntity.getArea());
-                bodyViewHolder.mTvTitle.setText(mLiveEntity.getTitle());
                 bodyViewHolder.mTvAuthor.setText(mLiveEntity.getOwner().getName());
                 bodyViewHolder.mTvAudience.setText(mLiveEntity.getOnline() + "");
                 break;
@@ -170,8 +177,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
             return TYPE_HEAD;
         } else if (position >= 16 && 0 == (position - 16) % 6) {
             return TYPE_FOOT;
-        } else if (9 == position) {
-            return TYPE_LONG;
         } else {
             return TYPE_BODY;
         }
@@ -184,22 +189,24 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     }
 
 
-    public void refreshRecommendData(RecommendDataEntity datas) {
+//    public void refreshRecommendData(RecommendDataEntity datas) {
 //        mLiveEntities = datas.getLives();
 //        mPartitionEntities = datas.getPartition();
 //        mLongEntity = datas.getBanner_data();
-        notifyDataSetChanged();
-    }
+//        notifyDataSetChanged();
+//    }
 
     public void refreshTypeData(DataTypeEntity datas) {
         mBannerEntities = datas.getBanner();
-        mEntranceIconsEntities = datas.getEntranceIcons();
         mAllPartitionEntities = datas.getPartitions();
         notifyDataSetChanged();
     }
 
     @Override
     public void onClick(View v) {
+        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
+        int position = viewHolder.getLayoutPosition();
+
 
     }
 
@@ -234,7 +241,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
         private final ImageView mImgBodyImg;
         private TextView mTvTitleType;
-        private TextView mTvTitle;
         private TextView mTvAuthor;
         private TextView mTvAudience;
 
@@ -242,7 +248,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
             super(itemView);
             mTvAuthor = (TextView) itemView.findViewById(R.id.item_live_body_author);
             mTvAudience = (TextView) itemView.findViewById(R.id.item_live_body_audience);
-            mTvTitle = (TextView) itemView.findViewById(R.id.item_live_body_title);
             mTvTitleType = (TextView) itemView.findViewById(R.id.item_live_body_title_type);
             mImgBodyImg = (ImageView) itemView.findViewById(R.id.item_live_body_img);
 
@@ -274,24 +279,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
             super(itemView);
             mTvFootRefresh = (TextView) itemView.findViewById(R.id.item_live_foot_refresh);
             mBtnFootMore = (Button) itemView.findViewById(R.id.item_live_foot_more);
-        }
-    }
-
-    public static class LongViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView mImgBodyImg;
-        private TextView mTvTitleType;
-        private TextView mTvTitle;
-        private TextView mTvAuthor;
-        private TextView mTvAudience;
-
-        public LongViewHolder(View itemView) {
-            super(itemView);
-            mTvAuthor = (TextView) itemView.findViewById(R.id.item_live_body_author);
-            mTvAudience = (TextView) itemView.findViewById(R.id.item_live_body_audience);
-            mTvTitle = (TextView) itemView.findViewById(R.id.item_live_body_title);
-            mTvTitleType = (TextView) itemView.findViewById(R.id.item_live_body_title_type);
-            mImgBodyImg = (ImageView) itemView.findViewById(R.id.item_live_body_img);
-
         }
     }
 

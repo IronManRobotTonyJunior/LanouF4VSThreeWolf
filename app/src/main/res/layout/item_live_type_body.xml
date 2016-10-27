@@ -3,15 +3,15 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="180dp"
-              android:layout_margin="10dp"
+              android:layout_margin="@dimen/margin_ten"
               android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/colorWhiteLight"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="5dp">
+        app:cardCornerRadius="@dimen/margin_five"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,41 +21,32 @@
             <ImageView
                 android:id="@+id/item_live_body_img"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/zero"
                 android:layout_weight="3"
                 android:src="@mipmap/ic_launcher"
                 />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/zero"
                 android:layout_weight="2">
 
                 <TextView
                     android:id="@+id/item_live_body_title_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="啦啦啦啦"
-                    android:textColor="@color/colorPinkMain"/>
-
-                <TextView
-                    android:id="@+id/item_live_body_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/item_live_body_title_type"
-                    android:layout_toRightOf="@+id/item_live_body_title_type"
-                    android:padding="5dp"
-                    android:text="黎明杀机"/>
+                    android:maxLines="2"
+                    android:padding="@dimen/margin_five"
+                    android:textColor="@color/colorTextColor"/>
 
                 <TextView
                     android:id="@+id/item_live_body_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:padding="10dp"
+                    android:padding="@dimen/margin_ten"
                     android:text="顾问"
-                    android:textSize="10dp"/>
+                    android:textSize="@dimen/margin_ten"/>
 
                 <TextView
                     android:id="@+id/item_live_body_audience"
@@ -64,11 +55,10 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:drawableLeft="@mipmap/ic_live_player_audience_gray"
-                    android:drawablePadding="5dp"
-                    android:padding="10dp"
-                    android:text="3647"
+                    android:drawablePadding="@dimen/margin_five"
+                    android:padding="@dimen/margin_ten"
                     android:textColor="@color/colorAudience"
-                    android:textSize="10dp"/>
+                    android:textSize="@dimen/margin_ten"/>
 
             </RelativeLayout>
         </LinearLayout>

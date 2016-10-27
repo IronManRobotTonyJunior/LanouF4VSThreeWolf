@@ -3,7 +3,8 @@ package com.example.dllo.bibilala.live.view;
 import android.app.ProgressDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
@@ -44,6 +45,17 @@ public class LiveFragment extends BaseFragment implements ILiveView {
         mAllAdapter = new LiveAdapter(mContext);
         mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
         mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
+        mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_UP:
+
+                        break;
+                }
+                return false;
+            }
+        });
         mManager = new GridLayoutManager(mContext, 2);
         mManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -81,7 +93,6 @@ public class LiveFragment extends BaseFragment implements ILiveView {
             mAllAdapter.refreshTypeData(mLiveTypeEntities.getData());
             mRecyclerView.setAdapter(mAllAdapter);
             mRecyclerView.setLayoutManager(mManager);
-            Log.d("LiveFragment", "type");
         }
 
 
@@ -98,8 +109,6 @@ public class LiveFragment extends BaseFragment implements ILiveView {
             mAllAdapter.refreshTypeData(mLiveTypeEntities.getData());
             mRecyclerView.setAdapter(mAllAdapter);
             mRecyclerView.setLayoutManager(mManager);
-            Log.d("LiveFragment", "all");
-            Log.d("LiveFragment", mEntity.getLives().get(6).getTitle());
         }
     }
 
