@@ -2,6 +2,7 @@ package com.example.dllo.bibilala.main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -25,6 +26,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.os.Build.VERSION_CODES.N;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -63,6 +66,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setVerticalScrollBarEnabled(false);
+        NavigationMenuView menuView = (NavigationMenuView) navigationView.getChildAt(0);
+        menuView.setVerticalScrollBarEnabled(false);
+
     }
 
     @Override
