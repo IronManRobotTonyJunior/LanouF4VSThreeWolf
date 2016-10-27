@@ -61,7 +61,9 @@ public final class UrlClass {
 
     //推荐轮播图
     public static final String URL_GHOST_OU = "http://app.bilibili.com/x/banner?plat=4&build=427000&channel=wandoujia";
-    //推荐全部
+    //推荐全部 网址打不开
+
+//    public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=baidu&mobi_app=android&platform=android&screen=xxhdpi&ts=1477357874000&sign=c6af3131948c45cec5b0be0811b11f0e";
     public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&platform=android&screen=hdpi&ts=1476969044000&sign=65d2822650aca5561e8a436e1ce36dc2";
     //推荐番剧推荐
     public static final String URL_FAN_DRAM_RECOMMENDATION = "http://bangumi.bilibili.com/api/get_season_by_tag?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&page=1&pagesize=4&platform=android&tag_id=109&ts=1476949442000&sign=c10377a9764dc78802f0896261b952d5";

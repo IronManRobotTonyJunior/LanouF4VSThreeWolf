@@ -7,6 +7,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recommend_recycle_view"
         android:layout_width="match_parent"
+        android:background="@color/colorM"
         android:layout_height="match_parent"/>
 
 </LinearLayout>
