@@ -20,7 +20,7 @@ public class SendGetRequest {
         VolleySingleton.getInstance().addRequest(gsonRequest);
     }
 
-    private interface OnResponseListener<T> {
+    public interface OnResponseListener<T> {
         void onResponse(T response);
 
         void onError();

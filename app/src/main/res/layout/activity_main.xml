@@ -13,6 +13,7 @@
         android:id="@+id/main_coordinator"
         layout="@layout/include_title_base_activity"/>
 
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:theme="@style/Base.Theme.DesignDemo"

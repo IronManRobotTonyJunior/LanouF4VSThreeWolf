@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#EAEAEA"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/bang_umi_fragment_rv"
+    <ImageView
+        android:id="@+id/item_bang_umi_view_pager_ima"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
+        android:layout_height="120dp"
+        android:scaleType="fitXY" />
 </LinearLayout>
