@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,22 +17,19 @@ import com.example.dllo.bibilala.GridView.GridViewForScrollView;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.http.SendGetRequest;
-import com.example.dllo.bibilala.recommend.adapter.RecommedHitAdapter;
+
+import com.example.dllo.bibilala.recommend.adapter.RecommedHitAdaper;
 import com.example.dllo.bibilala.recommend.adapter.RecommedVideoAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommenLBdAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommendAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommendLiveAdapter;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 import com.example.dllo.bibilala.recommendentity.LBBean;
-import com.example.dllo.bibilala.recommendentity.LiveBean;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static com.example.dllo.bibilala.R.id.live_title;
 
 
 public class RecommendFragment extends BaseFragment implements View.OnClickListener {
@@ -58,7 +54,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
     private TextView live_title;
     private TextView live_is_live;
     private GridViewForScrollView gridViewHit;
-    private RecommedHitAdapter recommedHitAdapter;
+    private RecommedHitAdaper recommedHitAdapter;
     private TextView hit_title;
 
 
@@ -117,11 +113,11 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
 
         //番剧推荐
-//        View viewHisPlay = LayoutInflater.from(mContext).inflate(R.layout.recommend_his_play, null);
-//        gridViewHit = (GridViewForScrollView) viewHisPlay.findViewById(R.id.hit_grid);
-//        hit_title = (TextView) viewHisPlay.findViewById(R.id.hit_title);
-//        recommedHitAdapter = new RecommedHitAdapter(mContext);
-//        mHeaderAndFooterWrapper.addHeaderView(viewHisPlay);
+        View viewHisPlay = LayoutInflater.from(mContext).inflate(R.layout.recommend_his_play, null);
+        gridViewHit = (GridViewForScrollView) viewHisPlay.findViewById(R.id.hit_grid);
+        hit_title = (TextView) viewHisPlay.findViewById(R.id.hit_title);
+        recommedHitAdapter = new RecommedHitAdaper(mContext);
+        mHeaderAndFooterWrapper.addHeaderView(viewHisPlay);
 
 
         //动画
@@ -163,21 +159,24 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
     }
 
-    private void initHitRecommend() {
-        SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
-            @Override
-            public void onResponse(AllBean response) {
-                recommedHitAdapter.setAllBean(response);
-                gridViewHit.setAdapter(recommedHitAdapter);
-                hit_title.setText(response.getResult().get(2).getHead().getTitle());
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
-    }
+//    private void initHitRecommend() {
+//        SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
+//
+//
+//            @Override
+//            public void onResponse(AllBean response) {
+//                hit_title.setText(response.getResult().get(2).getHead().getTitle());
+//               recommedHitAdapter.setAllBean( response);
+//                gridViewHit.setAdapter(recommedHitAdapter);
+//
+//            }
+//
+//            @Override
+//            public void onError() {
+//
+//            }
+//        });
+//    }
 
     private void initLiveRecommend() {
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {

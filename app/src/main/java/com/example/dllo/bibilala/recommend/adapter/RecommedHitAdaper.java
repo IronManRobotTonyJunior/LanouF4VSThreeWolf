@@ -12,6 +12,11 @@ import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 
+import java.util.List;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.media.CamcorderProfile.get;
+
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
  * 　　　　　　　┏┛┻━━━┛┻┓ + +
@@ -37,11 +42,11 @@ import com.example.dllo.bibilala.recommendentity.AllBean;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommedHitAdapter extends BaseAdapter {
+public class RecommedHitAdaper extends BaseAdapter {
     private Context context;
     private AllBean allBean;
 
-    public RecommedHitAdapter(Context context) {
+    public RecommedHitAdaper(Context context) {
         this.context = context;
     }
 
