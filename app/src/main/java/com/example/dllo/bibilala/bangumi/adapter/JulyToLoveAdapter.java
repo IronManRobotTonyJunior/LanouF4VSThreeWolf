@@ -101,14 +101,15 @@ public class JulyToLoveAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Log.d("七月推荐观战人数", entity.get(position).getFavourites());
-        if (Integer.parseInt(entity.get(position).getFavourites())>10000){
+        ListsEntity listsEntity = entity.get(position);
+        Log.d("七月推荐观战人数", listsEntity.getFavourites());
+        if (Integer.parseInt(listsEntity.getFavourites())>10000){
 //            Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())%10000
 
         }
-        holder.tvFavourites.setText(entity.get(position).getFavourites()+"人追番"+"");
-        holder.tvTitle.setText(entity.get(position).getTitle());
-        Glide.with(context).load(entity.get(position).getCover()).into(holder.ima);
+        holder.tvFavourites.setText(listsEntity.getFavourites()+"人追番"+"");
+        holder.tvTitle.setText(listsEntity.getTitle());
+        Glide.with(context).load(listsEntity.getCover()).into(holder.ima);
 
         return convertView;
     }

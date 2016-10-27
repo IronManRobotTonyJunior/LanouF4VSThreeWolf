@@ -95,7 +95,8 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.view_pager_bang_umi, container, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
-        Glide.with(context).load(entity.get(position % entity.size()).getImg()).into(imageView);
+        HeadEntity headEntity = entity.get(position % entity.size());
+        Glide.with(context).load(headEntity.getImg()).into(imageView);
         container.addView(view);
         viewPager.addOnPageChangeListener(this);
         return view;

@@ -97,10 +97,11 @@ public class CrayonAdapter extends BaseAdapter {
         }else {
             holder = (CrayonViewHolder) convertView.getTag();
         }
-        holder.tvTitle.setText(entity.get(position).getTitle());
-        holder.tvNew.setText("更新至第"+entity.get(position).getNewest_ep_index()+"话");
-        holder.tvRead.setText(entity.get(position).getWatching_count()+"人在看");
-        Glide.with(context).load(entity.get(position).getCover()).into(holder.ima);
+        CartoonEntity cartoonEntity = entity.get(position);
+        holder.tvTitle.setText(cartoonEntity.getTitle());
+        holder.tvNew.setText("更新至第"+ cartoonEntity.getNewest_ep_index()+"话");
+        holder.tvRead.setText(cartoonEntity.getWatching_count()+"人在看");
+        Glide.with(context).load(cartoonEntity.getCover()).into(holder.ima);
         return convertView;
     }
 
