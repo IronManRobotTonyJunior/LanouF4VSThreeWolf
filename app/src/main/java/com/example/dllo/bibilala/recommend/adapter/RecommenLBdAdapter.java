@@ -2,6 +2,7 @@ package com.example.dllo.bibilala.recommend.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,10 @@ public class RecommenLBdAdapter extends PagerAdapter {
         View view = LayoutInflater.from(context).inflate(R.layout.lunbo_recommend_item, container, false);
         ImageView imageView = (ImageView) view.findViewById(img);
 
+
+
         Glide.with(context).load(lbBean.getData().get(position % lbBean.getData().size()).getImage()).into(imageView);
+
 
 
         container.addView(view);

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="@dimen/ten"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <ImageView
+            android:id="@+id/live_title_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_head_live"/>
+
+        <TextView
+            android:id="@+id/live_title"
+            android:layout_toRightOf="@+id/live_title_img"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/ten_three"
+            android:textStyle="bold"
+            android:text="直播"/>
+
+        <TextView
+            android:id="@+id/live_is_live"
+            android:layout_toLeftOf="@+id/live_more_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/eleven"
+            android:layout_marginRight="@dimen/five"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:text="当前4000个直播"/>
+
+        <ImageView
+            android:id="@+id/live_more_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_gray_arrow_right"/>
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <com.example.dllo.bibilala.GridView.GridViewForScrollView
+        android:id="@+id/live_grid"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="2"/>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/ten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/colorWhite"
+            android:textSize="@dimen/eleven"
+            android:text="查看更多"/>
+
+        <TextView
+            android:layout_toLeftOf="@+id/live_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/five"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/eleven"
+            android:text="0条新动态,点击刷新"/>
+
+
+        <ImageView
+            android:id="@+id/live_refresh"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/category_more_refresh"/>
+
+
+
+    </RelativeLayout>
+    
+
+</LinearLayout>

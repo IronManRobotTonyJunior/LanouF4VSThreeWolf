@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/img_width"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/hit_big_img"
+        android:layout_width="@dimen/img_width"
+        android:layout_height="@dimen/img_height"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bangumi_pay_error_background" />
+
+    <TextView
+        android:id="@+id/hit_title_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/five"
+        android:lines="1"
+        android:ellipsize="end"
+        android:text="#单机游戏#ddddddd"
+        android:textSize="@dimen/ten_three"
+        android:textStyle="bold" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:id="@+id/hit_slogan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingLeft="@dimen/ten"
+            android:text="强强强d"
+            android:textSize="@dimen/eleven" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ten"
+        android:background="@color/colorM" />
+
+
+</LinearLayout>

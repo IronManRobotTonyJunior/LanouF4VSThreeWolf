@@ -1,8 +1,12 @@
 package com.example.dllo.bibilala.main;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -23,9 +27,9 @@ import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.android.volley.Request.Method.HEAD;
+import static android.os.Build.VERSION_CODES.N;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar mToolbar;
     private TabLayout mTabLayout;
@@ -44,18 +48,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        mDrawerLayout = bindView(R.id.activity_main);
+        mDrawerLayout = bindView(R.id.activity_main_drawer);
         mToolbar = bindView(R.id.include_toolbar);
         mAppbar = bindView(R.id.app_bar);
         mTabLayout = bindView(R.id.include_tab);
         mViewPager = bindView(R.id.include_vp);
+//        setSupportActionBar(mToolbar);
         View view = LayoutInflater.from(this).inflate(R.layout.drawer_toolbar, mToolbar, false);
         mToolbar.addView(view);
+        mToolbar.inflateMenu(R.menu.menu_three_points);
         ImageView drawerImage = (ImageView) view.findViewById(R.id.drawer_toolbar_drawer);
         CircleImageView userIcon = (CircleImageView) view.findViewById(R.id.user_icon);
+
         TextView userName = (TextView) view.findViewById(R.id.user_name);
         drawerImage.setOnClickListener(this);
-        mToolbar.inflateMenu(R.menu.menu_three_points);
+        userIcon.setOnClickListener(this);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setVerticalScrollBarEnabled(false);
+        NavigationMenuView menuView = (NavigationMenuView) navigationView.getChildAt(0);
+        menuView.setVerticalScrollBarEnabled(false);
+
     }
 
     @Override
@@ -88,6 +101,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
+
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            mAppbar.setOnScrollChangeListener(new View.OnScrollChangeListener() {
 //                @Override
@@ -105,12 +119,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //
 //                }
 //            });
-//            mAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//                @Override
-//                public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                    mAppbarHeight += verticalOffset;
-//                }
-//            });
+        mAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                mAppbarHeight = verticalOffset;
+            }
+        });
 //
 //        } else {
 //
@@ -118,11 +132,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_three_points,menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.drawer_toolbar_drawer:
-//                mDrawerLayout.openDrawer();
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            case R.id.user_icon:
+                mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
         }
 
@@ -154,5 +178,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             finish();
             System.exit(0);
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.ic_home:
+                break;
+            case R.id.nav_vip:
+                break;
+            case R.id.ic_file:
+                break;
+            case R.id.ic_star:
+                break;
+            case R.id.ic_history:
+                break;
+            case R.id.ic_people:
+                break;
+            case R.id.ic_account:
+                break;
+            case R.id.ic_color:
+                break;
+            case R.id.ic_shop:
+                break;
+            case R.id.ic_settings:
+                break;
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

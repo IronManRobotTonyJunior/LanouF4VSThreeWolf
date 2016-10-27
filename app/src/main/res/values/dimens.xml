@@ -7,4 +7,17 @@
     <dimen name="margin_ten">10dp</dimen>
     <dimen name="zero">0dp</dimen>
     <dimen name="drawer_width">200dp</dimen>
+    <dimen name="head_icon">25dp</dimen>
+    <dimen name="margin_five">5dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="ten_three">13sp</dimen>
+    <dimen name="view_pager_height">100dp</dimen>
+    <dimen name="img_width">160dp</dimen>
+    <dimen name="img_height">100dp</dimen>
+    <dimen name="page_margin">15dp</dimen>
+    <dimen name="eleven">11sp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="three_ten">30dp</dimen>
+
 </resources>

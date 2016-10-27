@@ -61,7 +61,9 @@ public final class UrlClass {
 
     //推荐轮播图
     public static final String URL_GHOST_OU = "http://app.bilibili.com/x/banner?plat=4&build=427000&channel=wandoujia";
-    //推荐全部
+    //推荐全部 网址打不开
+
+//    public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=baidu&mobi_app=android&platform=android&screen=xxhdpi&ts=1477357874000&sign=c6af3131948c45cec5b0be0811b11f0e";
     public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&platform=android&screen=hdpi&ts=1476969044000&sign=65d2822650aca5561e8a436e1ce36dc2";
     //推荐番剧推荐
     public static final String URL_FAN_DRAM_RECOMMENDATION = "http://bangumi.bilibili.com/api/get_season_by_tag?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&page=1&pagesize=4&platform=android&tag_id=109&ts=1476949442000&sign=c10377a9764dc78802f0896261b952d5";
@@ -82,8 +84,7 @@ public final class UrlClass {
      */
     //直播标签
     public static final String URL_LIVE_TAAG = "http://live.bilibili.com/AppIndex/areas?_device=android&_hwid=844cebfd4683c8d8&_ulv=5000&access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&scale=hdpi&sign=69e138520fa533d03bd4a6de9839d8af";
-    //直播
-    public static final String URL_LIVE = "http://live.bilibili.com/AppNewIndex/common?_device=android&platform=android&scale=hdpi";
+
 
     /**
      * 发现
@@ -95,6 +96,8 @@ public final class UrlClass {
     /**
      * 直播
      */
+    //直播
+    public static final String URL_LIVE = "http://live.bilibili.com/AppNewIndex/common?_device=android&platform=android&scale=hdpi";
     //推荐主播
     public static final String URL_RECOMMEND_ANCHOR = "http://live.bilibili.com/AppNewIndex/recommend?_device=android&_hwid=7b0828c551fedbab&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&scale=xxhdpi&sign=1b4296df47d20aaae498eb0f7f733671";
     //红叶祭

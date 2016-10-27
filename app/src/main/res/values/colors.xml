@@ -4,6 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorPinkMain">#FB7299</color>
+    <color name="colorPinkMainDeep">#FF6188</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteLight">#FAFAFA</color>
+    <color name="colorGary">#EAEAEA</color>
     <color name="colorUnselectWhite">#FDC7D6</color>
+    <color name="colorAudience">#AAAAAA</color>
+    <color name="colorTextColor">#333333</color>
+    <color name="colorUnselectYellow">#e7bb09</color>
+    <color name="colorgray">#ddb3b0b0</color>
+    <color name="colorM">#eaeaea</color>
+
 </resources>
