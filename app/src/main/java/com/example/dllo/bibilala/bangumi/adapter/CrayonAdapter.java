@@ -51,16 +51,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.entity.BangUmiEntity;
+import com.example.dllo.bibilala.entity.CartoonEntity;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/10/26.
  */
 
 public class CrayonAdapter extends BaseAdapter {
-    private BangUmiEntity entity;
+    private List<CartoonEntity> entity;
     private Context context;
 
-    public void setEntity(BangUmiEntity entity) {
+    public void setEntity(List<CartoonEntity> entity) {
         this.entity = entity;
     }
 
@@ -71,12 +74,12 @@ public class CrayonAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return entity.getResult().getSerializing().size();
+        return entity.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return entity.getResult().getSerializing().get(position);
+        return entity.get(position);
     }
 
     @Override
@@ -94,10 +97,10 @@ public class CrayonAdapter extends BaseAdapter {
         }else {
             holder = (CrayonViewHolder) convertView.getTag();
         }
-        holder.tvTitle.setText(entity.getResult().getSerializing().get(position).getTitle());
-        holder.tvNew.setText("更新至第"+entity.getResult().getSerializing().get(position).getNewest_ep_index()+"话");
-        holder.tvRead.setText(entity.getResult().getSerializing().get(position).getWatching_count()+"人在看");
-        Glide.with(context).load(entity.getResult().getSerializing().get(position).getCover()).into(holder.ima);
+        holder.tvTitle.setText(entity.get(position).getTitle());
+        holder.tvNew.setText("更新至第"+entity.get(position).getNewest_ep_index()+"话");
+        holder.tvRead.setText(entity.get(position).getWatching_count()+"人在看");
+        Glide.with(context).load(entity.get(position).getCover()).into(holder.ima);
         return convertView;
     }
 

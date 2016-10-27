@@ -22,17 +22,17 @@
             android:id="@+id/item_july_ima"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/ic_launcher"
             android:scaleType="fitXY" />
+
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="10sp"
             android:id="@+id/item_july_tv_favourites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:textColor="@android:color/white" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
 
 
     </FrameLayout>

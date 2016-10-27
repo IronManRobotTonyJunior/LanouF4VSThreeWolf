@@ -106,7 +106,7 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                mCrayonAdapter.setEntity(response);
+                mCrayonAdapter.setEntity(response.getResult().getSerializing());
                 mCrayonGridView.setAdapter(mCrayonAdapter);
 
             }
@@ -130,7 +130,7 @@ public class BangumiFragment extends BaseFragment {
             @Override
             public void onResponse(BangUmiEntity response) {
                 Log.d("国产动画传输的数据", "response:" + response);
-                mBangumChinaAdapter.setEntity(response);
+                mBangumChinaAdapter.setEntity(response.getResult().getChina());
                 mChinaGridView.setAdapter(mBangumChinaAdapter);
             }
 
@@ -151,7 +151,7 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                mJulyToLoveAdapter.setEntity(response);
+                mJulyToLoveAdapter.setEntity(response.getResult().getPrevious().getList());
                 mGridView.setAdapter(mJulyToLoveAdapter);
 
             }
@@ -181,7 +181,7 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                mBangumiAdapter.setEntity(response);
+                mBangumiAdapter.setEntity(response.getResult().getAd().getHead());
                 mViewPager.setAdapter(mBangumiAdapter);
             }
 

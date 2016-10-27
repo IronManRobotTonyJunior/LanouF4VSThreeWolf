@@ -43,7 +43,6 @@ package com.example.dllo.bibilala.bangumi.adapter;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +50,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.BangUmiEntity;
+import com.example.dllo.bibilala.entity.HeadEntity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dllo on 16/10/22.
@@ -62,7 +61,7 @@ import java.util.ArrayList;
 public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
     private Context context;
     private ImageView[] point;
-    private BangUmiEntity entity;
+    private List<HeadEntity> entity;
     private ViewPager viewPager;
 
     public void setViewPager(ViewPager viewPager) {
@@ -73,7 +72,7 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
         this.point = point;
     }
 
-    public void setEntity(BangUmiEntity entity) {
+    public void setEntity(List<HeadEntity> entity) {
         this.entity = entity;
     }
 
@@ -83,7 +82,7 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
 
     @Override
     public int getCount() {
-        return entity.getResult().getAd().getHead().size()==0 ? 0 : Integer.MAX_VALUE;
+        return entity.size() == 0 ? 0 : Integer.MAX_VALUE;
     }
 
     @Override
@@ -96,12 +95,11 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.view_pager_bang_umi, container, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
-        Glide.with(context).load(entity.getResult().getAd().getHead().get(position % entity.getResult().getAd().getHead().size()).getImg()).into(imageView);
+        Glide.with(context).load(entity.get(position % entity.size()).getImg()).into(imageView);
         container.addView(view);
         viewPager.addOnPageChangeListener(this);
         return view;
     }
-
 
 
     @Override
@@ -111,7 +109,7 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
 
     @Override
     public void onPageSelected(int position) {
-        if (point!=null&&point.length!=0){
+        if (point != null && point.length != 0) {
             for (int i = 0; i < point.length; i++) {
                 if (i == position % 4) {
                     point[i].setImageResource(R.mipmap.fennima);
@@ -128,6 +126,7 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
     public void onPageScrollStateChanged(int state) {
 
     }
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
 

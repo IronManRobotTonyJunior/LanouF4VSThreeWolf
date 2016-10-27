@@ -21,7 +21,6 @@
             android:id="@+id/item_china_ima"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/ic_launcher"
             android:scaleType="fitXY" />
 
         <TextView
