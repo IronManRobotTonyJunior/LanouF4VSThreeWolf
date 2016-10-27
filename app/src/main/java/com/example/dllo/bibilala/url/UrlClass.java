@@ -53,7 +53,7 @@ public final class UrlClass {
     //头像
     public static final String URL_HEADPHOTO = "http://api.bilibili.com/x/v2/reply/emojis";
     //主题
-    public static final String URL_THEME = "http://club.bilibili.com/api/query.skin.list.do?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&actionKey=appkey&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1476949442000&sign=fbec4640dd2bc75892e7d00f8d3d8629\n";
+    public static final String URL_THEME = "http://club.bilibili.com/api/query.skin.list.do?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&actionKey=appkey&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1476949442000&sign=fbec4640dd2bc75892e7d00f8d3d8629";
 
     /**
      * 推荐
@@ -79,6 +79,9 @@ public final class UrlClass {
     public static final String URL_SOME_RECOMMEND = "http://bangumi.bilibili.com/api/bangumi_recommend?appkey=1d8b6e7d45233436&build=427000&cursor=-1&mobi_app=android&pagesize=10&platform=android&ts=1476949442000&sign=bc143d94f849de44056ed1615518a2f8";
     //番剧全部
     public static final String URL_SOME_DRAMA = "http://bangumi.bilibili.com/api/app_index_page_v4_2?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1476949442000&sign=56dac58b12111b7e63c39b076ef28a49";
+//    番剧二级列表
+    //番剧放送表
+    public static final String URL_SECOND_GIO = "http://bangumi.bilibili.com/api/timeline_v4?appkey=1d8b6e7d45233436&area_id=1%2C2%2C-1&build=427000&mobi_app=android&platform=android&see_mine=0&ts=1477485131000&sign=7b105fbc60d46fa35e10873dea58e53a";
     /**
      * 直播
      */

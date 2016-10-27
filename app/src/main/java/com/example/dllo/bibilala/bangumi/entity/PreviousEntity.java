@@ -1,5 +1,4 @@
-package com.example.dllo.bibilala.entity;
- /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -45,34 +44,42 @@ import java.util.List;
 /**
  * Created by dllo on 16/10/22.
  */
+public class PreviousEntity {
+    private List<CartoonEntity> china;
+    private int season;
+    private int year;
+    private List<ListsEntity> list;
 
-public class BangUmiEntity {
-
-    private int code;
-    private String message;
-    private ResultEntity result;
-
-    public int getCode() {
-        return code;
+    public List<ListsEntity> getList() {
+        return list;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setList(List<ListsEntity> list) {
+        this.list = list;
     }
 
-    public String getMessage() {
-        return message;
+    public List<CartoonEntity> getChina() {
+        return china;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setChina(List<CartoonEntity> china) {
+        this.china = china;
     }
 
-    public ResultEntity getResult() {
-        return result;
+
+    public int getSeason() {
+        return season;
     }
 
-    public void setResult(ResultEntity result) {
-        this.result = result;
+    public void setSeason(int season) {
+        this.season = season;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }

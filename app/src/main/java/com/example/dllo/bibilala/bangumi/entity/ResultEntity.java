@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity; /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,55 +39,46 @@ package com.example.dllo.bibilala.entity; /*
          
         */
 
+import java.util.List;
+
 /**
  * Created by dllo on 16/10/22.
  */
-public class HeadEntity {
+public class ResultEntity {
+    private AdEntity ad;
+    private List<CartoonEntity> china;
+    private PreviousEntity previous;
+    private List<CartoonEntity> serializing;
 
-
-    private int id;
-    private String img;
-    private int is_ad;
-    private String link;
-    private String title;
-
-    public int getId() {
-        return id;
+    public AdEntity getAd() {
+        return ad;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAd(AdEntity ad) {
+        this.ad = ad;
     }
 
-    public String getImg() {
-        return img;
+    public List<CartoonEntity> getChina() {
+        return china;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setChina(List<CartoonEntity> china) {
+        this.china = china;
     }
 
-    public int getIs_ad() {
-        return is_ad;
+    public PreviousEntity getPrevious() {
+        return previous;
     }
 
-    public void setIs_ad(int is_ad) {
-        this.is_ad = is_ad;
+    public void setPrevious(PreviousEntity previous) {
+        this.previous = previous;
     }
 
-    public String getLink() {
-        return link;
+    public List<CartoonEntity> getSerializing() {
+        return serializing;
     }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSerializing(List<CartoonEntity> serializing) {
+        this.serializing = serializing;
     }
 }

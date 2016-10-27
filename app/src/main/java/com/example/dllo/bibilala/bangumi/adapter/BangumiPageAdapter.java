@@ -50,7 +50,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.HeadEntity;
+import com.example.dllo.bibilala.bangumi.entity.HeadEntity;
 
 import java.util.List;
 

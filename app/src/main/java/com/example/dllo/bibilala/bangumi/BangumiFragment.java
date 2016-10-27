@@ -1,5 +1,6 @@
 package com.example.dllo.bibilala.bangumi;
 
+import android.app.ProgressDialog;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -20,8 +21,8 @@ import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.entity.BangUmiEntity;
-import com.example.dllo.bibilala.entity.BangUmiRecommendEntity;
+import com.example.dllo.bibilala.bangumi.entity.BangUmiEntity;
+import com.example.dllo.bibilala.bangumi.entity.BangUmiRecommendEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -35,6 +36,7 @@ public class BangumiFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private BangumAdapter adapter;
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
+    private ProgressDialog mProgressDialog;
 
 
     private ViewPager mViewPager;
@@ -60,7 +62,16 @@ public class BangumiFragment extends BaseFragment {
     protected void initView() {
 
         mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
+        mProgressDialog = createDialog();
 
+    }
+
+    private ProgressDialog createDialog() {
+        ProgressDialog dialog = new ProgressDialog(mContext);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setTitle("数据加载中");
+        dialog.setMessage("请稍后...");
+        return dialog;
     }
 
     @Override

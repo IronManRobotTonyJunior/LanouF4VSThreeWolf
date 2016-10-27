@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity; /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,28 +39,55 @@ package com.example.dllo.bibilala.entity; /*
          
         */
 
-import java.util.List;
-
 /**
  * Created by dllo on 16/10/22.
  */
-public class AdEntity {
-    private List<Object> body;
-    private List<HeadEntity> head;
+public class HeadEntity {
 
-    public List<Object> getBody() {
-        return body;
+
+    private int id;
+    private String img;
+    private int is_ad;
+    private String link;
+    private String title;
+
+    public int getId() {
+        return id;
     }
 
-    public void setBody(List<Object> body) {
-        this.body = body;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public List<HeadEntity> getHead() {
-        return head;
+    public String getImg() {
+        return img;
     }
 
-    public void setHead(List<HeadEntity> head) {
-        this.head = head;
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public int getIs_ad() {
+        return is_ad;
+    }
+
+    public void setIs_ad(int is_ad) {
+        this.is_ad = is_ad;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

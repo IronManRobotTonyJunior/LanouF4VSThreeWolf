@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity; /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -44,41 +44,23 @@ import java.util.List;
 /**
  * Created by dllo on 16/10/22.
  */
-public class ResultEntity {
-    private AdEntity ad;
-    private List<CartoonEntity> china;
-    private PreviousEntity previous;
-    private List<CartoonEntity> serializing;
+public class AdEntity {
+    private List<Object> body;
+    private List<HeadEntity> head;
 
-    public AdEntity getAd() {
-        return ad;
+    public List<Object> getBody() {
+        return body;
     }
 
-    public void setAd(AdEntity ad) {
-        this.ad = ad;
+    public void setBody(List<Object> body) {
+        this.body = body;
     }
 
-    public List<CartoonEntity> getChina() {
-        return china;
+    public List<HeadEntity> getHead() {
+        return head;
     }
 
-    public void setChina(List<CartoonEntity> china) {
-        this.china = china;
-    }
-
-    public PreviousEntity getPrevious() {
-        return previous;
-    }
-
-    public void setPrevious(PreviousEntity previous) {
-        this.previous = previous;
-    }
-
-    public List<CartoonEntity> getSerializing() {
-        return serializing;
-    }
-
-    public void setSerializing(List<CartoonEntity> serializing) {
-        this.serializing = serializing;
+    public void setHead(List<HeadEntity> head) {
+        this.head = head;
     }
 }
