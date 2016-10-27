@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.recommendentity.LBBean;
+import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 
 import static com.example.dllo.bibilala.R.id.img;
 

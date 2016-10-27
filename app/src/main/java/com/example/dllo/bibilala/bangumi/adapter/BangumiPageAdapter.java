@@ -43,7 +43,6 @@ package com.example.dllo.bibilala.bangumi.adapter;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +50,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.BangUmiEntity;
-
-import java.util.ArrayList;
+import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
 
 /**
  * Created by dllo on 16/10/22.

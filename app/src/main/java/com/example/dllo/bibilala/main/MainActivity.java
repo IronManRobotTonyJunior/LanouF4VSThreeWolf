@@ -1,5 +1,7 @@
 package com.example.dllo.bibilala.main;
 
+import android.app.UiModeManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -21,6 +23,10 @@ import android.widget.Toast;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -36,6 +42,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private boolean isExit;
     private AppBarLayout mAppbar;
     private int mAppbarHeight = 0;
+    private UiModeManager mUiModeManager = null;
 
     @Override
     protected int setLayout() {
@@ -56,13 +63,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mToolbar.inflateMenu(R.menu.menu_three_points);
         ImageView drawerImage = (ImageView) view.findViewById(R.id.drawer_toolbar_drawer);
         CircleImageView userIcon = (CircleImageView) view.findViewById(R.id.user_icon);
-
         TextView userName = (TextView) view.findViewById(R.id.user_name);
         drawerImage.setOnClickListener(this);
         userIcon.setOnClickListener(this);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setVerticalScrollBarEnabled(false);
+        mUiModeManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
+        mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
     }
 
     @Override
@@ -96,33 +103,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
 
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            mAppbar.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-//                @Override
-//                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                    Log.d("MainActivity", "滑动");
-//                    Log.d("MainActivity", "scrollX:" + scrollX);
-//                    Log.d("MainActivity", "oldScrollX:" + oldScrollX);
-//                    Log.d("MainActivity", "scrolly:" + scrollY);
-//                    Log.d("MainActivity", "oldScrolly:" + oldScrollY);
-//                    if (scrollY - oldScrollY > v.getHeight() / 2) {
-//                        mAppbar.setScaleX(v.getHeight());
-//                    } else {
-//                        mAppbar.setScaleX(0);
-//                    }
-//
-//                }
-//            });
         mAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 mAppbarHeight = verticalOffset;
+                Log.d("MainActivity", "verticalOffset:" + verticalOffset);
             }
         });
-//
-//        } else {
-//
-//        }
 
     }
 
@@ -159,7 +146,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         Timer tExit = null;
         if (isExit == false) {
             isExit = true; // 准备退出
-            Toast.makeText(this, "再按一次退出程序.武神", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "再按一次退出哔哩哔哩动画>.<", Toast.LENGTH_SHORT).show();
             tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override
@@ -177,7 +164,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        Log.d("MainActivity", "id:" + id);
         switch (id) {
+            case R.id.drawer_check_night:
+                Toast.makeText(this, "夜间模式", Toast.LENGTH_SHORT).show();
+                mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_NO);
+                mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
+                break;
+            case R.id.drawer_user_icon:
+                break;
             case R.id.ic_home:
                 break;
             case R.id.nav_vip:
@@ -185,6 +180,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.ic_file:
                 break;
             case R.id.ic_star:
+                Log.d("MainActivity", "进");
                 break;
             case R.id.ic_history:
                 break;
@@ -201,5 +197,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveMessage(Integer msg) {
+//        if (-mAppbarHeight > 50) {
+//            mAppbar.scrollTo(0, 98);
+//        } else {
+//            mAppbar.scrollTo(0, 98);
+//        }
+        Log.d("MainActivity", "收到通知");
     }
 }

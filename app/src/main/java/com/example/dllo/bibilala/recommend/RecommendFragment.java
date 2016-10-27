@@ -1,22 +1,18 @@
 package com.example.dllo.bibilala.recommend;
 
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.http.SendGetRequest;
 //import com.example.dllo.bibilala.recommend.adapter.RecommendAdapter;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-import com.example.dllo.bibilala.recommendentity.LBBean;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
+import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 import com.example.dllo.bibilala.url.UrlClass;
-
-import java.util.ArrayList;
 
 public class RecommendFragment extends BaseFragment {
     private LinearLayout linearLayout;

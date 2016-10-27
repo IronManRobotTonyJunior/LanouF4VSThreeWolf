@@ -51,7 +51,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.BangUmiEntity;
+import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
 
 /**
  * Created by dllo on 16/10/24.
