@@ -43,7 +43,7 @@
 
     </RelativeLayout>
 
-    <com.example.dllo.bibilala.GridView.GridViewForScrollView
+    <com.example.dllo.bibilala.gridView.GridViewForScrollView
         android:id="@+id/hot_recommend_grid"
         android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"

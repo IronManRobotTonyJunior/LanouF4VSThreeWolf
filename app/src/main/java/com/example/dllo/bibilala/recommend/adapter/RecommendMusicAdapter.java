@@ -16,9 +16,7 @@ import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.media.CamcorderProfile.get;
-import static com.example.dllo.bibilala.R.id.hit_big_img;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -45,13 +43,11 @@ import static com.example.dllo.bibilala.R.id.hit_big_img;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommedHitAdaper extends BaseAdapter {
-
-
-    private Context context;
+public class RecommendMusicAdapter extends BaseAdapter {
     private AllBean allBean;
+    private Context context;
 
-    public RecommedHitAdaper(Context context) {
+    public RecommendMusicAdapter(Context context) {
         this.context = context;
     }
 
@@ -77,34 +73,34 @@ public class RecommedHitAdaper extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-
-
-        HitHolder holder = null;
+        AllBean.ResultBean.BodyBean bean = allBean.getResult().get(5).getBody().get(i);
+        MusicHolder holder = null;
         if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_recommend_hit, viewGroup, false);
-            holder = new HitHolder(view);
+            view = LayoutInflater.from(context).inflate(R.layout.item_recommend_music, viewGroup, false);
+            holder = new MusicHolder(view);
             view.setTag(holder);
         } else {
-            holder = (HitHolder) view.getTag();
+            holder = (MusicHolder) view.getTag();
         }
-        Glide.with(context).load(allBean.getResult().get(2).getBody().get(i).getCover()).into(holder.hit_big_img);
-        holder.hit_title_one.setText(allBean.getResult().get(2).getBody().get(i).getTitle());
-        holder.hit_slogan.setText(allBean.getResult().get(2).getBody().get(i).getDesc1());
-
+        Glide.with(context).load(bean.getCover()).into(holder.music_img);
+        holder.music_title.setText(bean.getTitle());
+        holder.music_look_person.setText(bean.getPlay());
+        holder.music_comments_person.setText(bean.getDanmaku());
 
         return view;
     }
 
-    class HitHolder {
+    class MusicHolder {
+        private ImageView music_img;
+        private TextView music_title, music_look_person, music_comments_person;
 
-        private ImageView hit_big_img;
-        private TextView hit_title_one;
-        private TextView hit_slogan;
 
-        private HitHolder(View view) {
-            hit_big_img = (ImageView) view.findViewById(R.id.hit_big_img);
-            hit_title_one = (TextView) view.findViewById(R.id.hit_title_one);
-            hit_slogan = (TextView) view.findViewById(R.id.hit_slogan);
+        private MusicHolder(View view) {
+            music_img = (ImageView) view.findViewById(R.id.music_img);
+            music_title = (TextView) view.findViewById(R.id.music_title);
+            music_look_person = (TextView) view.findViewById(R.id.music_look_person);
+            music_comments_person = (TextView) view.findViewById(R.id.music_comments_person);
+
 
         }
     }
