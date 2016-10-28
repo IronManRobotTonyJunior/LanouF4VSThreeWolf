@@ -1,5 +1,4 @@
-package com.example.dllo.bibilala.bangumi.adapter;
- /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -40,97 +39,47 @@ package com.example.dllo.bibilala.bangumi.adapter;
          
         */
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.HeadEntity;
-
 import java.util.List;
-
 
 /**
  * Created by dllo on 16/10/22.
  */
+public class PreviousEntity {
+    private List<CartoonEntity> china;
+    private int season;
+    private int year;
+    private List<ListsEntity> list;
 
-public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
-    private Context context;
-    private ImageView[] point;
-    private List<HeadEntity> entity;
-    private ViewPager viewPager;
-
-    public void setViewPager(ViewPager viewPager) {
-        this.viewPager = viewPager;
+    public List<ListsEntity> getList() {
+        return list;
     }
 
-    public void setPoint(ImageView[] point) {
-        this.point = point;
+    public void setList(List<ListsEntity> list) {
+        this.list = list;
     }
 
-    public void setEntity(List<HeadEntity> entity) {
-        this.entity = entity;
+    public List<CartoonEntity> getChina() {
+        return china;
     }
 
-    public BangumiPageAdapter(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    public int getCount() {
-        return entity.size() == 0 ? 0 : Integer.MAX_VALUE;
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-
-        return view == object;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_pager_bang_umi, container, false);
-        ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
-        HeadEntity headEntity = entity.get(position % entity.size());
-        Glide.with(context).load(headEntity.getImg()).into(imageView);
-        container.addView(view);
-        viewPager.addOnPageChangeListener(this);
-        return view;
+    public void setChina(List<CartoonEntity> china) {
+        this.china = china;
     }
 
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+    public int getSeason() {
+        return season;
     }
 
-    @Override
-    public void onPageSelected(int position) {
-        if (point != null && point.length != 0) {
-            for (int i = 0; i < point.length; i++) {
-                if (i == position % 4) {
-                    point[i].setImageResource(R.mipmap.fennima);
-                } else {
-                    point[i].setImageResource(R.mipmap.bai);
-                }
-            }
-        }
-
-
+    public void setSeason(int season) {
+        this.season = season;
     }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
+    public int getYear() {
+        return year;
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
+    public void setYear(int year) {
+        this.year = year;
     }
 }

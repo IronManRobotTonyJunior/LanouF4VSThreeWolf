@@ -4,6 +4,7 @@ import android.app.UiModeManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -100,6 +101,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
 
         mNavigationView.setNavigationItemSelectedListener(this);
+        NavigationMenuView menuView = (NavigationMenuView) mNavigationView.getChildAt(0);
+        menuView.setVerticalScrollBarEnabled(false);
         // 不好使的夜间模式
 //        mUiModeManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
 //        mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES);

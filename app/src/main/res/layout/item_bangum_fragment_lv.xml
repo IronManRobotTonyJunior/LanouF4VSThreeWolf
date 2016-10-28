@@ -8,7 +8,7 @@
         android:layout_width="100dp"
         android:layout_height="180dp">
         <ImageView
-            android:background="@mipmap/ic_launcher"
+            android:background="@mipmap/black"
             android:id="@+id/item_bangum_fragment_ima"
             android:scaleType="fitXY"
             android:layout_width="match_parent"

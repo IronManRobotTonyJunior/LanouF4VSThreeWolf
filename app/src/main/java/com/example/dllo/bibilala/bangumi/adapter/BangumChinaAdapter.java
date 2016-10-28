@@ -51,17 +51,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
+import com.example.dllo.bibilala.entity.bangumentity.CartoonEntity;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/10/26.
  */
 
 public class BangumChinaAdapter extends BaseAdapter {
-    private BangUmiEntity entity;
+    private List<CartoonEntity> entity;
     private Context context;
 
-    public void setEntity(BangUmiEntity entity) {
+    public void setEntity(List<CartoonEntity> entity) {
         this.entity = entity;
         notifyDataSetChanged();
     }
@@ -73,12 +75,12 @@ public class BangumChinaAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return entity == null ? 0 : entity.getResult().getChina().size();
+        return entity == null ? 0 : entity.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return entity.getResult().getChina().get(position);
+        return entity.get(position);
     }
 
     @Override
@@ -97,9 +99,12 @@ public class BangumChinaAdapter extends BaseAdapter {
         }else {
             holder = (BangumChinaViewHolder) convertView.getTag();
         }
-        holder.tvTitle.setText(entity.getResult().getChina().get(position).getTitle());
+
+        CartoonEntity cartoonEntity = entity.get(position);
+        Log.d("国产动画标题", cartoonEntity.getTitle());
+        holder.tvTitle.setText(cartoonEntity.getTitle());
 //        holder.tvTimer.setText(entity.getResult().getChina().get(position));
-        Glide.with(context).load(entity.getResult().getChina().get(position).getCover()).into(holder.ima);
+        Glide.with(context).load(cartoonEntity.getCover()).into(holder.ima);
 
         return convertView;
     }

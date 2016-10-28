@@ -1,5 +1,4 @@
-package com.example.dllo.bibilala.bangumi.adapter;
- /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -40,97 +39,98 @@ package com.example.dllo.bibilala.bangumi.adapter;
          
         */
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.HeadEntity;
-
-import java.util.List;
-
-
 /**
- * Created by dllo on 16/10/22.
+ * Created by dllo on 16/10/24.
  */
+public class ListsEntity {
+    private String cover;
+    private String favourites;
+    private int is_finish;
+    private int last_time;
+    private String newest_ep_index;
+    private int pub_time;
+    private int season_id;
+    private int season_status;
+    private String title;
+    private int watching_count;
 
-public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
-    private Context context;
-    private ImageView[] point;
-    private List<HeadEntity> entity;
-    private ViewPager viewPager;
-
-    public void setViewPager(ViewPager viewPager) {
-        this.viewPager = viewPager;
+    public String getCover() {
+        return cover;
     }
 
-    public void setPoint(ImageView[] point) {
-        this.point = point;
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
-    public void setEntity(List<HeadEntity> entity) {
-        this.entity = entity;
+    public String getFavourites() {
+        return favourites;
     }
 
-    public BangumiPageAdapter(Context context) {
-        this.context = context;
+    public void setFavourites(String favourites) {
+        this.favourites = favourites;
     }
 
-    @Override
-    public int getCount() {
-        return entity.size() == 0 ? 0 : Integer.MAX_VALUE;
+    public int getIs_finish() {
+        return is_finish;
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-
-        return view == object;
+    public void setIs_finish(int is_finish) {
+        this.is_finish = is_finish;
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_pager_bang_umi, container, false);
-        ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
-        HeadEntity headEntity = entity.get(position % entity.size());
-        Glide.with(context).load(headEntity.getImg()).into(imageView);
-        container.addView(view);
-        viewPager.addOnPageChangeListener(this);
-        return view;
+    public int getLast_time() {
+        return last_time;
     }
 
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+    public void setLast_time(int last_time) {
+        this.last_time = last_time;
     }
 
-    @Override
-    public void onPageSelected(int position) {
-        if (point != null && point.length != 0) {
-            for (int i = 0; i < point.length; i++) {
-                if (i == position % 4) {
-                    point[i].setImageResource(R.mipmap.fennima);
-                } else {
-                    point[i].setImageResource(R.mipmap.bai);
-                }
-            }
-        }
-
-
+    public String getNewest_ep_index() {
+        return newest_ep_index;
     }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
+    public void setNewest_ep_index(String newest_ep_index) {
+        this.newest_ep_index = newest_ep_index;
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public int getPub_time() {
+        return pub_time;
+    }
 
+    public void setPub_time(int pub_time) {
+        this.pub_time = pub_time;
+    }
+
+    public int getSeason_id() {
+        return season_id;
+    }
+
+    public void setSeason_id(int season_id) {
+        this.season_id = season_id;
+    }
+
+    public int getSeason_status() {
+        return season_status;
+    }
+
+    public void setSeason_status(int season_status) {
+        this.season_status = season_status;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getWatching_count() {
+        return watching_count;
+    }
+
+    public void setWatching_count(int watching_count) {
+        this.watching_count = watching_count;
     }
 }

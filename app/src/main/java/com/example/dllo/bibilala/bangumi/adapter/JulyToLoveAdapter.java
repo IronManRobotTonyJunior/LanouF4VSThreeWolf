@@ -51,17 +51,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
+import com.example.dllo.bibilala.entity.bangumentity.ListsEntity;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/10/24.
  */
 
 public class JulyToLoveAdapter extends BaseAdapter {
-    private BangUmiEntity entity;
+    private List<ListsEntity> entity;
     private Context context;
 
-    public void setEntity(BangUmiEntity entity) {
+    public void setEntity(List<ListsEntity> entity) {
         this.entity = entity;
     }
 
@@ -73,12 +75,12 @@ public class JulyToLoveAdapter extends BaseAdapter {
     @Override
     public int getCount() {
 //        Log.d("JulyToLoveAdapter", "entity.getList().size():" + entity.getList().size());
-        return entity == null ? 0 : entity.getResult().getPrevious().getList().size();
+        return entity == null ? 0 : entity.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return entity.getResult().getPrevious().getList().get(position);
+        return entity.get(position);
     }
 
     @Override
@@ -97,13 +99,16 @@ public class JulyToLoveAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if (Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())>10000){
+
+        ListsEntity listsEntity = entity.get(position);
+        Log.d("七月推荐观战人数", listsEntity.getFavourites());
+        if (Integer.parseInt(listsEntity.getFavourites())>10000){
 //            Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())%10000
 
         }
-        holder.tvFavourites.setText(entity.getResult().getPrevious().getList().get(position).getFavourites()+"人追番"+"");
-        holder.tvTitle.setText(entity.getResult().getPrevious().getList().get(position).getTitle());
-        Glide.with(context).load(entity.getResult().getPrevious().getList().get(position).getCover()).into(holder.ima);
+        holder.tvFavourites.setText(listsEntity.getFavourites()+"人追番"+"");
+        holder.tvTitle.setText(listsEntity.getTitle());
+        Glide.with(context).load(listsEntity.getCover()).into(holder.ima);
 
         return convertView;
     }

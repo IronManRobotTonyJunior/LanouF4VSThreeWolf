@@ -1,10 +1,12 @@
 package com.example.dllo.bibilala.bangumi;
 
+import android.app.ProgressDialog;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
@@ -29,11 +31,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class BangumiFragment extends BaseFragment {
     private List<BangUmiRecommendEntity.ResultBean> mEntity;
     private RecyclerView mRecyclerView;
     private BangumAdapter adapter;
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
+    private ProgressDialog mProgressDialog;
 
 
     private ViewPager mViewPager;
@@ -59,7 +63,16 @@ public class BangumiFragment extends BaseFragment {
     protected void initView() {
 
         mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
+        mProgressDialog = createDialog();
 
+    }
+
+    private ProgressDialog createDialog() {
+        ProgressDialog dialog = new ProgressDialog(mContext);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setTitle("数据加载中");
+        dialog.setMessage("请稍后...");
+        return dialog;
     }
 
     @Override
@@ -105,7 +118,7 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                mCrayonAdapter.setEntity(response);
+                mCrayonAdapter.setEntity(response.getResult().getSerializing());
                 mCrayonGridView.setAdapter(mCrayonAdapter);
 
             }
@@ -128,7 +141,9 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                mBangumChinaAdapter.setEntity(response);
+
+                Log.d("国产动画传输的数据", "response:" + response);
+                mBangumChinaAdapter.setEntity(response.getResult().getChina());
                 mChinaGridView.setAdapter(mBangumChinaAdapter);
             }
 
@@ -149,7 +164,7 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                mJulyToLoveAdapter.setEntity(response);
+                mJulyToLoveAdapter.setEntity(response.getResult().getPrevious().getList());
                 mGridView.setAdapter(mJulyToLoveAdapter);
 
             }
@@ -178,9 +193,13 @@ public class BangumiFragment extends BaseFragment {
         mBangumiAdapter = new BangumiPageAdapter(mContext);
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
-            public void onResponse(BangUmiEntity response) {
-                mBangumiAdapter.setEntity(response);
+            public void onResponse(final BangUmiEntity response) {
+                mBangumiAdapter.setEntity(response.getResult().getAd().getHead());
                 mViewPager.setAdapter(mBangumiAdapter);
+
+
+
+
             }
 
             @Override

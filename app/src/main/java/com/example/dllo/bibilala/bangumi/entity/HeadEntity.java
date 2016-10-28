@@ -1,5 +1,4 @@
-package com.example.dllo.bibilala.bangumi.adapter;
- /*
+package com.example.dllo.bibilala.bangumi.entity; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -40,97 +39,55 @@ package com.example.dllo.bibilala.bangumi.adapter;
          
         */
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.HeadEntity;
-
-import java.util.List;
-
-
 /**
  * Created by dllo on 16/10/22.
  */
+public class HeadEntity {
 
-public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
-    private Context context;
-    private ImageView[] point;
-    private List<HeadEntity> entity;
-    private ViewPager viewPager;
 
-    public void setViewPager(ViewPager viewPager) {
-        this.viewPager = viewPager;
+    private int id;
+    private String img;
+    private int is_ad;
+    private String link;
+    private String title;
+
+    public int getId() {
+        return id;
     }
 
-    public void setPoint(ImageView[] point) {
-        this.point = point;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setEntity(List<HeadEntity> entity) {
-        this.entity = entity;
+    public String getImg() {
+        return img;
     }
 
-    public BangumiPageAdapter(Context context) {
-        this.context = context;
+    public void setImg(String img) {
+        this.img = img;
     }
 
-    @Override
-    public int getCount() {
-        return entity.size() == 0 ? 0 : Integer.MAX_VALUE;
+    public int getIs_ad() {
+        return is_ad;
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-
-        return view == object;
+    public void setIs_ad(int is_ad) {
+        this.is_ad = is_ad;
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_pager_bang_umi, container, false);
-        ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
-        HeadEntity headEntity = entity.get(position % entity.size());
-        Glide.with(context).load(headEntity.getImg()).into(imageView);
-        container.addView(view);
-        viewPager.addOnPageChangeListener(this);
-        return view;
+    public String getLink() {
+        return link;
     }
 
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    @Override
-    public void onPageSelected(int position) {
-        if (point != null && point.length != 0) {
-            for (int i = 0; i < point.length; i++) {
-                if (i == position % 4) {
-                    point[i].setImageResource(R.mipmap.fennima);
-                } else {
-                    point[i].setImageResource(R.mipmap.bai);
-                }
-            }
-        }
-
-
+    public String getTitle() {
+        return title;
     }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
