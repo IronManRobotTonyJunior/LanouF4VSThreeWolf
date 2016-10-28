@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.GridView;
+package com.example.dllo.bibilala.gridView;
 
 import android.content.Context;
 import android.util.AttributeSet;
