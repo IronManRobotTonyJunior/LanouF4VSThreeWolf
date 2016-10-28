@@ -1,6 +1,7 @@
 package com.example.dllo.bibilala.bangumi;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -191,9 +192,13 @@ public class BangumiFragment extends BaseFragment {
         mBangumiAdapter = new BangumiPageAdapter(mContext);
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
-            public void onResponse(BangUmiEntity response) {
+            public void onResponse(final BangUmiEntity response) {
                 mBangumiAdapter.setEntity(response.getResult().getAd().getHead());
                 mViewPager.setAdapter(mBangumiAdapter);
+
+
+
+
             }
 
             @Override
