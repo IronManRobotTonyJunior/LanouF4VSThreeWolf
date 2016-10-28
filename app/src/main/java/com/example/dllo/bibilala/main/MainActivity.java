@@ -1,7 +1,7 @@
 package com.example.dllo.bibilala.main;
 
 import android.app.UiModeManager;
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -10,12 +10,15 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,8 +44,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private DrawerLayout mDrawerLayout;
     private boolean isExit;
     private AppBarLayout mAppbar;
-    private int mAppbarHeight = 0;
     private UiModeManager mUiModeManager = null;
+    private boolean isNight = false;
+    private static final String MAIN_SHARED_PREFERENCES = "mainSP";
+    private static final String DAY_NIGHT = "dayNight";
 
     @Override
     protected int setLayout() {
@@ -52,24 +57,57 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initView() {
+        final SharedPreferences sp = getSharedPreferences(MAIN_SHARED_PREFERENCES, MODE_PRIVATE);
+        final SharedPreferences.Editor spET = sp.edit();
         mDrawerLayout = bindView(R.id.activity_main_drawer);
         mToolbar = bindView(R.id.include_toolbar);
         mAppbar = bindView(R.id.app_bar);
         mTabLayout = bindView(R.id.include_tab);
         mViewPager = bindView(R.id.include_vp);
-//        setSupportActionBar(mToolbar);
         View view = LayoutInflater.from(this).inflate(R.layout.drawer_toolbar, mToolbar, false);
         mToolbar.addView(view);
         mToolbar.inflateMenu(R.menu.menu_three_points);
+        // ToolBar 的三个图标
         ImageView drawerImage = (ImageView) view.findViewById(R.id.drawer_toolbar_drawer);
         CircleImageView userIcon = (CircleImageView) view.findViewById(R.id.user_icon);
         TextView userName = (TextView) view.findViewById(R.id.user_name);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawerImage.setOnClickListener(this);
         userIcon.setOnClickListener(this);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        // NavigationView 的Head
+        View viewHead = navigationView.getHeaderView(0);
+        final CheckBox headDayNight = (CheckBox) viewHead.findViewById(R.id.drawer_check_night);
+        CircleImageView userHeadIcon = bindView(R.id.drawer_user_icon);
+        TextView userHeadName = bindView(R.id.drawer_user_name);
+        TextView userHeadCoin = bindView(R.id.drawer_coin);
+//        userHeadIcon.setOnClickListener(this);
+//        userHeadName.setOnClickListener(this);
+        isNight = sp.getBoolean(DAY_NIGHT, false);
+        if (isNight) {
+            headDayNight.setChecked(false);
+        }
+        headDayNight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isNight) {
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    headDayNight.setChecked(false);
+                    spET.putBoolean(DAY_NIGHT, false);
+                    Log.d("MainActivity", "夜间");
+                } else {
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    headDayNight.setChecked(true);
+                    spET.putBoolean(DAY_NIGHT, true);
+                }
+                spET.commit();
+            }
+        });
+
+
         navigationView.setNavigationItemSelectedListener(this);
-        mUiModeManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
-        mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
+        // 不好使的夜间模式
+//        mUiModeManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
+//        mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
     }
 
     @Override
@@ -106,8 +144,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                mAppbarHeight = verticalOffset;
-                Log.d("MainActivity", "verticalOffset:" + verticalOffset);
             }
         });
 
