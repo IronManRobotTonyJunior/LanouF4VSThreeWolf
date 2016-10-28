@@ -11,4 +11,7 @@
     <color name="colorUnselectWhite">#FDC7D6</color>
     <color name="colorAudience">#AAAAAA</color>
     <color name="colorTextColor">#333333</color>
+    <color name="tabColor">#EFEFEF</color>
+    <color name="colorPinkAlways">#FB7299</color>
+    <color name="colorWhiteAlways">#F1F1F1</color>
 </resources>

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@android:color/darker_gray</color>
-    <color name="colorPrimaryDark">@android:color/black</color>
+    <color name="colorPrimaryDark">#3B3B3B</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorPinkMain">#FB7299</color>
-    <color name="colorPinkMainDeep">#000000</color>
-    <color name="colorWhite">#FF6188</color>
-    <color name="colorWhiteLight">#050505</color>
-    <color name="colorGary">#151515</color>
+    <color name="colorPinkMain">#3B3B3B</color>
+    <color name="colorPinkMainDeep">#3B3B3B</color>
+    <color name="colorWhite">#3B3B3B</color>
+    <color name="colorWhiteLight">#3B3B3B</color>
+    <color name="colorGary">#2C2C2C</color>
     <color name="colorUnselectWhite">#FDC7D6</color>
     <color name="colorAudience">#555555</color>
     <color name="colorTextColor">#CCCCCC</color>
+    <color name="tabColor">#EFEFEF</color>
+    <color name="colorPinkAlways">#FB7299</color>
+    <color name="colorWhiteAlways">#F1F1F1</color>
 </resources>

@@ -5,7 +5,6 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
@@ -129,7 +128,6 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
-                Log.d("国产动画传输的数据", "response:" + response);
                 mBangumChinaAdapter.setEntity(response);
                 mChinaGridView.setAdapter(mBangumChinaAdapter);
             }

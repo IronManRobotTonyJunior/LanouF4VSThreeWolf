@@ -97,7 +97,6 @@ public class BangumChinaAdapter extends BaseAdapter {
         }else {
             holder = (BangumChinaViewHolder) convertView.getTag();
         }
-        Log.d("国产动画标题", entity.getResult().getChina().get(position).getTitle());
         holder.tvTitle.setText(entity.getResult().getChina().get(position).getTitle());
 //        holder.tvTimer.setText(entity.getResult().getChina().get(position));
         Glide.with(context).load(entity.getResult().getChina().get(position).getCover()).into(holder.ima);

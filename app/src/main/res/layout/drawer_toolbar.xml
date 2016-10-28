@@ -29,6 +29,6 @@
         android:layout_gravity="center"
         android:layout_marginLeft="@dimen/margin_ten"
         android:text="未登录"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorWhiteAlways"
         />
 </LinearLayout>

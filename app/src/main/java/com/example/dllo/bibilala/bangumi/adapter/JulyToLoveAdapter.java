@@ -97,7 +97,6 @@ public class JulyToLoveAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Log.d("七月推荐观战人数", entity.getResult().getPrevious().getList().get(position).getFavourites());
         if (Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())>10000){
 //            Integer.parseInt(entity.getResult().getPrevious().getList().get(position).getFavourites())%10000
 

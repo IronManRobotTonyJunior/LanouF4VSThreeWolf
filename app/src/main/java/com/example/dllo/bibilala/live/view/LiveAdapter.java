@@ -23,6 +23,7 @@ import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.Recommend
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.BannerEntity;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.DataTypeEntity;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
         mContext = context;
         mBuilderBody = new SpannableStringBuilder();
         mBuilderHead = new SpannableStringBuilder();
-        mPinkSpan = new ForegroundColorSpan(mContext.getResources().getColor(R.color.colorPinkMain));
+        mPinkSpan = new ForegroundColorSpan(mContext.getResources().getColor(R.color.colorPinkAlways));
     }
 
     @Override
@@ -106,6 +107,8 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 for (BannerEntity bannerEntity : mBannerEntities) {
                     mBannerUrl.add(bannerEntity.getImg());
                 }
+                bannerViewHolder.mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+                bannerViewHolder.mBanner.setIndicatorGravity(BannerConfig.RIGHT);
                 bannerViewHolder.mBanner.setImages(mBannerUrl);
                 break;
             case TYPE_SEARCH:
@@ -213,8 +216,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     public void onClick(View v) {
         RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
         int position = viewHolder.getLayoutPosition();
-
-
     }
 
 
