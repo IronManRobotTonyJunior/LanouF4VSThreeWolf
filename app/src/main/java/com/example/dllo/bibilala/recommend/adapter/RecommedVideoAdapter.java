@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 
+import java.util.List;
+
 import static android.media.CamcorderProfile.get;
 
 /**
@@ -68,6 +70,8 @@ public class RecommedVideoAdapter  extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        AllBean.ResultBean.BodyBean bodyBeen =allBean.getResult().get(0).getBody().get(i);
+
         VideoHolder holder =null;
         if (view==null) {
             view = LayoutInflater.from(context).inflate(R.layout.hot_recommended_video,viewGroup,false);
@@ -77,10 +81,10 @@ public class RecommedVideoAdapter  extends BaseAdapter{
         }else {
             holder = (VideoHolder) view.getTag();
         }
-        holder.video_litle.setText(allBean.getResult().get(0).getBody().get(i).getTitle());
-        holder.hot_look_person.setText(allBean.getResult().get(0).getBody().get(i).getPlay());
-        holder.hot_comments_person.setText(allBean.getResult().get(0).getBody().get(i).getDanmaku());
-        Glide.with(context).load(allBean.getResult().get(0).getBody().get(i).getCover()).into(holder.video_img);
+        holder.video_litle.setText(bodyBeen.getTitle());
+        holder.hot_look_person.setText(bodyBeen.getPlay());
+        holder.hot_comments_person.setText(bodyBeen.getDanmaku());
+        Glide.with(context).load(bodyBeen.getCover()).into(holder.video_img);
 
 
 

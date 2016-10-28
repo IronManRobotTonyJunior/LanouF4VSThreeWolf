@@ -15,10 +15,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_head_live"/>
+            android:src="@mipmap/animation"/>
 
         <TextView
-            android:id="@+id/live_title"
+            android:id="@+id/recommend_animation_title"
             android:layout_toRightOf="@+id/live_title_img"
             android:layout_marginLeft="@dimen/five"
             android:layout_width="wrap_content"
@@ -30,32 +30,22 @@
 
         <TextView
             android:id="@+id/live_is_live"
-            android:layout_toLeftOf="@+id/live_more_img"
+            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/eleven"
             android:layout_marginRight="@dimen/five"
             android:layout_centerVertical="true"
             android:textStyle="bold"
-            android:text="当前4000个直播"/>
-
-        <ImageView
-            android:id="@+id/live_more_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/ic_gray_arrow_right"/>
-
-
-
-
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorgray"
+            android:text="进去看看"/>
 
 
     </RelativeLayout>
 
     <com.example.dllo.bibilala.gridView.GridViewForScrollView
-        android:id="@+id/live_grid"
+        android:id="@+id/animation_grid"
         android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -72,7 +62,7 @@
             android:layout_height="30dp"
             android:background="@color/colorWhite"
             android:textSize="@dimen/eleven"
-            android:text="查看更多"/>
+            android:text="更多动画"/>
 
         <TextView
             android:layout_toLeftOf="@+id/live_refresh"
@@ -96,6 +86,6 @@
 
 
     </RelativeLayout>
-    
+
 
 </LinearLayout>

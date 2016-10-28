@@ -43,7 +43,16 @@
         android:layout_width="match_parent"
         android:scaleType="fitXY"
         android:layout_height="@dimen/last_height" />
-
+    <TextView
+        android:id="@+id/last_topic_big_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/eleven"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/five"
+        android:paddingTop="@dimen/five"
+        android:paddingBottom="@dimen/five"
+        android:textStyle="bold"/>
 
 
 

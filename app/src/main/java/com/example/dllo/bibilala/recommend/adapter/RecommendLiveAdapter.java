@@ -16,6 +16,8 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.recommendentity.AllBean;
 import com.example.dllo.bibilala.recommendentity.LiveBean;
 
+import java.util.List;
+
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static com.example.dllo.bibilala.R.dimen.one;
@@ -76,6 +78,10 @@ public class RecommendLiveAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
+        List<AllBean.ResultBean.BodyBean> bodyBeen = allBean.getResult().get(1).getBody();
+
+
         LiveHolder holder = null;
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_recommend_live, viewGroup, false);
@@ -86,18 +92,19 @@ public class RecommendLiveAdapter extends BaseAdapter {
         }
 
 
-        Glide.with(context).load(allBean.getResult().get(1).getBody().get(i).getCover()).into(holder.live_big_img);
+        AllBean.ResultBean.BodyBean bodyBean = bodyBeen.get(i);
+        Glide.with(context).load(bodyBean.getCover()).into(holder.live_big_img);
 
-        one = allBean.getResult().get(1).getBody().get(i).getArea();
-        two = allBean.getResult().get(1).getBody().get(i).getTitle();
+        one = bodyBean.getArea();
+        two = bodyBean.getTitle();
 
 
         holder.spannableString.setSpan(new TextAppearanceSpan(context, R.style.styleOne), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         holder.spannableString.setSpan(new TextAppearanceSpan(context, R.style.styleTwo), 5, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         holder.live_title_one.setText("#" + one + "#" + two);
-        holder.live_slogan.setText(allBean.getResult().get(1).getBody().get(i).getUp());
-        holder.live_look_person.setText(allBean.getResult().get(1).getBody().get(i).getOnline() + "");
+        holder.live_slogan.setText(bodyBean.getUp());
+        holder.live_look_person.setText(bodyBean.getOnline() + "");
 
 
         holder.live_title_one.setText(holder.spannableString, TextView.BufferType.SPANNABLE);
