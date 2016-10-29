@@ -17,5 +17,6 @@ public class ConcernFragment extends BaseFragment {
     @Override
     protected void initData() {
 
+
     }
 }
