@@ -13,7 +13,7 @@
             android:background="@mipmap/concern_" />
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/fragment_concern_btn"
             android:layout_width="100dp"
             android:layout_height="38dp"
             android:layout_centerHorizontal="true"
