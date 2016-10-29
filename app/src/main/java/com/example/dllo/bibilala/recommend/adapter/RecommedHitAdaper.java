@@ -10,15 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
-
-import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.media.CamcorderProfile.get;
-import static com.example.dllo.bibilala.R.id.hit_big_img;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +

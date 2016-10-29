@@ -51,7 +51,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.entity.ListsEntity;
+import com.example.dllo.bibilala.entity.bangumentity.ListsEntity;
 
 import java.util.List;
 
@@ -99,6 +99,7 @@ public class JulyToLoveAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
         ListsEntity listsEntity = entity.get(position);
         Log.d("七月推荐观战人数", listsEntity.getFavourites());
         if (Integer.parseInt(listsEntity.getFavourites())>10000){

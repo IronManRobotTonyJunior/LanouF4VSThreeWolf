@@ -13,14 +13,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-import com.example.dllo.bibilala.recommendentity.LiveBean;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static com.example.dllo.bibilala.R.dimen.one;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +

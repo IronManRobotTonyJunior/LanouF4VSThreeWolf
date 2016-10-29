@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala;
+package com.example.dllo.bibilala.main;
 
 
 import android.support.v4.app.Fragment;
@@ -13,7 +13,7 @@ import com.example.dllo.bibilala.zone.ZoneFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabInfo {
+class TabInfo {
     private String mTitle;
     private Fragment mFragment;
 

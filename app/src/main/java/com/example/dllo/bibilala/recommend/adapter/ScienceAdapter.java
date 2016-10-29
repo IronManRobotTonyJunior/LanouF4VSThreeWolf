@@ -10,12 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-
-import static com.example.dllo.bibilala.R.id.music_comments_person;
-import static com.example.dllo.bibilala.R.id.music_img;
-import static com.example.dllo.bibilala.R.id.music_look_person;
-import static com.example.dllo.bibilala.R.id.music_title;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +

@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.recommendentity;
+package com.example.dllo.bibilala.entity.recommendentity;
 
 import com.google.gson.annotations.SerializedName;
 

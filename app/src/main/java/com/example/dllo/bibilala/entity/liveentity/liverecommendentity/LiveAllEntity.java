@@ -1,10 +1,10 @@
-package com.example.dllo.bibilala.live.liveentity.livetypeentity;
+package com.example.dllo.bibilala.entity.liveentity.liverecommendentity;
 
 
-public class LiveTypeEntity {
-    int code;
-    String message;
-    DataTypeEntity data;
+public class LiveAllEntity {
+    private int code;
+    private String message;
+    private DataEntity data;
 
     public int getCode() {
         return code;
@@ -22,11 +22,11 @@ public class LiveTypeEntity {
         this.message = message;
     }
 
-    public DataTypeEntity getData() {
+    public DataEntity getData() {
         return data;
     }
 
-    public void setData(DataTypeEntity data) {
+    public void setData(DataEntity data) {
         this.data = data;
     }
 }

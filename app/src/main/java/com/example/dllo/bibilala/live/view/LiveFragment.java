@@ -8,11 +8,13 @@ import android.view.View;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.live.liveentity.liverecommendentity.LiveAllEntity;
-import com.example.dllo.bibilala.live.liveentity.liverecommendentity.RecommendDataEntity;
-import com.example.dllo.bibilala.live.liveentity.livetypeentity.LiveTypeEntity;
+import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
+import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.RecommendDataEntity;
+import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.live.presenter.LivePresenter;
 import com.example.dllo.bibilala.url.UrlClass;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class LiveFragment extends BaseFragment implements ILiveView {
     private ProgressDialog mProgressDialog;
@@ -50,6 +52,7 @@ public class LiveFragment extends BaseFragment implements ILiveView {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_UP:
+                        EventBus.getDefault().post(5);
 
                         break;
                 }
@@ -94,11 +97,7 @@ public class LiveFragment extends BaseFragment implements ILiveView {
             mRecyclerView.setAdapter(mAllAdapter);
             mRecyclerView.setLayoutManager(mManager);
         }
-
-
     }
-
-
     @Override
     public void onAllResponse(LiveAllEntity result) {
         mLiveAllEntities = result;

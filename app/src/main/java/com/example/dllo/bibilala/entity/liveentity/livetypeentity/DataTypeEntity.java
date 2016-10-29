@@ -1,6 +1,6 @@
-package com.example.dllo.bibilala.live.liveentity.livetypeentity;
+package com.example.dllo.bibilala.entity.liveentity.livetypeentity;
 
-import com.example.dllo.bibilala.live.liveentity.liverecommendentity.RecommendDataEntity;
+import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.RecommendDataEntity;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.live.liveentity.liverecommendentity;
+package com.example.dllo.bibilala.entity.liveentity.liverecommendentity;
 
 
 import java.util.List;

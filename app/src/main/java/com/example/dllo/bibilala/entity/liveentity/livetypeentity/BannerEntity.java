@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.live.liveentity.livetypeentity;
+package com.example.dllo.bibilala.entity.liveentity.livetypeentity;
 
 public class BannerEntity {
     private String title;

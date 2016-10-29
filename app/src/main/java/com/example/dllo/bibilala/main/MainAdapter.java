@@ -4,9 +4,6 @@ package com.example.dllo.bibilala.main;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.example.dllo.bibilala.TabInfo;
 
 import java.util.List;
 
