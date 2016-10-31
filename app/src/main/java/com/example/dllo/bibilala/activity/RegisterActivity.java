@@ -39,8 +39,27 @@ package com.example.dllo.bibilala.activity; /*
          
         */
 
+import android.os.Bundle;
+
+import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.base.BaseActivity;
+
 /**
  * Created by dllo on 16/10/31.
  */
-public class RegisterActivity {
+public class RegisterActivity extends BaseActivity {
+    @Override
+    protected int setLayout() {
+        return R.layout.register_ac;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+
+    }
 }

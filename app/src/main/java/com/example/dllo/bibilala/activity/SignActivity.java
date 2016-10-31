@@ -40,6 +40,7 @@ package com.example.dllo.bibilala.activity;
          
         */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -63,6 +64,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
     private Button button, mButton, btn;
     private TextWatcher mTextWatcher;
     private TextView tvThread, tvThreads, tvPowder, tvGray;
+    private Button btnQuestion;
 
     @Override
     protected int setLayout() {
@@ -87,6 +89,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
         tvThreads = bindView(R.id.sign_xian_tv_two);
         tvGray = bindView(R.id.sign_tv_thread_powder);
         tvPowder = bindView(R.id.sign_tv_thread_gray);
+        btnQuestion = bindView(R.id.button);
 
 
     }
@@ -96,6 +99,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
         mBack.setOnClickListener(this);
         button.setOnClickListener(this);
         btn.setOnClickListener(this);
+        btnQuestion.setOnClickListener(this);
         mDeleteSecret.setOnClickListener(this);
         mDeletePhone.setOnClickListener(this);
         mTextWatcher = new TextWatcher() {
@@ -187,6 +191,8 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_re:
                 btn.getResources().getColor(R.color.colors);
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivity(intent);
                 break;
             case R.id.sign_ima_delete_secret:
                 mSecret.setText("");
@@ -197,6 +203,11 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_sign:
                 Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.button:
+                Intent intents = new Intent(SignActivity.this,QuestionActivity.class);
+                startActivity(intents);
+                break;
+
 
         }
 
