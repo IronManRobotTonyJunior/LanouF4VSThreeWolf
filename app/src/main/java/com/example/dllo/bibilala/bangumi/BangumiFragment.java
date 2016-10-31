@@ -37,7 +37,6 @@ public class BangumiFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private BangumAdapter adapter;
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
-    private ProgressDialog mProgressDialog;
 
 
     private ViewPager mViewPager;
@@ -63,17 +62,11 @@ public class BangumiFragment extends BaseFragment {
     protected void initView() {
 
         mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
-        mProgressDialog = createDialog();
+
 
     }
 
-    private ProgressDialog createDialog() {
-        ProgressDialog dialog = new ProgressDialog(mContext);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setTitle("数据加载中");
-        dialog.setMessage("请稍后...");
-        return dialog;
-    }
+
 
     @Override
     protected void initData() {
@@ -119,7 +112,7 @@ public class BangumiFragment extends BaseFragment {
             @Override
             public void onResponse(BangUmiEntity response) {
                 mCrayonAdapter.setEntity(response.getResult().getSerializing());
-                mCrayonGridView.setAdapter(mCrayonAdapter);
+             mCrayonGridView.setAdapter(mCrayonAdapter);
 
             }
 

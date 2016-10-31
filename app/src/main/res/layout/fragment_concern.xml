@@ -13,12 +13,12 @@
             android:background="@mipmap/concern_" />
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/fragment_concern_btn"
             android:layout_width="100dp"
             android:layout_height="38dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="285dp"
-            android:background="@drawable/fragment_concern_shape"
+            android:background="@drawable/selector_login_an"
             android:text="登录"
             android:textColor="@android:color/white"
             android:textSize="15sp" />

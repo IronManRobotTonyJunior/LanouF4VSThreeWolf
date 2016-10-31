@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FB7299">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="24dp"
+            android:text="注册账号"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/question_ima_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/textView"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:background="@mipmap/backs"
+            android:backgroundTint="@drawable/selector_toll_btn" />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/question_tv_black"
+        android:layout_marginLeft="15dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:text="请确认你的国家或地区并输入手机号"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/question_tv_powder"
+        android:visibility="gone"
+        android:layout_marginLeft="15dp"
+        android:textColor="#FD1C1C"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:text="请输入正确的手机号"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="14sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/black"
+        android:text="中国大陆"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:numeric="integer"
+        android:id="@+id/question_et_phone"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textSize="15sp"
+        android:hint="请输入常用手机号"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="15dp"
+        android:background="#FB7299"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <Button
+        android:id="@+id/btn_obtain_gray"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@android:color/white"
+        android:text="获取验证码"
+        android:background="@drawable/sign_shape_normal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+    <Button
+        android:id="@+id/btn_obtain_powder"
+        android:visibility="gone"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@android:color/white"
+        android:text="获取验证码"
+        android:background="@drawable/selector_login_an"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+    <TextView
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:text="点击获取验证码按钮，即表示同意注册"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
-    <solid android:color="#d1d1d1"/>
+    <solid android:color="#FB7299"/>
     <size
         android:width="310dp"
         android:height="150dp"/><!-- 宽度和高度 -->
@@ -10,11 +10,10 @@
     <!-- 边角的圆弧半径 -->
     <corners android:radius="5dp"/>
     <!-- 描边：一般大小都是1dp -->
-    <stroke android:width="1dp" android:color="#D1D1D1" />
+
 
     <gradient
         android:angle="270.0"
-        android:endColor="#FFFFFF"
-        android:startColor="#FFFFFF" />
-
+        android:endColor="#EFC6D2"
+        android:startColor="#EFC6D2" />
 </shape>
