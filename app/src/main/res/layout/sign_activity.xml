@@ -118,24 +118,33 @@
 
         <ImageView
             android:id="@+id/sign_ima_phone"
-            android:visibility="gone"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="75dp"
             android:layout_marginTop="10dp"
-            android:background="@mipmap/delete" />
+            android:background="@mipmap/delete"
+            android:visibility="gone" />
 
     </LinearLayout>
 
-
     <TextView
+        android:id="@+id/sign_tv_thread_powder"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="23dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="5dp"
         android:background="#FB7299" />
+    <TextView
+        android:id="@+id/sign_tv_thread_gray"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -171,25 +180,16 @@
 
         <ImageView
             android:id="@+id/sign_ima_delete_secret"
-            android:visibility="gone"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="120dp"
             android:layout_marginTop="10dp"
-            android:background="@mipmap/delete" />
+            android:background="@mipmap/delete"
+            android:visibility="gone" />
 
 
     </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
-        android:background="#FB7299" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -218,19 +218,37 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/btnsss"
-
+            android:id="@+id/btn_sign"
             android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="10dp"
-            android:background="#FB7299"
+            android:background="@drawable/selector_login_an"
             android:text="登录"
             android:textColor="#FFFFFF"
             android:visibility="gone" />
 
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/sign_xian_tv_one"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/sign_xian_tv_two"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:background="#FB7299" />
 
 
 </LinearLayout>

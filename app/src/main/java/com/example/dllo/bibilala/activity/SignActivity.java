@@ -40,7 +40,6 @@ package com.example.dllo.bibilala.activity;
          
         */
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,6 +47,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
@@ -61,6 +62,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
     private EditText mSecret, mPhone;
     private Button button, mButton, btn;
     private TextWatcher mTextWatcher;
+    private TextView tvThread, tvThreads, tvPowder, tvGray;
 
     @Override
     protected int setLayout() {
@@ -76,11 +78,15 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
         mBlueV = bindView(R.id.sign_ac_blue_z);
         mGrayV = bindView(R.id.sign_ac_gray_z);
         mPhone = bindView(R.id.editText);
-        button = bindView(R.id.btnsss);
+        button = bindView(R.id.btn_sign);
         mButton = bindView(R.id.btns);
         btn = bindView(R.id.btn_re);
         mDeleteSecret = bindView(R.id.sign_ima_delete_secret);
         mDeletePhone = bindView(R.id.sign_ima_phone);
+        tvThread = bindView(R.id.sign_xian_tv_one);
+        tvThreads = bindView(R.id.sign_xian_tv_two);
+        tvGray = bindView(R.id.sign_tv_thread_powder);
+        tvPowder = bindView(R.id.sign_tv_thread_gray);
 
 
     }
@@ -110,11 +116,15 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
                     button.setVisibility(View.GONE);
 
                 }
-                if (singSercret) {
-                    mDeletePhone.setVisibility(View.VISIBLE);
-                }
                 if (singPhone) {
                     mDeletePhone.setVisibility(View.VISIBLE);
+                } else {
+                    mDeletePhone.setVisibility(View.GONE);
+                }
+                if (singSercret) {
+                    mDeleteSecret.setVisibility(View.VISIBLE);
+                } else {
+                    mDeleteSecret.setVisibility(View.GONE);
                 }
 
 
@@ -146,6 +156,25 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
                 }
             }
         });
+        mPhone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    tvGray.setVisibility(View.VISIBLE);
+                    tvPowder.setVisibility(View.GONE);
+                    tvThread.setVisibility(View.VISIBLE);
+                    tvThreads.setVisibility(View.GONE);
+
+
+                } else {
+                    tvGray.setVisibility(View.GONE);
+                    tvPowder.setVisibility(View.VISIBLE);
+                    tvThread.setVisibility(View.GONE);
+                    tvThreads.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
 
 
     }
@@ -161,10 +190,12 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.sign_ima_delete_secret:
                 mSecret.setText("");
-
                 break;
             case R.id.sign_ima_phone:
                 mPhone.setText("");
+                break;
+            case R.id.btn_sign:
+                Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 break;
 
         }
