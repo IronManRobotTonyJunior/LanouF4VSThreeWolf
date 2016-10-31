@@ -93,7 +93,7 @@ public final class UrlClass {
      * 发现
      */
     //发现标签
-    public static final String URL_FIND_LABEL = "http://s.search.bilibili.com/main/hotword?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&sign=4231accec4b6af800d407ef49b2720b9\n";
+    public static final String URL_FIND_LABEL = "http://s.search.bilibili.com/main/hotword?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&sign=4231accec4b6af800d407ef49b2720b9";
 
 
     /**

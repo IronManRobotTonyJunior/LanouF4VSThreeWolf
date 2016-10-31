@@ -214,8 +214,8 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
-        int position = viewHolder.getLayoutPosition();
+//        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
+//        int position = viewHolder.getLayoutPosition();
     }
 
 

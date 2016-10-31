@@ -23,7 +23,7 @@ class ZoneInfo {
         infos.add(new ZoneEntity(R.mipmap.ic_category_t31, "娱乐"));
         infos.add(new ZoneEntity(R.mipmap.ic_category_t23, "电影"));
         infos.add(new ZoneEntity(R.mipmap.ic_category_t11, "电视剧"));
-        infos.add(new ZoneEntity(R.mipmap.ic_category_game_center, "游戏中心"));
+        infos.add(new ZoneEntity(R.mipmap.ic_category_game, "游戏中心"));
         return infos;
     }
 

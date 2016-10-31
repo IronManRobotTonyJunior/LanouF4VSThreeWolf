@@ -4,16 +4,26 @@ package com.example.dllo.bibilala.tool;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.dllo.bibilala.R;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class SharedPreferencesTool {
-    public static SharedPreferences getSharedPreference(Context context) {
-        return context.getSharedPreferences(context.getResources().getString(R.string.sp_name), MODE_PRIVATE);
+
+    private static SharedPreferences sp;
+    private static SharedPreferences.Editor spET;
+    private static String SP_NAME = "mainSP";
+    private static String DAY_NIGHT = "dayNight";
+
+
+    public static boolean getIsNight(Context context) {
+        sp = context.getSharedPreferences(SP_NAME, MODE_PRIVATE);
+        boolean isNight = sp.getBoolean(DAY_NIGHT, false);
+        return isNight;
     }
 
-    public static SharedPreferences.Editor getEditor(SharedPreferences sp) {
-        return sp.edit();
+    public static void setEditor(boolean value) {
+        spET = sp.edit();
+        spET.putBoolean(DAY_NIGHT, value);
+        spET.commit();
+
     }
 }

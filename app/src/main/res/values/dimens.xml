@@ -22,5 +22,8 @@
     <dimen name="one">1dp</dimen>
     <dimen name="three_ten">30dp</dimen>
     <dimen name="twenty">20dp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="twelve">12dp</dimen>
 
 </resources>

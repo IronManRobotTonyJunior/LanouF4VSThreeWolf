@@ -1,7 +1,6 @@
 package com.example.dllo.bibilala.main;
 
 import android.app.UiModeManager;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
@@ -49,8 +48,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private UiModeManager mUiModeManager = null;
     private boolean isNight = false;
     private NavigationView mNavigationView;
-    private SharedPreferences mSp;
-    private SharedPreferences.Editor mSpET;
     private CheckBox mHeadDayNight;
 
     @Override
@@ -61,8 +58,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initView() {
-        mSp = SharedPreferencesTool.getSharedPreference(this);
-        mSpET = SharedPreferencesTool.getEditor(mSp);
         mDrawerLayout = bindView(R.id.activity_main_drawer);
         mToolbar = bindView(R.id.include_toolbar);
         mAppbar = bindView(R.id.app_bar);
@@ -91,12 +86,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    mSpET.putBoolean(getStringResource(R.string.day_night), true);
+                    SharedPreferencesTool.setEditor(true);
                 } else {
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    mSpET.putBoolean(getStringResource(R.string.day_night), false);
+                    SharedPreferencesTool.setEditor(false);
                 }
-                mSpET.commit();
             }
         });
 
@@ -109,7 +103,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     private void initCheckBox() {
-        isNight = mSp.getBoolean(getStringResource(R.string.day_night), false);
+        isNight = SharedPreferencesTool.getIsNight(this);
         mHeadDayNight.setChecked(isNight);
     }
 
@@ -121,6 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tabColor));
         mTabLayout.setTabTextColors(getResources().getColor(R.color.colorUnselectWhite), getResources().getColor(R.color.tabColor));
         mViewPager.setCurrentItem(1);
+        initCheckBox();
 
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -150,8 +145,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         });
 
-        initCheckBox();
-
     }
 
 
@@ -172,10 +165,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
         }
 
-    }
-
-    private String getStringResource(int id) {
-        return getResources().getString(id);
     }
 
     @Override

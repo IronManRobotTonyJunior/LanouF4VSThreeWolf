@@ -1,0 +1,95 @@
+package com.example.dllo.bibilala.find.view;
+
+import android.support.v4.widget.NestedScrollView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.base.BaseFragment;
+import com.example.dllo.bibilala.entity.find.FindEntity;
+import com.example.dllo.bibilala.find.presenter.FindPresenter;
+import com.example.dllo.bibilala.tool.DensityUtils;
+import com.example.dllo.bibilala.url.UrlClass;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
+
+public class FindFragment extends BaseFragment implements IFindView {
+
+    private FindPresenter mFindPresenter;
+    private LinearLayout mLinearLayout;
+    private NestedScrollView mChildNestedScrollView;
+    private CheckBox mCbMore;
+    private TagFlowLayout mFlowLayout;
+    private TextView mTvSearch;
+    private LayoutInflater mFrom;
+
+    @Override
+    protected int setLayout() {
+        return R.layout.fragment_find;
+    }
+
+    @Override
+    protected void initView() {
+        mFindPresenter = new FindPresenter(this);
+        mLinearLayout = bindView(R.id.find_ll_main);
+        mFrom = LayoutInflater.from(mContext);
+        View headView = mFrom.inflate(R.layout.head_find_nested, null);
+        mLinearLayout.addView(headView, 0);
+        mCbMore = bindView(R.id.find_cb_more, headView);
+        mChildNestedScrollView = bindView(R.id.find_head_nested, headView);
+        mFlowLayout = bindView(R.id.find_flow, headView);
+        mTvSearch = bindView(R.id.head_tv_search, headView);
+        mChildNestedScrollView.setNestedScrollingEnabled(false);
+
+    }
+
+    @Override
+    protected void initData() {
+        mFindPresenter.startRequest(UrlClass.URL_FIND_LABEL, FindEntity.class);
+        mCbMore.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mCbMore.setText("收起");
+                    ViewGroup.LayoutParams params = mChildNestedScrollView.getLayoutParams();
+                    params.height = DensityUtils.dp2px(mContext, 300f);
+                    mChildNestedScrollView.setLayoutParams(params);
+                    mChildNestedScrollView.setNestedScrollingEnabled(true);
+                } else {
+                    mCbMore.setText("查看更多");
+                    ViewGroup.LayoutParams params = mChildNestedScrollView.getLayoutParams();
+                    params.height = DensityUtils.dp2px(mContext, 100f);
+                    mChildNestedScrollView.setLayoutParams(params);
+                    mChildNestedScrollView.setNestedScrollingEnabled(false);
+                    mChildNestedScrollView.smoothScrollTo(0, 0);
+                }
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onResponse(FindEntity result) {
+        mFlowLayout.setAdapter(new TagAdapter<FindEntity.ListBean>(result.getList()) {
+            @Override
+            public View getView(FlowLayout parent, int position, FindEntity.ListBean listBean) {
+                TextView tvTag = (TextView) mFrom.inflate(R.layout.find_tv_tag, mFlowLayout, false);
+                tvTag.setText(listBean.getKeyword());
+                return tvTag;
+            }
+        });
+
+    }
+
+    @Override
+    public void onError() {
+
+    }
+}
