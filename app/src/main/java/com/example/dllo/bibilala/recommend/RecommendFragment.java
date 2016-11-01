@@ -501,7 +501,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(20).getBody();
+                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(19).getBody();
                 been.addAll(resultBeen);
                 recommendAdapter.notifyDataSetChanged();
             }
