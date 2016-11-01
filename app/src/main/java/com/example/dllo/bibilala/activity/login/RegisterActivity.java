@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.activity; /*
+package com.example.dllo.bibilala.activity.login; /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -56,7 +56,7 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-    }
+}
 
     @Override
     protected void initData(Bundle savedInstanceState) {

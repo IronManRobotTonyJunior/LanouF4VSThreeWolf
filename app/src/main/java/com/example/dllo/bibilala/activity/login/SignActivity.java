@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.activity;
+package com.example.dllo.bibilala.activity.login;
  /*
         quu..__
          $$$b  `---.__
@@ -45,6 +45,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,6 +54,9 @@ import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
+
+import static com.android.volley.Request.Method.GET;
+import static com.android.volley.Request.Method.POST;
 
 /**
  * Created by dllo on 16/10/29.
