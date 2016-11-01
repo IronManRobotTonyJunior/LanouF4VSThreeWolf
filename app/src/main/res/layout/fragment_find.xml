@@ -1,7 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="vertical">
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/find_ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhiteLight"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/find_item_interest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:drawableLeft="@mipmap/ic_group"
+            android:drawablePadding="@dimen/ten"
+            android:text="兴趣圈"/>
+
+        <include layout="@layout/include_dividing_light"/>
+
+        <TextView
+            android:id="@+id/find_item_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:drawableLeft="@mipmap/ic_header_topic_center"
+            android:drawablePadding="@dimen/ten"
+            android:text="话题中心"/>
+
+        <include layout="@layout/include_dividing_light"/>
+
+        <TextView
+            android:id="@+id/find_item_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:drawableLeft="@mipmap/ic_header_activity_center"
+            android:drawablePadding="@dimen/ten"
+            android:text="活动中心"/>
+
+        <include layout="@layout/include_dividing_wide"/>
+
+        <TextView
+            android:id="@+id/find_item_rank_original"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:drawableLeft="@mipmap/ic_btn_rank_original"
+            android:drawablePadding="@dimen/ten"
+            android:text="原创排行榜"/>
+
+        <include layout="@layout/include_dividing_light"/>
+
+        <TextView
+            android:id="@+id/find_item_rank_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:drawableLeft="@mipmap/ic_btn_rank_all"
+            android:drawablePadding="@dimen/ten"
+            android:text="全区排行榜"/>
+
+        <include layout="@layout/include_dividing_wide"/>
+
+        <TextView
+            android:id="@+id/find_item_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:drawableLeft="@mipmap/ic_btn_game"
+            android:drawablePadding="@dimen/ten"
+            android:text="游戏中心"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

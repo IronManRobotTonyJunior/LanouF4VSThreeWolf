@@ -1,6 +1,7 @@
 package com.example.dllo.bibilala.live.view;
 
 import android.app.ProgressDialog;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
@@ -26,6 +27,7 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     private static final int TYPE_BODY = 4;
     private GridLayoutManager mManager;
     private RecommendDataEntity mEntity;
+    private SwipeRefreshLayout mRefreshLayout;
 
     @Override
     protected int setLayout() {
@@ -33,10 +35,18 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (isVisibleToUser) {
+            mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
+            mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
+        }
+    }
+
+    @Override
     protected void initView() {
         mProgressDialog = createDialog();
         mRecyclerView = bindView(R.id.live_recycler);
-
+        mRefreshLayout = bindView(R.id.live_swipe_refresh);
 
     }
 
@@ -45,15 +55,12 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     protected void initData() {
         mLivePresenter = new LivePresenter(this);
         mAllAdapter = new LiveAdapter(mContext);
-        mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
-        mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_UP:
                         EventBus.getDefault().post(5);
-
                         break;
                 }
                 return false;
@@ -75,22 +82,31 @@ public class LiveFragment extends BaseFragment implements ILiveView {
                 }
             }
         });
+        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPinkAlways));
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
+                mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
+            }
+        });
 
     }
 
     @Override
     public void showDialog() {
-        mProgressDialog.show();
+        mRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void dismissDialog() {
-        mProgressDialog.dismiss();
+        mRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void onTypeResponse(LiveTypeEntity result) {
         mLiveTypeEntities = result;
+        mRefreshLayout.setRefreshing(false);
         if (mLiveAllEntities != null) {
             mLiveTypeEntities.getData().getPartitions().add(0, mEntity);
             mAllAdapter.refreshTypeData(mLiveTypeEntities.getData());
@@ -98,9 +114,11 @@ public class LiveFragment extends BaseFragment implements ILiveView {
             mRecyclerView.setLayoutManager(mManager);
         }
     }
+
     @Override
     public void onAllResponse(LiveAllEntity result) {
         mLiveAllEntities = result;
+        mRefreshLayout.setRefreshing(false);
         mEntity = result.getData().getRecommend_data();
         mEntity.getLives().add(6, mEntity.getBanner_data().get(0));
         if (mLiveTypeEntities != null) {

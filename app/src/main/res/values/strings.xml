@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">BiBiLaiLai</string>
-    <string name="sp_name">MainSP</string>
-    <string name="day_night">DayNight</string>
 </resources>

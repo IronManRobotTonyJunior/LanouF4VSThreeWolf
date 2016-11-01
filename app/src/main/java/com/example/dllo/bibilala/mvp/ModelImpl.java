@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.live.model;
+package com.example.dllo.bibilala.mvp;
 
 
 import com.example.dllo.bibilala.http.HttpManager;
@@ -6,7 +6,7 @@ import com.example.dllo.bibilala.http.OnCompletedListener;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
 
-public class LiveModelImpl implements ILiveModel {
+public class ModelImpl implements IModel {
 
 
     @Override

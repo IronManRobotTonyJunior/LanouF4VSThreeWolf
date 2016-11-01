@@ -65,7 +65,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
         mInflater = LayoutInflater.from(context);
         mBannerEntities = new ArrayList<>();
         mAllPartitionEntities = new ArrayList<>();
-        mBannerUrl = new ArrayList<>();
         mContext = context;
         mBuilderBody = new SpannableStringBuilder();
         mBuilderHead = new SpannableStringBuilder();
@@ -104,6 +103,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
         switch (getItemViewType(position)) {
             case TYPE_BANNER:
                 BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
+                mBannerUrl = new ArrayList<>();
                 for (BannerEntity bannerEntity : mBannerEntities) {
                     mBannerUrl.add(bannerEntity.getImg());
                 }
@@ -214,8 +214,8 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
-        int position = viewHolder.getLayoutPosition();
+//        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
+//        int position = viewHolder.getLayoutPosition();
     }
 
 
