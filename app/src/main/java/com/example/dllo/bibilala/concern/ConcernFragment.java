@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.activity.SignActivity;
+import com.example.dllo.bibilala.activity.login.SignActivity;
 import com.example.dllo.bibilala.base.BaseFragment;
 
 public class ConcernFragment extends BaseFragment {
