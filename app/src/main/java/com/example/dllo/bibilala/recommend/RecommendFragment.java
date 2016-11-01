@@ -325,7 +325,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //
         initRecommended();
         //
-        initParsing();
+//        initParsing();
 
     }
 
