@@ -387,41 +387,52 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 ghostAdapter.setAllBean(response);
                 gridViewGhost.setAdapter(ghostAdapter);
 
-                //
-                String urlTopicFive = response.getResult().get(9).getBody().get(0).getCover();
-                Log.d("dd", urlTopicFive);
-                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
 
 
                 //科技
                 scienceAdapter.setAllBean(response);
                 gridViewScience.setAdapter(scienceAdapter);
-                recommend_sclence_title.setText(response.getResult().get(10).getHead().getTitle());
+                recommend_sclence_title.setText(response.getResult().get(9).getHead().getTitle());
 
-                //话题
-                String urlSix = response.getResult().get(11).getBody().get(0).getCover();
-                Glide.with(mContext).load(urlSix).into(imageViewSix);
+
 
                 //活动
-                recommend_activity_title.setText(response.getResult().get(12).getHead().getTitle());
+                recommend_activity_title.setText(response.getResult().get(10).getHead().getTitle());
                 activityAdapter.setAllBean(response);
                 gridViewActivity.setAdapter(activityAdapter);
 
                 //生活
-                recommend_life_title.setText(response.getResult().get(13).getHead().getTitle());
+                recommend_life_title.setText(response.getResult().get(11).getHead().getTitle());
                 lifeAdapter.setBeanList(response);
                 gridViewLife.setAdapter(lifeAdapter);
 
                 //时尚
-                recommend_fashion_title.setText(response.getResult().get(14).getHead().getTitle());
+                recommend_fashion_title.setText(response.getResult().get(12).getHead().getTitle());
                 fashionAdapter.setAllBean(response);
                 gridViewFashion.setAdapter(fashionAdapter);
 
 
+
+
+                String urlTopicFive = response.getResult().get(13).getBody().get(0).getCover();
+                Log.d("dd", urlTopicFive);
+                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
+
+
+
                 //广告
-                recommend_advert_title.setText(response.getResult().get(15).getHead().getTitle());
+                recommend_advert_title.setText(response.getResult().get(14).getHead().getTitle());
                 advertAdapter.setAllBean(response);
                 gridViewadvert.setAdapter(advertAdapter);
+
+
+
+
+
+
+                //话题
+                String urlSix = response.getResult().get(15).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlSix).into(imageViewSix);
 
                 //娱乐
                 recommend_entertain_title.setText(response.getResult().get(16).getHead().getTitle());

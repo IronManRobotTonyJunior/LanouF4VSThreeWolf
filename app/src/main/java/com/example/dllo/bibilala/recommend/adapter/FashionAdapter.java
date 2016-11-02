@@ -68,7 +68,7 @@ public class FashionAdapter  extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(14).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(12).getBody().get(i);
         FashionHolder holder =null;
         if (view==null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_recommend_music,viewGroup,false);
