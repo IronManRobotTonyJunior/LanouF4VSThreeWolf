@@ -2,25 +2,25 @@ package com.example.dllo.bibilala.live.presenter;
 
 
 import com.example.dllo.bibilala.http.OnCompletedListener;
-import com.example.dllo.bibilala.live.liveentity.livetypeentity.LiveTypeEntity;
-import com.example.dllo.bibilala.live.liveentity.liverecommendentity.LiveAllEntity;
-import com.example.dllo.bibilala.live.model.ILiveModel;
-import com.example.dllo.bibilala.live.model.LiveModelImpl;
+import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
+import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
+import com.example.dllo.bibilala.mvp.IModel;
+import com.example.dllo.bibilala.mvp.ModelImpl;
 import com.example.dllo.bibilala.live.view.ILiveView;
 
 public class LivePresenter {
     private ILiveView mILiveView;
-    private ILiveModel mILiveModel;
+    private IModel mIModel;
 
     public LivePresenter(ILiveView iLiveView) {
         mILiveView = iLiveView;
-        mILiveModel = new LiveModelImpl();
+        mIModel = new ModelImpl();
 
     }
 
     public <T> void startRequest(String urlStr, Class<T> clazz) {
         mILiveView.showDialog();
-        mILiveModel.startRequest(urlStr, clazz, new OnCompletedListener<T>() {
+        mIModel.startRequest(urlStr, clazz, new OnCompletedListener<T>() {
             @Override
             public void onCompleted(T result) {
                 if (result instanceof LiveAllEntity) {

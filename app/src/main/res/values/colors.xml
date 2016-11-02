@@ -11,8 +11,14 @@
     <color name="colorUnselectWhite">#FDC7D6</color>
     <color name="colorAudience">#AAAAAA</color>
     <color name="colorTextColor">#333333</color>
+    <color name="tabColor">#EFEFEF</color>
+    <color name="colorFindText">#999999</color>
+    <color name="colorFindTag">#6B6B6B</color>
+    <color name="colorFindDivide">#CDCDCD</color>
+    <color name="colorPinkAlways">#FB7299</color>
+    <color name="colorWhiteAlways">#F1F1F1</color>
     <color name="colorUnselectYellow">#e7bb09</color>
     <color name="colorgray">#ddb3b0b0</color>
     <color name="colorM">#eaeaea</color>
-
+    <color name="colors">#BB5F78</color>
 </resources>

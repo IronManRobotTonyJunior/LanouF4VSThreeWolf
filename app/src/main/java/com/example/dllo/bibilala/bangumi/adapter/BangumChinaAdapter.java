@@ -51,7 +51,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.entity.CartoonEntity;
+import com.example.dllo.bibilala.entity.bangumentity.CartoonEntity;
 
 import java.util.List;
 
@@ -99,6 +99,7 @@ public class BangumChinaAdapter extends BaseAdapter {
         }else {
             holder = (BangumChinaViewHolder) convertView.getTag();
         }
+
         CartoonEntity cartoonEntity = entity.get(position);
         Log.d("国产动画标题", cartoonEntity.getTitle());
         holder.tvTitle.setText(cartoonEntity.getTitle());

@@ -1,6 +1,5 @@
 package com.example.dllo.bibilala.recommend;
 
-import android.graphics.Movie;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
@@ -11,15 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.gridView.GridViewForScrollView;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
+import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 import com.example.dllo.bibilala.http.SendGetRequest;
-
 import com.example.dllo.bibilala.recommend.adapter.ActivityAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AdvertAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AnimationAdapter;
@@ -30,7 +28,6 @@ import com.example.dllo.bibilala.recommend.adapter.GhostAdapter;
 import com.example.dllo.bibilala.recommend.adapter.LifeAdapter;
 import com.example.dllo.bibilala.recommend.adapter.MovieAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommedDancingAdapter;
-
 import com.example.dllo.bibilala.recommend.adapter.RecommedHitAdaper;
 import com.example.dllo.bibilala.recommend.adapter.RecommedVideoAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommenLBdAdapter;
@@ -39,13 +36,14 @@ import com.example.dllo.bibilala.recommend.adapter.RecommendLiveAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommendMusicAdapter;
 import com.example.dllo.bibilala.recommend.adapter.ScienceAdapter;
 import com.example.dllo.bibilala.recommend.adapter.TVSeriesAdapter;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-import com.example.dllo.bibilala.recommendentity.LBBean;
 import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.gridview.GridViewForScrollView;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+;
 
 
 
@@ -515,7 +513,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(20).getBody();
+                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(19).getBody();
                 been.addAll(resultBeen);
                 recommendAdapter.notifyDataSetChanged();
             }

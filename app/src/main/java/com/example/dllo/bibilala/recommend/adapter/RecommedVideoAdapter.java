@@ -10,11 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-
-import java.util.List;
-
-import static android.media.CamcorderProfile.get;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +

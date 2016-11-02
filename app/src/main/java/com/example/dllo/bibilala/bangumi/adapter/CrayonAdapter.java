@@ -50,9 +50,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.entity.CartoonEntity;
+import com.example.dllo.bibilala.entity.bangumentity.CartoonEntity;
 
 import java.util.List;
+
 
 /**
  * Created by dllo on 16/10/26.

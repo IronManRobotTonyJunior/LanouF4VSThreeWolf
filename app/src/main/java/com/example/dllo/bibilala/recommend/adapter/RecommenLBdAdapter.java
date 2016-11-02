@@ -2,7 +2,6 @@ package com.example.dllo.bibilala.recommend.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.recommendentity.LBBean;
+import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 
 import static com.example.dllo.bibilala.R.id.img;
 

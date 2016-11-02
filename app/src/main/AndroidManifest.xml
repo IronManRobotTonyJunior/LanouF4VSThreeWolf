@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.dllo.bibilala">
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:name=".app.BiBiLaiLaiApp"
         android:allowBackup="true"
@@ -17,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.login.SignActivity"/>
+        <activity android:name=".activity.login.QuestionActivity"/>
+        <activity android:name=".activity.login.RegisterActivity"/>
     </application>
 
 </manifest>

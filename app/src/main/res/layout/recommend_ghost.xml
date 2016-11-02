@@ -44,7 +44,7 @@
 
     </RelativeLayout>
 
-    <com.example.dllo.bibilala.gridView.GridViewForScrollView
+    <com.example.dllo.bibilala.gridview.GridViewForScrollView
         android:id="@+id/ghost_grid"
         android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"

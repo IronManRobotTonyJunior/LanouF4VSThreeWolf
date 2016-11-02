@@ -1,29 +1,15 @@
 package com.example.dllo.bibilala.recommend.adapter;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.http.SendGetRequest;
-import com.example.dllo.bibilala.recommendentity.AllBean;
-import com.example.dllo.bibilala.recommendentity.LBBean;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
-
-import static android.R.attr.id;
 
 
 /**

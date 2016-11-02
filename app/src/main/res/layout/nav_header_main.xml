@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_ten"
                 android:button="@drawable/selector_drawer_day_or_night"
                 />
 
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="点击头像登录"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhiteAlways"/>
 
             <TextView
                 android:id="@+id/drawer_coin"

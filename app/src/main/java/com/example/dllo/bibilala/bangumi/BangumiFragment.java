@@ -1,7 +1,6 @@
 package com.example.dllo.bibilala.bangumi;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -22,8 +21,8 @@ import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.bangumi.entity.BangUmiEntity;
-import com.example.dllo.bibilala.bangumi.entity.BangUmiRecommendEntity;
+import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
+import com.example.dllo.bibilala.entity.bangumentity.BangUmiRecommendEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -32,12 +31,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class BangumiFragment extends BaseFragment {
     private List<BangUmiRecommendEntity.ResultBean> mEntity;
     private RecyclerView mRecyclerView;
     private BangumAdapter adapter;
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
-    private ProgressDialog mProgressDialog;
 
 
     private ViewPager mViewPager;
@@ -63,17 +62,11 @@ public class BangumiFragment extends BaseFragment {
     protected void initView() {
 
         mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
-        mProgressDialog = createDialog();
+
 
     }
 
-    private ProgressDialog createDialog() {
-        ProgressDialog dialog = new ProgressDialog(mContext);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setTitle("数据加载中");
-        dialog.setMessage("请稍后...");
-        return dialog;
-    }
+
 
     @Override
     protected void initData() {
@@ -119,7 +112,7 @@ public class BangumiFragment extends BaseFragment {
             @Override
             public void onResponse(BangUmiEntity response) {
                 mCrayonAdapter.setEntity(response.getResult().getSerializing());
-                mCrayonGridView.setAdapter(mCrayonAdapter);
+             mCrayonGridView.setAdapter(mCrayonAdapter);
 
             }
 
@@ -141,6 +134,7 @@ public class BangumiFragment extends BaseFragment {
         SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
             @Override
             public void onResponse(BangUmiEntity response) {
+
                 Log.d("国产动画传输的数据", "response:" + response);
                 mBangumChinaAdapter.setEntity(response.getResult().getChina());
                 mChinaGridView.setAdapter(mBangumChinaAdapter);

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <solid android:color="#FB7299"/>
+    <size
+        android:width="310dp"
+        android:height="150dp"/><!-- 宽度和高度 -->
+    <!-- 四周留出来的空白,和xml文件中的pad效果一样，对内起作用 -->
+    <padding android:top="10dp" android:bottom="10dp"/>
+    <padding android:left="10dp" android:right="10dp"/>
+    <!-- 边角的圆弧半径 -->
+    <corners android:radius="5dp"/>
+    <!-- 描边：一般大小都是1dp -->
+
+
+    <gradient
+        android:angle="270.0"
+        android:endColor="#EFC6D2"
+        android:startColor="#EFC6D2" />
+</shape>

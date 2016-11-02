@@ -1,0 +1,16 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_focused="false"
+        android:state_pressed="false"
+        android:drawable="@drawable/shape_toll_one">
+
+    </item>
+    <item
+        android:state_focused="false"
+        android:state_pressed="true"
+        android:drawable="@drawable/shape_toll_two">
+    </item>
+
+
+
+</selector>
