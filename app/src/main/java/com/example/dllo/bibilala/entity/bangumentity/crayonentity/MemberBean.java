@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.bangumi.view; /*
+package com.example.dllo.bibilala.entity.bangumentity.crayonentity;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,81 +40,127 @@ package com.example.dllo.bibilala.bangumi.view; /*
          
         */
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
-import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by dllo on 16/11/1.
+ * Created by dllo on 16/11/2.
  */
-public class CrayonActivity extends BaseActivity implements ICrayonView {
-    private RecyclerView mRecyclerView;
-    private SecondBangumPresenter mPresenter;
-    private CrayonAdapter mAdapter;
-    private List<ListEntity> entityList;
 
-    @Override
-    protected int setLayout() {
-        return R.layout.crayon_activity;
+public class MemberBean {
+    private String mid;
+    private String uname;
+    private String sex;
+    private String sign;
+    private String avatar;
+    private String rank;
+    private String DisplayRank;
+    private LevelInfoBean level_info;
+    private PendantBean pendant;
+    private NameplateBean nameplate;
+    private OfficialVerifyBean official_verify;
+    private VipBean vip;
+
+    public String getMid() {
+        return mid;
     }
 
-    @Override
-    protected void initView() {
-        mRecyclerView = bindView(R.id.crayon_ac_rv);
-
+    public void setMid(String mid) {
+        this.mid = mid;
     }
 
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        entityList = new ArrayList<>();
-        mPresenter = new SecondBangumPresenter(this);
-        Intent intent = getIntent();
-        String mUrl = intent.getStringExtra("crayon");
-        mPresenter.startRequest(mUrl, CrayonFootEntity.class);
+    public String getUname() {
+        return uname;
+    }
 
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getDisplayRank() {
+        return DisplayRank;
+    }
+
+    public void setDisplayRank(String DisplayRank) {
+        this.DisplayRank = DisplayRank;
+    }
+
+    public LevelInfoBean getLevel_info() {
+        return level_info;
+    }
+
+    public void setLevel_info(LevelInfoBean level_info) {
+        this.level_info = level_info;
+    }
+
+    public PendantBean getPendant() {
+        return pendant;
+    }
+
+    public void setPendant(PendantBean pendant) {
+        this.pendant = pendant;
+    }
+
+    public NameplateBean getNameplate() {
+        return nameplate;
+    }
+
+    public void setNameplate(NameplateBean nameplate) {
+        this.nameplate = nameplate;
+    }
+
+    public OfficialVerifyBean getOfficial_verify() {
+        return official_verify;
+    }
+
+    public void setOfficial_verify(OfficialVerifyBean official_verify) {
+        this.official_verify = official_verify;
+    }
+
+    public VipBean getVip() {
+        return vip;
+    }
+
+    public void setVip(VipBean vip) {
+        this.vip = vip;
     }
 
 
-    @Override
-    public void onCrayonFootEntity(CrayonFootEntity crayonFootEntity) {
-        entityList = crayonFootEntity.getResult().getList();
-        crayonResult();
 
 
-    }
-
-    private void crayonResult() {
-        mAdapter = new CrayonAdapter(this, R.layout.item_crayon_ac, entityList);
-        mAdapter.setEntityList(entityList);
-        LinearLayoutManager manager = new GridLayoutManager(this, 3);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
-    public void showDialog() {
 
 
-    }
 
-    @Override
-    public void dismissDialog() {
 
-    }
-    @Override
-    public void onError() {
 
-    }
+
 }

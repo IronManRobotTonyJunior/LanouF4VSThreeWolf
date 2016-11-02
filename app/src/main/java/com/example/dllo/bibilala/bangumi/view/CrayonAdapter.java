@@ -41,6 +41,7 @@ package com.example.dllo.bibilala.bangumi.view;
         */
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,68 +51,46 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
  * Created by dllo on 16/11/1.
  */
 
-public class CrayonAdapter extends BaseAdapter {
-    private List<ListEntity> entityList;
-    private Context context;
+public class CrayonAdapter extends CommonAdapter<ListEntity> {
 
-    public CrayonAdapter(Context context) {
-        this.context = context;
-    }
+    private List<ListEntity> entityList;
 
     public void setEntityList(List<ListEntity> entityList) {
         this.entityList = entityList;
-        notifyDataSetChanged();
+    }
+
+    public CrayonAdapter(Context context, int layoutId, List<ListEntity> datas) {
+        super(context, layoutId, datas);
     }
 
     @Override
-    public int getCount() {
-        return entityList == null ? 0 : entityList.size();
+    protected void convert(ViewHolder holder, ListEntity listEntity, int position) {
+        ImageView imageView = holder.getView(R.id.item_crayon_ima_ac);
+        String cover = entityList.get(position).getCover();
+        Glide.with(mContext).load(cover).into(imageView);
+        holder.setText(R.id.item_crayon_tv_title_ac,entityList.get(position).getTitle());
+        String follow = entityList.get(position).getFollow();
+        int i = Integer.parseInt(follow);
+        double d = i / 10000;
+        DecimalFormat df = new java.text.DecimalFormat("#.0");
+        String a = df.format(d);
+        holder.setText(R.id.item_crayon_tv_favourites_ac,a + "万人追番");
+        holder.setText(R.id.item_crayon_tv_favourites_ac,entityList.get(position).getTitle());
+
     }
 
-    @Override
-    public Object getItem(int position) {
-        return entityList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        CrayonViewHolder holder = null;
-        if (convertView==null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_crayon_ac,parent,false);
-            holder = new CrayonViewHolder(convertView);
-            convertView.setTag(holder);
-        }else {
-            holder = (CrayonViewHolder) convertView.getTag();
-        }
-        holder.tvTitle.setText(entityList.get(position).getTitle());
-        holder.tvPeople.setText(entityList.get(position).getFollow()+"人追番");
-        Glide.with(context).load(entityList.get(position).getCover()).into(holder.imageView);
-
-        return convertView;
-    }
-    class CrayonViewHolder{
-        private ImageView imageView;
-        private TextView tvTitle,tvPeople;
-        public CrayonViewHolder(View view) {
-            imageView = (ImageView) view.findViewById(R.id.item_crayon_ima_ac);
-            tvTitle = (TextView) view.findViewById(R.id.item_crayon_tv_title_ac);
-            tvPeople = (TextView) view.findViewById(R.id.item_crayon_tv_favourites_ac);
 
 
-        }
-    }
+
 }

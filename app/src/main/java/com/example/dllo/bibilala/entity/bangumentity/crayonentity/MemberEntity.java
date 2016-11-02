@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.bangumi.view; /*
+package com.example.dllo.bibilala.entity.bangumentity.crayonentity;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,81 +40,119 @@ package com.example.dllo.bibilala.bangumi.view; /*
          
         */
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
-import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by dllo on 16/11/1.
+ * Created by dllo on 16/11/2.
  */
-public class CrayonActivity extends BaseActivity implements ICrayonView {
-    private RecyclerView mRecyclerView;
-    private SecondBangumPresenter mPresenter;
-    private CrayonAdapter mAdapter;
-    private List<ListEntity> entityList;
 
-    @Override
-    protected int setLayout() {
-        return R.layout.crayon_activity;
+public class MemberEntity {
+
+    private String mid;
+    private String uname;
+    private String sex;
+    private String sign;
+    private String avatar;
+    private String rank;
+    private String DisplayRank;
+    private LevelInfoEntity level_info;
+    private PendantEntity pendant;
+    private NameplateEntity nameplate;
+    private OfficialVerifyEntity official_verify;
+    private VipEntity vip;
+
+    public String getMid() {
+        return mid;
     }
 
-    @Override
-    protected void initView() {
-        mRecyclerView = bindView(R.id.crayon_ac_rv);
-
+    public void setMid(String mid) {
+        this.mid = mid;
     }
 
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        entityList = new ArrayList<>();
-        mPresenter = new SecondBangumPresenter(this);
-        Intent intent = getIntent();
-        String mUrl = intent.getStringExtra("crayon");
-        mPresenter.startRequest(mUrl, CrayonFootEntity.class);
-
-
+    public String getUname() {
+        return uname;
     }
 
-
-    @Override
-    public void onCrayonFootEntity(CrayonFootEntity crayonFootEntity) {
-        entityList = crayonFootEntity.getResult().getList();
-        crayonResult();
-
-
+    public void setUname(String uname) {
+        this.uname = uname;
     }
 
-    private void crayonResult() {
-        mAdapter = new CrayonAdapter(this, R.layout.item_crayon_ac, entityList);
-        mAdapter.setEntityList(entityList);
-        LinearLayoutManager manager = new GridLayoutManager(this, 3);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(mAdapter);
+    public String getSex() {
+        return sex;
     }
 
-    @Override
-    public void showDialog() {
-
-
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    @Override
-    public void dismissDialog() {
-
+    public String getSign() {
+        return sign;
     }
-    @Override
-    public void onError() {
 
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getDisplayRank() {
+        return DisplayRank;
+    }
+
+    public void setDisplayRank(String displayRank) {
+        DisplayRank = displayRank;
+    }
+
+    public LevelInfoEntity getLevel_info() {
+        return level_info;
+    }
+
+    public void setLevel_info(LevelInfoEntity level_info) {
+        this.level_info = level_info;
+    }
+
+    public PendantEntity getPendant() {
+        return pendant;
+    }
+
+    public void setPendant(PendantEntity pendant) {
+        this.pendant = pendant;
+    }
+
+    public NameplateEntity getNameplate() {
+        return nameplate;
+    }
+
+    public void setNameplate(NameplateEntity nameplate) {
+        this.nameplate = nameplate;
+    }
+
+    public OfficialVerifyEntity getOfficial_verify() {
+        return official_verify;
+    }
+
+    public void setOfficial_verify(OfficialVerifyEntity official_verify) {
+        this.official_verify = official_verify;
+    }
+
+    public VipEntity getVip() {
+        return vip;
+    }
+
+    public void setVip(VipEntity vip) {
+        this.vip = vip;
     }
 }
+

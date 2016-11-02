@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.bangumi.view; /*
+package com.example.dllo.bibilala.entity.bangumentity.crayonentity;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,81 +40,45 @@ package com.example.dllo.bibilala.bangumi.view; /*
          
         */
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
-import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by dllo on 16/11/1.
+ * Created by dllo on 16/11/2.
  */
-public class CrayonActivity extends BaseActivity implements ICrayonView {
-    private RecyclerView mRecyclerView;
-    private SecondBangumPresenter mPresenter;
-    private CrayonAdapter mAdapter;
-    private List<ListEntity> entityList;
 
-    @Override
-    protected int setLayout() {
-        return R.layout.crayon_activity;
+public class LevelInfoEntity {
+    private int current_level;
+    private int current_min;
+    private int current_exp;
+    private int next_exp;
+
+    public int getCurrent_level() {
+        return current_level;
     }
 
-    @Override
-    protected void initView() {
-        mRecyclerView = bindView(R.id.crayon_ac_rv);
-
+    public void setCurrent_level(int current_level) {
+        this.current_level = current_level;
     }
 
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        entityList = new ArrayList<>();
-        mPresenter = new SecondBangumPresenter(this);
-        Intent intent = getIntent();
-        String mUrl = intent.getStringExtra("crayon");
-        mPresenter.startRequest(mUrl, CrayonFootEntity.class);
-
-
+    public int getCurrent_min() {
+        return current_min;
     }
 
-
-    @Override
-    public void onCrayonFootEntity(CrayonFootEntity crayonFootEntity) {
-        entityList = crayonFootEntity.getResult().getList();
-        crayonResult();
-
-
+    public void setCurrent_min(int current_min) {
+        this.current_min = current_min;
     }
 
-    private void crayonResult() {
-        mAdapter = new CrayonAdapter(this, R.layout.item_crayon_ac, entityList);
-        mAdapter.setEntityList(entityList);
-        LinearLayoutManager manager = new GridLayoutManager(this, 3);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(mAdapter);
+    public int getCurrent_exp() {
+        return current_exp;
     }
 
-    @Override
-    public void showDialog() {
-
-
+    public void setCurrent_exp(int current_exp) {
+        this.current_exp = current_exp;
     }
 
-    @Override
-    public void dismissDialog() {
-
+    public int getNext_exp() {
+        return next_exp;
     }
-    @Override
-    public void onError() {
 
+    public void setNext_exp(int next_exp) {
+        this.next_exp = next_exp;
     }
 }
