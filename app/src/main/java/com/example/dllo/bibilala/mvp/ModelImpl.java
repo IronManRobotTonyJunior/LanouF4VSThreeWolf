@@ -9,7 +9,7 @@ import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEn
 public class ModelImpl implements IModel {
 
 
-    @Override
+      @Override
     public <T> void startRequest(String urlStr, Class<T> clazz,OnCompletedListener<T> listener) {
         HttpManager.getInstance().getRequest(urlStr,clazz,listener);
     }

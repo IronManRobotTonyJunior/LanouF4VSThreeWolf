@@ -82,6 +82,14 @@ public final class UrlClass {
 //    番剧二级列表
     //番剧放送表
     public static final String URL_SECOND_GIO = "http://bangumi.bilibili.com/api/timeline_v4?appkey=1d8b6e7d45233436&area_id=1%2C2%2C-1&build=427000&mobi_app=android&platform=android&see_mine=0&ts=1477485131000&sign=7b105fbc60d46fa35e10873dea58e53a";
+    //番剧 新番连载 番剧推荐
+    public static final String URL_BANGUM_SECOND_NEW_RECOMMEND(int position) {
+        int i = position;
+        String url = "http://bangumi.bilibili.com/api/season/recommend/" + i + ".json?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1477988698000&sign=d248d8937975f394541830be7983d44c";
+        return url;
+    }
+
+
     /**
      * 直播
      */

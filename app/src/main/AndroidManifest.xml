@@ -19,6 +19,7 @@
         <activity android:name=".activity.login.SignActivity"/>
         <activity android:name=".activity.login.QuestionActivity"/>
         <activity android:name=".activity.login.RegisterActivity"/>
+        <activity android:name=".bangumi.view.CrayonActivity"/>
     </application>
 
 </manifest>

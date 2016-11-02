@@ -1,6 +1,6 @@
 package com.example.dllo.bibilala.bangumi;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ import com.example.dllo.bibilala.bangumi.adapter.BangumChinaAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
+import com.example.dllo.bibilala.bangumi.view.CrayonActivity;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
 import com.example.dllo.bibilala.entity.bangumentity.BangUmiRecommendEntity;
@@ -29,7 +31,6 @@ import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class BangumiFragment extends BaseFragment {
@@ -49,9 +50,10 @@ public class BangumiFragment extends BaseFragment {
     private ImageView[] point;
     private int pointSize = 4;
 
-    private GridView mGridView,mChinaGridView,mCrayonGridView;
+    private GridView mGridView, mChinaGridView, mCrayonGridView;
     private BangumChinaAdapter mBangumChinaAdapter;
     private CrayonAdapter mCrayonAdapter;
+
 
     @Override
     protected int setLayout() {
@@ -64,8 +66,9 @@ public class BangumiFragment extends BaseFragment {
         mRecyclerView = bindView(R.id.bang_umi_fragment_rv);
 
 
-    }
 
+
+    }
 
 
     @Override
@@ -91,19 +94,17 @@ public class BangumiFragment extends BaseFragment {
         });
 
 
-
         onLunResponse();
         onCrayon();
         onChinaKutton();
         onJulyToLove();
 
 
-
 //
     }
 
     private void onCrayon() {
-        View view  = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_crayon,null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_crayon, null);
         mHeaderAndFooterWrapper.addHeaderView(view);
         mHeaderAndFooterWrapper.notifyDataSetChanged();
         mCrayonGridView = (GridView) view.findViewById(R.id.item_crayon_gl);
@@ -112,7 +113,9 @@ public class BangumiFragment extends BaseFragment {
             @Override
             public void onResponse(BangUmiEntity response) {
                 mCrayonAdapter.setEntity(response.getResult().getSerializing());
-             mCrayonGridView.setAdapter(mCrayonAdapter);
+                mCrayonGridView.setAdapter(mCrayonAdapter);
+
+
 
             }
 
@@ -122,11 +125,44 @@ public class BangumiFragment extends BaseFragment {
             }
         });
 
+        mCrayonGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                SendGetRequest.sendGetRequest(UrlClass.URL_SOME_DRAMA, BangUmiEntity.class, new SendGetRequest.OnResponseListener<BangUmiEntity>() {
+                    @Override
+                    public void onResponse(BangUmiEntity response) {
+
+                        int i = response.getResult().getSerializing().get(position).getSeason_id();
+                        String url = UrlClass.URL_BANGUM_SECOND_NEW_RECOMMEND(i);
+                        Log.d("牛", url);
+                        Intent intent = new Intent(mContext,CrayonActivity.class);
+                        intent.putExtra("crayon",url);
+                        startActivity(intent);
+
+
+
+
+
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+                Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
 
     }
 
     private void onChinaKutton() {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_china,null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_china, null);
         mHeaderAndFooterWrapper.addHeaderView(view);
         mHeaderAndFooterWrapper.notifyDataSetChanged();
         mChinaGridView = (GridView) view.findViewById(R.id.item_bang_china_gv);
@@ -173,7 +209,6 @@ public class BangumiFragment extends BaseFragment {
         mJulyToLoveAdapter = new JulyToLoveAdapter(mContext);
 
 
-
     }
 
     private void onLunResponse() {
@@ -189,8 +224,6 @@ public class BangumiFragment extends BaseFragment {
             public void onResponse(final BangUmiEntity response) {
                 mBangumiAdapter.setEntity(response.getResult().getAd().getHead());
                 mViewPager.setAdapter(mBangumiAdapter);
-
-
 
 
             }
@@ -243,7 +276,6 @@ public class BangumiFragment extends BaseFragment {
 
             layoutParams.leftMargin = 2;
             layoutParams.rightMargin = 2;
-
 
 
             mLinearLayout.addView(imageView, layoutParams);
