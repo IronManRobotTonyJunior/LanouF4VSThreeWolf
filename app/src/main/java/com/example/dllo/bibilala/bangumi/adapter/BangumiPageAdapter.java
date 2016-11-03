@@ -41,12 +41,14 @@ package com.example.dllo.bibilala.bangumi.adapter;
         */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
@@ -59,7 +61,7 @@ import java.util.List;
  * Created by dllo on 16/10/22.
  */
 
-public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
+public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener{
     private Context context;
     private ImageView[] point;
     private List<HeadEntity> entity;
@@ -98,6 +100,13 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
         ImageView imageView = (ImageView) view.findViewById(R.id.item_bang_umi_view_pager_ima);
         HeadEntity headEntity = entity.get(position % entity.size());
         Glide.with(context).load(headEntity.getImg()).into(imageView);
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int currentItem = viewPager.getCurrentItem();
+//                Toast.makeText(context, "currentItem:" + currentItem, Toast.LENGTH_SHORT).show();
+//            }
+//        });
         container.addView(view);
         viewPager.addOnPageChangeListener(this);
         return view;
@@ -133,4 +142,5 @@ public class BangumiPageAdapter extends PagerAdapter implements ViewPager.OnPage
     public void destroyItem(ViewGroup container, int position, Object object) {
 
     }
+
 }

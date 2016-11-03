@@ -63,7 +63,7 @@ public final class UrlClass {
     public static final String URL_GHOST_OU = "http://app.bilibili.com/x/banner?plat=4&build=427000&channel=wandoujia";
     //推荐全部 网址打不开
 
-//    public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=baidu&mobi_app=android&platform=android&screen=xxhdpi&ts=1477357874000&sign=c6af3131948c45cec5b0be0811b11f0e";
+    //    public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=baidu&mobi_app=android&platform=android&screen=xxhdpi&ts=1477357874000&sign=c6af3131948c45cec5b0be0811b11f0e";
     public static final String URL_RECOMMEND = "http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&platform=android&screen=hdpi&ts=1476969044000&sign=65d2822650aca5561e8a436e1ce36dc2";
     //推荐番剧推荐
     public static final String URL_FAN_DRAM_RECOMMENDATION = "http://bangumi.bilibili.com/api/get_season_by_tag?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&page=1&pagesize=4&platform=android&tag_id=109&ts=1476949442000&sign=c10377a9764dc78802f0896261b952d5";
@@ -79,15 +79,33 @@ public final class UrlClass {
     public static final String URL_SOME_RECOMMEND = "http://bangumi.bilibili.com/api/bangumi_recommend?appkey=1d8b6e7d45233436&build=427000&cursor=-1&mobi_app=android&pagesize=10&platform=android&ts=1476949442000&sign=bc143d94f849de44056ed1615518a2f8";
     //番剧全部
     public static final String URL_SOME_DRAMA = "http://bangumi.bilibili.com/api/app_index_page_v4_2?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1476949442000&sign=56dac58b12111b7e63c39b076ef28a49";
-//    番剧二级列表
+    //    番剧二级列表
     //番剧放送表
     public static final String URL_SECOND_GIO = "http://bangumi.bilibili.com/api/timeline_v4?appkey=1d8b6e7d45233436&area_id=1%2C2%2C-1&build=427000&mobi_app=android&platform=android&see_mine=0&ts=1477485131000&sign=7b105fbc60d46fa35e10873dea58e53a";
+
     //番剧 新番连载 番剧推荐
     public static final String URL_BANGUM_SECOND_NEW_RECOMMEND(int position) {
         int i = position;
         String url = "http://bangumi.bilibili.com/api/season/recommend/" + i + ".json?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1477988698000&sign=d248d8937975f394541830be7983d44c";
         return url;
     }
+
+    //番剧 新番连载 番剧界面
+    public static final String URL_BGM(int position) {
+        String url = "http://bangumi.bilibili.com/api/season_v4?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&season_id=" +
+                position + "&ts=1478069660000&type=bangumi&sign=7113480af897a63fb959f47035ec5cd4";
+        return url;
+    }
+
+    //番剧 新番连载 最热评论
+    public static final String URL_HOT(int str) {
+        String url = "http://api.bilibili.com/x/v2/reply?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&nohot=1&oid="
+                + str +
+                "&platform=android&pn=1&ps=3&sort=2&type=1&sign=b943609b062a5e005f39ac4e91ba6f4f";
+        return url;
+    }
+
+    public static final String URL_HOTS = "http://api.bilibili.com/x/v2/reply?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&nohot=1&oid=6922039&platform=android&pn=1&ps=3&sort=2&type=1&sign=b943609b062a5e005f39ac4e91ba6f4f";
 
 
     /**
@@ -192,5 +210,6 @@ public final class UrlClass {
         String url = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=7b0828c551fedbab&appkey=1d8b6e7d45233436&area_id=9&build=427000&mobi_app=android&page=" + i + "&platform=android&sort=hottest&tag=%E9%92%A2%E7%AC%94%E7%94%BB&sign=7d1c4d50a25b207245abea53cc6e825f";
         return url;
     }
+
 
 }

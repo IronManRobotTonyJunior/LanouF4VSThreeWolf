@@ -44,12 +44,18 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
 import com.example.dllo.bibilala.base.BaseActivity;
+import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonBean;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
+import com.example.dllo.bibilala.entity.bangumentity.crayonentity.DataBean;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
+import com.example.dllo.bibilala.entity.bangumentity.crayonentity.RepliesBean;
+import com.example.dllo.bibilala.http.SendGetRequest;
+import com.example.dllo.bibilala.url.UrlClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,11 +82,33 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+
         entityList = new ArrayList<>();
         mPresenter = new SecondBangumPresenter(this);
         Intent intent = getIntent();
         String mUrl = intent.getStringExtra("crayon");
+        String url = intent.getStringExtra("bum");
+        Log.d("CrayonActivity", url);
+
         mPresenter.startRequest(mUrl, CrayonFootEntity.class);
+
+
+        SendGetRequest.sendGetRequest(url, CrayonBean.class, new SendGetRequest.OnResponseListener<CrayonBean>() {
+            @Override
+            public void onResponse(CrayonBean response) {
+//                response.getResult().getEpisodes().size();
+//                String i = response.getResult().getEpisodes().get(0).getAv_id();
+//
+//                Log.d("CrayonActivity", "i.length():" + i.length());
+//                Log.d("CrayonActivity", i);
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
 
     }
@@ -112,6 +140,7 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
     public void dismissDialog() {
 
     }
+
     @Override
     public void onError() {
 

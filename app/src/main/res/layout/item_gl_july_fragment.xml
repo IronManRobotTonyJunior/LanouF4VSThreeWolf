@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
 
-    <GridView
+    <com.example.dllo.bibilala.bangumi.grid.GridViews
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:id="@+id/item_july_gl"
