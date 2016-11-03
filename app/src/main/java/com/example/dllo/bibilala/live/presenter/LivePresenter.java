@@ -19,7 +19,7 @@ public class LivePresenter {
     }
 
     public <T> void startRequest(String urlStr, Class<T> clazz) {
-        mILiveView.showDialog();
+        mILiveView.showRefresh();
         mIModel.startRequest(urlStr, clazz, new OnCompletedListener<T>() {
             @Override
             public void onCompleted(T result) {
@@ -28,12 +28,12 @@ public class LivePresenter {
                 } else if (result instanceof LiveTypeEntity) {
                     mILiveView.onTypeResponse((LiveTypeEntity) result);
                 }
-                mILiveView.dismissDialog();
+                mILiveView.dismissRefresh();
             }
 
             @Override
             public void onFailed() {
-                mILiveView.dismissDialog();
+                mILiveView.dismissRefresh();
                 mILiveView.onError();
             }
         });

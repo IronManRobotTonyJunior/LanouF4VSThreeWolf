@@ -17,4 +17,6 @@
     <color name="colorPinkAlways">#FB7299</color>
     <color name="colorWhiteAlways">#F1F1F1</color>
     <color name="colorFindText">#999999</color>
+    <color name="colorSearchHint">#4A4A4A</color>
+    <color name="colorSearchList">#242424</color>
 </resources>
