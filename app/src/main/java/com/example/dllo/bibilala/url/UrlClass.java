@@ -90,6 +90,15 @@ public final class UrlClass {
         return url;
     }
 
+    //番剧 Second
+    public static final String URL_URL(int position) {
+        int i = position;
+        String url = "http://bangumi.bilibili.com/api/season_v4?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&season_id=" + i +
+                "&ts=1478241659000&type=bangumi&sign=5321478b86e48faeb59134c6a4c0883d";
+        return url;
+    }
+
+
     //番剧 新番连载 番剧界面
     public static final String URL_BGM(int position) {
         String url = "http://bangumi.bilibili.com/api/season_v4?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&season_id=" +
