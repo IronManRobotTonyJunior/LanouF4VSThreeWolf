@@ -21,6 +21,11 @@
         <activity android:name=".activity.login.RegisterActivity"/>
         <activity android:name=".bangumi.view.CrayonActivity"/>
         <activity android:name=".bangumi.view.BangumiActivity"/>
+
+
+        <activity android:name=".recommend.activity.GridLiveActivity"/>
+
+        <activity android:name=".recommend.activity.animation.AnimationActivity"/>
     </application>
 
 </manifest>

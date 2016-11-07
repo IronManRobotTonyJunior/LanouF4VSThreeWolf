@@ -1,16 +1,10 @@
-package com.example.dllo.bibilala.recommend.adapter;
+package com.example.dllo.bibilala.recommend.activity.animation;
 
-import android.content.Context;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.recommendentity.AllBean;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
-
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -37,21 +31,25 @@ import java.util.List;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommendAdapter extends CommonAdapter<AllBean.ResultBean.BodyBean>{
+public class AnimationAdapter  extends FragmentPagerAdapter{
 
-
-
-    public RecommendAdapter(Context context, int layoutId, List<AllBean.ResultBean.BodyBean> datas) {
-        super(context, layoutId, datas);
+    private List<TabAnimation>animationList =TabAnimation.getTabAnimation();
+    public AnimationAdapter(FragmentManager fm) {
+        super(fm);
     }
 
     @Override
-    protected void convert(ViewHolder holder, AllBean.ResultBean.BodyBean resultBean, int position) {
+    public Fragment getItem(int position) {
+        return animationList.get(position).getmFragment();
+    }
 
+    @Override
+    public int getCount() {
+        return animationList==null? 0: animationList.size();
+    }
 
-        ImageView imageView = holder.getView(R.id.last_topic_big_img);
-        Glide.with(mContext).load(resultBean.getCover()).into(imageView);
-
-
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return animationList.get(position).getmTitle();
     }
 }

@@ -28,12 +28,12 @@ public abstract class BaseTitleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_activity_include_title);
         LinearLayout mLinearLayout = bindView(R.id.base_ll);
-        View view = LayoutInflater.from(this).inflate(setLayout(),mLinearLayout,false);
+        View view = LayoutInflater.from(this).inflate(setLayout(), mLinearLayout, false);
         mLinearLayout.addView(view);
         mCoordinatorLayout = bindView(R.id.main_coordinator);
-        mToolbar = (Toolbar) findViewById(R.id.include_toolbar);
         mTabLayout = (TabLayout) findViewById(R.id.include_tab);
         mViewPager = (ViewPager) findViewById(R.id.include_vp);
+        mToolbar = (Toolbar) findViewById(R.id.include_toolbar);
         mToolbar.setNavigationIcon(R.mipmap.abc_ic_ab_back_mtrl_am_alpha);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
