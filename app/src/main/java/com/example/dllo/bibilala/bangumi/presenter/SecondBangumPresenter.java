@@ -43,8 +43,9 @@ package com.example.dllo.bibilala.bangumi.presenter;
 import com.example.dllo.bibilala.bangumi.view.ICrayonView;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
-import com.example.dllo.bibilala.mvp.IModel;
-import com.example.dllo.bibilala.mvp.ModelImpl;
+import com.example.dllo.bibilala.mvp.model.IModel;
+import com.example.dllo.bibilala.mvp.model.ModelImpl;
+
 
 /**
  * Created by dllo on 16/11/1.
