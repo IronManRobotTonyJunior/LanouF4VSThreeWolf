@@ -4,8 +4,8 @@ package com.example.dllo.bibilala.find.presenter;
 import com.example.dllo.bibilala.entity.find.FindEntity;
 import com.example.dllo.bibilala.find.view.IFindView;
 import com.example.dllo.bibilala.http.OnCompletedListener;
-import com.example.dllo.bibilala.mvp.IModel;
-import com.example.dllo.bibilala.mvp.ModelImpl;
+import com.example.dllo.bibilala.mvp.model.IModel;
+import com.example.dllo.bibilala.mvp.model.ModelImpl;
 
 public class FindPresenter {
     private IFindView mILiveView;

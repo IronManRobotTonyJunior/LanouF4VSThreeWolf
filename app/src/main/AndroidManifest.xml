@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.dllo.bibilala">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".app.BiBiLaiLaiApp"
@@ -9,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
+        <activity
+            android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,6 +21,15 @@
         <activity android:name=".activity.login.SignActivity"/>
         <activity android:name=".activity.login.QuestionActivity"/>
         <activity android:name=".activity.login.RegisterActivity"/>
+        <activity
+            android:name=".search.view.SearchActivity"
+            android:theme="@style/Theme.Translucent"/>
+        <activity
+            android:name=".search.searchdetail.view.SearchDetailActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".recommend.activity.GridLiveActivity"/>
+
+        <activity android:name=".recommend.activity.animation.AnimationActivity"/>
     </application>
 
 </manifest>

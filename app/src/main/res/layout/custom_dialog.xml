@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/search_linear"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorTranslucent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/search_animator_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/five"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/dialog_ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:background="@color/colorWhiteLight"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/img_search_back"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@mipmap/ic_arrow_back_black"/>
+
+            <ImageButton
+                android:id="@+id/img_search_scan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@mipmap/ic_scan"/>
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:background="@null"
+                android:hint="搜索视频、番剧、up主或av号"
+                android:singleLine="true"
+                android:textColor="@color/colorSearchHint"
+                android:textSize="14dp"/>
+
+            <ImageButton
+                android:id="@+id/img_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@mipmap/ic_search_query"/>
+
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/lv_search_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_search_list"
+            android:divider="@null"/>
+    </LinearLayout>
+</LinearLayout>
