@@ -50,7 +50,7 @@ public class RecommendAdapter extends CommonAdapter<AllBean.ResultBean.BodyBean>
 
 
         ImageView imageView = holder.getView(R.id.last_topic_big_img);
-        Glide.with(mContext).load("http://i0.hdslb.com/bfs/archive/c6acc61977d1d8ae1405d601ec20d75001d704b3.jpg").into(imageView);
+        Glide.with(mContext).load(resultBean.getCover()).into(imageView);
 
 
     }
