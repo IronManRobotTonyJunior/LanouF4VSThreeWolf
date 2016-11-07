@@ -5,9 +5,9 @@ import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
 
 public interface ILiveView {
-    void showDialog();
+    void showRefresh();
 
-    void dismissDialog();
+    void dismissRefresh();
 
     void onTypeResponse(LiveTypeEntity result);
 

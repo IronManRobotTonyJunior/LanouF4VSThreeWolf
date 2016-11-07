@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.mvp;
+package com.example.dllo.bibilala.mvp.model;
 
 
 import com.example.dllo.bibilala.http.OnCompletedListener;

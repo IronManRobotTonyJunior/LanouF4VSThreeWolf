@@ -6,6 +6,8 @@
     android:id="@+id/activity_main_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.example.dllo.bibilala.main.MainActivity">
 
@@ -22,6 +24,7 @@
         android:fitsSystemWindows="true"
         android:theme="@style/Base.Theme.DesignDemo"
         app:headerLayout="@layout/nav_header_main"
+        app:insetForeground="#00000000"
         app:menu="@menu/activity_main_drawer">
 
     </android.support.design.widget.NavigationView>
