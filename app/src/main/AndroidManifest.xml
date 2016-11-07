@@ -11,24 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".main.MainActivity"
-            android:theme="@style/Theme.TranslucentTitle">
+            android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.login.SignActivity"/>
-        <activity
-            android:name=".activity.login.QuestionActivity"/>
-
-        <activity
-            android:name=".activity.login.RegisterActivity"/>
+        <activity android:name=".activity.login.SignActivity"/>
+        <activity android:name=".activity.login.QuestionActivity"/>
+        <activity android:name=".activity.login.RegisterActivity"/>
         <activity
             android:name=".search.view.SearchActivity"
             android:theme="@style/Theme.Translucent"/>
+        <activity
+            android:name=".search.searchdetail.view.SearchDetailActivity"/>
     </application>
 
 </manifest>

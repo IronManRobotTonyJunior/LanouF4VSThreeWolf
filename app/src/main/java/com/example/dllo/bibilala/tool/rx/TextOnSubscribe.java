@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.search.view;
+package com.example.dllo.bibilala.tool.rx;
 
 
 import android.text.Editable;
