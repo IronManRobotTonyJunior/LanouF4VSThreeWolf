@@ -82,6 +82,7 @@ public class BangumiFragment extends BaseFragment {
     protected void initData() {
 
 
+        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPinkAlways));
         mEntity = new ArrayList<>();
         adapter = new BangumAdapter(mContext, R.layout.item_bangum_recommend, mEntity);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);

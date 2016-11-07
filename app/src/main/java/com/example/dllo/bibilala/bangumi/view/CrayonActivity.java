@@ -44,7 +44,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
@@ -92,7 +91,7 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
     protected void initData(Bundle savedInstanceState) {
 
         Vitamio.isInitialized(this);
-        playfunction();
+        playFunction();
         entityList = new ArrayList<>();
         mPresenter = new SecondBangumPresenter(this);
         Intent intent = getIntent();
@@ -142,7 +141,7 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
     public void onError() {
 
     }
-    void playfunction(){
+    void playFunction(){
         String path = "";
         path = video[new Random().nextInt(video.length)];
         if (path == "") {
