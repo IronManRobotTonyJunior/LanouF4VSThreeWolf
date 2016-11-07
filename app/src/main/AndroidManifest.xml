@@ -21,6 +21,10 @@
         <activity android:name=".activity.login.SignActivity"/>
         <activity android:name=".activity.login.QuestionActivity"/>
         <activity android:name=".activity.login.RegisterActivity"/>
+        <activity android:name=".bangumi.view.CrayonActivity"/>
+        <activity android:name=".bangumi.view.BangumiActivity"/>
+
+
         <activity
             android:name=".search.view.SearchActivity"
             android:theme="@style/Theme.Translucent"/>

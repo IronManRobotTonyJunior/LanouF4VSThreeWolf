@@ -89,6 +89,41 @@ public final class UrlClass {
     //    番剧二级列表
     //番剧放送表
     public static final String URL_SECOND_GIO = "http://bangumi.bilibili.com/api/timeline_v4?appkey=1d8b6e7d45233436&area_id=1%2C2%2C-1&build=427000&mobi_app=android&platform=android&see_mine=0&ts=1477485131000&sign=7b105fbc60d46fa35e10873dea58e53a";
+
+    //番剧 新番连载 番剧推荐
+    public static final String URL_BANGUM_SECOND_NEW_RECOMMEND(int position) {
+        int i = position;
+        String url = "http://bangumi.bilibili.com/api/season/recommend/" + i + ".json?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1477988698000&sign=d248d8937975f394541830be7983d44c";
+        return url;
+    }
+
+    //番剧 Second
+    public static final String URL_URL(int position) {
+        int i = position;
+        String url = "http://bangumi.bilibili.com/api/season_v4?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&season_id=" + i +
+                "&ts=1478241659000&type=bangumi&sign=5321478b86e48faeb59134c6a4c0883d";
+        return url;
+    }
+
+
+    //番剧 新番连载 番剧界面
+    public static final String URL_BGM(int position) {
+        String url = "http://bangumi.bilibili.com/api/season_v4?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&season_id=" +
+                position + "&ts=1478069660000&type=bangumi&sign=7113480af897a63fb959f47035ec5cd4";
+        return url;
+    }
+
+    //番剧 新番连载 最热评论
+    public static final String URL_HOT(int str) {
+        String url = "http://api.bilibili.com/x/v2/reply?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&nohot=1&oid="
+                + str +
+                "&platform=android&pn=1&ps=3&sort=2&type=1&sign=b943609b062a5e005f39ac4e91ba6f4f";
+        return url;
+    }
+
+    public static final String URL_HOTS = "http://api.bilibili.com/x/v2/reply?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&nohot=1&oid=6922039&platform=android&pn=1&ps=3&sort=2&type=1&sign=b943609b062a5e005f39ac4e91ba6f4f";
+
+
     /**
      * 直播
      */
