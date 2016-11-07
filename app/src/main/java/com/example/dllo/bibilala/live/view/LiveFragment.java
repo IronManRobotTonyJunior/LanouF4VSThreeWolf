@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -18,7 +19,6 @@ import com.example.dllo.bibilala.url.UrlClass;
 import org.greenrobot.eventbus.EventBus;
 
 public class LiveFragment extends BaseFragment implements ILiveView {
-    private ProgressDialog mProgressDialog;
     private LivePresenter mLivePresenter;
     private RecyclerView mRecyclerView;
     private LiveAllEntity mLiveAllEntities;
@@ -28,32 +28,33 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     private GridLayoutManager mManager;
     private RecommendDataEntity mEntity;
     private SwipeRefreshLayout mRefreshLayout;
+    private boolean isLayout = false;
 
-    @Override
-    protected int setLayout() {
-        return R.layout.fragment_live;
-    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        if (isVisibleToUser) {
+        if (isVisibleToUser && isLayout) {
             mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
             mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
         }
     }
 
     @Override
+    protected int setLayout() {
+        return R.layout.fragment_live;
+    }
+
+
+    @Override
     protected void initView() {
-        mProgressDialog = createDialog();
         mRecyclerView = bindView(R.id.live_recycler);
         mRefreshLayout = bindView(R.id.live_swipe_refresh);
-
+        mLivePresenter = new LivePresenter(this);
     }
 
 
     @Override
     protected void initData() {
-        mLivePresenter = new LivePresenter(this);
         mAllAdapter = new LiveAdapter(mContext);
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -82,6 +83,11 @@ public class LiveFragment extends BaseFragment implements ILiveView {
                 }
             }
         });
+        if (!isLayout) {
+            mLivePresenter.startRequest(UrlClass.URL_RECOMMEND_ANCHOR, LiveAllEntity.class);
+            mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
+        }
+        isLayout = true;
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPinkAlways));
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -95,12 +101,12 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     }
 
     @Override
-    public void showDialog() {
+    public void showRefresh() {
         mRefreshLayout.setRefreshing(true);
     }
 
     @Override
-    public void dismissDialog() {
+    public void dismissRefresh() {
         mRefreshLayout.setRefreshing(false);
     }
 
@@ -144,4 +150,9 @@ public class LiveFragment extends BaseFragment implements ILiveView {
         return dialog;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        isLayout = false;
+    }
 }

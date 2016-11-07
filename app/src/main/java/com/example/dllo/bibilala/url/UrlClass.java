@@ -227,5 +227,44 @@ public final class UrlClass {
         return url;
     }
 
+    //搜索 显示列表
+    public static final String URL_SEARCH(String term) {
+        String url = "http://api.bilibili.com/" +
+                "suggest?_device=android" +
+                "&_hwid=ccbb856c97ccb8d2" +
+                "&appkey=1d8b6e7d45233436" +
+                "&bangumi_acc_num=1" +
+                "&bangumi_num=0" +
+                "&build=427000" +
+                "&func=suggest" +
+                "&main_ver=v3" +
+                "&mobi_app=android" +
+                "&platform=android" +
+                "&special_acc_num=1" +
+                "&special_num=0" +
+                "&suggest_type=accurate" +
+                "&term=" + term + "" +
+                "&topic_acc_num=1" +
+                "&topic_num=0" +
+                "&upuser_acc_num=1" +
+                "&upuser_num=0";
+        return url;
+    }
+
+    // 搜索点击进去详情列表
+    public static final String SEARCH_DETAIL(int page, String keyword, int type) {
+        if (type == 0) {
+            String url = "http://app.bilibili.com/x/v2/search?duration=0&keyword=" + keyword + "&pn=" + page + "&ps=20&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android";
+            return url;
+        } else {
+            // type = 1:番剧
+            // type = 2:UP主
+            // type = 3:影视
+            // type = 4:专题
+
+            String url = "http://app.bilibili.com/x/v2/search/type?keyword=" + keyword + "&pn=1&ps=20&type=" + type + "&appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android";
+            return url;
+        }
+    }
 
 }

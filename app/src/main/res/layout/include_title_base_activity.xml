@@ -10,16 +10,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/include_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/title_height"
-            android:background="@color/colorPinkMain"
-            app:contentInsetStart="@dimen/zero"
-            app:layout_scrollFlags="scroll|enterAlways">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/include_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_height"
+                android:background="@color/colorPinkMain"
+                app:contentInsetStart="@dimen/zero"
+                app:layout_scrollFlags="scroll|enterAlways">
+            </android.support.v7.widget.Toolbar>
 
-
-        </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/include_tab"

@@ -1,6 +1,8 @@
 package com.example.dllo.bibilala.main;
 
+import android.animation.Animator;
 import android.app.UiModeManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.tool.SharedPreferencesTool;
 
@@ -49,6 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private boolean isNight = false;
     private NavigationView mNavigationView;
     private CheckBox mHeadDayNight;
+    private Animator mAnimatior;
 
     @Override
     protected int setLayout() {
@@ -59,8 +63,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void initView() {
         mDrawerLayout = bindView(R.id.activity_main_drawer);
-        mToolbar = bindView(R.id.include_toolbar);
         mAppbar = bindView(R.id.app_bar);
+        mToolbar = bindView(R.id.include_toolbar);
         mTabLayout = bindView(R.id.include_tab);
         mViewPager = bindView(R.id.include_vp);
         View view = LayoutInflater.from(this).inflate(R.layout.drawer_toolbar, mToolbar, false);
@@ -116,7 +120,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTabLayout.setTabTextColors(getResources().getColor(R.color.colorUnselectWhite), getResources().getColor(R.color.tabColor));
         mViewPager.setCurrentItem(1);
         initCheckBox();
-
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -128,7 +131,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                         Log.d("MainActivity", "menu_download");
                         break;
                     case R.id.menu_search:
-                        Log.d("MainActivity", "menu_search");
+                        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                        startActivity(intent);
                         break;
                     default:
                         break;
@@ -258,4 +262,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        }
         Log.d("MainActivity", "收到通知");
     }
+
+
 }
