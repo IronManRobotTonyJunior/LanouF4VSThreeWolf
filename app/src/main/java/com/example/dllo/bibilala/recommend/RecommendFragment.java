@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.bangumi.grid.GridViews;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 import com.example.dllo.bibilala.entity.recommendentity.LBBean;
@@ -62,63 +65,65 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
     private boolean mFalg = true;
     private boolean flag = true;
     private Handler handler;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewHotRecommended;
+    private GridViews gridViewHotRecommended;
     private RecommedVideoAdapter recommedVideoAdapter;
     private TextView hot_recommend_refresh;
     private ImageView hot_recommend_refresh_img;
     private AnimationDrawable drawable;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewLive;
+    private GridViews gridViewLive;
     private RecommendLiveAdapter recommendLiveAdapter;
     private TextView live_title;
     private TextView live_is_live;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewHit;
+    private GridViews gridViewHit;
     private RecommedHitAdaper recommedHitAdapter;
     private TextView hit_title;
     private ImageView imageViewTopicThree;
     private TextView last_topic_big_text;
     private RecommendMusicAdapter recommendMusicAdapter;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewMusic;
+    private GridViews gridViewMusic;
     private TextView recommend_music_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewDancing;
+    private GridViews gridViewDancing;
     private TextView recommend_drancing_title;
     private RecommedDancingAdapter dancingAdapter;
     private ImageView imageViewFour;
     private TextView recommend_game_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewGame;
+    private GridViews gridViewGame;
     private GameAdapter gameAdapter;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewGhost;
+    private GridViews gridViewGhost;
     private TextView recommend_ghost_title;
     private GhostAdapter ghostAdapter;
     private ImageView five_topic_big_img;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewScience;
+    private GridViews gridViewScience;
     private TextView recommend_sclence_title;
     private ScienceAdapter scienceAdapter;
     private ImageView imageViewSix;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewActivity;
+    private GridViews gridViewActivity;
     private TextView recommend_activity_title;
     private ActivityAdapter activityAdapter;
     private TextView recommend_life_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewLife;
+    private GridViews gridViewLife;
     private LifeAdapter lifeAdapter;
     private TextView recommend_fashion_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewFashion;
+    private GridViews gridViewFashion;
     private FashionAdapter fashionAdapter;
     private TextView recommend_advert_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewadvert;
+    private GridViews gridViewadvert;
     private TextView recommend_animation_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewAnimation;
+    private GridViews gridViewAnimation;
     private AnimationAdapter animationAdapter;
     private AdvertAdapter advertAdapter;
     private TextView recommend_entertain_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewEntertain;
+    private GridViews gridViewEntertain;
     private EntertainmentAdapter entertainmentAdapter;
     private TextView recommend_tv_series_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewTV;
+    private GridViews gridViewTV;
     private TVSeriesAdapter tvSeriesAdapter;
     private TextView recommend_movie_title;
-    private com.example.dllo.bibilala.gridview.GridViewForScrollView gridViewMovie;
+    private GridViews gridViewMovie;
     private MovieAdapter movieAdapter;
     private RelativeLayout animation_title_recycler;
+
+    private Animation rotate;
 
 
     @Override
@@ -159,19 +164,20 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
         //添加热门推荐的头布局
         View viewHotRecommended = LayoutInflater.from(mContext).inflate(R.layout.hot_recommended, null);
-        gridViewHotRecommended = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewHotRecommended.findViewById(R.id.hot_recommend_grid);
+        gridViewHotRecommended = (GridViews) viewHotRecommended.findViewById(R.id.hot_recommend_grid);
+        hot_recommend_refresh_img= (ImageView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh_img);
         hot_recommend_refresh = (TextView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh);
 //        hot_recommend_refresh_img = (ImageView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh_img);
 //        hot_recommend_refresh_img.setBackgroundResource(R.anim.img_refresh);
 //        drawable = (AnimationDrawable) hot_recommend_refresh_img.getBackground();
         recommedVideoAdapter = new RecommedVideoAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewHotRecommended);
-        hot_recommend_refresh.setOnClickListener(this);
+        hot_recommend_refresh_img.setOnClickListener(this);
 
 
         //正在直播
         View viewLive = LayoutInflater.from(mContext).inflate(R.layout.recommend_live, null);
-        gridViewLive = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewLive.findViewById(R.id.live_grid);
+        gridViewLive = (GridViews) viewLive.findViewById(R.id.live_grid);
         live_title = (TextView) viewLive.findViewById(R.id.live_title);
         live_is_live = (TextView) viewLive.findViewById(R.id.live_is_live);
         recommendLiveAdapter = new RecommendLiveAdapter(mContext);
@@ -224,7 +230,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
         //番剧推荐
         View viewHisPlay = LayoutInflater.from(mContext).inflate(R.layout.recommend_his_play, null);
-        gridViewHit = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewHisPlay.findViewById(R.id.hit_grid);
+        gridViewHit = (GridViews) viewHisPlay.findViewById(R.id.hit_grid);
         hit_title = (TextView) viewHisPlay.findViewById(R.id.hit_title);
         recommedHitAdapter = new RecommedHitAdaper(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewHisPlay);
@@ -234,7 +240,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         View viewAnimation = LayoutInflater.from(mContext).inflate(R.layout.recommend_animation, null);
         recommend_animation_title = (TextView) viewAnimation.findViewById(R.id.recommend_animation_title);
         animation_title_recycler = (RelativeLayout) viewAnimation.findViewById(R.id.live_title_recycler);
-        gridViewAnimation = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewAnimation.findViewById(R.id.animation_grid);
+        gridViewAnimation = (GridViews) viewAnimation.findViewById(R.id.animation_grid);
         animationAdapter = new AnimationAdapter(mContext);
         animation_title_recycler.setOnClickListener(this);
         mHeaderAndFooterWrapper.addHeaderView(viewAnimation);
@@ -251,14 +257,14 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
         //音乐区
         View viewMusic = LayoutInflater.from(mContext).inflate(R.layout.recommend_music, null);
-        gridViewMusic = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewMusic.findViewById(R.id.music_grid);
+        gridViewMusic = (GridViews) viewMusic.findViewById(R.id.music_grid);
         recommend_music_title = (TextView) viewMusic.findViewById(R.id.recommend_music_title);
         recommendMusicAdapter = new RecommendMusicAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewMusic);
 
         //舞蹈区
         View viewDancing = LayoutInflater.from(mContext).inflate(R.layout.recommend_dancing, null);
-        gridViewDancing = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewDancing.findViewById(R.id.dancing_grid);
+        gridViewDancing = (GridViews) viewDancing.findViewById(R.id.dancing_grid);
         recommend_drancing_title = (TextView) viewDancing.findViewById(R.id.recommend_drancing_title);
         dancingAdapter = new RecommedDancingAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewDancing);
@@ -273,13 +279,13 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //游戏区
         View viewGame = LayoutInflater.from(mContext).inflate(R.layout.recommend_game, null);
         recommend_game_title = (TextView) viewGame.findViewById(R.id.recommend_game_title);
-        gridViewGame = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewGame.findViewById(R.id.game_grid);
+        gridViewGame = (GridViews) viewGame.findViewById(R.id.game_grid);
         gameAdapter = new GameAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewGame);
 
         //鬼畜区
         View viewGhostLivestock = LayoutInflater.from(mContext).inflate(R.layout.recommend_ghost, null);
-        gridViewGhost = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewGhostLivestock.findViewById(R.id.ghost_grid);
+        gridViewGhost = (GridViews) viewGhostLivestock.findViewById(R.id.ghost_grid);
         recommend_ghost_title = (TextView) viewGhostLivestock.findViewById(R.id.recommend_ghost_title);
         ghostAdapter = new GhostAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewGhostLivestock);
@@ -295,7 +301,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
         //科技区
         View viewScience = LayoutInflater.from(mContext).inflate(R.layout.recommend_science, null);
-        gridViewScience = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewScience.findViewById(R.id.sclence_grid);
+        gridViewScience = (GridViews) viewScience.findViewById(R.id.sclence_grid);
         recommend_sclence_title = (TextView) viewScience.findViewById(R.id.recommend_sclence_title);
         scienceAdapter = new ScienceAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewScience);
@@ -309,7 +315,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
         //活动12
         View viewActivity = LayoutInflater.from(mContext).inflate(R.layout.recommend_activity, null);
-        gridViewActivity = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewActivity.findViewById(R.id.actviity_grid);
+        gridViewActivity = (GridViews) viewActivity.findViewById(R.id.actviity_grid);
         recommend_activity_title = (TextView) viewActivity.findViewById(R.id.recommend_activity_title);
         mHeaderAndFooterWrapper.addHeaderView(viewActivity);
         activityAdapter = new ActivityAdapter(mContext);
@@ -317,7 +323,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //生活13
         View viewLife = LayoutInflater.from(mContext).inflate(R.layout.recommend_life, null);
         recommend_life_title = (TextView) viewLife.findViewById(R.id.recommend_life_title);
-        gridViewLife = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewLife.findViewById(R.id.life_grid);
+        gridViewLife = (GridViews) viewLife.findViewById(R.id.life_grid);
         lifeAdapter = new LifeAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewLife);
 
@@ -325,7 +331,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //时尚14
         View viewFashion = LayoutInflater.from(mContext).inflate(R.layout.recommend_fashion, null);
         recommend_fashion_title = (TextView) viewFashion.findViewById(R.id.recommend_fashion_title);
-        gridViewFashion = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewFashion.findViewById(R.id.fashion_grid);
+        gridViewFashion = (GridViews) viewFashion.findViewById(R.id.fashion_grid);
         fashionAdapter = new FashionAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewFashion);
 
@@ -333,7 +339,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //广告15
         View viewAdvertising = LayoutInflater.from(mContext).inflate(R.layout.recommend_advert, null);
         recommend_advert_title = (TextView) viewAdvertising.findViewById(R.id.recommend_advert_title);
-        gridViewadvert = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewAdvertising.findViewById(R.id.advert_grid);
+        gridViewadvert = (GridViews) viewAdvertising.findViewById(R.id.advert_grid);
         advertAdapter = new AdvertAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewAdvertising);
 
@@ -341,7 +347,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //娱乐16
         View viewEntertainment = LayoutInflater.from(mContext).inflate(R.layout.recommend_entertain, null);
         recommend_entertain_title = (TextView) viewEntertainment.findViewById(R.id.recommend_entertain_title);
-        gridViewEntertain = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewEntertainment.findViewById(R.id.entertain_grid);
+        gridViewEntertain = (GridViews) viewEntertainment.findViewById(R.id.entertain_grid);
         entertainmentAdapter = new EntertainmentAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewEntertainment);
 
@@ -349,7 +355,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //电视剧17
         View viewTVSeries = LayoutInflater.from(mContext).inflate(R.layout.recommend_tv_series, null);
         recommend_tv_series_title = (TextView) viewTVSeries.findViewById(R.id.recommend_tv_series_title);
-        gridViewTV = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewTVSeries.findViewById(R.id.tv_series_grid);
+        gridViewTV = (GridViews) viewTVSeries.findViewById(R.id.tv_series_grid);
         tvSeriesAdapter = new TVSeriesAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewTVSeries);
 
@@ -357,7 +363,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //电影18
         View viewMovie = LayoutInflater.from(mContext).inflate(R.layout.recommend_movie, null);
         recommend_movie_title = (TextView) viewMovie.findViewById(R.id.recommend_movie_title);
-        gridViewMovie = (com.example.dllo.bibilala.gridview.GridViewForScrollView) viewMovie.findViewById(R.id.movie_grid);
+        gridViewMovie = (GridViews) viewMovie.findViewById(R.id.movie_grid);
         movieAdapter = new MovieAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewMovie);
 
@@ -573,9 +579,25 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.hot_recommend_refresh:
-                hot_recommend_refresh.setText("嘿咻嘿咻~");
-//                drawable.start();
+            case R.id.hot_recommend_refresh_img:
+
+//                if (rotate.equals(false)){
+//                hot_recommend_refresh.setText("嘿咻嘿咻~");
+//
+//                }else if (rotate.equals(true)){
+//                    hot_recommend_refresh.setText("换一拨推荐");
+//                }
+                rotate = AnimationUtils.loadAnimation(RecommendFragment.this.getActivity(),R.anim.widget_rotate);
+                rotate.setFillAfter(true);
+                hot_recommend_refresh_img.startAnimation(rotate);
+
+
+
+
+
+
+
+
 
                 break;
 

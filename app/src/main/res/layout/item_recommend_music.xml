@@ -54,7 +54,7 @@
             android:text="1016" />
     </LinearLayout>
     <LinearLayout
-        android:background="@color/colorM"
+        android:background="@color/colorGary"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ten"/>
 
