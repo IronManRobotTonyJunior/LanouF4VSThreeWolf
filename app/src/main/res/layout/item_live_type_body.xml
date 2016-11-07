@@ -18,6 +18,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
             <ImageView
                 android:id="@+id/item_live_body_img"
                 android:layout_width="match_parent"
