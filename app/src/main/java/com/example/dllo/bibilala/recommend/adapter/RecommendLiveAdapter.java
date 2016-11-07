@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -111,6 +112,7 @@ public class RecommendLiveAdapter extends BaseAdapter {
         private ImageView live_big_img;
         private TextView live_title_one, live_slogan, live_look_person;
         private SpannableString spannableString;
+        private LinearLayout live_linear_layout;
 
 
         private LiveHolder(View view) {
