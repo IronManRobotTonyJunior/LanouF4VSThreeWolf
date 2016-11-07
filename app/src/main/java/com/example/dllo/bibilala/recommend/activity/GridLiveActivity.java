@@ -1,16 +1,14 @@
-package com.example.dllo.bibilala.recommend.adapter;
+package com.example.dllo.bibilala.recommend.activity;
 
-import android.content.Context;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Html;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.recommendentity.AllBean;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
-
-import java.util.List;
-
+import com.example.dllo.bibilala.base.BaseActivity;
+import com.example.dllo.bibilala.entity.recommendentity.LiveInterfaceBean;
+import com.example.dllo.bibilala.http.SendGetRequest;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -37,21 +35,39 @@ import java.util.List;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommendAdapter extends CommonAdapter<AllBean.ResultBean.BodyBean>{
-
-
-
-    public RecommendAdapter(Context context, int layoutId, List<AllBean.ResultBean.BodyBean> datas) {
-        super(context, layoutId, datas);
+public class GridLiveActivity  extends BaseActivity {
+    private TextView tt;
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_grid_live;
     }
 
     @Override
-    protected void convert(ViewHolder holder, AllBean.ResultBean.BodyBean resultBean, int position) {
+    protected void initView() {
+        tt = (TextView) findViewById(R.id.ttt);
+
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+        Intent intent =getIntent();
+        String url =intent.getStringExtra("urlLive");
+        SendGetRequest.sendGetRequest(url, LiveInterfaceBean.class, new SendGetRequest.OnResponseListener<LiveInterfaceBean>() {
+            @Override
+            public void onResponse(LiveInterfaceBean response) {
+                String  content =response.getData().getMeta().getDescription();
+                tt.setText(Html.fromHtml(content, null, null));
 
 
-        ImageView imageView = holder.getView(R.id.last_topic_big_img);
-        Glide.with(mContext).load(resultBean.getCover()).into(imageView);
 
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
     }
 }

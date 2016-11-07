@@ -66,7 +66,7 @@ public class AnimationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(3).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(4).getBody().get(i);
 
         AnimationHolder holder =null;
         if (view ==null) {

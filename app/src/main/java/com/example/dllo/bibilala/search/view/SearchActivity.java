@@ -114,7 +114,7 @@ public class SearchActivity extends Activity implements View.OnClickListener
 
 
     }
-    
+
     @Override
     protected void onStart() {
         super.onStart();

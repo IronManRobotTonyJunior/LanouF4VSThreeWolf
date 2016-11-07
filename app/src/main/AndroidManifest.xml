@@ -27,6 +27,9 @@
         <activity
             android:name=".search.searchdetail.view.SearchDetailActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".recommend.activity.GridLiveActivity"/>
+
+        <activity android:name=".recommend.activity.animation.AnimationActivity"/>
     </application>
 
 </manifest>

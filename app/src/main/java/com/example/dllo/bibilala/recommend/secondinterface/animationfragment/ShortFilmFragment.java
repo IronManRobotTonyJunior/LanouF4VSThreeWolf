@@ -1,16 +1,7 @@
-package com.example.dllo.bibilala.recommend.adapter;
+package com.example.dllo.bibilala.recommend.secondinterface.animationfragment;
 
-import android.content.Context;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.recommendentity.AllBean;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
-
-import java.util.List;
-
+import com.example.dllo.bibilala.base.BaseFragment;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -37,21 +28,19 @@ import java.util.List;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecommendAdapter extends CommonAdapter<AllBean.ResultBean.BodyBean>{
-
-
-
-    public RecommendAdapter(Context context, int layoutId, List<AllBean.ResultBean.BodyBean> datas) {
-        super(context, layoutId, datas);
+public class ShortFilmFragment  extends BaseFragment{
+    @Override
+    protected int setLayout() {
+        return R.layout.fragment_animation_short_film;
     }
 
     @Override
-    protected void convert(ViewHolder holder, AllBean.ResultBean.BodyBean resultBean, int position) {
+    protected void initView() {
 
+    }
 
-        ImageView imageView = holder.getView(R.id.last_topic_big_img);
-        Glide.with(mContext).load(resultBean.getCover()).into(imageView);
-
+    @Override
+    protected void initData() {
 
     }
 }
