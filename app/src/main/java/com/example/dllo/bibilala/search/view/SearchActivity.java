@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,24 +22,23 @@ import android.widget.ListView;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.entity.search.term.SearchEntity;
-import com.example.dllo.bibilala.entity.search.term.TagEntity;
 import com.example.dllo.bibilala.entity.search.term.TagNumEntity;
 import com.example.dllo.bibilala.search.presenter.SearchPresenter;
+import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
+import com.example.dllo.bibilala.tool.rx.TextObservable;
 import com.example.dllo.bibilala.url.UrlClass;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
 public class SearchActivity extends Activity implements View.OnClickListener
-        , View.OnLayoutChangeListener, ISearchView {
+        , View.OnLayoutChangeListener, ISearchView<SearchEntity> {
 
     private LinearLayout mLinearLayout;
-    private Animator mAnimatior;
+    private Animator mAnimator;
     private LinearLayout LinearLayoutAll;
     private AnimatorSet mSet;
     private int mHeight;
@@ -48,6 +49,8 @@ public class SearchActivity extends Activity implements View.OnClickListener
     private ListView mLvHistory;
     private List<TagNumEntity> mEntities;
     private LinearLayout mLinearLayoutEdit;
+    private Intent mIntentDetail;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,16 +87,26 @@ public class SearchActivity extends Activity implements View.OnClickListener
         imgScan.setOnClickListener(this);
         imgSearch.setOnClickListener(this);
         mEntities = new ArrayList<>();
+        mIntentDetail = new Intent(SearchActivity.this, SearchDetailActivity.class);
+        mLvHistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mIntentDetail.putExtra("keyWord", mEntities.get(position).getName());
+                dismissAnimator();
+                finish();
+                startActivity(mIntentDetail);
+
+            }
+        });
     }
 
     // 延时多少发送网络请求
     private void initData() {
-        TextObservable.create(mEditSearch, 200)
+        TextObservable.create(mEditSearch, 100)
                 .subscribe(new Consumer<CharSequence>() {
                     @Override
                     public void accept(CharSequence s) throws Exception {
                         mSearchPresenter.startRequest(UrlClass.URL_SEARCH(s.toString()), SearchEntity.class);
-                        Log.d("SearchActivity", s.toString());
                     }
                 });
         mSearchAdapter = new SearchAdapter(this, R.layout.item_search_list, mEntities);
@@ -101,8 +114,7 @@ public class SearchActivity extends Activity implements View.OnClickListener
 
 
     }
-
-
+    
     @Override
     protected void onStart() {
         super.onStart();
@@ -123,6 +135,11 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 dismissAnimator();
                 break;
             case R.id.img_search:
+                Log.d("SearchActivity", "mEditSearch:" + mEditSearch.getText());
+                mIntentDetail.putExtra("keyWord", mEditSearch.getText().toString());
+                dismissAnimator();
+                finish();
+                startActivity(mIntentDetail);
                 break;
             case R.id.img_search_scan:
                 break;
@@ -136,17 +153,17 @@ public class SearchActivity extends Activity implements View.OnClickListener
         mHeight = mLinearLayoutEdit.getHeight();
         mWidth = mLinearLayoutEdit.getWidth();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (mAnimatior == null) {
-                mAnimatior = ViewAnimationUtils.createCircularReveal(mLinearLayout,
+            if (mAnimator == null) {
+                mAnimator = ViewAnimationUtils.createCircularReveal(mLinearLayout,
                         mWidth,
                         mHeight / 2,
                         0,
                         mWidth);
-                mAnimatior.removeAllListeners();
-                mAnimatior.setDuration(500);
-                mAnimatior.setInterpolator(new AccelerateDecelerateInterpolator());
-                if (!mAnimatior.isRunning()) {
-                    mAnimatior.start();
+                mAnimator.removeAllListeners();
+                mAnimator.setDuration(500);
+                mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                if (!mAnimator.isRunning()) {
+                    mAnimator.start();
                 }
             }
 
@@ -176,14 +193,14 @@ public class SearchActivity extends Activity implements View.OnClickListener
     public void dismissAnimator() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mAnimatior = ViewAnimationUtils.createCircularReveal(mLinearLayout,
+            mAnimator = ViewAnimationUtils.createCircularReveal(mLinearLayout,
                     mWidth,
                     mHeight / 2,
                     mWidth,
                     0);
-            mAnimatior.setInterpolator(new AccelerateDecelerateInterpolator());
-            mAnimatior.setDuration(300);
-            mAnimatior.start();
+            mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+            mAnimator.setDuration(300);
+            mAnimator.start();
         } else {
             ObjectAnimator revealAnimatorX = ObjectAnimator.ofFloat(
                     mLinearLayout, "scaleX", 1, 0);
@@ -201,8 +218,8 @@ public class SearchActivity extends Activity implements View.OnClickListener
 //            ScaleAnimation scale = null;
 //            scale = new ScaleAnimation()
         }
-        if (mAnimatior != null) {
-            mAnimatior.addListener(new AnimatorListenerAdapter() {
+        if (mAnimator != null) {
+            mAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);

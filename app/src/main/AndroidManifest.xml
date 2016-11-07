@@ -25,7 +25,8 @@
             android:name=".search.view.SearchActivity"
             android:theme="@style/Theme.Translucent"/>
         <activity
-            android:name=".search.searchdetail.view.SearchDetailActivity"/>
+            android:name=".search.searchdetail.view.SearchDetailActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
     </application>
 
 </manifest>

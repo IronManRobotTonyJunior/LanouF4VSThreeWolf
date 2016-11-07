@@ -1,5 +1,6 @@
 package com.example.dllo.bibilala.find.view;
 
+import android.content.Intent;
 import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,14 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.find.FindEntity;
 import com.example.dllo.bibilala.find.presenter.FindPresenter;
+import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.tool.DensityUtils;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
-public class FindFragment extends BaseFragment implements IFindView {
+public class FindFragment extends BaseFragment implements IFindView, View.OnClickListener {
 
     private FindPresenter mFindPresenter;
     private LinearLayout mLinearLayout;
@@ -45,6 +47,7 @@ public class FindFragment extends BaseFragment implements IFindView {
         mChildNestedScrollView = bindView(R.id.find_head_nested, headView);
         mFlowLayout = bindView(R.id.find_flow, headView);
         mTvSearch = bindView(R.id.head_tv_search, headView);
+        mTvSearch.setOnClickListener(this);
         mChildNestedScrollView.setNestedScrollingEnabled(false);
 
     }
@@ -91,5 +94,15 @@ public class FindFragment extends BaseFragment implements IFindView {
     @Override
     public void onError() {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.head_tv_search:
+                Intent intentSearch = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intentSearch);
+                break;
+        }
     }
 }

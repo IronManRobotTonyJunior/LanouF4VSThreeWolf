@@ -7,7 +7,7 @@ import com.example.dllo.bibilala.http.OnCompletedListener;
 public interface ISearchModel {
     <T> void startURLRequest(String url, Class<T> clazz, OnCompletedListener listener);
 
-    void insertSearchDB(SearchEntity result);
+    <T> void insertSearchDB(T result);
 
-    void querySearchDB(OnCompletedListener<SearchEntity> listener);
+    <T> void querySearchDB(OnCompletedListener<T> listener);
 }

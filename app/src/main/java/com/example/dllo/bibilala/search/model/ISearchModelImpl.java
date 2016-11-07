@@ -12,12 +12,12 @@ public class ISearchModelImpl implements ISearchModel {
     }
 
     @Override
-    public void insertSearchDB(SearchEntity result) {
+    public <T> void insertSearchDB(T result) {
 
     }
 
     @Override
-    public void querySearchDB(OnCompletedListener<SearchEntity> listener) {
+    public <T> void querySearchDB(OnCompletedListener<T> listener) {
 
     }
 

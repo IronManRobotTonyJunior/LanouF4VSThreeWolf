@@ -24,4 +24,5 @@
     <color name="colorSearchHint">#7D7D7D</color>
     <color name="colorTranslucent">#66000000</color>
     <color name="colorSearchList">#C7C7C7</color>
+    <color name="colorDetailTabSelect">#FA769A</color>
 </resources>
