@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity.liveentity.typeentity;
+package com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype;
  /*
         quu..__
          $$$b  `---.__
@@ -40,17 +40,18 @@ package com.example.dllo.bibilala.entity.liveentity.typeentity;
          
         */
 
+import com.example.dllo.bibilala.entity.bangumentity.crayonentity.DataBean;
+
 import java.util.List;
 
 /**
- * Created by dllo on 16/11/7.
+ * Created by dllo on 16/11/8.
  */
 
-public class AllTypeEntity {
+public class SecondAllEntity {
     private int code;
     private String message;
     private List<DataEntity> data;
-
     public int getCode() {
         return code;
     }

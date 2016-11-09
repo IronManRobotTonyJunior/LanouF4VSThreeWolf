@@ -40,39 +40,37 @@ package com.example.dllo.bibilala.entity.liveentity.typeentity;
          
         */
 
-import java.util.List;
-
 /**
  * Created by dllo on 16/11/7.
  */
 
-public class AllTypeEntity {
-    private int code;
-    private String message;
-    private List<DataEntity> data;
+public class DataEntity {
+    private int id;
+    private String name;
+    private EntranceIconEntity entrance_icon;
 
-    public int getCode() {
-        return code;
+    public int getId() {
+        return id;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getName() {
+        return name;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<DataEntity> getData() {
-        return data;
+    public EntranceIconEntity getEntrance_icon() {
+        return entrance_icon;
     }
 
-    public void setData(List<DataEntity> data) {
-        this.data = data;
+    public void setEntrance_icon(EntranceIconEntity entrance_icon) {
+        this.entrance_icon = entrance_icon;
     }
 
 

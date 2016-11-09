@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity.liveentity.typeentity;
+package com.example.dllo.bibilala.live.type.view.view;
  /*
         quu..__
          $$$b  `---.__
@@ -40,40 +40,19 @@ package com.example.dllo.bibilala.entity.liveentity.typeentity;
          
         */
 
-import java.util.List;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
 
 /**
- * Created by dllo on 16/11/7.
+ * Created by dllo on 16/11/8.
  */
 
-public class AllTypeEntity {
-    private int code;
-    private String message;
-    private List<DataEntity> data;
+public interface IAllTypeView {
+    void showDialog();
 
-    public int getCode() {
-        return code;
-    }
+    void dismissDialog();
 
-    public void setCode(int code) {
-        this.code = code;
-    }
+    void onAllType(SecondAllEntity result);
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List<DataEntity> getData() {
-        return data;
-    }
-
-    public void setData(List<DataEntity> data) {
-        this.data = data;
-    }
-
-
+    void onError();
 }

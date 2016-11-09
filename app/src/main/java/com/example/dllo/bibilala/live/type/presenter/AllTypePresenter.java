@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity.liveentity.typeentity;
+package com.example.dllo.bibilala.live.type.presenter;
  /*
         quu..__
          $$$b  `---.__
@@ -40,40 +40,43 @@ package com.example.dllo.bibilala.entity.liveentity.typeentity;
          
         */
 
-import java.util.List;
+import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
+import com.example.dllo.bibilala.http.OnCompletedListener;
+import com.example.dllo.bibilala.live.type.view.IAllTypeView;
+import com.example.dllo.bibilala.mvp.model.IModel;
+import com.example.dllo.bibilala.mvp.model.ModelImpl;
 
 /**
- * Created by dllo on 16/11/7.
+ * Created by dllo on 16/11/8.
  */
 
-public class AllTypeEntity {
-    private int code;
-    private String message;
-    private List<DataEntity> data;
+public class AllTypePresenter {
+    private IAllTypeView allTypeView;
+    private IModel model;
 
-    public int getCode() {
-        return code;
+    public AllTypePresenter(IAllTypeView allTypeView) {
+        this.allTypeView = allTypeView;
+        model = new ModelImpl();
     }
+    public<T> void startRequest(String url , Class<T>clazz){
+        allTypeView.showDialog();
+        model.startRequest(url, clazz, new OnCompletedListener<T>() {
+            @Override
+            public void onCompleted(T result) {
+                if (result instanceof AllTypeEntity) {
+                    allTypeView.onAllType((AllTypeEntity) result);
+                }
+                allTypeView.dismissDialog();
 
-    public void setCode(int code) {
-        this.code = code;
+            }
+
+            @Override
+            public void onFailed() {
+                allTypeView.dismissDialog();
+                allTypeView.onError();
+
+            }
+        });
     }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List<DataEntity> getData() {
-        return data;
-    }
-
-    public void setData(List<DataEntity> data) {
-        this.data = data;
-    }
-
-
 }

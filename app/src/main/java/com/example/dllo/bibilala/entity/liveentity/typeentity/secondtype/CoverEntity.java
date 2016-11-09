@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.entity.liveentity.typeentity;
+package com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype;
  /*
         quu..__
          $$$b  `---.__
@@ -40,40 +40,36 @@ package com.example.dllo.bibilala.entity.liveentity.typeentity;
          
         */
 
-import java.util.List;
-
 /**
- * Created by dllo on 16/11/7.
+ * Created by dllo on 16/11/8.
  */
 
-public class AllTypeEntity {
-    private int code;
-    private String message;
-    private List<DataEntity> data;
+public class CoverEntity {
+    private String src;
+    private int height;
+    private int width;
 
-    public int getCode() {
-        return code;
+    public String getSrc() {
+        return src;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setSrc(String src) {
+        this.src = src;
     }
 
-    public String getMessage() {
-        return message;
+    public int getHeight() {
+        return height;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public List<DataEntity> getData() {
-        return data;
+    public int getWidth() {
+        return width;
     }
 
-    public void setData(List<DataEntity> data) {
-        this.data = data;
+    public void setWidth(int width) {
+        this.width = width;
     }
-
-
 }
