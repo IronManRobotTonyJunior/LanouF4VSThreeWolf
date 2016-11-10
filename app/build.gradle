@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'xiaowenrou'
+            keyPassword 'zhaoxin123'
+            storeFile file('/Users/dllo/Desktop/B段/BiBiNiMaBi/app/zhaoxin.jks')
+            storePassword 'zhaoxin123'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
     defaultConfig {
@@ -15,6 +23,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        zhaoxin {
+            debuggable false
+            signingConfig signingConfigs.config
         }
     }
 }
