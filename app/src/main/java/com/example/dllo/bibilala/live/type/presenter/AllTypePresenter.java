@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.activity.login; /*
+package com.example.dllo.bibilala.live.type.presenter;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,53 +40,43 @@ package com.example.dllo.bibilala.activity.login; /*
          
         */
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.telephony.SmsMessage;
-import android.text.TextUtils;
-import android.text.format.Time;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.base.BaseActivity;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
+import com.example.dllo.bibilala.http.OnCompletedListener;
+import com.example.dllo.bibilala.live.type.view.IAllTypeView;
+import com.example.dllo.bibilala.mvp.model.IModel;
+import com.example.dllo.bibilala.mvp.model.ModelImpl;
 
 /**
- * Created by dllo on 16/10/31.
+ * Created by dllo on 16/11/8.
  */
-public class RegisterActivity extends BaseActivity {
-    private EditText et;
-    private BroadcastReceiver smsReceiver;
-    private IntentFilter filter2;
-    private Handler handler;
-    private String strContent;
-    private Button btn;
-    private String patternCoder = "(?<!--\\d)\\d{6}(?!\\d)";
-    @Override
-    protected int setLayout() {
-        return R.layout.register_ac;
+
+public class AllTypePresenter {
+    private IAllTypeView allTypeView;
+    private IModel model;
+
+    public AllTypePresenter(IAllTypeView allTypeView) {
+        this.allTypeView = allTypeView;
+        model = new ModelImpl();
     }
+    public<T> void startRequest(String url , Class<T>clazz){
+        allTypeView.showDialog();
+        model.startRequest(url, clazz, new OnCompletedListener<T>() {
+            @Override
+            public void onCompleted(T result) {
+                if (result instanceof AllTypeEntity) {
+                    allTypeView.onAllType((AllTypeEntity) result);
+                }
+                allTypeView.dismissDialog();
 
-    @Override
-    protected void initView() {
-        et = bindView(R.id.question_et_phone);
-        btn = bindView(R.id.btn_obtain_gray);
+            }
 
+            @Override
+            public void onFailed() {
+                allTypeView.dismissDialog();
+                allTypeView.onError();
 
-}
-
-    @Override
-    protected void initData(Bundle savedInstanceState) {
+            }
+        });
     }
-
 }
-

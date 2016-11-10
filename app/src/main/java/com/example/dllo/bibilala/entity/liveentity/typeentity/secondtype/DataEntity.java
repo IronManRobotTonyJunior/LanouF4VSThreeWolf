@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.activity.login; /*
+package com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,53 +40,103 @@ package com.example.dllo.bibilala.activity.login; /*
          
         */
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.telephony.SmsMessage;
-import android.text.TextUtils;
-import android.text.format.Time;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.base.BaseActivity;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
- * Created by dllo on 16/10/31.
+ * Created by dllo on 16/11/8.
  */
-public class RegisterActivity extends BaseActivity {
-    private EditText et;
-    private BroadcastReceiver smsReceiver;
-    private IntentFilter filter2;
-    private Handler handler;
-    private String strContent;
-    private Button btn;
-    private String patternCoder = "(?<!--\\d)\\d{6}(?!\\d)";
-    @Override
-    protected int setLayout() {
-        return R.layout.register_ac;
+
+public class DataEntity {
+    private OwerEntity owner;
+    private CoverEntity cover;
+    private String title;
+    private int room_id;
+    private int online;
+    private String playurl;
+    private String accept_quality;
+    private int broadcast_type;
+    private String area;
+    private int area_id;
+
+    public OwerEntity getOwner() {
+        return owner;
     }
 
-    @Override
-    protected void initView() {
-        et = bindView(R.id.question_et_phone);
-        btn = bindView(R.id.btn_obtain_gray);
+    public void setOwner(OwerEntity owner) {
+        this.owner = owner;
+    }
+
+    public CoverEntity getCover() {
+        return cover;
+    }
+
+    public void setCover(CoverEntity cover) {
+        this.cover = cover;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getRoom_id() {
+        return room_id;
+    }
+
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
+    }
+
+    public int getOnline() {
+        return online;
+    }
+
+    public void setOnline(int online) {
+        this.online = online;
+    }
+
+    public String getPlayurl() {
+        return playurl;
+    }
+
+    public void setPlayurl(String playurl) {
+        this.playurl = playurl;
+    }
+
+    public String getAccept_quality() {
+        return accept_quality;
+    }
+
+    public void setAccept_quality(String accept_quality) {
+        this.accept_quality = accept_quality;
+    }
+
+    public int getBroadcast_type() {
+        return broadcast_type;
+    }
+
+    public void setBroadcast_type(int broadcast_type) {
+        this.broadcast_type = broadcast_type;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public int getArea_id() {
+        return area_id;
+    }
+
+    public void setArea_id(int area_id) {
+        this.area_id = area_id;
+    }
+
+
 
 
 }
-
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-    }
-
-}
-

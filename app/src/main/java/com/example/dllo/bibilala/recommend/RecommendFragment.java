@@ -24,8 +24,8 @@ import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 import com.example.dllo.bibilala.http.SendGetRequest;
-import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
 import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
+import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
 import com.example.dllo.bibilala.recommend.adapter.ActivityAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AdvertAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AnimationAdapter;
@@ -50,7 +50,6 @@ import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
-;
 
 
 public class RecommendFragment extends BaseFragment implements View.OnClickListener {

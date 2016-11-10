@@ -266,5 +266,17 @@ public final class UrlClass {
             return url;
         }
     }
-
+    //全部分类 手机直播  全部
+    public static final String URL_ALL_TYPE(int position){
+        String url =  "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id="+position+"&build=427000&mobi_app=android&page=1&platform=android&sort=hottest";
+        return url;
+    }
+    //户外旅行
+    public static final String URL_OUTDOOR_TRAVEL = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E6%88%B7%E5%A4%96%E6%97%85%E8%A1%8C&sign=8f6ae04619740706b233bd7332351281";
+    //才艺表演
+    public static final String URL_LOOK = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E6%89%8D%E8%89%BA%E8%A1%A8%E6%BC%94&sign=cc165e053014941dab4ea1cba27c9c22";
+    //海外留学
+    public static final String OVERSEAS = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E6%B5%B7%E5%A4%96%E7%95%99%E5%AD%A6&sign=e020487063f4ef4f218fe8efc6d8a304";
+    //个人自拍
+    public static final String URL_OUR = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E4%B8%AA%E4%BA%BA%E8%87%AA%E6%8B%8D&sign=87ecf33da1f5916ebb0463b8f7fefa70";
 }

@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.activity.login; /*
+package com.example.dllo.bibilala.live.type.view;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,53 +40,57 @@ package com.example.dllo.bibilala.activity.login; /*
          
         */
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.telephony.SmsMessage;
-import android.text.TextUtils;
-import android.text.format.Time;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.base.BaseActivity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.DataEntity;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 /**
- * Created by dllo on 16/10/31.
+ * Created by dllo on 16/11/7.
  */
-public class RegisterActivity extends BaseActivity {
-    private EditText et;
-    private BroadcastReceiver smsReceiver;
-    private IntentFilter filter2;
-    private Handler handler;
-    private String strContent;
-    private Button btn;
-    private String patternCoder = "(?<!--\\d)\\d{6}(?!\\d)";
-    @Override
-    protected int setLayout() {
-        return R.layout.register_ac;
+
+public class AllTypeAdapter extends CommonAdapter<DataEntity> {
+    private List<DataEntity> entityList;
+    private onRecyclerViewCLickListener listener;
+
+    public void setListener(onRecyclerViewCLickListener listener) {
+        this.listener = listener;
+    }
+
+    public AllTypeAdapter(Context context, int layoutId, List<DataEntity> datas) {
+        super(context, layoutId, datas);
+    }
+
+    public void setEntityList(List<DataEntity> entityList) {
+        this.entityList = entityList;
     }
 
     @Override
-    protected void initView() {
-        et = bindView(R.id.question_et_phone);
-        btn = bindView(R.id.btn_obtain_gray);
+    protected void convert(final ViewHolder holder, DataEntity dataEntity, int position) {
 
+        holder.setText(R.id.item_all_type_tv,entityList.get(position).getName());
+        ImageView imageView = holder.getView(R.id.item_all_type_ima);
+        Glide.with(mContext).load(entityList.get(position).getEntrance_icon().getSrc()).into(imageView);
 
-}
-
-    @Override
-    protected void initData(Bundle savedInstanceState) {
+        if (listener!=null){
+          holder.itemView.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  int position = holder.getAdapterPosition();
+                  listener.ItemClick(holder,position,v);
+              }
+          });
+        }
     }
-
+    public interface onRecyclerViewCLickListener{
+        void ItemClick(RecyclerView.ViewHolder holder, int position, View view);
+    }
 }
-

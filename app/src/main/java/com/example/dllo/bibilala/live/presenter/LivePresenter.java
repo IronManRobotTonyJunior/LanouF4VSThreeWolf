@@ -1,6 +1,7 @@
 package com.example.dllo.bibilala.live.presenter;
 
 
+import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
@@ -32,6 +33,8 @@ public class LivePresenter extends BasePresenter<ILiveView> {
                     mLiveView.onAllResponse((LiveAllEntity) result);
                 } else if (result instanceof LiveTypeEntity) {
                     mLiveView.onTypeResponse((LiveTypeEntity) result);
+                }else if (result instanceof AllTypeEntity){
+                    mLiveView.onAllType((AllTypeEntity) result);
                 }
                 mLiveView.dismissRefresh();
             }

@@ -1,4 +1,5 @@
-package com.example.dllo.bibilala.activity.login; /*
+package com.example.dllo.bibilala.live.type.view.view;
+ /*
         quu..__
          $$$b  `---.__
           "$$b        `--.                          ___.---uuudP
@@ -39,53 +40,58 @@ package com.example.dllo.bibilala.activity.login; /*
          
         */
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.telephony.SmsMessage;
-import android.text.TextUtils;
-import android.text.format.Time;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.base.BaseActivity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.DataEntity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by dllo on 16/10/31.
+ * Created by dllo on 16/11/8.
  */
-public class RegisterActivity extends BaseActivity {
-    private EditText et;
-    private BroadcastReceiver smsReceiver;
-    private IntentFilter filter2;
-    private Handler handler;
-    private String strContent;
-    private Button btn;
-    private String patternCoder = "(?<!--\\d)\\d{6}(?!\\d)";
-    @Override
-    protected int setLayout() {
-        return R.layout.register_ac;
+
+public class AllAdapter extends CommonAdapter<DataEntity> {
+    private List<DataEntity> entityList;
+
+    public void setEntityList(List<DataEntity> entityLists) {
+        entityList = new ArrayList<>();
+        entityList.addAll(entityLists);
+        notifyDataSetChanged();
+    }
+
+
+    public AllAdapter(Context context, int layoutId, List<DataEntity> datas) {
+        super(context, layoutId, datas);
     }
 
     @Override
-    protected void initView() {
-        et = bindView(R.id.question_et_phone);
-        btn = bindView(R.id.btn_obtain_gray);
+    protected void convert(ViewHolder holder, DataEntity dataEntity, int position) {
+        String title = entityList.get(position).getTitle();
+        holder.setText(R.id.item_live_body_title_type,title);
+        String name = entityList.get(position).getOwner().getName();
+        holder.setText(R.id.item_live_body_author,name);
 
+        int follow = entityList.get(position).getOnline();
+        if (follow>10000){
+            double d = follow / 10000;
+            DecimalFormat df = new java.text.DecimalFormat("#.0");
+            String a = df.format(d);
+            holder.setText(R.id.item_live_body_audience,a+"万");
+        }else {
+            holder.setText(R.id.item_live_body_audience,follow+"");
+        }
 
-}
+        ImageView imageView = holder.getView(R.id.item_live_body_img);
+        String src = entityList.get(position).getCover().getSrc();
+        Glide.with(mContext).load(src).into(imageView);
 
-    @Override
-    protected void initData(Bundle savedInstanceState) {
     }
-
 }
-
