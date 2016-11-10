@@ -247,7 +247,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         mHeaderAndFooterWrapper.addHeaderView(viewAnimation);
 
 
-        //话题
+//        //话题
         View viewTopicThree = LayoutInflater.from(mContext).inflate(R.layout.recommend_topic_last, null);
         imageViewTopicThree = (ImageView) viewTopicThree.findViewById(R.id.last_topic_big_img);
         last_topic_big_text = (TextView) viewTopicThree.findViewById(R.id.last_topic_big_text);
@@ -271,11 +271,11 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         mHeaderAndFooterWrapper.addHeaderView(viewDancing);
 
         //话题
-//        View viewTopicFour = LayoutInflater.from(mContext).inflate(R.layout.recommend_last, null);
-//        imageViewFour = (ImageView) viewTopicFour.findViewById(R.id.last_topic_big_img);
-//        mHeaderAndFooterWrapper.addHeaderView(viewTopicFour);
-//        recyclerView.setAdapter(mHeaderAndFooterWrapper);
-//        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        View viewTopicFour = LayoutInflater.from(mContext).inflate(R.layout.recommend_last, null);
+        imageViewFour = (ImageView) viewTopicFour.findViewById(R.id.last_topic_big_img);
+        mHeaderAndFooterWrapper.addHeaderView(viewTopicFour);
+        recyclerView.setAdapter(mHeaderAndFooterWrapper);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
 
         //游戏区
         View viewGame = LayoutInflater.from(mContext).inflate(R.layout.recommend_game, null);
@@ -409,13 +409,13 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
 
                 //话题
-                String urlTopicThree = response.getResult().get(3).getBody().get(0).getCover();
-                Glide.with(mContext).load(urlTopicThree).into(imageViewTopicThree);
-                last_topic_big_text.setText(response.getResult().get(3).getBody().get(0).getTitle());
+//                String urlTopicThree = response.getResult().get(3).getBody().get(0).getCover();
+//                Glide.with(mContext).load(urlTopicThree).into(imageViewTopicThree);
+//                last_topic_big_text.setText(response.getResult().get(3).getBody().get(0).getTitle());
 
 
                 //动画
-                recommend_animation_title.setText(response.getResult().get(4).getHead().getTitle());
+                recommend_animation_title.setText(response.getResult().get(3).getHead().getTitle());
                 animationAdapter.setAllBean(response);
                 gridViewAnimation.setAdapter(animationAdapter);
 
@@ -423,16 +423,16 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 //音乐
                 recommendMusicAdapter.setAllBean(response);
                 gridViewMusic.setAdapter(recommendMusicAdapter);
-                recommend_music_title.setText(response.getResult().get(5).getHead().getTitle());
+                recommend_music_title.setText(response.getResult().get(4).getHead().getTitle());
 
                 //舞蹈
                 dancingAdapter.setAllBean(response);
                 gridViewDancing.setAdapter(dancingAdapter);
-                recommend_drancing_title.setText(response.getResult().get(6).getHead().getTitle());
+                recommend_drancing_title.setText(response.getResult().get(5).getHead().getTitle());
 
 //                //
-//                String urlTopicFour = response.getResult().get(7).getBody().get(0).getCover();
-//                Glide.with(mContext).load(urlTopicFour).into(imageViewFour);
+                String urlTopicFour = response.getResult().get(6).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlTopicFour).into(imageViewFour);
 
                 //游戏区
                 gameAdapter.setAllBean(response);
@@ -451,20 +451,23 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 recommend_sclence_title.setText(response.getResult().get(9).getHead().getTitle());
 
 
+                String urlTopicFive = response.getResult().get(10).getBody().get(0).getCover();
+                Log.d("dd", urlTopicFive);
+                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
+
+
                 //活动
-                recommend_activity_title.setText(response.getResult().get(10).getHead().getTitle());
+                recommend_activity_title.setText(response.getResult().get(11).getHead().getTitle());
                 activityAdapter.setAllBean(response);
                 gridViewActivity.setAdapter(activityAdapter);
 
                 //生活
-                recommend_life_title.setText(response.getResult().get(11).getHead().getTitle());
+                recommend_life_title.setText(response.getResult().get(12).getHead().getTitle());
                 lifeAdapter.setBeanList(response);
                 gridViewLife.setAdapter(lifeAdapter);
 
 
-                String urlTopicFive = response.getResult().get(12).getBody().get(0).getCover();
-                Log.d("dd", urlTopicFive);
-                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
+
 
                 //时尚
                 recommend_fashion_title.setText(response.getResult().get(13).getHead().getTitle());
