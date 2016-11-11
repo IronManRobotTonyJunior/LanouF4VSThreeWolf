@@ -30,6 +30,7 @@ import com.example.dllo.bibilala.main.MainActivity;
 import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
 import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
 import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotRecommendActivity;
+import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotVideoActivity;
 import com.example.dllo.bibilala.recommend.adapter.ActivityAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AdvertAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AnimationAdapter;
@@ -200,6 +201,14 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         mHeaderAndFooterWrapper.addHeaderView(viewHotRecommended);
         hot_recommend_refresh_img.setOnClickListener(this);
         hot_recommend_relative_layout.setOnClickListener(this);
+        gridViewHotRecommended.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intentGridHot =new Intent(RecommendFragment.this.getActivity(),HotVideoActivity.class);
+                startActivity(intentGridHot);
+
+            }
+        });
 
 
         //正在直播
