@@ -1,7 +1,12 @@
-package com.example.dllo.bibilala.recommend.secondinterface.animationfragment;
+package com.example.dllo.bibilala.recommend.activity.hotrecommend;
 
-import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.base.BaseFragment;
+import android.support.v4.app.Fragment;
+
+import com.example.dllo.bibilala.recommend.secondinterface.hotrecommendfragment.CommentsFragment;
+import com.example.dllo.bibilala.recommend.secondinterface.hotrecommendfragment.IntroductionFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -28,19 +33,41 @@ import com.example.dllo.bibilala.base.BaseFragment;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class AMVFragment extends BaseFragment {
-    @Override
-    protected int setLayout() {
-        return R.layout.fragment_animation_amv;
+public class TabHotViedo {
+    private String mTitle;
+    private Fragment mFragment;
+
+    public TabHotViedo(String mTitle, Fragment mFragment) {
+        this.mTitle = mTitle;
+        this.mFragment = mFragment;
     }
 
-    @Override
-    protected void initView() {
+    public String getmTitle() {
+        return mTitle;
+    }
+
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public Fragment getmFragment() {
+        return mFragment;
+    }
+
+    public void setmFragment(Fragment mFragment) {
+        this.mFragment = mFragment;
+    }
+    public  static  List<TabHotViedo> getTabHotViedos(){
+        List<TabHotViedo> viedoList =new ArrayList<>();
+        viedoList.add(new TabHotViedo("简介",new IntroductionFragment()));
+        viedoList.add(new TabHotViedo("评论(100)",new CommentsFragment()));
+        return viedoList;
+
 
     }
 
-    @Override
-    protected void initData() {
 
-    }
+
+
+
 }

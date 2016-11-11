@@ -1,15 +1,15 @@
-package com.example.dllo.bibilala.recommend.activity.animation;
+package com.example.dllo.bibilala.recommend.activity.hotrecommend;
 
 import android.support.v4.app.Fragment;
 
-import com.example.dllo.bibilala.recommend.secondinterface.AMVFragment;
-import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.AnimationRecommendFragment;
-import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.ComprehensiveFragment;
-import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.ShortFilmFragment;
-import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.ThreeDFragment;
+import com.example.dllo.bibilala.recommend.secondinterface.hotrecommendfragment.OriginalFragment;
+import com.example.dllo.bibilala.recommend.secondinterface.hotrecommendfragment.PlayFragment;
+import com.example.dllo.bibilala.recommend.secondinterface.hotrecommendfragment.TotalStationFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -36,15 +36,14 @@ import java.util.List;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class TabAnimation {
+public class TabHotRecommend {
     private String mTitle;
     private Fragment mFragment;
 
-    public TabAnimation(Fragment mFragment, String mTitle) {
-        this.mFragment = mFragment;
+    public TabHotRecommend(String mTitle, Fragment mFragment) {
         this.mTitle = mTitle;
+        this.mFragment = mFragment;
     }
-
 
     public String getmTitle() {
         return mTitle;
@@ -62,15 +61,12 @@ public class TabAnimation {
         this.mFragment = mFragment;
     }
 
-    public static List<TabAnimation> getTabAnimation() {
-        List<TabAnimation> infos = new ArrayList<>();
-        infos.add(new TabAnimation(new AnimationRecommendFragment(), "推荐"));
-        infos.add(new TabAnimation(new AMVFragment(), "MAD.AMV"));
-        infos.add(new TabAnimation(new ThreeDFragment(), "MMD.3D"));
-        infos.add(new TabAnimation(new ShortFilmFragment(), "短片.手书.配音"));
-        infos.add(new TabAnimation(new ComprehensiveFragment(), "综合"));
+    public static List<TabHotRecommend> getHotRecommends(){
+        List<TabHotRecommend>list =new ArrayList<>();
+        list.add(new TabHotRecommend("原创",new OriginalFragment()));
+        list.add(new TabHotRecommend("全站",new TotalStationFragment()));
+        list.add(new TabHotRecommend("番剧",new PlayFragment()));
+        return list;
 
-        return infos;
     }
-
 }

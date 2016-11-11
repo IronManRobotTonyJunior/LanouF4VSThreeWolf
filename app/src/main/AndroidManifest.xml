@@ -32,6 +32,8 @@
             android:name=".search.searchdetail.view.SearchDetailActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name=".recommend.activity.GridLiveActivity"/>
+        <activity android:name=".recommend.activity.hotrecommend.HotRecommendActivity"/>
+        <activity android:name=".recommend.activity.hotrecommend.HotVideoActivity"/>
 
         <activity android:name=".recommend.activity.animation.AnimationActivity"/>
         <activity android:name=".live.type.view.AllTypeActivitys"/>

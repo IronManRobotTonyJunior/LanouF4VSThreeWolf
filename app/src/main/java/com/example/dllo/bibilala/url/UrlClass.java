@@ -72,6 +72,9 @@ public final class UrlClass {
     //热门推荐
     public static final String URL_HOT_RECOMMEND = "http://app.bilibili.com/x/show/old?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&platform=android&screen=hdpi&ts=1476949442000&sign=8f371fe30585a0c85985afa426832536";
 
+    //动画标题第二界面 轮播图  热门  最新视频
+    public static final String URL_ANIMATION_TITLE_RECOM ="http://app.bilibili.com/x/v2/region/show?rid=1&channel=*&appkey=1d8b6e7d45233436&build=427000&mobi_app=android";
+    public static final String URL_ANIMATION_TITLE_DYNAMIC ="http://app.bilibili.com/x/v2/region/show/dynamic?rid=1&pn=1&ps=50&appkey=1d8b6e7d45233436&build=427000&mobi_app=android";
 
     //第二页接口
     public static final String URL_RECOMMEND_LIVE ="http://live.bilibili.com/AppRoom/index?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&buld=427000&jumpFrom=27003&mobi_app=android&platform=android&room_id=23382&scale=xxhdpi&sign=c850c2099871a5d89e1cda3ee69609aa";

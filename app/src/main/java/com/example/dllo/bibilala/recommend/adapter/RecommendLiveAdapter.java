@@ -95,8 +95,8 @@ public class RecommendLiveAdapter extends BaseAdapter {
         two = bodyBean.getTitle();
 
 
-        holder.spannableString.setSpan(new TextAppearanceSpan(context, R.style.styleOne), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        holder.spannableString.setSpan(new TextAppearanceSpan(context, R.style.styleTwo), 5, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.spannableString.setSpan(new TextAppearanceSpan(context, R.style.styleOne), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.spannableString.setSpan(new TextAppearanceSpan(context, R.style.styleTwo), 6, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         holder.live_title_one.setText("#" + one + "#" + two);
         holder.live_slogan.setText(bodyBean.getUp());
