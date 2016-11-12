@@ -16,6 +16,15 @@ public class LiveEntity {
     private int broadcast_type;
     private int is_tv;
 
+    @Override
+    public String toString() {
+        return "LiveEntity{" +
+                "owner=" + owner +
+                ", title='" + title + '\'' +
+                ", room_id=" + room_id +
+                '}';
+    }
+
     public OwnerBean getOwner() {
         return owner;
     }
@@ -116,6 +125,15 @@ public class LiveEntity {
         private String face;
         private int mid;
         private String name;
+
+        @Override
+        public String toString() {
+            return "OwnerBean{" +
+                    "face='" + face + '\'' +
+                    ", mid=" + mid +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
 
         public String getFace() {
             return face;

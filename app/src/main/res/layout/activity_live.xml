@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/center_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nonono">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"/>
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/live_activity_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/live_loading_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/live_anchor_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/fifteen"
+            android:src="@mipmap/bili_default_avatar_big"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/live_activity_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/five"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginTop="@dimen/fifteen"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/live_anchor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:textColor="@color/colorPinkAlways"
+                    />
+
+                <TextView
+                    android:id="@+id/live_audience_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/live_anchor_name"
+                    android:layout_margin="@dimen/five"
+                    android:drawableLeft="@mipmap/ic_live_player_audience_gray"
+                    android:drawablePadding="@dimen/five"
+                    android:textColor="@color/colorSearchHint"
+                    />
+
+                <TextView
+                    android:id="@+id/live_activity_online"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/five"
+                    android:layout_toLeftOf="@+id/live_concern_anchor"
+                    android:background="@mipmap/ic_attention_arrow_update"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/five"
+                    android:paddingLeft="@dimen/ten"
+                    android:paddingRight="@dimen/ten"
+                    android:paddingTop="@dimen/five"
+                    android:text="14.7万"/>
+
+                <Button
+                    android:id="@+id/live_concern_anchor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="@dimen/five"
+                    android:background="@drawable/shape_one"
+                    android:text="+关注"
+                    android:textColor="@color/colorWhiteLight"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:background="@color/colorBackground"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/live_activity_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPinkAlways"
+        app:tabSelectedTextColor="@color/colorPinkAlways"
+        app:tabTextColor="@color/colorTextColor"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/live_activity_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

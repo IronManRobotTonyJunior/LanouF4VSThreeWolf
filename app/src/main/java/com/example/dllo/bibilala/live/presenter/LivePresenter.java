@@ -12,35 +12,35 @@ import com.example.dllo.bibilala.mvp.presenter.BasePresenter;
 import java.lang.ref.WeakReference;
 
 public class LivePresenter extends BasePresenter<ILiveView> {
-    private ILiveView mLiveView;
     private IModel mIModel;
 
     public LivePresenter(ILiveView iLiveView) {
+        super(iLiveView);
         mIModel = new ModelImpl();
-        attachView(iLiveView);
-        if (isViewAttached()) {
-            mLiveView = getView();
-        }
     }
 
-    public <T> void startRequest(String urlStr, Class<T> clazz) {
-        mLiveView.showRefresh();
-        mIModel.startRequest(urlStr, clazz, new OnCompletedListener<T>() {
-            @Override
-            public void onCompleted(T result) {
-                if (result instanceof LiveAllEntity) {
-                    mLiveView.onAllResponse((LiveAllEntity) result);
-                } else if (result instanceof LiveTypeEntity) {
-                    mLiveView.onTypeResponse((LiveTypeEntity) result);
-                }
-                mLiveView.dismissRefresh();
-            }
 
-            @Override
-            public void onFailed() {
-                mLiveView.dismissRefresh();
-                mLiveView.onError();
-            }
-        });
+    public <T> void startRequest(String urlStr, Class<T> clazz) {
+        final ILiveView view = getView();
+        if (view != null) {
+            view.showRefresh();
+            mIModel.startRequest(urlStr, clazz, new OnCompletedListener<T>() {
+                @Override
+                public void onCompleted(T result) {
+                    if (result instanceof LiveAllEntity) {
+                        view.onAllResponse((LiveAllEntity) result);
+                    } else if (result instanceof LiveTypeEntity) {
+                        view.onTypeResponse((LiveTypeEntity) result);
+                    }
+                    view.dismissRefresh();
+                }
+
+                @Override
+                public void onFailed() {
+                    view.dismissRefresh();
+                    view.onError();
+                }
+            });
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.example.dllo.bibilala.live.view;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -45,7 +46,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     private LayoutInflater mInflater;
     private int count = 17 + 6 * 9;
     private List<String> mBannerUrl;
-    private LiveEntity mLiveEntity;
     private PartitionEntity mEntity;
     private final SpannableStringBuilder mBuilderBody;
     private final ForegroundColorSpan mPinkSpan;
@@ -56,12 +56,15 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
         }
     };
+    private OnRecyclerViewItemClickListener mOnRecyclerViewItemClickListener;
+
+
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
+        mOnRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
+    }
 
 
     public LiveAdapter(Context context) {
-//        mLiveEntities = new ArrayList<>();
-//        mPartitionEntities = new PartitionEntity();
-//        mLongEntity = new ArrayList<>();
         mInflater = LayoutInflater.from(context);
         mBannerEntities = new ArrayList<>();
         mAllPartitionEntities = new ArrayList<>();
@@ -96,7 +99,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         int groupPosition = (position - 17) / 6 + 1;
         holder.itemView.setTag(holder);
         holder.itemView.setOnClickListener(this);
@@ -144,7 +147,8 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
                 break;
             case TYPE_BODY:
-                BodyViewHolder bodyViewHolder = (BodyViewHolder) holder;
+                final BodyViewHolder bodyViewHolder = (BodyViewHolder) holder;
+                LiveEntity mLiveEntity;
                 if (position < 16) {
                     mLiveEntity = mAllPartitionEntities.get(0).getLives().get(position - 3);
                     bodyViewHolder.mTvTitleType.setText("#" + mLiveEntity.getArea() + "# " + mLiveEntity.getTitle());
@@ -160,14 +164,26 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 Glide.with(mContext).load(mLiveEntity.getCover().getSrc()).into(bodyViewHolder.mImgBodyImg);
                 bodyViewHolder.mTvAuthor.setText(mLiveEntity.getOwner().getName());
                 bodyViewHolder.mTvAudience.setText(mLiveEntity.getOnline() + "");
+                final LiveEntity entity = mLiveEntity;
+                if (mOnRecyclerViewItemClickListener != null) {
+                    bodyViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mOnRecyclerViewItemClickListener.onItemClick(entity.getPlayurl()
+                                    , entity.getTitle()
+                                    , entity.getOwner().getName()
+                                    , entity.getOnline()
+                                    , entity.getRoom_id()
+                                    , entity.getOwner().getFace());
+
+                        }
+                    });
+                }
                 break;
             case TYPE_FOOT:
                 FootViewHolder footViewHolder = (FootViewHolder) holder;
                 footViewHolder.mBtnFootMore.setOnClickListener(this);
                 break;
-//            case TYPE_LONG:
-//                LongViewHolder longViewHolder = (LongViewHolder) holder;
-//                break;
             default:
                 break;
 
@@ -198,13 +214,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     }
 
 
-//    public void refreshRecommendData(RecommendDataEntity datas) {
-//        mLiveEntities = datas.getLives();
-//        mPartitionEntities = datas.getPartition();
-//        mLongEntity = datas.getBanner_data();
-//        notifyDataSetChanged();
-//    }
-
     public void refreshTypeData(DataTypeEntity datas) {
         mBannerEntities = datas.getBanner();
         Log.d("LiveAdapter", "datas.getBanner().size():" + datas.getBanner().size());
@@ -214,10 +223,10 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+
 //        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
 //        int position = viewHolder.getLayoutPosition();
     }
-
 
     public static class BannerViewHolder extends RecyclerView.ViewHolder {
 
@@ -245,7 +254,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     }
 
     public static class BodyViewHolder extends RecyclerView.ViewHolder {
-
 
         private final ImageView mImgBodyImg;
         private TextView mTvTitleType;
@@ -290,6 +298,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
         }
     }
 
-
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(String url, String title, String name, int online, int roomId, String iconUrl);
+    }
 }
-

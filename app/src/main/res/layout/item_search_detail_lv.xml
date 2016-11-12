@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+    
+    <android.support.v7.widget.CardView
+        android:layout_width="140dp"
+        android:layout_height="90dp"
+        android:layout_margin="@dimen/ten"
+        app:cardCornerRadius="@dimen/five"
+        app:cardElevation="@dimen/five">
+
+
+        <ImageView
+            android:id="@+id/item_search_detail_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:id="@+id/item_search_detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_search_detail_time"
+            android:textColor="@color/colorWhiteAlways"
+            android:textSize="@dimen/ten"/>
+    </android.support.v7.widget.CardView>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_search_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginTop="@dimen/ten"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorTextColor"
+            />
+
+        <TextView
+            android:id="@+id/item_search_detail_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/five"
+            android:drawableLeft="@mipmap/ic_category_up"
+            android:drawablePadding="@dimen/five"
+            android:textColor="@color/colorSearchDetailTitle"
+            android:textSize="@dimen/twelve"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_search_detail_audience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:drawableLeft="@mipmap/ic_info_views_large"
+                android:drawablePadding="@dimen/five"
+                android:textColor="@color/colorSearchDetailTitle"
+                android:textSize="@dimen/ten"/>
+
+            <TextView
+                android:id="@+id/item_search_detail_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:drawableLeft="@mipmap/ic_category_up"
+                android:drawablePadding="@dimen/five"
+                android:textColor="@color/colorSearchDetailTitle"
+                android:textSize="@dimen/ten"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

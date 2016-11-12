@@ -26,5 +26,7 @@
     <dimen name="fifteen">15dp</dimen>
     <dimen name="twelve">12dp</dimen>
     <dimen name="twenty_five">25dp</dimen>
+    <dimen name="three">3dp</dimen>
+    <dimen name="nonono">200dp</dimen>
 
 </resources>

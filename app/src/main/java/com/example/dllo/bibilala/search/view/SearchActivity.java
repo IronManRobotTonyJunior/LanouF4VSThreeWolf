@@ -21,10 +21,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.entity.search.term.SearchEntity;
 import com.example.dllo.bibilala.entity.search.term.TagNumEntity;
 import com.example.dllo.bibilala.search.presenter.SearchPresenter;
 import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
+import com.example.dllo.bibilala.tool.db.DBTools;
 import com.example.dllo.bibilala.tool.rx.TextObservable;
 import com.example.dllo.bibilala.url.UrlClass;
 
@@ -34,7 +36,7 @@ import java.util.Map;
 
 import io.reactivex.functions.Consumer;
 
-public class SearchActivity extends Activity implements View.OnClickListener
+public class SearchActivity extends BaseActivity implements View.OnClickListener
         , View.OnLayoutChangeListener, ISearchView<SearchEntity> {
 
     private LinearLayout mLinearLayout;
@@ -48,16 +50,10 @@ public class SearchActivity extends Activity implements View.OnClickListener
     private SearchAdapter mSearchAdapter;
     private ListView mLvHistory;
     private List<TagNumEntity> mEntities;
+    private List<TagNumEntity> mHistory;
     private LinearLayout mLinearLayoutEdit;
     private Intent mIntentDetail;
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.custom_dialog);
-        initView();
-        initData();
+    private DBTools mDBTools;
 
 
 //
@@ -69,10 +65,24 @@ public class SearchActivity extends Activity implements View.OnClickListener
 //        mAnimatior.setInterpolator(new AccelerateDecelerateInterpolator());
 //        mAnimatior.setDuration(2000);
 //        mAnimatior.start();
+
+
+    @Override
+    protected int setLayout() {
+        return R.layout.custom_dialog;
     }
 
 
-    private void initView() {
+    @Override
+    protected void initView() {
+        mHistory = new ArrayList<>();
+        mDBTools = DBTools.getInstance();
+        mDBTools.queryAllDB(new DBTools.QueryListener<TagNumEntity>() {
+            @Override
+            public void onQuery(List<TagNumEntity> data) {
+                mHistory.addAll(data);
+            }
+        }, TagNumEntity.class);
         mSearchPresenter = new SearchPresenter(this);
         mLinearLayout = (LinearLayout) findViewById(R.id.search_animator_ll);
         mLinearLayoutEdit = (LinearLayout) findViewById(R.id.dialog_ll);
@@ -93,15 +103,22 @@ public class SearchActivity extends Activity implements View.OnClickListener
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mIntentDetail.putExtra("keyWord", mEntities.get(position).getName());
                 dismissAnimator();
+                Log.d("SearchActivity", "ss" + SearchDetailActivity.class.getSimpleName());
+                Log.d("SearchActivity", "getActivity(SearchDetailActivity.class.getSimpleName().toString()):" + getActivity(SearchDetailActivity.class.getSimpleName()));
+                if (getActivity(SearchDetailActivity.class.getSimpleName()) != null) {
+                    getActivity(SearchDetailActivity.class.getSimpleName()).finish();
+                    Log.d("SearchActivity", "finish");
+                }
+                mDBTools.insertDB(mEntities.get(position).getName());
                 finish();
                 startActivity(mIntentDetail);
-
             }
         });
     }
 
     // 延时多少发送网络请求
-    private void initData() {
+    @Override
+    protected void initData(Bundle savedInstanceState) {
         TextObservable.create(mEditSearch, 100)
                 .subscribe(new Consumer<CharSequence>() {
                     @Override
@@ -111,9 +128,11 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 });
         mSearchAdapter = new SearchAdapter(this, R.layout.item_search_list, mEntities);
         mLvHistory.setAdapter(mSearchAdapter);
-
-
+        mEntities.addAll(mHistory);
+        Log.d("SearchActivity", "mEntities.size():" + mEntities.size());
+        mSearchAdapter.notifyDataSetChanged();
     }
+
 
     @Override
     protected void onStart() {
@@ -127,6 +146,7 @@ public class SearchActivity extends Activity implements View.OnClickListener
         showAnimator();
     }
 
+    // 点击搜索跳转
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -135,11 +155,19 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 dismissAnimator();
                 break;
             case R.id.img_search:
-                Log.d("SearchActivity", "mEditSearch:" + mEditSearch.getText());
-                mIntentDetail.putExtra("keyWord", mEditSearch.getText().toString());
-                dismissAnimator();
+                if (mEditSearch.getText().length() != 0) {
+                    mIntentDetail.putExtra("keyWord", mEditSearch.getText().toString());
+                    dismissAnimator();
+                    if (getActivity(SearchDetailActivity.class.getSimpleName()) != null) {
+                        getActivity(SearchDetailActivity.class.getSimpleName()).finish();
+                        Log.d("SearchActivity", "finish");
+                    }
+                    startActivity(mIntentDetail);
+                }
+                TagNumEntity entity = new TagNumEntity();
+                entity.setName(mEditSearch.getText().toString());
+                mDBTools.insertDB(entity);
                 finish();
-                startActivity(mIntentDetail);
                 break;
             case R.id.img_search_scan:
                 break;
@@ -244,10 +272,10 @@ public class SearchActivity extends Activity implements View.OnClickListener
     @Override
     public void onResponse(SearchEntity result) {
         Object tags = result.getTag();
-        Log.d("SearchActivity", "tag:" + tags);
         Map<String, Object> map = (Map<String, Object>) tags;
         if (map != null) {
             mEntities.clear();
+            mEntities.addAll(mHistory);
             for (String s : map.keySet()) {
                 Object obj = map.get(s);
                 Map<String, String> tag = (Map<String, String>) obj;
@@ -260,9 +288,9 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 mEntities.add(tagNum);
                 mSearchAdapter.notifyDataSetChanged();
             }
-
         } else {
             mEntities.clear();
+            mEntities.addAll(mHistory);
         }
         mSearchAdapter.notifyDataSetChanged();
     }
