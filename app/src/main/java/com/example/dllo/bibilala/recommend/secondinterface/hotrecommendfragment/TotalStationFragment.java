@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.recommend.secondinterface.animationfragment;
+package com.example.dllo.bibilala.recommend.secondinterface.hotrecommendfragment;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
@@ -28,10 +28,10 @@ import com.example.dllo.bibilala.base.BaseFragment;
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class AMVFragment extends BaseFragment {
+public class TotalStationFragment  extends BaseFragment{
     @Override
     protected int setLayout() {
-        return R.layout.fragment_animation_amv;
+        return R.layout.fragment_total_station;
     }
 
     @Override

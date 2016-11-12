@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/hot_recommend_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -43,7 +44,7 @@
 
     </RelativeLayout>
 
-    <com.example.dllo.bibilala.gridview.GridViewForScrollView
+    <com.example.dllo.bibilala.bangumi.grid.GridViews
         android:id="@+id/hot_recommend_grid"
         android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"
@@ -68,11 +69,12 @@
         <ImageView
             android:id="@+id/hot_recommend_refresh_img"
             android:layout_toRightOf="@+id/hot_recommend_refresh"
-            android:src="@mipmap/category_more_refresh"
+            android:background="@mipmap/category_more_refresh"
             android:layout_width="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/five"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"/>
 
 
 

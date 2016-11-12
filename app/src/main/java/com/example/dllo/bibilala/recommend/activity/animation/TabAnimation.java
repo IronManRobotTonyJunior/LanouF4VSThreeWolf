@@ -2,7 +2,7 @@ package com.example.dllo.bibilala.recommend.activity.animation;
 
 import android.support.v4.app.Fragment;
 
-import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.AMVFragment;
+import com.example.dllo.bibilala.recommend.secondinterface.AMVFragment;
 import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.AnimationRecommendFragment;
 import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.ComprehensiveFragment;
 import com.example.dllo.bibilala.recommend.secondinterface.animationfragment.ShortFilmFragment;

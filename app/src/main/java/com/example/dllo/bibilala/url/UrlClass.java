@@ -72,6 +72,9 @@ public final class UrlClass {
     //热门推荐
     public static final String URL_HOT_RECOMMEND = "http://app.bilibili.com/x/show/old?access_key=7ae7d856f4eee8afa300f6f17ddcb2fc&appkey=1d8b6e7d45233436&build=427000&channel=wandoujia&mobi_app=android&platform=android&screen=hdpi&ts=1476949442000&sign=8f371fe30585a0c85985afa426832536";
 
+    //动画标题第二界面 轮播图  热门  最新视频
+    public static final String URL_ANIMATION_TITLE_RECOM ="http://app.bilibili.com/x/v2/region/show?rid=1&channel=*&appkey=1d8b6e7d45233436&build=427000&mobi_app=android";
+    public static final String URL_ANIMATION_TITLE_DYNAMIC ="http://app.bilibili.com/x/v2/region/show/dynamic?rid=1&pn=1&ps=50&appkey=1d8b6e7d45233436&build=427000&mobi_app=android";
 
     //第二页接口
     public static final String URL_RECOMMEND_LIVE ="http://live.bilibili.com/AppRoom/index?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&buld=427000&jumpFrom=27003&mobi_app=android&platform=android&room_id=23382&scale=xxhdpi&sign=c850c2099871a5d89e1cda3ee69609aa";
@@ -266,5 +269,17 @@ public final class UrlClass {
             return url;
         }
     }
-
+    //全部分类 手机直播  全部
+    public static final String URL_ALL_TYPE(int position){
+        String url =  "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id="+position+"&build=427000&mobi_app=android&page=1&platform=android&sort=hottest";
+        return url;
+    }
+    //户外旅行
+    public static final String URL_OUTDOOR_TRAVEL = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E6%88%B7%E5%A4%96%E6%97%85%E8%A1%8C&sign=8f6ae04619740706b233bd7332351281";
+    //才艺表演
+    public static final String URL_LOOK = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E6%89%8D%E8%89%BA%E8%A1%A8%E6%BC%94&sign=cc165e053014941dab4ea1cba27c9c22";
+    //海外留学
+    public static final String OVERSEAS = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E6%B5%B7%E5%A4%96%E7%95%99%E5%AD%A6&sign=e020487063f4ef4f218fe8efc6d8a304";
+    //个人自拍
+    public static final String URL_OUR = "http://live.bilibili.com/mobile/rooms?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&area_id=11&build=427000&mobi_app=android&page=1&platform=android&sort=hottest&tag=%E4%B8%AA%E4%BA%BA%E8%87%AA%E6%8B%8D&sign=87ecf33da1f5916ebb0463b8f7fefa70";
 }

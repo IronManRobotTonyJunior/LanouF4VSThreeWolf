@@ -1,6 +1,7 @@
 package com.example.dllo.bibilala.live.presenter;
 
 
+import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;

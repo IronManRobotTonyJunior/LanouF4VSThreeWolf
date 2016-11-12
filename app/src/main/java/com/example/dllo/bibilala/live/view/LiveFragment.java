@@ -8,12 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.RecommendDataEntity;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
+import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
 import com.example.dllo.bibilala.live.presenter.LivePresenter;
 import com.example.dllo.bibilala.url.UrlClass;
 
@@ -111,6 +113,12 @@ public class LiveFragment extends BaseFragment implements ILiveView {
                 mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
             }
         });
+        mAllAdapter.setListener(new LiveAdapter.onRecyclerViewOnItemListener() {
+            @Override
+            public void onItemClickListener(LiveAdapter.SearchViewHolder holder, int position, View view) {
+                Toast.makeText(mContext, "position:" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
@@ -149,6 +157,11 @@ public class LiveFragment extends BaseFragment implements ILiveView {
             mRecyclerView.setAdapter(mAllAdapter);
             mRecyclerView.setLayoutManager(mManager);
         }
+    }
+
+    @Override
+    public void onAllType(AllTypeEntity result) {
+
     }
 
 

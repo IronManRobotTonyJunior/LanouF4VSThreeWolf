@@ -15,14 +15,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.activity.login.SignActivity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveEntity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.PartitionEntity;
 import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.RecommendDataEntity;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.BannerEntity;
 import com.example.dllo.bibilala.entity.liveentity.livetypeentity.DataTypeEntity;
+import com.example.dllo.bibilala.live.type.view.AllTypeActivitys;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -50,9 +53,35 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     private final SpannableStringBuilder mBuilderBody;
     private final ForegroundColorSpan mPinkSpan;
     private final SpannableStringBuilder mBuilderHead;
+    private onRecyclerViewOnItemListener listener;
+
+    public void setListener(onRecyclerViewOnItemListener listener) {
+        this.listener = listener;
+    }
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.item_live_search_follow:
+                    Toast.makeText(mContext, "请先登录", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, SignActivity.class);
+                    mContext.startActivity(intent);
+                    break;
+                case R.id.item_live_search_room:
+                    Toast.makeText(mContext, "请先登录", Toast.LENGTH_SHORT).show();
+                    Intent intentRoom = new Intent(mContext, SignActivity.class);
+                    mContext.startActivity(intentRoom);
+                    break;
+                case R.id.item_live_search_center:
+                    Intent intentCenter = new Intent(mContext, SignActivity.class);
+                    mContext.startActivity(intentCenter);
+                    break;
+                case R.id.item_live_search_all:
+                    Intent intentAll = new Intent(mContext, AllTypeActivitys.class);
+                    mContext.startActivity(intentAll);
+                    break;
+            }
 
         }
     };
@@ -99,7 +128,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         int groupPosition = (position - 17) / 6 + 1;
         holder.itemView.setTag(holder);
         holder.itemView.setOnClickListener(this);
@@ -115,11 +144,20 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 bannerViewHolder.mBanner.setImages(mBannerUrl);
                 break;
             case TYPE_SEARCH:
-                SearchViewHolder searchViewHolder = (SearchViewHolder) holder;
+                final SearchViewHolder searchViewHolder = (SearchViewHolder) holder;
                 searchViewHolder.mTvSearchAll.setOnClickListener(mOnClickListener);
                 searchViewHolder.mTvSearchCenter.setOnClickListener(mOnClickListener);
                 searchViewHolder.mTvSearchFollow.setOnClickListener(mOnClickListener);
                 searchViewHolder.mTvSearchRoom.setOnClickListener(mOnClickListener);
+                if (listener != null) {
+                    searchViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int position = searchViewHolder.getAdapterPosition();
+                            listener.onItemClickListener(searchViewHolder, position, v);
+                        }
+                    });
+                }
                 break;
             case TYPE_HEAD:
                 HeadViewHolder headViewHolder = (HeadViewHolder) holder;
@@ -224,8 +262,6 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
-//        RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
-//        int position = viewHolder.getLayoutPosition();
     }
 
     public static class BannerViewHolder extends RecyclerView.ViewHolder {
@@ -302,3 +338,10 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
         void onItemClick(String url, String title, String name, int online, int roomId, String iconUrl);
     }
 }
+
+interface onRecyclerViewOnItemListener {
+    void onItemClickListener(LiveAdapter.SearchViewHolder holder, int position, View view);
+}
+
+
+

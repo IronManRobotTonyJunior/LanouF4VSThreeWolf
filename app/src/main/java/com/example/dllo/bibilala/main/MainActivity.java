@@ -264,4 +264,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+    public void getJump(int item) {
+        mViewPager.setCurrentItem(item);
+    }
+
 }

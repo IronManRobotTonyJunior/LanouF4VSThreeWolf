@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">BiBiLaiLai</string>
+
+
+
+    <string name="alls">
+        <item>手机直播</item>
+        <item>手游直播"</item>
+        <item>萌宅推荐</item>
+        <item>绘画专区</item>
+        <item>网络游戏</item>
+        <item>单机联机</item>
+        <item>电子竞技</item>
+        <item>唱见舞见</item>
+        <item>生活娱乐</item>
+        <item>御宅文化</item>
+        <item>放映厅</item>
+    </string>
+
+
+    <string name="action_settings">Settings</string>
+
 </resources>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/live_title_recycler"
+        android:id="@+id/animation_title_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -45,7 +45,7 @@
 
     </RelativeLayout>
 
-    <com.example.dllo.bibilala.gridview.GridViewForScrollView
+    <com.example.dllo.bibilala.bangumi.grid.GridViews
         android:id="@+id/animation_grid"
         android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"
