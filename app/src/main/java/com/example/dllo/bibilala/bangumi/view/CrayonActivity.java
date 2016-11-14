@@ -49,6 +49,8 @@ import android.widget.Toast;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
 import com.example.dllo.bibilala.base.BaseActivity;
+import com.example.dllo.bibilala.entity.bangumentity.add.AddCrayonEntity;
+import com.example.dllo.bibilala.entity.bangumentity.add.QuarterlyEntity;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
 
@@ -117,6 +119,19 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
 
 
     }
+
+    @Override
+    public void onResponse(AddCrayonEntity entity) {
+
+    }
+
+    @Override
+    public void onQuarterlyEntity(QuarterlyEntity entity) {
+
+    }
+
+
+
 
     private void crayonResult() {
         mAdapter = new CrayonAdapter(this, R.layout.item_crayon_ac, entityList);

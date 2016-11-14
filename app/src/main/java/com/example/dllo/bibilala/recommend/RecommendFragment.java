@@ -5,7 +5,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,17 +24,11 @@ import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 import com.example.dllo.bibilala.http.SendGetRequest;
-
-import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
-import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
-
-import com.example.dllo.bibilala.live.view.LiveFragment;
 import com.example.dllo.bibilala.main.MainActivity;
 import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
 import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
 import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotRecommendActivity;
 import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotVideoActivity;
-
 import com.example.dllo.bibilala.recommend.adapter.ActivityAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AdvertAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AnimationAdapter;
@@ -517,8 +510,12 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
 
                 //倒数第二个
+
 //                String url = response.getResult().get(18).getBody().get(0).getCover();
 //                Glide.with(mContext).load(url).into(imageView);
+
+                String url = response.getResult().get(17).getBody().get(0).getCover();
+                Glide.with(mContext).load(url).into(imageView);
 
             }
 

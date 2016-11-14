@@ -37,10 +37,14 @@ package com.example.dllo.bibilala.bangumi.presenter;
                       `',:                 :    .'
                                            `:.:'
 
-         
+         .
         */
 
 import com.example.dllo.bibilala.bangumi.view.ICrayonView;
+import com.example.dllo.bibilala.entity.bangumentity.add.AddCrayonEntity;
+import com.example.dllo.bibilala.entity.bangumentity.add.ListBean;
+import com.example.dllo.bibilala.entity.bangumentity.add.QuarterlyEntity;
+import com.example.dllo.bibilala.entity.bangumentity.add.ResultBean;
 import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
 import com.example.dllo.bibilala.mvp.model.IModel;
@@ -66,6 +70,10 @@ public class SecondBangumPresenter {
             public void onCompleted(T result) {
                 if (result instanceof CrayonFootEntity) {
                     iCrayonView.onCrayonFootEntity((CrayonFootEntity) result);
+                }else if (result instanceof AddCrayonEntity){
+                    iCrayonView.onResponse((AddCrayonEntity) result);
+                }else if (result instanceof QuarterlyEntity){
+                    iCrayonView.onQuarterlyEntity((QuarterlyEntity) result);
                 }
                 iCrayonView.dismissDialog();
             }

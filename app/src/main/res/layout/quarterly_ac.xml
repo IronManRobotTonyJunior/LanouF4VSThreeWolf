@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:background="@color/colorGary"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
-        android:background="#FB7299"
+        android:background="#FB8299"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="70dp">
         <ImageView
             android:layout_marginLeft="10dp"
-            android:id="@+id/ac_all_type_ima_back"
+            android:id="@+id/quarterly_ac_ima_back"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_vertical"
             android:background="@mipmap/backs"
@@ -22,17 +20,16 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_vertical"
-            android:text="全部分类"
+            android:text="分季列表"
             android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/ac_all_type_rv"
+        android:id="@+id/quarterly_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp" />
+        />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.bangumi.view;
+package com.example.dllo.bibilala.entity.bangumentity.add;
  /*
         quu..__
          $$$b  `---.__
@@ -40,23 +40,40 @@ package com.example.dllo.bibilala.bangumi.view;
          
         */
 
-import com.example.dllo.bibilala.entity.bangumentity.add.AddCrayonEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.ListBean;
-import com.example.dllo.bibilala.entity.bangumentity.add.QuarterlyEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.ResultBean;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
+import java.util.List;
 
 /**
- * Created by dllo on 16/11/1.
+ * Created by dllo on 16/11/11.
  */
 
-public interface ICrayonView {
-    void showDialog();
-    void dismissDialog();
-    void onCrayonFootEntity(CrayonFootEntity crayonFootEntity);
-    void onResponse(AddCrayonEntity entity);
-    void onQuarterlyEntity(QuarterlyEntity entity);
-    void onError();
+public class ResultBean {
+    private int season;
+    private int year;
+    private List<ListBean> list;
+
+    public int getSeason() {
+        return season;
+    }
+
+    public void setSeason(int season) {
+        this.season = season;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public List<ListBean> getList() {
+        return list;
+    }
+
+    public void setList(List<ListBean> list) {
+        this.list = list;
+    }
+
 
 }
