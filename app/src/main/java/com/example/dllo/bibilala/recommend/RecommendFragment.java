@@ -522,7 +522,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 //                Glide.with(mContext).load(url).into(imageView);
 
                 String url = response.getResult().get(17).getBody().get(0).getCover();
-                Glide.with(mContext).load(url).into(imageView);
+//                Glide.with(mContext).load(url).into(imageView);
 
             }
 
