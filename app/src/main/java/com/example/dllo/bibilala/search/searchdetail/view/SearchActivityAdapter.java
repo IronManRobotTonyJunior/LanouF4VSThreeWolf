@@ -14,7 +14,7 @@ import java.util.List;
 public class SearchActivityAdapter extends FragmentPagerAdapter {
 
     private List<SearchDetailEntity.DataBean.NavBean> mBean;
-    private final List<TabInfo> mInfos;
+    private List<TabInfo> mInfos;
 
     public SearchActivityAdapter(FragmentManager fm) {
         super(fm);
@@ -27,6 +27,10 @@ public class SearchActivityAdapter extends FragmentPagerAdapter {
 
     public void setTitleBean(List<SearchDetailEntity.DataBean.NavBean> bean) {
         mBean = bean;
+    }
+
+    public void setInfos(List<TabInfo> infos) {
+        mInfos = infos;
     }
 
     @Override
@@ -50,7 +54,6 @@ public class SearchActivityAdapter extends FragmentPagerAdapter {
                 return mInfos.get(position).getTitle() + "(" + total + ")";
             }
         }
-
         return mInfos.get(position).getTitle();
     }
 }
