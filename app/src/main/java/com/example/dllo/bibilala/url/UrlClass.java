@@ -80,7 +80,15 @@ public final class UrlClass {
     public static final String URL_RECOMMEND_LIVE ="http://live.bilibili.com/AppRoom/index?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&buld=427000&jumpFrom=27003&mobi_app=android&platform=android&room_id=23382&scale=xxhdpi&sign=c850c2099871a5d89e1cda3ee69609aa";
 
 
+    //热门推荐排行 标题第二界面  原创
+    public static final String URL_HOT_ORIGINAL="http://www.bilibili.com/index/rank/origin-03.json";
 
+    //全站
+
+    public static final String URL_HOT_STATION="http://www.bilibili.com/index/rank/all-03.json";
+    //番剧
+
+    public static final String URL_HOT_PLAY="http://www.bilibili.com/index/rank/all-3-33.json";
     /**
      * 番剧
      */

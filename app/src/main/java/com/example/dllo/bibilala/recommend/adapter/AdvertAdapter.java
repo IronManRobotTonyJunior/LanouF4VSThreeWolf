@@ -66,7 +66,7 @@ public class AdvertAdapter  extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(15).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(14).getBody().get(i);
         AdvertHolder holder =null;
         if (view ==null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_recommend_music,viewGroup,false);
