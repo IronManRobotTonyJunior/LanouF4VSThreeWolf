@@ -113,12 +113,7 @@ public class LiveFragment extends BaseFragment implements ILiveView {
                 mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
             }
         });
-        mAllAdapter.setListener(new LiveAdapter.onRecyclerViewOnItemListener() {
-            @Override
-            public void onItemClickListener(LiveAdapter.SearchViewHolder holder, int position, View view) {
-                Toast.makeText(mContext, "position:" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
 
     }
