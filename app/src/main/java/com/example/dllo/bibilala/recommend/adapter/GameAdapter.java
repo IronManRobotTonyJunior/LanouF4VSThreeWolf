@@ -66,7 +66,7 @@ public class GameAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(7).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(8).getBody().get(i);
 
         GameHolder holder =null;
         if (view==null) {

@@ -420,45 +420,45 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 gridViewHit.setAdapter(recommedHitAdapter);
 
 
-                //话题
-//                String urlTopicThree = response.getResult().get(3).getBody().get(0).getCover();
-//                Glide.with(mContext).load(urlTopicThree).into(imageViewTopicThree);
-//                last_topic_big_text.setText(response.getResult().get(3).getBody().get(0).getTitle());
+//                话题
+                String urlTopicThree = response.getResult().get(3).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlTopicThree).into(imageViewTopicThree);
+                last_topic_big_text.setText(response.getResult().get(3).getBody().get(0).getTitle());
 
 
                 //动画
-                recommend_animation_title.setText(response.getResult().get(3).getHead().getTitle());
+                recommend_animation_title.setText(response.getResult().get(4).getHead().getTitle());
                 animationAdapter.setAllBean(response);
                 gridViewAnimation.setAdapter(animationAdapter);
 
+                String urlTopicFour = response.getResult().get(5).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlTopicFour).into(imageViewFour);
 
                 //音乐
                 recommendMusicAdapter.setAllBean(response);
                 gridViewMusic.setAdapter(recommendMusicAdapter);
-                recommend_music_title.setText(response.getResult().get(4).getHead().getTitle());
+                recommend_music_title.setText(response.getResult().get(6).getHead().getTitle());
 
 
 
 
-                String urlTopicFour = response.getResult().get(5).getBody().get(0).getCover();
-                Glide.with(mContext).load(urlTopicFour).into(imageViewFour);
 
 
 
                 //舞蹈
                 dancingAdapter.setAllBean(response);
                 gridViewDancing.setAdapter(dancingAdapter);
-                recommend_drancing_title.setText(response.getResult().get(6).getHead().getTitle());
+                recommend_drancing_title.setText(response.getResult().get(7).getHead().getTitle());
 
 //                //
 
                 //游戏区
                 gameAdapter.setAllBean(response);
                 gridViewGame.setAdapter(gameAdapter);
-                recommend_game_title.setText(response.getResult().get(7).getHead().getTitle());
+                recommend_game_title.setText(response.getResult().get(8).getHead().getTitle());
 
                 //鬼畜
-                recommend_ghost_title.setText(response.getResult().get(8).getHead().getTitle());
+                recommend_ghost_title.setText(response.getResult().get(9).getHead().getTitle());
                 ghostAdapter.setAllBean(response);
                 gridViewGhost.setAdapter(ghostAdapter);
 
@@ -466,12 +466,12 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 //科技
                 scienceAdapter.setAllBean(response);
                 gridViewScience.setAdapter(scienceAdapter);
-                recommend_sclence_title.setText(response.getResult().get(9).getHead().getTitle());
+                recommend_sclence_title.setText(response.getResult().get(10).getHead().getTitle());
 
 
-                String urlTopicFive = response.getResult().get(10).getBody().get(0).getCover();
-                Log.d("dd", urlTopicFive);
-                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
+//                String urlTopicFive = response.getResult().get(10).getBody().get(0).getCover();
+//                Log.d("dd", urlTopicFive);
+//                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
 
 
                 //活动
@@ -521,7 +521,11 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 //                String url = response.getResult().get(18).getBody().get(0).getCover();
 //                Glide.with(mContext).load(url).into(imageView);
 
+
                 String url = response.getResult().get(17).getBody().get(0).getCover();
+
+//                String url = response.getResult().get(17).getBody().get(0).getCover();
+
 //                Glide.with(mContext).load(url).into(imageView);
 
             }
@@ -585,7 +589,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(5).getBody();
+                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(18).getBody();
                 been.addAll(resultBeen);
                 recommendAdapter.notifyDataSetChanged();
             }
