@@ -43,6 +43,7 @@
         <activity android:name=".live.type.view.view.SecondTypeActivity"/>
         <activity android:name=".bangumi.view.AddCrayonActivity"/>
         <activity android:name=".bangumi.view.QuarterlyActivity"/>
+        <activity android:name=".find.view.TopicActivity"/>
     </application>
 
 </manifest>
