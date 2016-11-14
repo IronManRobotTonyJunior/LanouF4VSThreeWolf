@@ -36,6 +36,8 @@
         <activity android:name=".recommend.activity.animation.AnimationActivity"/>
         <activity android:name=".live.type.view.AllTypeActivitys"/>
         <activity android:name=".live.type.view.view.SecondTypeActivity"/>
+        <activity android:name=".bangumi.view.AddCrayonActivity"/>
+        <activity android:name=".bangumi.view.QuarterlyActivity"/>
     </application>
 
 </manifest>

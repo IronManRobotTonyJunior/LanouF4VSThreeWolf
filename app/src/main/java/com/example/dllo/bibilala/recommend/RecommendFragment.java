@@ -499,7 +499,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
 
                 //倒数第二个
-                String url = response.getResult().get(18).getBody().get(0).getCover();
+                String url = response.getResult().get(17).getBody().get(0).getCover();
                 Glide.with(mContext).load(url).into(imageView);
 
             }

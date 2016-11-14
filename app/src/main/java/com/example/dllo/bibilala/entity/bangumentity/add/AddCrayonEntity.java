@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.bangumi.view;
+package com.example.dllo.bibilala.entity.bangumentity.add;
  /*
         quu..__
          $$$b  `---.__
@@ -40,23 +40,41 @@ package com.example.dllo.bibilala.bangumi.view;
          
         */
 
-import com.example.dllo.bibilala.entity.bangumentity.add.AddCrayonEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.ListBean;
-import com.example.dllo.bibilala.entity.bangumentity.add.QuarterlyEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.ResultBean;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
+import java.util.List;
 
 /**
- * Created by dllo on 16/11/1.
+ * Created by dllo on 16/11/10.
  */
 
-public interface ICrayonView {
-    void showDialog();
-    void dismissDialog();
-    void onCrayonFootEntity(CrayonFootEntity crayonFootEntity);
-    void onResponse(AddCrayonEntity entity);
-    void onQuarterlyEntity(QuarterlyEntity entity);
-    void onError();
+public class AddCrayonEntity {
+    private int code;
+    private String message;
+
+    private List<ResultEntity> result;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<ResultEntity> getResult() {
+        return result;
+    }
+
+    public void setResult(List<ResultEntity> result) {
+        this.result = result;
+    }
+
 
 }

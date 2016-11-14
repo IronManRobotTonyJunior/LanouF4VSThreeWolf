@@ -63,22 +63,13 @@ import java.util.regex.Pattern;
  * Created by dllo on 16/10/31.
  */
 public class RegisterActivity extends BaseActivity {
-    private EditText et;
-    private BroadcastReceiver smsReceiver;
-    private IntentFilter filter2;
-    private Handler handler;
-    private String strContent;
-    private Button btn;
-    private String patternCoder = "(?<!--\\d)\\d{6}(?!\\d)";
-    @Override
+
     protected int setLayout() {
         return R.layout.register_ac;
     }
 
     @Override
     protected void initView() {
-        et = bindView(R.id.question_et_phone);
-        btn = bindView(R.id.btn_obtain_gray);
 
 
 }
