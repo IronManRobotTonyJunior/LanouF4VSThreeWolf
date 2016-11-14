@@ -1,28 +1,26 @@
 package com.example.dllo.bibilala.search.searchdetail.view;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.search.searchdetail.presenter.SearchDetailPresent;
 import com.example.dllo.bibilala.search.view.ISearchView;
 import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.url.UrlClass;
 
-public class SearchDetailActivity extends FragmentActivity implements View.OnClickListener
-        , ISearchView<SearchDetailEntity> {
+public class SearchDetailActivity extends BaseActivity implements View.OnClickListener
+        , ISearchDetailView<SearchDetailEntity> {
     private String title = null;
     private TextView mTv;
     private ViewPager mVp;
@@ -30,15 +28,14 @@ public class SearchDetailActivity extends FragmentActivity implements View.OnCli
     private SearchActivityAdapter mAdapter;
     private SearchDetailPresent mPresent;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_detail);
-        initView();
-        initData();
+    protected int setLayout() {
+        return R.layout.activity_search_detail;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         LinearLayout detailLinearLayout = (LinearLayout) findViewById(R.id.detail_ll);
         detailLinearLayout.setOnClickListener(this);
         mTb = (TabLayout) findViewById(R.id.search_detail_tab);
@@ -48,10 +45,10 @@ public class SearchDetailActivity extends FragmentActivity implements View.OnCli
         imgBack.setOnClickListener(this);
         mPresent = new SearchDetailPresent(this);
         mAdapter = new SearchActivityAdapter(getSupportFragmentManager());
-        mVp.setAdapter(mAdapter);
     }
 
-    private void initData() {
+    @Override
+    protected void initData(Bundle savedInstanceState) {
         Intent intent = getIntent();
         title = intent.getStringExtra("keyWord");
         mTv.setText(title);
@@ -74,12 +71,32 @@ public class SearchDetailActivity extends FragmentActivity implements View.OnCli
 
     @Override
     public void onResponse(SearchDetailEntity result) {
-        mAdapter.setTitleBean(result.getData().getNav());
+        if (result.getCode() != -500) {
+            mAdapter.setTitleBean(result.getData().getNav());
+            mVp.setAdapter(mAdapter);
+        }
         mTb.setupWithViewPager(mVp);
+        mTb.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
     @Override
-    public void error() {
+    public void onError() {
 
+    }
+
+    @Override
+    public void showAnimator() {
+
+    }
+
+    @Override
+    public void dismissAnimator() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAdapter.setInfos(null);
     }
 }

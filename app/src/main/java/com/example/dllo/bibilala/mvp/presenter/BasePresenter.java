@@ -9,24 +9,37 @@ import java.lang.ref.WeakReference;
  * <p>泛型为View层的接口</p>
  */
 public abstract class BasePresenter<T> {
-    /** 定义一个引用 */
+    /**
+     * 定义一个引用
+     */
     protected Reference<T> mViewRef;
 
-    /** 初始化弱引用对象 */
-    public void attachView(T view) {
-        mViewRef = new WeakReference<T>(view);
+    public BasePresenter(T t) {
+        mViewRef = attachView(t);
     }
 
-    /** 获取View */
+    /**
+     * 初始化弱引用对象
+     */
+    protected Reference<T> attachView(T view) {
+        mViewRef = new WeakReference<T>(view);
+        return mViewRef;
+    }
+
+    /**
+     * 获取View
+     */
     protected T getView() {
         return mViewRef.get();
     }
 
-    public boolean isViewAttached() {
+    protected boolean isViewAttached() {
         return mViewRef != null && mViewRef.get() != null;
     }
 
-    /** 清理 */
+    /**
+     * 清理
+     */
     public void detachView() {
         if (mViewRef != null) {
             mViewRef.clear();

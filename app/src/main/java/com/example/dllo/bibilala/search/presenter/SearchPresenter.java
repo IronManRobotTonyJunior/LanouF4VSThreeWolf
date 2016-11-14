@@ -1,31 +1,39 @@
 package com.example.dllo.bibilala.search.presenter;
 
 
+import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.entity.search.term.SearchEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
+import com.example.dllo.bibilala.mvp.presenter.BasePresenter;
 import com.example.dllo.bibilala.search.model.ISearchModel;
 import com.example.dllo.bibilala.search.model.ISearchModelImpl;
 import com.example.dllo.bibilala.search.view.ISearchView;
 
-public class SearchPresenter {
+public class SearchPresenter extends BasePresenter<ISearchView> {
     private ISearchModel mISearchModel;
-    private ISearchView mISearchView;
 
-    public SearchPresenter(ISearchView ISearchView) {
+    public SearchPresenter(ISearchView iSearchView) {
+        super(iSearchView);
         mISearchModel = new ISearchModelImpl();
-        mISearchView = ISearchView;
     }
+
 
     public <T> void startRequest(String url, Class<T> clazz) {
         mISearchModel.startURLRequest(url, clazz, new OnCompletedListener<SearchEntity>() {
             @Override
             public void onCompleted(SearchEntity result) {
-                mISearchView.onResponse(result);
+                ISearchView view = getView();
+                if (view != null) {
+                    view.onResponse(result);
+                }
             }
 
             @Override
             public void onFailed() {
-                mISearchView.error();
+                ISearchView view = getView();
+                if (view != null) {
+                    view.error();
+                }
             }
         });
     }

@@ -3,10 +3,11 @@ package com.example.dllo.bibilala.search.searchdetail.view;
 
 import android.support.v4.app.Fragment;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabInfo {
+class TabInfo {
     private String title;
     private SearchDetailFragment mFragment;
 

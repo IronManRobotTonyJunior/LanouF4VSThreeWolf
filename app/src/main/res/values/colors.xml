@@ -9,6 +9,7 @@
     <color name="colorWhiteLight">#FAFAFA</color>
     <color name="colorGary">#EAEAEA</color>
     <color name="colorUnselectWhite">#FDC7D6</color>
+    <color name="colorBackground">#BABABA</color>
     <color name="colorAudience">#AAAAAA</color>
     <color name="colorTextColor">#333333</color>
     <color name="tabColor">#EFEFEF</color>
@@ -25,4 +26,5 @@
     <color name="colorTranslucent">#66000000</color>
     <color name="colorSearchList">#C7C7C7</color>
     <color name="colorDetailTabSelect">#FA769A</color>
+    <color name="colorSearchDetailTitle">#A3A3A3</color>
 </resources>

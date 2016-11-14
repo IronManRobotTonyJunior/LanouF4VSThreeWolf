@@ -1,6 +1,7 @@
 package com.example.dllo.bibilala.live.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,6 +59,20 @@ public class LiveFragment extends BaseFragment implements ILiveView {
     @Override
     protected void initData() {
         mAllAdapter = new LiveAdapter(mContext);
+        mAllAdapter.setOnRecyclerViewItemClickListener(new LiveAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(String data, String title, String name, int online, int roomId, String iconUrl) {
+                Log.d("LiveFragment", "进");
+                Intent intent = new Intent(getActivity(), LiveActivity.class);
+                intent.putExtra("playUrl", data);
+                intent.putExtra("title", title);
+                intent.putExtra("name", name);
+                intent.putExtra("online", online);
+                intent.putExtra("roomId", roomId);
+                intent.putExtra("iconUrl", iconUrl);
+                getActivity().startActivity(intent);
+            }
+        });
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

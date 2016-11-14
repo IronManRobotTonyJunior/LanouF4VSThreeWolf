@@ -20,4 +20,5 @@
     <color name="colorSearchHint">#4A4A4A</color>
     <color name="colorSearchList">#242424</color>
     <color name="colorDetailTabSelect">#F0F0F0</color>
+    <color name="colorSearchDetailTitle">#999999</color>
 </resources>
