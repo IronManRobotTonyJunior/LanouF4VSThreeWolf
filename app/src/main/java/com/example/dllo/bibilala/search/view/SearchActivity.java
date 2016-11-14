@@ -25,6 +25,7 @@ import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.entity.search.term.SearchEntity;
 import com.example.dllo.bibilala.entity.search.term.TagNumEntity;
 import com.example.dllo.bibilala.search.presenter.SearchPresenter;
+import com.example.dllo.bibilala.search.scan.ScanActivity;
 import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
 import com.example.dllo.bibilala.tool.db.DBTools;
 import com.example.dllo.bibilala.tool.rx.TextObservable;
@@ -170,6 +171,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 finish();
                 break;
             case R.id.img_search_scan:
+                Intent intentScan = new Intent(SearchActivity.this, ScanActivity.class);
+                startActivity(intentScan);
                 break;
 
         }

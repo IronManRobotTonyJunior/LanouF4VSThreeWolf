@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,12 +18,15 @@ import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class LiveActivity extends BaseActivity implements View.OnClickListener {
+public class LiveActivity extends BaseActivity {
 
     private String mPlayUrl;
     private VideoView mVideoView;
@@ -32,6 +37,8 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
     private String mIconUrl;
     private ImageView mAnchorIcon;
     private ImageView mLoadImage;
+    private ImageView mImgBackground;
+    private static final int SHOW_TIME = 5000;
 
     @Override
     protected int setLayout() {
@@ -45,6 +52,7 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
         TextView tvTitle = bindView(R.id.live_activity_title);
         TextView tvName = bindView(R.id.live_anchor_name);
         TextView tvOnline = bindView(R.id.live_audience_number);
+        mImgBackground = bindView(R.id.live_img_background);
         TabLayout tabLayout = bindView(R.id.live_activity_tab);
         ViewPager viewPager = bindView(R.id.live_activity_vp);
         mAnchorIcon = bindView(R.id.live_anchor_icon);
@@ -59,6 +67,7 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
         tvTitle.setText(mTitle);
         tvName.setText(mName);
         tvOnline.setText(mOnline + "");
+
     }
 
     @Override
@@ -82,9 +91,41 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
                         break;
                     case MediaPlayer.MEDIA_INFO_BUFFERING_END:
                         anim.stop();
+                        mImgBackground.setVisibility(View.GONE);
                         mLoadImage.setVisibility(View.GONE);
-                        mVideoView.setOnClickListener(LiveActivity.this);
                         mVideoView.start();
+                        mVideoView.setOnTouchListener(new View.OnTouchListener() {
+                            private Timer tShow;
+                            private boolean mContinueShow = false;
+
+                            @Override
+                            public boolean onTouch(View v, MotionEvent event) {
+                                switch (event.getAction()) {
+                                    case MotionEvent.ACTION_MOVE:
+                                        break;
+                                    case MotionEvent.ACTION_DOWN:
+                                        tShow = new Timer();
+                                        if (mContinueShow == false) {
+                                            mContinueShow = true;
+                                            tShow.schedule(new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    mContinueShow = false;
+                                                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                                                }
+                                            }, SHOW_TIME);
+                                        } else {
+                                            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                                            mContinueShow = false;
+                                        }
+                                        break;
+                                    case MotionEvent.ACTION_UP:
+                                        break;
+
+                                }
+                                return false;
+                            }
+                        });
                         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                             @Override
                             public void onPrepared(MediaPlayer mp) {
@@ -100,11 +141,4 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.live_activity_video_view:
-                break;
-        }
-    }
 }

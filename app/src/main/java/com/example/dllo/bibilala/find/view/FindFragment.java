@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.find.FindEntity;
+import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.find.presenter.FindPresenter;
+import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
 import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.tool.DensityUtils;
 import com.example.dllo.bibilala.url.UrlClass;
@@ -83,8 +85,16 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
         mFlowLayout.setAdapter(new TagAdapter<FindEntity.ListBean>(result.getList()) {
             @Override
             public View getView(FlowLayout parent, int position, FindEntity.ListBean listBean) {
-                TextView tvTag = (TextView) mFrom.inflate(R.layout.find_tv_tag, mFlowLayout, false);
+                final TextView tvTag = (TextView) mFrom.inflate(R.layout.find_tv_tag, mFlowLayout, false);
                 tvTag.setText(listBean.getKeyword());
+                tvTag.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), SearchDetailActivity.class);
+                        intent.putExtra("keyWord", tvTag.getText());
+                        getActivity().startActivity(intent);
+                    }
+                });
                 return tvTag;
             }
         });

@@ -53,11 +53,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     private final SpannableStringBuilder mBuilderBody;
     private final ForegroundColorSpan mPinkSpan;
     private final SpannableStringBuilder mBuilderHead;
-    private onRecyclerViewOnItemListener listener;
 
-    public void setListener(onRecyclerViewOnItemListener listener) {
-        this.listener = listener;
-    }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -149,15 +145,12 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 searchViewHolder.mTvSearchCenter.setOnClickListener(mOnClickListener);
                 searchViewHolder.mTvSearchFollow.setOnClickListener(mOnClickListener);
                 searchViewHolder.mTvSearchRoom.setOnClickListener(mOnClickListener);
-                if (listener != null) {
-                    searchViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            int position = searchViewHolder.getAdapterPosition();
-                            listener.onItemClickListener(searchViewHolder, position, v);
-                        }
-                    });
-                }
+                searchViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int position = searchViewHolder.getAdapterPosition();
+                    }
+                });
                 break;
             case TYPE_HEAD:
                 HeadViewHolder headViewHolder = (HeadViewHolder) holder;
@@ -339,9 +332,7 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     }
 }
 
-interface onRecyclerViewOnItemListener {
-    void onItemClickListener(LiveAdapter.SearchViewHolder holder, int position, View view);
-}
+
 
 
 

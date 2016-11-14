@@ -9,16 +9,16 @@
         android:id="@+id/center_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nonono">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackground"/>
-
         <io.vov.vitamio.widget.VideoView
             android:id="@+id/live_activity_video_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/live_img_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"/>
 
         <ImageView
             android:id="@+id/live_loading_anim"
@@ -49,8 +49,6 @@
                 android:id="@+id/live_activity_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/five"
-                android:layout_marginLeft="@dimen/five"
                 android:layout_marginTop="@dimen/fifteen"
                 android:ellipsize="end"
                 android:maxLines="1"/>
@@ -63,7 +61,7 @@
                     android:id="@+id/live_anchor_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
                     android:textColor="@color/colorPinkAlways"
                     />
 
@@ -72,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/live_anchor_name"
-                    android:layout_margin="@dimen/five"
+                    android:layout_marginTop="@dimen/five"
                     android:drawableLeft="@mipmap/ic_live_player_audience_gray"
                     android:drawablePadding="@dimen/five"
                     android:textColor="@color/colorSearchHint"

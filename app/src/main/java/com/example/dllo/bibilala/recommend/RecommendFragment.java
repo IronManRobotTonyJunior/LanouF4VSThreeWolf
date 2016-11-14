@@ -505,13 +505,13 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 gridViewTV.setAdapter(tvSeriesAdapter);
 
                 //电影
-                recommend_movie_title.setText(response.getResult().get(18).getHead().getTitle());
+                recommend_movie_title.setText(response.getResult().get(17).getHead().getTitle());
                 movieAdapter.setAllBean(response);
                 gridViewMovie.setAdapter(movieAdapter);
 
 
                 //倒数第二个
-                String url = response.getResult().get(19).getBody().get(0).getCover();
+                String url = response.getResult().get(17).getBody().get(0).getCover();
                 Glide.with(mContext).load(url).into(imageView);
 
             }
@@ -575,7 +575,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(20).getBody();
+                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(17).getBody();
                 been.addAll(resultBeen);
                 recommendAdapter.notifyDataSetChanged();
             }

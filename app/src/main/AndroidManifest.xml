@@ -3,6 +3,7 @@
           package="com.example.dllo.bibilala">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".app.BiBiLaiLaiApp"
         android:allowBackup="true"
@@ -36,11 +37,11 @@
         <activity android:name=".recommend.activity.hotrecommend.HotVideoActivity"/>
 
         <activity android:name=".recommend.activity.animation.AnimationActivity"/>
-        <activity
-            android:name=".live.view.LiveActivity"/>
+        <activity android:name=".live.view.LiveActivity"/>
 
         <activity android:name=".live.type.view.AllTypeActivitys"/>
         <activity android:name=".live.type.view.view.SecondTypeActivity"/>
+        <activity android:name=".search.scan.ScanActivity"/>
     </application>
 
 </manifest>

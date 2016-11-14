@@ -55,6 +55,9 @@ import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.DataEntity;
 import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
 import com.example.dllo.bibilala.live.type.view.presenter.SecondAllTypePresenter;
+import com.example.dllo.bibilala.live.view.LiveActivity;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -121,6 +124,24 @@ public class SecondTypeActivity extends BaseActivity implements IAllTypeView {
                 finish();
             }
         });
+//        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+////                Intent intent = new Intent(SecondTypeActivity.this, LiveActivity.class);
+////                intent.putExtra("playUrl",);
+////                intent.putExtra("title", title);
+////                intent.putExtra("name", name);
+////                intent.putExtra("online", online);
+////                intent.putExtra("roomId", roomId);
+////                intent.putExtra("iconUrl", iconUrl);
+////                startActivity(intent);
+//            }
+//
+//            @Override
+//            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+//                return false;
+//            }
+//        });
 
     }
 
