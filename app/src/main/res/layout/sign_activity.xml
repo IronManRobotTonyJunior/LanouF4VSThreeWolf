@@ -30,7 +30,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
             android:background="@mipmap/backs"
-            android:backgroundTint="@drawable/selector_toll_btn"/>
+            />
 
         <Button
             android:id="@+id/button"
@@ -206,25 +206,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/sign_xian_tv_one"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/darker_gray"/>
-
-    <TextView
-        android:id="@+id/sign_xian_tv_two"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="5dp"
-        android:background="#FB7299"
-        android:visibility="gone"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -264,6 +245,25 @@
 
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/sign_xian_tv_one"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/sign_xian_tv_two"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:background="#FB7299"
+        android:visibility="gone"/>
 
 
 </LinearLayout>
