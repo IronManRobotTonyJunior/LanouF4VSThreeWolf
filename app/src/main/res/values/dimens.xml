@@ -31,5 +31,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="title">80dp</dimen>
+    <dimen name="five_ten">50dp</dimen>
 
 </resources>

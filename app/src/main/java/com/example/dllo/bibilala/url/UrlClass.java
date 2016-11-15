@@ -47,6 +47,10 @@ import com.example.dllo.bibilala.entity.recommendentity.LiveInterfaceBean;
  */
 
 public final class UrlClass {
+
+
+
+    public static final String URL_IMAGE ="http://img4.duitang.com/uploads/item/201502/07/20150207101056_tGZfA.jpeg";
     /**
      * 闲杂
      */
@@ -107,7 +111,8 @@ public final class UrlClass {
         String url = "http://bangumi.bilibili.com/api/season/recommend/" + i + ".json?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1477988698000&sign=d248d8937975f394541830be7983d44c";
         return url;
     }
-
+    //分级列表
+    public static final String URL_BANGUM_QUARTERLY = "http://bangumi.bilibili.com/api/season_group.json?appkey=1d8b6e7d45233436&build=427000&mobi_app=android&platform=android&ts=1478847303000&sign=6929acb0d0755d5524153926351539d4";
     //番剧 Second
     public static final String URL_URL(int position) {
         int i = position;

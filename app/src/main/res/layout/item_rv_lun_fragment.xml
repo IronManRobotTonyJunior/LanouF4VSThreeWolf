@@ -26,6 +26,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/new_bang_rv"
         android:layout_width="wrap_content"
         android:layout_height="30dp">
 

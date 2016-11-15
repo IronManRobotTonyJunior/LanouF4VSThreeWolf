@@ -67,7 +67,7 @@ public class RecommendMusicAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        AllBean.ResultBean.BodyBean bean = allBean.getResult().get(4).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean = allBean.getResult().get(6).getBody().get(i);
         MusicHolder holder = null;
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_recommend_music, viewGroup, false);

@@ -7,13 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
@@ -22,13 +22,13 @@ import com.example.dllo.bibilala.bangumi.adapter.BangumChinaAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
+import com.example.dllo.bibilala.bangumi.view.AddCrayonActivity;
 import com.example.dllo.bibilala.bangumi.view.BangumiActivity;
 import com.example.dllo.bibilala.bangumi.view.CrayonActivity;
+import com.example.dllo.bibilala.bangumi.view.QuarterlyActivity;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
 import com.example.dllo.bibilala.entity.bangumentity.BangUmiRecommendEntity;
-import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
-import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.url.UrlClass;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -43,8 +43,6 @@ public class BangumiFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private BangumAdapter adapter;
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
-
-
     private ViewPager mViewPager;
     private LinearLayout mLinearLayout;
     private boolean flag = true;
@@ -60,6 +58,9 @@ public class BangumiFragment extends BaseFragment {
     private CrayonAdapter mCrayonAdapter;
     private LinearLayout mLayout;
     private SwipeRefreshLayout mRefreshLayout;
+
+
+    private RelativeLayout tvNewBang,rvJu;
 
 
     @Override
@@ -114,7 +115,9 @@ public class BangumiFragment extends BaseFragment {
                 SendGetRequest.sendGetRequest(UrlClass.URL_SOME_RECOMMEND, BangUmiRecommendEntity.class, new SendGetRequest.OnResponseListener<BangUmiRecommendEntity>() {
                     @Override
                     public void onResponse(BangUmiRecommendEntity response) {
+
                         List<BangUmiRecommendEntity.ResultBean> results = response.getResult();
+                        results.clear();
                         mEntity.addAll(results);
                         mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
                         adapter.notifyDataSetChanged();
@@ -213,8 +216,6 @@ public class BangumiFragment extends BaseFragment {
                         Intent intent = new Intent(mContext, CrayonActivity.class);
                         intent.putExtra("july", url);
                         startActivity(intent);
-
-
                     }
 
                     @Override
@@ -340,27 +341,32 @@ public class BangumiFragment extends BaseFragment {
     private void crayonView() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_crayon, null);
         mHeaderAndFooterWrapper.addHeaderView(view);
-//        mHeaderAndFooterWrapper.notifyDataSetChanged();
         mCrayonGridView = (GridView) view.findViewById(R.id.item_crayon_gl);
         mCrayonAdapter = new CrayonAdapter(mContext);
     }
 
     private void chinaView() {
+
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_bangum_fragment_china, null);
         mHeaderAndFooterWrapper.addHeaderView(view);
-//        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        rvJu = (RelativeLayout) view.findViewById(R.id.item_china_rv);
         mChinaGridView = (GridView) view.findViewById(R.id.item_bang_china_gv);
         mBangumChinaAdapter = new BangumChinaAdapter(mContext);
+        rvJu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,QuarterlyActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void onJulyView() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_gl_july_fragment, null);
         mGridView = (GridView) view.findViewById(R.id.item_july_gl);
         mHeaderAndFooterWrapper.addHeaderView(view);
-//        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
-//        mHeaderAndFooterWrapper.notifyDataSetChanged();
         mJulyToLoveAdapter = new JulyToLoveAdapter(mContext);
-//        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
     }
 
     private void onLunView() {
@@ -370,6 +376,14 @@ public class BangumiFragment extends BaseFragment {
         mViewPager = (ViewPager) view.findViewById(R.id.bang_umi_fragment_viewpager);
         mLinearLayout = (LinearLayout) view.findViewById(R.id.bang_umi_fragment_ll);
         mLayout = (LinearLayout) view.findViewById(R.id.rv_lun_l);
+        tvNewBang = (RelativeLayout) view.findViewById(R.id.new_bang_rv);
+        tvNewBang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,AddCrayonActivity.class);
+                startActivity(intent);
+            }
+        });
         mLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

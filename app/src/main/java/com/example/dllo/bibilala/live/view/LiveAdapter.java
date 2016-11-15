@@ -330,6 +330,8 @@ public class LiveAdapter extends RecyclerView.Adapter implements View.OnClickLis
     public interface OnRecyclerViewItemClickListener {
         void onItemClick(String url, String title, String name, int online, int roomId, String iconUrl);
     }
+
+
 }
 
 

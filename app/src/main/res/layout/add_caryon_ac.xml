@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="#FB8299"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/add_crayon_ac_ima_back"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/backs"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:text="新番连载"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/add_crayon_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

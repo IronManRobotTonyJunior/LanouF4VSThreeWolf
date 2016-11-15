@@ -74,6 +74,8 @@ public class SecondTypeActivity extends BaseActivity implements IAllTypeView {
     private TextView tvTitle;
     private ImageView imaBack;
 
+
+
     @Override
     protected int setLayout() {
         return R.layout.second_type_ac;
@@ -141,7 +143,12 @@ public class SecondTypeActivity extends BaseActivity implements IAllTypeView {
 //            }
 //        });
 
+
+
     }
+
+
+
 
     @Override
     public void showDialog() {

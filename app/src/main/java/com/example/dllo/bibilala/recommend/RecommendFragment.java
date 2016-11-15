@@ -8,34 +8,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.grid.GridViews;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 import com.example.dllo.bibilala.entity.recommendentity.LBBean;
 import com.example.dllo.bibilala.http.SendGetRequest;
-
-import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
-import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
-
-import com.example.dllo.bibilala.live.view.LiveFragment;
 import com.example.dllo.bibilala.main.MainActivity;
-import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
 import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
-import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotRecommendActivity;
-import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotVideoActivity;
-
 import com.example.dllo.bibilala.recommend.adapter.ActivityAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AdvertAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AnimationAdapter;
@@ -55,6 +43,7 @@ import com.example.dllo.bibilala.recommend.adapter.RecommendMusicAdapter;
 import com.example.dllo.bibilala.recommend.adapter.ScienceAdapter;
 import com.example.dllo.bibilala.recommend.adapter.TVSeriesAdapter;
 import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.view.GridViews;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
@@ -131,14 +120,14 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
     private MovieAdapter movieAdapter;
     private RelativeLayout animation_title_recycler;
 
-//    private SwipeRefreshLayout recommend_swipe_refresh;
-//    private boolean isLayout = false;
+
 
 
     private Animation rotate;
     private RelativeLayout hot_recommend_relative_layout;
     private RelativeLayout live_title_layout;
     private RelativeLayout hit_play_layout;
+    private SwipeRefreshLayout recommend_swipe_refresh;
 
 
     @Override
@@ -149,7 +138,8 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
     @Override
     protected void initView() {
         recyclerView = bindView(R.id.recommend_recycle_view);
-//        recommend_swipe_refresh =bindView(R.id.recommend_swipe_refresh);
+
+        recommend_swipe_refresh = bindView(R.id.recommend_swipe_refresh);
 
 
     }
@@ -162,21 +152,16 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         recyclerView.setLayoutManager(linearLayoutManager);
         //回到最上层
         recyclerView.smoothScrollBy(0, 0);
-//        if (!isLayout) {
-//            mPresenter.startRequest(UrlClass.URL_GHOST_OU, LBBean.class);
-//            mPresenter.startRequest(UrlClass.URL_RECOMMEND, AllBean.class);
-//        }
-//        isLayout =true;
-//        recommend_swipe_refresh.setColorSchemeColors(getResources().getColor(R.color.colorPinkAlways));
-//        recommend_swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                mPresenter.startRequest(UrlClass.URL_GHOST_OU, LBBean.class);
-//                mPresenter.startRequest(UrlClass.URL_RECOMMEND, AllBean.class);
-//
-//
-//            }
-//        });
+
+
+        recommend_swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recommend_swipe_refresh.setRefreshing(false);
+
+
+            }
+        });
         been = new ArrayList<>();
         recommendAdapter = new RecommendAdapter(mContext, R.layout.recommend_last, been);
         recyclerView.setAdapter(recommendAdapter);
@@ -197,21 +182,20 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         gridViewHotRecommended = (GridViews) viewHotRecommended.findViewById(R.id.hot_recommend_grid);
         hot_recommend_refresh_img = (ImageView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh_img);
         hot_recommend_refresh = (TextView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh);
-//        hot_recommend_refresh_img = (ImageView) viewHotRecommended.findViewById(R.id.hot_recommend_refresh_img);
-//        hot_recommend_refresh_img.setBackgroundResource(R.anim.img_refresh);
-//        drawable = (AnimationDrawable) hot_recommend_refresh_img.getBackground();
         recommedVideoAdapter = new RecommedVideoAdapter(mContext);
         mHeaderAndFooterWrapper.addHeaderView(viewHotRecommended);
         hot_recommend_refresh_img.setOnClickListener(this);
         hot_recommend_relative_layout.setOnClickListener(this);
-        gridViewHotRecommended.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intentGridHot = new Intent(RecommendFragment.this.getActivity(), HotVideoActivity.class);
-                startActivity(intentGridHot);
-
-            }
-        });
+//        gridViewHotRecommended.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intentGridHot = new Intent(RecommendFragment.this.getActivity(), HotVideoActivity.class);
+//
+//
+//                startActivity(intentGridHot);
+//
+//            }
+//        });
 
 
         //正在直播
@@ -222,20 +206,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         live_is_live = (TextView) viewLive.findViewById(R.id.live_is_live);
         recommendLiveAdapter = new RecommendLiveAdapter(mContext);
         live_title_layout.setOnClickListener(this);
-        gridViewLive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intentGridLive = new Intent(RecommendFragment.this.getActivity(), GridLiveActivity.class);
-//                LiveInterfaceBean.DataBean bean = (LiveInterfaceBean.DataBean) adapterView.getItemAtPosition(i);
-//                int roomId =bean.getRoom_id();
-//                intentGridLive.putExtra("roomId",roomId);
-//                String urlLive ="http://live.bilibili.com/AppRoom/index?_device=android&_hwid=ccbb856c97ccb8d2&appkey=1d8b6e7d45233436&build=427000&buld=427000&jumpFrom=27003&mobi_app=android&platform=android&room_id=" +roomId + "&scale=xxhdpi&sign=c850c2099871a5d89e1cda3ee69609aa";
-//                intentGridLive.putExtra("urlLive",urlLive);
-                startActivity(intentGridLive);
 
-
-            }
-        });
         mHeaderAndFooterWrapper.addHeaderView(viewLive);
 
 
@@ -420,45 +391,45 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 gridViewHit.setAdapter(recommedHitAdapter);
 
 
-                //话题
-//                String urlTopicThree = response.getResult().get(3).getBody().get(0).getCover();
-//                Glide.with(mContext).load(urlTopicThree).into(imageViewTopicThree);
-//                last_topic_big_text.setText(response.getResult().get(3).getBody().get(0).getTitle());
+//                话题
+                String urlTopicThree = response.getResult().get(3).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlTopicThree).into(imageViewTopicThree);
+                last_topic_big_text.setText(response.getResult().get(3).getBody().get(0).getTitle());
 
 
                 //动画
-                recommend_animation_title.setText(response.getResult().get(3).getHead().getTitle());
+                recommend_animation_title.setText(response.getResult().get(4).getHead().getTitle());
                 animationAdapter.setAllBean(response);
                 gridViewAnimation.setAdapter(animationAdapter);
-
-
-                //音乐
-                recommendMusicAdapter.setAllBean(response);
-                gridViewMusic.setAdapter(recommendMusicAdapter);
-                recommend_music_title.setText(response.getResult().get(4).getHead().getTitle());
-
-
-
 
                 String urlTopicFour = response.getResult().get(5).getBody().get(0).getCover();
                 Glide.with(mContext).load(urlTopicFour).into(imageViewFour);
 
 
+                //音乐
+                recommendMusicAdapter.setAllBean(response);
+                gridViewMusic.setAdapter(recommendMusicAdapter);
+                recommend_music_title.setText(response.getResult().get(6).getHead().getTitle());
+
+
+                String urlTopicFive = response.getResult().get(7).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
+
 
                 //舞蹈
                 dancingAdapter.setAllBean(response);
                 gridViewDancing.setAdapter(dancingAdapter);
-                recommend_drancing_title.setText(response.getResult().get(6).getHead().getTitle());
+                recommend_drancing_title.setText(response.getResult().get(8).getHead().getTitle());
 
 //                //
 
                 //游戏区
                 gameAdapter.setAllBean(response);
                 gridViewGame.setAdapter(gameAdapter);
-                recommend_game_title.setText(response.getResult().get(7).getHead().getTitle());
+                recommend_game_title.setText(response.getResult().get(9).getHead().getTitle());
 
                 //鬼畜
-                recommend_ghost_title.setText(response.getResult().get(8).getHead().getTitle());
+                recommend_ghost_title.setText(response.getResult().get(10).getHead().getTitle());
                 ghostAdapter.setAllBean(response);
                 gridViewGhost.setAdapter(ghostAdapter);
 
@@ -466,60 +437,62 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 //科技
                 scienceAdapter.setAllBean(response);
                 gridViewScience.setAdapter(scienceAdapter);
-                recommend_sclence_title.setText(response.getResult().get(9).getHead().getTitle());
-
-
-                String urlTopicFive = response.getResult().get(10).getBody().get(0).getCover();
-                Log.d("dd", urlTopicFive);
-                Glide.with(mContext).load(urlTopicFive).into(five_topic_big_img);
+                recommend_sclence_title.setText(response.getResult().get(11).getHead().getTitle());
 
 
                 //活动
-                recommend_activity_title.setText(response.getResult().get(11).getHead().getTitle());
+                recommend_activity_title.setText(response.getResult().get(12).getHead().getTitle());
                 activityAdapter.setAllBean(response);
                 gridViewActivity.setAdapter(activityAdapter);
 
                 //生活
-                recommend_life_title.setText(response.getResult().get(12).getHead().getTitle());
+                recommend_life_title.setText(response.getResult().get(13).getHead().getTitle());
                 lifeAdapter.setBeanList(response);
                 gridViewLife.setAdapter(lifeAdapter);
 
 
+//                话题
+                String urlSix = response.getResult().get(14).getBody().get(0).getCover();
+                Glide.with(mContext).load(urlSix).into(imageViewSix);
+
+
                 //时尚
-                recommend_fashion_title.setText(response.getResult().get(13).getHead().getTitle());
+                recommend_fashion_title.setText(response.getResult().get(15).getHead().getTitle());
                 fashionAdapter.setAllBean(response);
                 gridViewFashion.setAdapter(fashionAdapter);
 
-//                话题
-//                String urlSix = response.getResult().get(14).getBody().get(0).getCover();
-//                Glide.with(mContext).load(urlSix).into(imageViewSix);
 
                 //广告
-                recommend_advert_title.setText(response.getResult().get(14).getHead().getTitle());
+                recommend_advert_title.setText(response.getResult().get(16).getHead().getTitle());
                 advertAdapter.setAllBean(response);
                 gridViewadvert.setAdapter(advertAdapter);
 
 
                 //娱乐
-                recommend_entertain_title.setText(response.getResult().get(15).getHead().getTitle());
+                recommend_entertain_title.setText(response.getResult().get(17).getHead().getTitle());
                 entertainmentAdapter.setAllBean(response);
                 gridViewEntertain.setAdapter(entertainmentAdapter);
 
                 //电视剧
-                recommend_tv_series_title.setText(response.getResult().get(16).getHead().getTitle());
+                recommend_tv_series_title.setText(response.getResult().get(18).getHead().getTitle());
                 tvSeriesAdapter.setAllBean(response);
                 gridViewTV.setAdapter(tvSeriesAdapter);
 
                 //电影
-                recommend_movie_title.setText(response.getResult().get(17).getHead().getTitle());
+                recommend_movie_title.setText(response.getResult().get(19).getHead().getTitle());
                 movieAdapter.setAllBean(response);
                 gridViewMovie.setAdapter(movieAdapter);
 
 
                 //倒数第二个
-//                String url = response.getResult().get(17).getBody().get(0).getCover();
-//                Glide.with(mContext).load(url).into(imageView);
 //                String url = response.getResult().get(18).getBody().get(0).getCover();
+//                Glide.with(mContext).load(url).into(imageView);
+
+
+                String url = response.getResult().get(17).getBody().get(0).getCover();
+
+//                String url = response.getResult().get(17).getBody().get(0).getCover();
+
 //                Glide.with(mContext).load(url).into(imageView);
 
             }
@@ -583,7 +556,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         SendGetRequest.sendGetRequest(UrlClass.URL_RECOMMEND, AllBean.class, new SendGetRequest.OnResponseListener<AllBean>() {
             @Override
             public void onResponse(AllBean response) {
-                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(5).getBody();
+                List<AllBean.ResultBean.BodyBean> resultBeen = response.getResult().get(20).getBody();
                 been.addAll(resultBeen);
                 recommendAdapter.notifyDataSetChanged();
             }
@@ -600,8 +573,8 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.hot_recommend_relative_layout:
-                Intent intentHotRecommend = new Intent(getActivity(), HotRecommendActivity.class);
-                startActivity(intentHotRecommend);
+//                Intent intentHotRecommend = new Intent(getActivity(), HotRecommendActivity.class);
+//                startActivity(intentHotRecommend);
 
                 break;
 

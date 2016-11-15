@@ -11,6 +11,18 @@
         android:layout_height="80dp"
         android:scaleType="fitXY"/>
 
+    <TextView
+        android:id="@+id/original_title"
+        android:layout_toRightOf="@+id/original_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/five"
+        android:lines="1"
+        android:maxEms="5"
+        />
+
+
+
 
 
 

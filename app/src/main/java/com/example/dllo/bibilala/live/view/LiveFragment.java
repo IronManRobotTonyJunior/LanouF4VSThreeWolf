@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
@@ -113,7 +112,6 @@ public class LiveFragment extends BaseFragment implements ILiveView {
                 mLivePresenter.startRequest(UrlClass.URL_LIVE, LiveTypeEntity.class);
             }
         });
-
     }
 
     @Override

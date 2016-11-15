@@ -76,7 +76,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private ImageView mImgBack;
     private static final int REQUEST_CODE = 100;
 
-    @Override
+
     protected int setLayout() {
         return R.layout.register_ac;
     }

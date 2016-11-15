@@ -9,7 +9,7 @@
     android:paddingTop="5dp">
 
 
-    <com.example.dllo.bibilala.bangumi.grid.GridViews
+    <com.example.dllo.bibilala.view.GridViews
         android:id="@+id/item_crayon_gl"
         android:layout_width="match_parent"
         android:layout_height="190dp"

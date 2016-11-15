@@ -75,9 +75,7 @@ public class HotRecommendActivity extends BaseActivity {
         hotAdapter = new HotAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(hotAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-//        ViewGroup.LayoutParams params = mTabLayout.getLayoutParams();
-//        params.width = DensityUtils.dp2px(this, 150f);
-//        mTabLayout.setLayoutParams(params);
+
 
         user_name.setText("排行榜");
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tabColor));

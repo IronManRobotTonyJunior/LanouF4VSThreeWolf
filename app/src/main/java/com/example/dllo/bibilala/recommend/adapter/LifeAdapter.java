@@ -66,7 +66,7 @@ public class LifeAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        AllBean.ResultBean.BodyBean bean =beanList.getResult().get(12).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean =beanList.getResult().get(13).getBody().get(i);
 
         LifeHolder holder =null;
         if (view ==null) {

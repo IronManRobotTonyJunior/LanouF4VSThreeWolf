@@ -11,9 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.activity.login.DownLoadActivity;
+import com.example.dllo.bibilala.activity.login.SignActivity;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.find.FindEntity;
-import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.find.presenter.FindPresenter;
 import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
 import com.example.dllo.bibilala.search.view.SearchActivity;
@@ -32,6 +33,7 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
     private TagFlowLayout mFlowLayout;
     private TextView mTvSearch;
     private LayoutInflater mFrom;
+    private TextView tvInterest,tvTopic,tvActivity,tvOriginal;
 
     @Override
     protected int setLayout() {
@@ -51,12 +53,19 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
         mTvSearch = bindView(R.id.head_tv_search, headView);
         mTvSearch.setOnClickListener(this);
         mChildNestedScrollView.setNestedScrollingEnabled(false);
-
+        tvInterest = bindView(R.id.find_item_interest);
+        tvTopic = bindView(R.id.find_item_topic);
+        tvActivity = bindView(R.id.find_item_activity);
+        tvOriginal = bindView(R.id.find_item_rank_original);
     }
 
     @Override
     protected void initData() {
         mFindPresenter.startRequest(UrlClass.URL_FIND_LABEL, FindEntity.class);
+        tvInterest.setOnClickListener(this);
+        tvTopic.setOnClickListener(this);
+        tvActivity.setOnClickListener(this);
+        tvOriginal.setOnClickListener(this);
         mCbMore.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -101,6 +110,8 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
 
     }
 
+
+
     @Override
     public void onError() {
 
@@ -108,10 +119,30 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
 
     @Override
     public void onClick(View v) {
+        Intent intentTopic = new Intent(getActivity(), TopicActivity.class);
         switch (v.getId()) {
             case R.id.head_tv_search:
                 Intent intentSearch = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intentSearch);
+                break;
+            case R.id.find_item_interest:
+                Intent intent = new Intent(getActivity(), SignActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.find_item_topic:
+                intentTopic.putExtra("topic",UrlClass.URL_FIND_TOPIC);
+                intentTopic.putExtra("to","活动中心");
+                startActivity(intentTopic);
+
+                break;
+            case R.id.find_item_activity:
+                intentTopic.putExtra("topic",UrlClass.URL_ACTIVYTY);
+                intentTopic.putExtra("to","话题中心");
+                startActivity(intentTopic);
+                break;
+            case R.id.find_item_rank_original:
+                Intent intentOriginal = new Intent(getActivity(), DownLoadActivity.class);
+                startActivity(intentOriginal);
                 break;
         }
     }

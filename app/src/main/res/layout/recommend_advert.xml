@@ -44,7 +44,7 @@
 
     </RelativeLayout>
 
-    <com.example.dllo.bibilala.bangumi.grid.GridViews
+    <com.example.dllo.bibilala.view.GridViews
         android:id="@+id/advert_grid"
         android:layout_marginTop="@dimen/ten"
         android:layout_width="match_parent"
