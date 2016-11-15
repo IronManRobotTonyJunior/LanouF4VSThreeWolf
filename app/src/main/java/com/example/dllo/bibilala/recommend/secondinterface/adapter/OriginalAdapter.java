@@ -2,6 +2,7 @@ package com.example.dllo.bibilala.recommend.secondinterface.adapter;
 
 import android.content.Context;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
@@ -48,6 +49,8 @@ public class OriginalAdapter  extends CommonAdapter<OriginalEntity.RankBean.List
 
         ImageView imageView =holder.getView(R.id.original_img);
         Glide.with(mContext).load(listBean.getPic()).into(imageView);
+        TextView textView =holder.getView(R.id.original_title);
+        textView.setText(listBean.getTitle());
 
     }
 }

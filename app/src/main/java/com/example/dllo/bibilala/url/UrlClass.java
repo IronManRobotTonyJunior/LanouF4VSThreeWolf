@@ -47,6 +47,10 @@ import com.example.dllo.bibilala.entity.recommendentity.LiveInterfaceBean;
  */
 
 public final class UrlClass {
+
+
+
+    public static final String URL_IMAGE ="http://img4.duitang.com/uploads/item/201502/07/20150207101056_tGZfA.jpeg";
     /**
      * 闲杂
      */

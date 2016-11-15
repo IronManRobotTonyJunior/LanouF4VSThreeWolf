@@ -66,7 +66,7 @@ public class GhostAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(9).getBody().get(i);
+        AllBean.ResultBean.BodyBean bean =allBean.getResult().get(10).getBody().get(i);
 
         GhostHolder holder =null;
         if (view ==null) {

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".main.MainActivity">
+            android:name=".welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,7 +22,10 @@
         <activity android:name=".activity.login.QuestionActivity"/>
         <activity android:name=".activity.login.RegisterActivity"/>
         <activity android:name=".bangumi.view.CrayonActivity"/>
+        <activity android:name=".main.MainActivity"/>
         <activity android:name=".bangumi.view.BangumiActivity"/>
+
+
 
 
         <activity
@@ -31,7 +34,6 @@
         <activity
             android:name=".search.searchdetail.view.SearchDetailActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".recommend.activity.GridLiveActivity"/>
         <activity android:name=".recommend.activity.hotrecommend.HotRecommendActivity"/>
         <activity android:name=".recommend.activity.hotrecommend.HotVideoActivity"/>
 
