@@ -44,6 +44,7 @@
         <activity android:name=".bangumi.view.AddCrayonActivity"/>
         <activity android:name=".bangumi.view.QuarterlyActivity"/>
         <activity android:name=".find.view.TopicActivity"/>
+        <activity android:name=".activity.login.DownLoadActivity"/>
     </application>
 
 </manifest>

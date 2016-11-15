@@ -5,10 +5,8 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -20,7 +18,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.bangumi.grid.GridViews;
+import com.example.dllo.bibilala.view.GridViews;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.recommendentity.AllBean;
 import com.example.dllo.bibilala.entity.recommendentity.LBBean;
@@ -29,10 +27,7 @@ import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
 import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
 
-import com.example.dllo.bibilala.live.view.LiveFragment;
 import com.example.dllo.bibilala.main.MainActivity;
-import com.example.dllo.bibilala.recommend.activity.GridLiveActivity;
-import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
 import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotRecommendActivity;
 import com.example.dllo.bibilala.recommend.activity.hotrecommend.HotVideoActivity;
 
