@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.activity.login.DownLoadActivity;
 import com.example.dllo.bibilala.activity.login.SignActivity;
 import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.find.FindEntity;
@@ -32,7 +33,7 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
     private TagFlowLayout mFlowLayout;
     private TextView mTvSearch;
     private LayoutInflater mFrom;
-    private TextView tvInterest,tvTopic,tvActivity;
+    private TextView tvInterest,tvTopic,tvActivity,tvOriginal;
 
     @Override
     protected int setLayout() {
@@ -55,6 +56,7 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
         tvInterest = bindView(R.id.find_item_interest);
         tvTopic = bindView(R.id.find_item_topic);
         tvActivity = bindView(R.id.find_item_activity);
+        tvOriginal = bindView(R.id.find_item_rank_original);
     }
 
     @Override
@@ -63,6 +65,7 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
         tvInterest.setOnClickListener(this);
         tvTopic.setOnClickListener(this);
         tvActivity.setOnClickListener(this);
+        tvOriginal.setOnClickListener(this);
         mCbMore.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -128,6 +131,10 @@ public class FindFragment extends BaseFragment implements IFindView, View.OnClic
                 intentTopic.putExtra("topic",UrlClass.URL_ACTIVYTY);
                 intentTopic.putExtra("to","话题中心");
                 startActivity(intentTopic);
+                break;
+            case R.id.find_item_rank_original:
+                Intent intentOriginal = new Intent(getActivity(), DownLoadActivity.class);
+                startActivity(intentOriginal);
                 break;
         }
     }

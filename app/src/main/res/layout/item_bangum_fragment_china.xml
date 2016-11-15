@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.dllo.bibilala.bangumi.grid.GridViews
+    <com.example.dllo.bibilala.view.GridViews
         android:id="@+id/item_bang_china_gv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

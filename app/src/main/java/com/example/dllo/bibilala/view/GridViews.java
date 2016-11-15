@@ -1,4 +1,4 @@
-package com.example.dllo.bibilala.bangumi.grid;
+package com.example.dllo.bibilala.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
