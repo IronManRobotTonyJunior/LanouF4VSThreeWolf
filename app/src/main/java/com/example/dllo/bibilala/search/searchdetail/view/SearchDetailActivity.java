@@ -4,7 +4,6 @@ package com.example.dllo.bibilala.search.searchdetail.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,8 +13,8 @@ import android.widget.TextView;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
+import com.example.dllo.bibilala.search.scan.ScanActivity;
 import com.example.dllo.bibilala.search.searchdetail.presenter.SearchDetailPresent;
-import com.example.dllo.bibilala.search.view.ISearchView;
 import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.url.UrlClass;
 
@@ -36,6 +35,7 @@ public class SearchDetailActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void initView() {
+        ImageButton scan = (ImageButton) findViewById(R.id.detail_scan);
         LinearLayout detailLinearLayout = (LinearLayout) findViewById(R.id.detail_ll);
         detailLinearLayout.setOnClickListener(this);
         mTb = (TabLayout) findViewById(R.id.search_detail_tab);
@@ -43,6 +43,7 @@ public class SearchDetailActivity extends BaseActivity implements View.OnClickLi
         mTv = (TextView) findViewById(R.id.text_search);
         ImageButton imgBack = (ImageButton) findViewById(R.id.search_detail_img_back);
         imgBack.setOnClickListener(this);
+        scan.setOnClickListener(this);
         mPresent = new SearchDetailPresent(this);
         mAdapter = new SearchActivityAdapter(getSupportFragmentManager());
     }
@@ -64,6 +65,12 @@ public class SearchDetailActivity extends BaseActivity implements View.OnClickLi
             case R.id.detail_ll:
                 Intent intent = new Intent(SearchDetailActivity.this, SearchActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.detail_scan:
+                Intent intentScan = new Intent(SearchDetailActivity.this, ScanActivity.class);
+                startActivity(intentScan);
+                break;
+            default:
                 break;
         }
     }

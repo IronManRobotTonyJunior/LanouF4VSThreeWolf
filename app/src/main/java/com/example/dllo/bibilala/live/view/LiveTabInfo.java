@@ -1,15 +1,14 @@
 package com.example.dllo.bibilala.live.view;
 
 
-import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailFragment;
 import java.util.ArrayList;
 import java.util.List;
 
 class LiveTabInfo {
     private String title;
-    private SearchDetailFragment mFragment;
+    private LiveDetailFragment mFragment;
 
-    public LiveTabInfo(String title, SearchDetailFragment fragment) {
+    public LiveTabInfo(String title, LiveDetailFragment fragment) {
         this.title = title;
         mFragment = fragment;
 
@@ -26,20 +25,20 @@ class LiveTabInfo {
         this.title = title;
     }
 
-    public SearchDetailFragment getFragment() {
+    public LiveDetailFragment getFragment() {
         return mFragment;
     }
 
-    public void setFragment(SearchDetailFragment fragment) {
+    public void setFragment(LiveDetailFragment fragment) {
         mFragment = fragment;
     }
 
     public static List<LiveTabInfo> getTabInfos() {
         List<LiveTabInfo> infos = new ArrayList<>();
-        infos.add(new LiveTabInfo("互动", SearchDetailFragment.newInstance(0)));
-        infos.add(new LiveTabInfo("充能榜", SearchDetailFragment.newInstance(1)));
-        infos.add(new LiveTabInfo("七日绑", SearchDetailFragment.newInstance(2)));
-        infos.add(new LiveTabInfo("粉丝榜", SearchDetailFragment.newInstance(3)));
+        infos.add(new LiveTabInfo("互动", LiveDetailFragment.newInstance()));
+        infos.add(new LiveTabInfo("充能榜", LiveDetailFragment.newInstance()));
+        infos.add(new LiveTabInfo("七日榜", LiveDetailFragment.newInstance()));
+        infos.add(new LiveTabInfo("粉丝榜", LiveDetailFragment.newInstance()));
         return infos;
     }
 

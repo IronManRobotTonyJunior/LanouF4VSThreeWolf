@@ -9,10 +9,42 @@
         android:id="@+id/center_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nonono">
+
         <io.vov.vitamio.widget.VideoView
             android:id="@+id/live_activity_video_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/video_img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen"
+            android:padding="@dimen/five"
+            android:src="@mipmap/backs_big"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/anchor_room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/title_height"
+            android:layout_marginTop="@dimen/twenty"
+            android:textColor="@color/colorWhiteAlways"
+            android:visibility="gone"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/twenty"
+            android:button="@drawable/selector_play_pause"
+            android:padding="@dimen/ten"
+            android:visibility="gone"/>
+
 
         <ImageView
             android:id="@+id/live_img_background"
@@ -118,7 +150,7 @@
         android:id="@+id/live_activity_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPinkAlways"
+        app:tabIndicatorColor="@color/colorPinkAlways"
         app:tabSelectedTextColor="@color/colorPinkAlways"
         app:tabTextColor="@color/colorTextColor"/>
 

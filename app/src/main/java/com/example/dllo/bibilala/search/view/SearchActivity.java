@@ -5,11 +5,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -110,7 +108,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     getActivity(SearchDetailActivity.class.getSimpleName()).finish();
                     Log.d("SearchActivity", "finish");
                 }
-                mDBTools.insertDB(mEntities.get(position).getName());
+                mDBTools.insertHistoryDB(mEntities.get(position));
                 finish();
                 startActivity(mIntentDetail);
             }
@@ -167,7 +165,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 }
                 TagNumEntity entity = new TagNumEntity();
                 entity.setName(mEditSearch.getText().toString());
-                mDBTools.insertDB(entity);
+                mDBTools.insertHistoryDB(entity);
                 finish();
                 break;
             case R.id.img_search_scan:

@@ -70,7 +70,6 @@ public class AllTypeActivitys extends BaseActivity implements IAllTypeView {
     private AllTypeAdapter mAdapter;
     private AllTypePresenter mLivePresenter;
     private ImageView mImageBack;
-    private int id;
 
     @Override
     protected int setLayout() {

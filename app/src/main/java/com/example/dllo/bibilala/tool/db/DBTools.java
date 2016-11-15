@@ -33,17 +33,17 @@ public class DBTools {
         return SingletonDB.DB_TOOLS;
     }
 
-    public void insertDB(final Object content) {
-        threadPool.execute(new Runnable() {
-            @Override
-            public void run() {
-                deleteAllDB(content.getClass());
-                mLiteOrm.insert(content);
-            }
-        });
-    }
+//    public void insertDB(final Object content) {
+//        threadPool.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                deleteAllDB(content.getClass());
+//                mLiteOrm.insert(content);
+//            }
+//        });
+//    }
 
-    public <T> void insertHistoryDB(final TagNumEntity entity) {
+    public void insertHistoryDB(final TagNumEntity entity) {
         threadPool.execute(new Runnable() {
             @Override
             public void run() {
@@ -52,11 +52,9 @@ public class DBTools {
 //                for (int i = 0; i < historyBeen.size(); i++) {
 //                    if (historyBeen.get(i).getName().equals(entity.getName())) {
 //                        return;
-//                    }
-//                }
-                mLiteOrm.update(entity);
+//
+                mLiteOrm.insert(entity);
             }
-
         });
     }
 

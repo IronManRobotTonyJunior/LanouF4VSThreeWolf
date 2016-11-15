@@ -2,35 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/colorWhite"
               android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/title"
         android:background="#FB7299">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="24dp"
             android:text="重置密码"
             android:textColor="@android:color/white"
             android:textSize="16sp"/>
 
         <ImageView
             android:id="@+id/question_ima_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/textView"
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp"
-            android:background="@mipmap/backs"
-            android:backgroundTint="@drawable/selector_toll_btn"/>
+            android:padding="@dimen/five"
+            android:src="@mipmap/backs"/>
 
     </RelativeLayout>
 

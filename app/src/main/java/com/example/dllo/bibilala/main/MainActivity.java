@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
+import com.example.dllo.bibilala.activity.login.SignActivity;
 import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.tool.SharedPreferencesTool;
@@ -167,6 +168,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.user_icon:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
+            case R.id.drawer_user_icon:
+                Intent intent = new Intent(MainActivity.this, SignActivity.class);
+                startActivity(intent);
+                break;
         }
 
     }
@@ -205,6 +210,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, SignActivity.class);
         int id = item.getItemId();
         Log.d("MainActivity", "id:" + id);
         switch (id) {
@@ -214,6 +220,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mUiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
                 break;
             case R.id.drawer_user_icon:
+                startActivity(intent);
                 break;
             case R.id.ic_home:
                 break;
@@ -222,13 +229,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.ic_file:
                 break;
             case R.id.ic_star:
+                startActivity(intent);
                 Log.d("MainActivity", "进");
                 break;
             case R.id.ic_history:
                 break;
             case R.id.ic_people:
+                startActivity(intent);
                 break;
             case R.id.ic_account:
+                startActivity(intent);
                 break;
             case R.id.ic_color:
                 break;

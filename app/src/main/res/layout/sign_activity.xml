@@ -2,47 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/colorWhite"
               android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/title"
         android:background="@color/colorPinkMain">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="24dp"
             android:text="登录"
             android:textColor="@android:color/white"
             android:textSize="16sp"/>
 
         <ImageView
             android:id="@+id/sign_ac_ima_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/textView"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="12dp"
-            android:background="@mipmap/backs"
-            android:backgroundTint="@drawable/selector_toll_btn"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/twelve"
+            android:padding="@dimen/five"
+            android:src="@mipmap/backs"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/selector_toll_btn"
-            android:text="忘记密码？"
-            android:textColor="@android:color/white"
-            android:layout_alignBaseline="@+id/textView"
-            android:layout_alignBottom="@+id/textView"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:text="忘记密码？"
+            android:textColor="@android:color/white"/>
 
     </RelativeLayout>
 
@@ -86,12 +80,12 @@
             android:visibility="gone"/>
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:background="@mipmap/sign"
             android:layout_alignTop="@+id/sign_ac_blue_z"
             android:layout_centerHorizontal="true"
-            android:id="@+id/imageView2"/>
+            android:background="@mipmap/sign"/>
     </RelativeLayout>
 
     <LinearLayout

@@ -56,7 +56,6 @@ import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.DataEnt
 import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
 import com.example.dllo.bibilala.live.type.view.presenter.SecondAllTypePresenter;
 import com.example.dllo.bibilala.live.view.LiveActivity;
-import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
@@ -70,7 +69,6 @@ public class SecondTypeActivity extends BaseActivity implements IAllTypeView {
     private RecyclerView mRecyclerView;
     private List<DataEntity> entityList;
     private SecondAllTypePresenter mPresenter;
-
     private SwipeRefreshLayout mLayout;
     private AllAdapter adapter;
     private TextView tvTitle;
@@ -156,13 +154,32 @@ public class SecondTypeActivity extends BaseActivity implements IAllTypeView {
     }
 
     @Override
-    public void onAllType(SecondAllEntity result) {
+    public void onAllType(final SecondAllEntity result) {
         entityList = result.getData();
         adapter = new AllAdapter(this, R.layout.item_live_type_body, entityList);
         LinearLayoutManager manager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(adapter);
         adapter.setEntityList(entityList);
+        adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                DataEntity dataEntity = result.getData().get(position);
+                Intent intent = new Intent(SecondTypeActivity.this, LiveActivity.class);
+                intent.putExtra("playUrl", dataEntity.getPlayurl());
+                intent.putExtra("title", dataEntity.getTitle());
+                intent.putExtra("name", dataEntity.getOwner().getName());
+                intent.putExtra("online", dataEntity.getOnline());
+                intent.putExtra("roomId", dataEntity.getRoom_id());
+                intent.putExtra("iconUrl", dataEntity.getOwner().getFace());
+                startActivity(intent);
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
 
     }
 
