@@ -1,7 +1,6 @@
 package com.example.dllo.bibilala.welcome;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,12 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.main.MainActivity;
-import com.example.dllo.bibilala.url.UrlClass;
-
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -63,7 +59,6 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
     protected void initView() {
         textView = (TextView) findViewById(R.id.text_time);
         imageView = (ImageView) findViewById(R.id.image);
-
         textView.setOnClickListener(this);
 
     }

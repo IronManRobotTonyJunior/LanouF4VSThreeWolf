@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 
 import cn.bmob.v3.BmobObject;
 
-public class User extends BmobObject {
+public class UserInfo extends BmobObject {
     private String telephone;
     private String password;
     private Bitmap userIcon;

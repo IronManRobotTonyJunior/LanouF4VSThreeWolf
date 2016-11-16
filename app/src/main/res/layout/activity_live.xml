@@ -15,25 +15,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <ImageView
-            android:id="@+id/video_img_back"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fifteen"
-            android:padding="@dimen/five"
-            android:src="@mipmap/backs_big"
-            android:visibility="gone"
-            />
+            android:background="@drawable/shape_live_set">
 
-        <TextView
-            android:id="@+id/anchor_room_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/title_height"
-            android:layout_marginTop="@dimen/twenty"
-            android:textColor="@color/colorWhiteAlways"
-            android:visibility="gone"
-            />
+
+            <ImageView
+                android:id="@+id/video_img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fifteen"
+                android:padding="@dimen/five"
+                android:src="@mipmap/backs_big"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/anchor_room_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/title_height"
+                android:layout_marginTop="@dimen/twenty"
+                android:textColor="@color/colorWhiteAlways"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
 
         <CheckBox
             android:id="@+id/cb_play"
@@ -43,6 +50,15 @@
             android:layout_margin="@dimen/twenty"
             android:button="@drawable/selector_play_pause"
             android:padding="@dimen/ten"
+            android:visibility="gone"/>
+
+
+        <ImageView
+            android:id="@+id/ic_tv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_tv_play"
             android:visibility="gone"/>
 
 
@@ -57,6 +73,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/volume_set_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_volume_set"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableRight="@mipmap/recharge_pay_tv"
+                android:text="没 有 图 片"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/twelve"
+                    android:text="音量"/>
+
+                <TextView
+                    android:id="@+id/progress_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/twelve"
+                    android:textColor="@color/colorPinkMain"
+                    />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/live_progress"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/ten"/>
+
+        </LinearLayout>
     </FrameLayout>
 
 
