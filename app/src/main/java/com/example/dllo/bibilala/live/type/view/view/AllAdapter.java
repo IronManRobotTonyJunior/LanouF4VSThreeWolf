@@ -45,8 +45,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.DataEntity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
+import com.example.dllo.bibilala.entity.live.type.secondtype.DataEntity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 

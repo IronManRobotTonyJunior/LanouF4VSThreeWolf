@@ -4,7 +4,6 @@ package com.example.dllo.bibilala.search.searchdetail.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,9 +14,8 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.search.searchdetail.presenter.SearchDetailPresent;
-import com.example.dllo.bibilala.search.view.ISearchView;
 import com.example.dllo.bibilala.search.view.SearchActivity;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 public class SearchDetailActivity extends BaseActivity implements View.OnClickListener
         , ISearchDetailView<SearchDetailEntity> {

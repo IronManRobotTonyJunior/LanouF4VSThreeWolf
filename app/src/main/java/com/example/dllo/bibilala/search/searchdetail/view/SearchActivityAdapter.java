@@ -4,9 +4,7 @@ package com.example.dllo.bibilala.search.searchdetail.view;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
-import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.DataEntity;
 import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 
 import java.util.List;

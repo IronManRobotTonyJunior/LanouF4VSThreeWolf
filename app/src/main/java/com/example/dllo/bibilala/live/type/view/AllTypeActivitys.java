@@ -51,11 +51,11 @@ import android.widget.ImageView;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.DataEntity;
+import com.example.dllo.bibilala.entity.live.type.AllTypeEntity;
+import com.example.dllo.bibilala.entity.live.type.DataEntity;
 import com.example.dllo.bibilala.live.type.presenter.AllTypePresenter;
 import com.example.dllo.bibilala.live.type.view.view.SecondTypeActivity;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.entity.recommendentity.hotentity.OriginalEntity;
+import com.example.dllo.bibilala.entity.recommend.hot.OriginalEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.recommend.secondinterface.adapter.OriginalAdapter;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 import java.util.ArrayList;
 import java.util.List;

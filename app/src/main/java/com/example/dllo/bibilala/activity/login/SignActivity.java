@@ -62,6 +62,9 @@ import static com.android.volley.Request.Method.POST;
  * Created by dllo on 16/10/29.
  */
 
+/**
+ * 登录页面
+ */
 public class SignActivity extends BaseActivity implements View.OnClickListener {
     private ImageView mBack, mBlue, mGray, mBlueV, mGrayV, mDeleteSecret, mDeletePhone;
     private EditText mSecret, mPhone;

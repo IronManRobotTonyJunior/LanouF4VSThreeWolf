@@ -51,7 +51,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.ListsEntity;
+import com.example.dllo.bibilala.entity.bangum.ListsEntity;
 
 import java.util.List;
 

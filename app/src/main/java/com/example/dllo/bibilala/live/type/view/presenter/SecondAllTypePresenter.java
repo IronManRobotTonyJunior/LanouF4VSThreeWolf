@@ -40,7 +40,7 @@ package com.example.dllo.bibilala.live.type.view.presenter;
          
         */
 
-import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
+import com.example.dllo.bibilala.entity.live.type.secondtype.SecondAllEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
 import com.example.dllo.bibilala.live.type.view.view.IAllTypeView;
 import com.example.dllo.bibilala.mvp.model.IModel;

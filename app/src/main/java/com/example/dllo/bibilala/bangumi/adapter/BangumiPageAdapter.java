@@ -41,18 +41,16 @@ package com.example.dllo.bibilala.bangumi.adapter;
         */
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.HeadEntity;
+import com.example.dllo.bibilala.entity.bangum.HeadEntity;
 
 import java.util.List;
 

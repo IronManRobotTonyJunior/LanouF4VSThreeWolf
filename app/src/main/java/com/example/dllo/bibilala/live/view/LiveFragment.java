@@ -8,16 +8,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
-import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.RecommendDataEntity;
-import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
+import com.example.dllo.bibilala.entity.live.liverecommend.LiveAllEntity;
+import com.example.dllo.bibilala.entity.live.liverecommend.RecommendDataEntity;
+import com.example.dllo.bibilala.entity.live.livetype.LiveTypeEntity;
+import com.example.dllo.bibilala.entity.live.type.AllTypeEntity;
 import com.example.dllo.bibilala.live.presenter.LivePresenter;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 import org.greenrobot.eventbus.EventBus;
 

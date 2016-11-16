@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.recommendentity.AllBean;
+import com.example.dllo.bibilala.entity.recommend.AllBean;
 
 import java.util.List;
 

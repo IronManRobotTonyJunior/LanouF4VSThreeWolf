@@ -49,12 +49,12 @@ import android.widget.ImageView;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
 import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.bangumentity.add.AddCrayonEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.ListBean;
-import com.example.dllo.bibilala.entity.bangumentity.add.QuarterlyEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.ResultBean;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.entity.bangum.add.AddCrayonEntity;
+import com.example.dllo.bibilala.entity.bangum.add.ListBean;
+import com.example.dllo.bibilala.entity.bangum.add.QuarterlyEntity;
+import com.example.dllo.bibilala.entity.bangum.add.ResultBean;
+import com.example.dllo.bibilala.entity.bangum.crayon.CrayonFootEntity;
+import com.example.dllo.bibilala.values.UrlClass;
 
 import java.util.ArrayList;
 
