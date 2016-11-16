@@ -1,25 +1,24 @@
 package com.example.dllo.bibilala.base;
 
 
-import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 
-import java.util.Collection;
-import java.util.Collections;
+import com.example.dllo.bibilala.tool.exception.ExceptionHandler;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private static Map<String, AppCompatActivity> activities = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayout());
+        ExceptionHandler handler = new ExceptionHandler(this);
+        Thread.setDefaultUncaughtExceptionHandler(handler);
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //            // Translucent status bar
 //            getWindow().setFlags(
@@ -29,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         activityController(this);
         initView();
         initData(savedInstanceState);
+
     }
 
     protected abstract int setLayout();

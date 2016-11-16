@@ -159,7 +159,6 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
                                         mLlVolume.setVisibility(View.VISIBLE);
                                         mProgressBarVolume.setProgress(sumY);
                                         mTvVolume.setText(mProgressBarVolume.getProgress() + "%");
-                                        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mProgressBarVolume.getProgress(), 0);
                                         handler.postDelayed(mTaskVolume, VOLUME_SHOW_TIME);
                                         break;
                                     case MotionEvent.ACTION_DOWN:
@@ -187,6 +186,7 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
                                         }
                                         break;
                                     case MotionEvent.ACTION_UP:
+                                        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mProgressBarVolume.getProgress(), 0);
                                         break;
 
                                 }
