@@ -5,16 +5,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.entity.recommendentity.animationentity.ARecommendEntity;
-import com.example.dllo.bibilala.entity.recommendentity.animationentity.DynamicEntity;
+import com.example.dllo.bibilala.entity.recommend.animation.DynamicEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.recommend.secondinterface.adapter.AnimationRecommendAdapter;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +

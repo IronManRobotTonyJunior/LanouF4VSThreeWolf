@@ -52,8 +52,8 @@ import android.widget.TextView;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.DataEntity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
+import com.example.dllo.bibilala.entity.live.type.secondtype.DataEntity;
+import com.example.dllo.bibilala.entity.live.type.secondtype.SecondAllEntity;
 import com.example.dllo.bibilala.live.type.view.presenter.SecondAllTypePresenter;
 import com.example.dllo.bibilala.live.view.LiveActivity;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;

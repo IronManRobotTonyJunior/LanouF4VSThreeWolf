@@ -27,7 +27,7 @@ import com.example.dllo.bibilala.search.scan.ScanActivity;
 import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
 import com.example.dllo.bibilala.tool.db.DBTools;
 import com.example.dllo.bibilala.tool.rx.TextObservable;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -49,10 +49,10 @@ import android.widget.Toast;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.bangumi.presenter.SecondBangumPresenter;
 import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.entity.bangumentity.add.AddCrayonEntity;
-import com.example.dllo.bibilala.entity.bangumentity.add.QuarterlyEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.CrayonFootEntity;
-import com.example.dllo.bibilala.entity.bangumentity.crayonentity.ListEntity;
+import com.example.dllo.bibilala.entity.bangum.add.AddCrayonEntity;
+import com.example.dllo.bibilala.entity.bangum.add.QuarterlyEntity;
+import com.example.dllo.bibilala.entity.bangum.crayon.CrayonFootEntity;
+import com.example.dllo.bibilala.entity.bangum.crayon.ListEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,8 +73,10 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
     private List<ListEntity> entityList;
     private VideoView mVideoView;
     private String[] video = {
-           "http://wvideo.spriteapp.cn/video/2016/1101/58186c621031a_wpd.mp4"
-
+            "http://wvideo.spriteapp.cn/video/2016/1113/83224a46-a97e-11e6-8a3d-d4ae5296039d_wpd.mp4",
+            "http://wvideo.spriteapp.cn/video/2016/1114/582937ac01ea1_wpd.mp4",
+            "http://wvideo.spriteapp.cn/video/2016/1113/37a0babc-a9b0-11e6-904f-d4ae5296039d_wpd.mp4",
+            "http://wvideo.spriteapp.cn/video/2016/1113/0eceadac-a9aa-11e6-a50d-d4ae5296039d_wpd.mp4"
     };
 
 
@@ -103,13 +105,7 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
         mPresenter.startRequest(mUrl, CrayonFootEntity.class);
 
 
-
-
-
-
     }
-
-
 
 
     @Override
@@ -129,8 +125,6 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
     public void onQuarterlyEntity(QuarterlyEntity entity) {
 
     }
-
-
 
 
     private void crayonResult() {
@@ -156,7 +150,8 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
     public void onError() {
 
     }
-    void playFunction(){
+
+    void playFunction() {
         String path = "";
         path = video[new Random().nextInt(video.length)];
         if (path == "") {
@@ -164,7 +159,12 @@ public class CrayonActivity extends BaseActivity implements ICrayonView {
             return;
         }
         mVideoView = (VideoView) findViewById(R.id.surface_view);
-        mVideoView.setVideoPath(path);   //设置视频网络地址
+        for (int i = 0; i < path.length(); i++) {
+            mVideoView.setVideoPath(path);   //设置视频网络地址
+
+        }
+
+
 //      mVideoView.setVideoURI(Uri.parse(path)); //也可以是本地,也可以是网络地址
         mVideoView.setMediaController(new MediaController(this)); //设置媒体控制器
         mVideoView.setVideoLayout(VideoView.VIDEO_LAYOUT_STRETCH, 0);   //设置视频的缩放参数,这里设置为拉伸

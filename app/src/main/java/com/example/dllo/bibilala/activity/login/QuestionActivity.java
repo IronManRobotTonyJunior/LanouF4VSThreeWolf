@@ -62,7 +62,12 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 /**
  * Created by dllo on 16/10/31.
  */
+
+/**
+ * 忘记密码界面
+ */
 public class QuestionActivity extends BaseActivity implements View.OnClickListener {
+
 
     private ImageView mImaBack;
     private Button mBtnGray, mBtnPowder;
@@ -87,6 +92,7 @@ public class QuestionActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+    //点击获取验证码之后会显示
     private ProgressDialog createDialog() {
         ProgressDialog dialog = new ProgressDialog(this);
         dialog.setCanceledOnTouchOutside(false);

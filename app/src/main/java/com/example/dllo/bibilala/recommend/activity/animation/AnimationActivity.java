@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
-import com.example.dllo.bibilala.base.BaseTitleActivity;
+
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +

@@ -1,16 +1,13 @@
 package com.example.dllo.bibilala.live.presenter;
 
 
-import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
 import com.example.dllo.bibilala.http.OnCompletedListener;
-import com.example.dllo.bibilala.entity.liveentity.livetypeentity.LiveTypeEntity;
-import com.example.dllo.bibilala.entity.liveentity.liverecommendentity.LiveAllEntity;
+import com.example.dllo.bibilala.entity.live.livetype.LiveTypeEntity;
+import com.example.dllo.bibilala.entity.live.liverecommend.LiveAllEntity;
 import com.example.dllo.bibilala.mvp.model.IModel;
 import com.example.dllo.bibilala.mvp.model.ModelImpl;
 import com.example.dllo.bibilala.live.view.ILiveView;
 import com.example.dllo.bibilala.mvp.presenter.BasePresenter;
-
-import java.lang.ref.WeakReference;
 
 public class LivePresenter extends BasePresenter<ILiveView> {
     private IModel mIModel;

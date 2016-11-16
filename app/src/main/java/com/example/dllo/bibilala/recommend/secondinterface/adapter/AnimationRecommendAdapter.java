@@ -1,25 +1,15 @@
 package com.example.dllo.bibilala.recommend.secondinterface.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.liveentity.livetypeentity.BannerEntity;
-import com.example.dllo.bibilala.entity.recommendentity.animationentity.ARecommendEntity;
-import com.example.dllo.bibilala.entity.recommendentity.animationentity.DynamicEntity;
-import com.example.dllo.bibilala.live.view.LiveAdapter;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
+import com.example.dllo.bibilala.entity.recommend.animation.DynamicEntity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
