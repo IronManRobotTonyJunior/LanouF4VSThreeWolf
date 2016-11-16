@@ -41,6 +41,7 @@
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".bangumi.view.BangumiActivity"/>
 
+
         <activity
             android:name=".search.view.SearchActivity"
             android:theme="@style/Theme.AppCompat.Translucent"/>
@@ -51,7 +52,10 @@
         <activity android:name=".recommend.activity.hotrecommend.HotVideoActivity"/>
 
         <activity android:name=".recommend.activity.animation.AnimationActivity"/>
-        <activity android:name=".live.view.LiveActivity"/>
+        <activity
+            android:name=".live.view.LiveActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"/>
 
         <activity android:name=".live.type.view.AllTypeActivitys"/>
         <activity android:name=".live.type.view.view.SecondTypeActivity"/>
@@ -71,6 +75,7 @@
         <activity android:name=".bangumi.view.QuarterlyActivity"/>
         <activity android:name=".find.view.TopicActivity"/>
         <activity android:name=".activity.login.DownLoadActivity"/>
+        <activity android:name=".activity.login.SettingPasswordActivity"/>
     </application>
 
 </manifest>

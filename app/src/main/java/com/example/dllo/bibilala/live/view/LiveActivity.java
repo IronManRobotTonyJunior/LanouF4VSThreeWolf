@@ -1,8 +1,10 @@
 package com.example.dllo.bibilala.live.view;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
@@ -14,6 +16,8 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -39,10 +43,18 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
     private ImageView mLoadImage;
     private ImageView mImgBackground;
     private static final int SHOW_TIME = 5000;
+    private static final int VOLUME_SHOW_TIME = 3000;
+    private static final int MAX_VOLUME = 100;
     private CheckBox mCbPlay;
     private ImageView mVideoBack;
     private TextView mAnchorRoom;
+    private AudioManager mAudioManager;
     private FrameLayout mVideoBackLayout;
+    private ImageView mPlay;
+    private int mLastY;
+    private ProgressBar mProgressBarVolume;
+    private LinearLayout mLlVolume;
+    private TextView mTvVolume;
 
     @Override
     protected int setLayout() {
@@ -52,6 +64,12 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
+        mLlVolume = bindView(R.id.volume_set_ll);
+        mTvVolume = bindView(R.id.progress_rate);
+        mProgressBarVolume = bindView(R.id.live_progress);
+        mProgressBarVolume.setMax(MAX_VOLUME);
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mPlay = bindView(R.id.ic_tv_play);
         mVideoBackLayout = bindView(R.id.center_layout);
         mVideoView = bindView(R.id.live_activity_video_view);
         mLoadImage = bindView(R.id.live_loading_anim);
@@ -82,6 +100,7 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
         mAnchorRoom.setText(tvName.getText().toString() + "的直播间");
         mCbPlay.setOnClickListener(this);
         mVideoBack.setOnClickListener(this);
+        mPlay.setOnClickListener(this);
 
     }
 
@@ -96,6 +115,8 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
         mVideoView.requestFocus();
         mLoadImage.setBackgroundResource(R.drawable.bili_loading_tv_chan);
         final AnimationDrawable anim = (AnimationDrawable) mLoadImage.getBackground();
+
+        // 配置VideoView的信息
         mVideoView.setOnInfoListener(new MediaPlayer.OnInfoListener() {
             @Override
             public boolean onInfo(MediaPlayer mp, int what, int extra) {
@@ -109,39 +130,68 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
                         mImgBackground.setVisibility(View.GONE);
                         mLoadImage.setVisibility(View.GONE);
                         mVideoView.start();
+
+                        // 配置手势滑动
                         mVideoView.setOnTouchListener(new View.OnTouchListener() {
+                            private TimerTask mTaskVolume = new TimerTask() {
+                                @Override
+                                public void run() {
+                                    if (mLlVolume.getVisibility() == View.VISIBLE) {
+                                        mLlVolume.setVisibility(View.GONE);
+                                    }
+                                }
+                            };
                             private boolean mContinueShow = false;
+                            private int dy;
+                            private int sumY;
+                            private Handler handler = new Handler();
+
+                            // 上次改变的Y值 控制是否收缩状态栏
 
                             @Override
                             public boolean onTouch(View v, MotionEvent event) {
-                                Handler handler = null;
+                                int y = (int) event.getY();
                                 switch (event.getAction()) {
                                     case MotionEvent.ACTION_MOVE:
+                                        mTaskVolume.cancel();
+                                        dy = y - mLastY;
+                                        sumY += -dy / 8;
+                                        mLlVolume.setVisibility(View.VISIBLE);
+                                        mProgressBarVolume.setProgress(sumY);
+                                        mTvVolume.setText(mProgressBarVolume.getProgress() + "%");
+                                        handler.postDelayed(mTaskVolume, VOLUME_SHOW_TIME);
                                         break;
                                     case MotionEvent.ACTION_DOWN:
-                                        TimerTask task = new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                if (mContinueShow) {
-                                                    mContinueShow = false;
-                                                    dismissTitle();
+                                        if (Math.abs(mLastY - y) < 1) {
+                                            dy = 0;
+                                        }
+                                        if (Math.abs(dy) < 1) {
+                                            TimerTask task = new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    if (mContinueShow) {
+                                                        mContinueShow = false;
+                                                        dismissTitle();
+                                                    }
                                                 }
+                                            };
+                                            if (!mContinueShow) {
+                                                showTitle(task, handler);
+                                                mContinueShow = true;
+                                            } else {
+                                                mContinueShow = false;
+                                                task.cancel();
+                                                dismissTitle();
                                             }
-                                        };
-                                        if (!mContinueShow) {
-                                            showTitle(task);
-                                            mContinueShow = true;
-                                        } else {
-                                            mContinueShow = false;
-                                            task.cancel();
-                                            dismissTitle();
                                         }
                                         break;
                                     case MotionEvent.ACTION_UP:
+                                        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mProgressBarVolume.getProgress(), 0);
                                         break;
 
                                 }
-                                return false;
+                                mLastY = y;
+                                return true;
                             }
 
                         });
@@ -168,11 +218,9 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
         mAnchorRoom.setVisibility(View.GONE);
     }
 
-    private void showTitle(TimerTask task) {
-        Handler handler;
+    private void showTitle(TimerTask task, Handler handler) {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        handler = new Handler();
         handler.postDelayed(task, SHOW_TIME);
         mCbPlay.setVisibility(View.VISIBLE);
         mVideoBack.setVisibility(View.VISIBLE);
@@ -189,9 +237,18 @@ public class LiveActivity extends BaseActivity implements View.OnClickListener {
             case R.id.cb_play:
                 if (mCbPlay.isChecked()) {
                     mVideoView.pause();
+                    mPlay.setVisibility(View.VISIBLE);
                 } else {
                     mVideoView.start();
+                    mPlay.setVisibility(View.GONE);
                 }
+                break;
+            case R.id.ic_tv_play:
+                mVideoView.start();
+                mPlay.setVisibility(View.GONE);
+                mCbPlay.setChecked(false);
+                break;
+            default:
                 break;
         }
     }

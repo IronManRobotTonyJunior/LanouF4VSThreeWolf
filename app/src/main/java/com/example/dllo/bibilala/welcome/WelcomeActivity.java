@@ -12,7 +12,6 @@ import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseActivity;
 import com.example.dllo.bibilala.main.MainActivity;
 
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,7 +59,6 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
     protected void initView() {
         textView = (TextView) findViewById(R.id.text_time);
         imageView = (ImageView) findViewById(R.id.image);
-
         textView.setOnClickListener(this);
 
     }

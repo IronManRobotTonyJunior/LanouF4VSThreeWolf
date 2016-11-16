@@ -40,6 +40,7 @@ package com.example.dllo.bibilala.activity.login; /*
         */
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
@@ -192,8 +193,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(RegisterActivity.this, "验证成功, 玲姐最美", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(RegisterActivity.this, SettingPasswordActivity.class);
-//                startActivityForResult(intent, REQUEST_CODE);
+                Intent intent = new Intent(RegisterActivity.this, SettingPasswordActivity.class);
+                intent.putExtra("telephone", et.getText().toString());
+                startActivityForResult(intent, REQUEST_CODE);
                 finish();
             }
         });

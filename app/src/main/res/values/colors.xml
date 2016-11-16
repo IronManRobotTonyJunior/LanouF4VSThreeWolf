@@ -28,4 +28,5 @@
     <color name="colorSearchList">#C7C7C7</color>
     <color name="colorDetailTabSelect">#FA769A</color>
     <color name="colorSearchDetailTitle">#A3A3A3</color>
+    <color name="colorLoginEditText">#9D9D9D</color>
 </resources>

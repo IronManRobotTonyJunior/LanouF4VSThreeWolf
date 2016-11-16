@@ -28,7 +28,6 @@
             android:padding="@dimen/five"
             android:src="@mipmap/backs"/>
 
-
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
@@ -117,6 +116,7 @@
                 android:background="@null"
                 android:hint="你的手机号/邮箱"
                 android:textColor="@android:color/black"
+                android:textCursorDrawable="@null"
                 android:textSize="15sp"/>
 
 
@@ -174,7 +174,6 @@
             <EditText
                 android:id="@+id/sign_secret_et"
                 android:layout_width="match_parent"
-
                 android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
@@ -183,7 +182,9 @@
                 android:hint="请输入密码"
                 android:password="true"
                 android:textColor="@android:color/black"
+                android:textCursorDrawable="@null"
                 android:textSize="15sp"/>
+
 
         </LinearLayout>
 
@@ -225,7 +226,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/fifteen"
         android:orientation="horizontal">
 
         <Button

@@ -70,5 +70,12 @@
         <item name="colorPrimary">#FB7299</item>
     </style>
 
+    <style name="editTextLoginStyle" parent="AppTheme">
+        <item name="colorAccent">@color/colorLoginEditText</item>
+        <item name="colorPrimary">@color/colorPinkMain</item>
+        <item name="colorPrimaryDark">#512DA8</item>
+        <item name="android:background">@drawable/login_edittext</item>
+    </style>
+
 
 </resources>
