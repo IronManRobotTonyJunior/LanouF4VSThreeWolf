@@ -16,7 +16,7 @@ import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.search.scan.ScanActivity;
 import com.example.dllo.bibilala.search.searchdetail.presenter.SearchDetailPresent;
 import com.example.dllo.bibilala.search.view.SearchActivity;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 
 public class SearchDetailActivity extends BaseActivity implements View.OnClickListener
         , ISearchDetailView<SearchDetailEntity> {

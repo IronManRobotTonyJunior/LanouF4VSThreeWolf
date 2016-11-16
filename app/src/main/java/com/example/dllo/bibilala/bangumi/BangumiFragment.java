@@ -22,15 +22,15 @@ import com.example.dllo.bibilala.bangumi.adapter.BangumChinaAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.BangumiPageAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.CrayonAdapter;
 import com.example.dllo.bibilala.bangumi.adapter.JulyToLoveAdapter;
-import com.example.dllo.bibilala.bangumi.view.AddCrayonActivity;
+import com.example.dllo.bibilala.bangumi.view.MoreCrayonActivity;
 import com.example.dllo.bibilala.bangumi.view.BangumiActivity;
 import com.example.dllo.bibilala.bangumi.view.CrayonActivity;
 import com.example.dllo.bibilala.bangumi.view.QuarterlyActivity;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.entity.bangumentity.BangUmiEntity;
-import com.example.dllo.bibilala.entity.bangumentity.BangUmiRecommendEntity;
+import com.example.dllo.bibilala.entity.bangum.BangUmiEntity;
+import com.example.dllo.bibilala.entity.bangum.BangUmiRecommendEntity;
 import com.example.dllo.bibilala.http.SendGetRequest;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
@@ -103,6 +103,7 @@ public class BangumiFragment extends BaseFragment {
 
             @Override
             public void onError() {
+
 
             }
         });
@@ -197,7 +198,7 @@ public class BangumiFragment extends BaseFragment {
 
                     }
                 });
-                Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -223,7 +224,6 @@ public class BangumiFragment extends BaseFragment {
 
                     }
                 });
-                Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -245,8 +245,6 @@ public class BangumiFragment extends BaseFragment {
 
                 mBangumChinaAdapter.setEntity(response.getResult().getChina());
                 mChinaGridView.setAdapter(mBangumChinaAdapter);
-
-
                 mRecyclerView.scrollTo(0, 0);
 
             }
@@ -281,7 +279,6 @@ public class BangumiFragment extends BaseFragment {
 
                     }
                 });
-                Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -372,7 +369,6 @@ public class BangumiFragment extends BaseFragment {
     private void onLunView() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_rv_lun_fragment, null);
         mHeaderAndFooterWrapper.addHeaderView(view);
-//        mHeaderAndFooterWrapper.notifyDataSetChanged();
         mViewPager = (ViewPager) view.findViewById(R.id.bang_umi_fragment_viewpager);
         mLinearLayout = (LinearLayout) view.findViewById(R.id.bang_umi_fragment_ll);
         mLayout = (LinearLayout) view.findViewById(R.id.rv_lun_l);
@@ -380,15 +376,8 @@ public class BangumiFragment extends BaseFragment {
         tvNewBang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,AddCrayonActivity.class);
+                Intent intent = new Intent(mContext,MoreCrayonActivity.class);
                 startActivity(intent);
-            }
-        });
-        mLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentItem = mViewPager.getCurrentItem();
-                Toast.makeText(mContext, "currentItem:" + currentItem, Toast.LENGTH_SHORT).show();
             }
         });
         mBangumiAdapter = new BangumiPageAdapter(mContext);

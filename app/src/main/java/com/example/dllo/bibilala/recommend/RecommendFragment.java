@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,11 +20,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
 import com.example.dllo.bibilala.base.BaseFragment;
-import com.example.dllo.bibilala.entity.recommendentity.AllBean;
-import com.example.dllo.bibilala.entity.recommendentity.LBBean;
+import com.example.dllo.bibilala.entity.recommend.AllBean;
+import com.example.dllo.bibilala.entity.recommend.LBBean;
 import com.example.dllo.bibilala.http.SendGetRequest;
 import com.example.dllo.bibilala.main.MainActivity;
 import com.example.dllo.bibilala.recommend.activity.animation.AnimationActivity;
+
 import com.example.dllo.bibilala.recommend.adapter.ActivityAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AdvertAdapter;
 import com.example.dllo.bibilala.recommend.adapter.AnimationAdapter;
@@ -42,8 +44,9 @@ import com.example.dllo.bibilala.recommend.adapter.RecommendLiveAdapter;
 import com.example.dllo.bibilala.recommend.adapter.RecommendMusicAdapter;
 import com.example.dllo.bibilala.recommend.adapter.ScienceAdapter;
 import com.example.dllo.bibilala.recommend.adapter.TVSeriesAdapter;
-import com.example.dllo.bibilala.url.UrlClass;
+
 import com.example.dllo.bibilala.view.GridViews;
+import com.example.dllo.bibilala.values.UrlClass;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
@@ -153,6 +156,8 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         //回到最上层
         recyclerView.smoothScrollBy(0, 0);
 
+
+        recommend_swipe_refresh.setColorSchemeColors(getResources().getColor(R.color.colorPinkAlways));
 
         recommend_swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

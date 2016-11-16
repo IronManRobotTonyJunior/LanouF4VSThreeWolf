@@ -19,7 +19,7 @@ import com.example.dllo.bibilala.find.presenter.FindPresenter;
 import com.example.dllo.bibilala.search.searchdetail.view.SearchDetailActivity;
 import com.example.dllo.bibilala.search.view.SearchActivity;
 import com.example.dllo.bibilala.tool.DensityUtils;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;

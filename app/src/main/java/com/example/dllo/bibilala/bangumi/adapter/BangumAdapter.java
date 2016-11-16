@@ -46,7 +46,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
-import com.example.dllo.bibilala.entity.bangumentity.BangUmiRecommendEntity;
+import com.example.dllo.bibilala.entity.bangum.BangUmiRecommendEntity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -71,6 +71,7 @@ public class BangumAdapter extends CommonAdapter<BangUmiRecommendEntity.ResultBe
         holder.setText(R.id.item_bang_recommend_tv_title,entity.getTitle());
         holder.setText(R.id.text_test,entity.getDesc());
         ImageView ima = holder.getView(R.id.item_bangum_recommend_ima);
+        ima.setImageResource(R.mipmap.beijing);
         Glide.with(mContext).load(entity.getCover()).into(ima);
         if (listener!=null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {

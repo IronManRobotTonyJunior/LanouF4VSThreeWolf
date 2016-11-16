@@ -40,8 +40,7 @@ package com.example.dllo.bibilala.live.type.view.view;
          
         */
 
-import com.example.dllo.bibilala.entity.liveentity.typeentity.AllTypeEntity;
-import com.example.dllo.bibilala.entity.liveentity.typeentity.secondtype.SecondAllEntity;
+import com.example.dllo.bibilala.entity.live.type.secondtype.SecondAllEntity;
 
 /**
  * Created by dllo on 16/11/8.

@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.bibilala.R;
@@ -16,12 +14,9 @@ import com.example.dllo.bibilala.base.BaseFragment;
 import com.example.dllo.bibilala.entity.search.detail.SearchDetailEntity;
 import com.example.dllo.bibilala.entity.search.detail.SearchTypeEntity;
 import com.example.dllo.bibilala.search.searchdetail.presenter.SearchDetailPresent;
-import com.example.dllo.bibilala.search.view.ISearchView;
-import com.example.dllo.bibilala.url.UrlClass;
+import com.example.dllo.bibilala.values.UrlClass;
 import com.zhy.adapter.abslistview.CommonAdapter;
 import com.zhy.adapter.abslistview.ViewHolder;
-
-import java.util.List;
 
 public class SearchDetailFragment<T> extends BaseFragment implements ISearchDetailView<T> {
 
